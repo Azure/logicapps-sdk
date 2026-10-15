@@ -27,8 +27,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
         internal static ExpressionSyntax ReturnExpression(string source) => ProgramExpression(source);
 
-        internal static void AssertReturnExpression(string expected, string source) =>
-            Assert.Equal(NormalizeExpression(expected), NormalizeNode(ReturnExpression(source)));
+        internal static void AssertReturnExpression(string expected, string source)
+        {
+            var expectedExpression = SyntaxFactory.ParseExpression(expected);
+            Assert.DoesNotContain(
+                expectedExpression.GetDiagnostics(),
+                diagnostic => diagnostic.Severity == DiagnosticSeverity.Error);
+            var actualExpression = ReturnExpression(source);
+            Assert.True(
+                SyntaxFactory.AreEquivalent(
+                    new ParenthesesRewriter().Visit(expectedExpression),
+                    new ParenthesesRewriter().Visit(actualExpression)),
+                $"Expected: {NormalizeNode(expectedExpression)}{Environment.NewLine}Actual: {NormalizeNode(actualExpression)}");
+        }
 
         internal static string NormalizeExpression(string source)
         {
@@ -38,6 +49,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         internal static string NormalizeNode(SyntaxNode node) => node.NormalizeWhitespace().ToFullString();
+
+        private sealed class ParenthesesRewriter : CSharpSyntaxRewriter
+        {
+            public override SyntaxNode VisitParenthesizedExpression(ParenthesizedExpressionSyntax node) =>
+                this.Visit(node.Expression);
+        }
 
     }
 }

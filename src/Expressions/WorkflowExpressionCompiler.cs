@@ -202,26 +202,23 @@ namespace Microsoft.Azure.Workflows.Sdk
         private sealed class SourceFragment
         {
             public string Source { get; }
-            public int Precedence { get; }
             public bool WorkflowData { get; }
             public bool NullSafe { get; }
             public object AgentContext { get; }
 
             public SourceFragment(
                 string source,
-                int precedence = 100,
                 bool workflowData = false,
                 bool nullSafe = false,
                 object agentContext = null)
             {
                 this.Source = source;
-                this.Precedence = precedence;
                 this.WorkflowData = workflowData;
                 this.NullSafe = nullSafe;
                 this.AgentContext = agentContext;
             }
 
-            public string At(int precedence) => this.Precedence < precedence ? "(" + this.Source + ")" : this.Source;
+            public string Parenthesized => "(" + this.Source + ")";
         }
 
         private sealed class Writer
@@ -260,8 +257,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                     case MethodCallExpression call: return this.Call(call);
                     case ConditionalExpression conditional:
                         return new SourceFragment(
-                            this.Typed(conditional.Test).At(3) + " ? " + this.Typed(conditional.IfTrue).At(2) +
-                            " : " + this.Typed(conditional.IfFalse).At(2), 2);
+                            this.Typed(conditional.Test).Parenthesized + " ? " +
+                            this.Typed(conditional.IfTrue).Parenthesized + " : " +
+                            this.Typed(conditional.IfFalse).Parenthesized);
                     case NewArrayExpression array:
                         if (array.NodeType == ExpressionType.NewArrayBounds)
                         {
@@ -269,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                                 string.Join(", ", array.Expressions.Select(e => this.Typed(e).Source)) + "]");
                         }
 
-                        var elements = array.Expressions.Select(e => this.Exact(e).Source).ToArray();
+                        var elements = array.Expressions.Select(e => this.Typed(e).Source).ToArray();
                         var inferred = elements.Any(e => e != "null") && array.Type.GetElementType() != typeof(object) &&
                             array.Expressions.All(e => e.Type == array.Type.GetElementType());
                         return new SourceFragment((inferred ? "new[]" : "new " + TypeName(array.Type)) +
@@ -291,14 +289,15 @@ namespace Microsoft.Azure.Workflows.Sdk
                         var body = this.Typed(lambda.Body);
                         foreach (var parameter in lambda.Parameters) this.parameters.Remove(parameter);
                         return new SourceFragment("(" + string.Join(", ", lambda.Parameters.Select(p => TypeName(p.Type) + " " + Identifier(p.Name))) +
-                            ") => " + body.Source, 1);
+                            ") => " + body.Source);
                     case IndexExpression index:
-                        return new SourceFragment(this.Write(index.Object).At(90) + "[" +
+                        return new SourceFragment(this.Write(index.Object).Parenthesized + "[" +
                             string.Join(", ", index.Arguments.Select(a => this.Typed(a).Source)) + "]");
                     case DefaultExpression defaultExpression:
                         return new SourceFragment("default(" + TypeName(defaultExpression.Type) + ")");
                     case TypeBinaryExpression typeTest when typeTest.NodeType == ExpressionType.TypeIs:
-                        return new SourceFragment(this.Write(typeTest.Expression).At(10) + " is " + TypeName(typeTest.TypeOperand), 10);
+                        return new SourceFragment(
+                            this.Write(typeTest.Expression).Parenthesized + " is " + TypeName(typeTest.TypeOperand));
                     default:
                         throw new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
                 }
@@ -309,14 +308,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 var code = this.Write(expression);
                 if (code.WorkflowData && !typeof(JToken).IsAssignableFrom(expression.Type))
                 {
-                    return new SourceFragment(code.At(90) + ".ToObject<" + TypeName(expression.Type) + ">()");
+                    return new SourceFragment(code.Parenthesized + ".ToObject<" + TypeName(expression.Type) + ">()");
                 }
 
                 return code;
             }
-
-            private SourceFragment Exact(Expression expression)
-                => this.Typed(expression);
 
             private SourceFragment Literal(object value, Type type)
             {
@@ -383,8 +379,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                     if (double.IsNaN(number)) return new SourceFragment("double.NaN");
                     if (double.IsPositiveInfinity(number)) return new SourceFragment("double.PositiveInfinity");
                     if (double.IsNegativeInfinity(number)) return new SourceFragment("double.NegativeInfinity");
-                    if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0) return new SourceFragment("-0.0d", 80);
-                    return new SourceFragment(number.ToString("R", CultureInfo.InvariantCulture) + "d", number < 0 ? 80 : 100);
+                    if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0) return new SourceFragment("-0.0d");
+                    return new SourceFragment(number.ToString("R", CultureInfo.InvariantCulture) + "d");
                 }
 
                 if (value is float single)
@@ -393,8 +389,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                     if (float.IsPositiveInfinity(single)) return new SourceFragment("float.PositiveInfinity");
                     if (float.IsNegativeInfinity(single)) return new SourceFragment("float.NegativeInfinity");
                     if (single == 0 && BitConverter.ToInt32(BitConverter.GetBytes(single), 0) < 0)
-                        return new SourceFragment("-0.0f", 80);
-                    return new SourceFragment(single.ToString("R", CultureInfo.InvariantCulture) + "f", single < 0 ? 80 : 100);
+                        return new SourceFragment("-0.0f");
+                    return new SourceFragment(single.ToString("R", CultureInfo.InvariantCulture) + "f");
                 }
 
                 if (value is decimal || value is long || value is ulong || value is uint ||
@@ -402,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     var suffix = value is decimal ? "m" : value is long ? "L" : value is ulong ? "UL" : value is uint ? "U" : "";
                     var source = System.Convert.ToString(value, CultureInfo.InvariantCulture) + suffix;
-                    var literal = new SourceFragment(source, source.StartsWith("-", StringComparison.Ordinal) ? 80 : 100);
+                    var literal = new SourceFragment(source);
                     return value is byte or sbyte or short or ushort
                         ? Cast(value.GetType(), literal)
                         : literal;
@@ -412,7 +408,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             private static SourceFragment Cast(Type type, SourceFragment value) =>
-                new SourceFragment("(" + TypeName(type) + ")" + value.At(80), 80);
+                new SourceFragment("(" + TypeName(type) + ")" + value.Parenthesized);
 
             private SourceFragment Member(MemberExpression member)
             {
@@ -432,11 +428,12 @@ namespace Microsoft.Azure.Workflows.Sdk
                     !targetType.IsPrimitive && !targetType.IsEnum && targetType != typeof(string) &&
                     !targetType.IsArray && targetType.Namespace != "System")
                 {
-                    return new SourceFragment(target.At(90) + (target.NullSafe ? "?" : "") + "[" + Quote(jsonName) + "]",
+                    return new SourceFragment(target.Parenthesized + (target.NullSafe ? "?" : "") + "[" + Quote(jsonName) + "]",
                         workflowData: true, nullSafe: target.NullSafe);
                 }
 
-                return new SourceFragment(this.Receiver(member.Expression).At(90) + "." + Identifier(member.Member.Name));
+                return new SourceFragment(
+                    this.Receiver(member.Expression).Parenthesized + "." + Identifier(member.Member.Name));
             }
 
             private bool TryWorkflowBinding(MemberExpression member, out SourceFragment code)
@@ -483,54 +480,47 @@ namespace Microsoft.Azure.Workflows.Sdk
             private SourceFragment Binary(BinaryExpression binary)
             {
                 if (binary.NodeType == ExpressionType.ArrayIndex)
-                    return new SourceFragment(this.Typed(binary.Left).At(90) + "[" + this.Typed(binary.Right).Source + "]");
+                    return new SourceFragment(
+                        this.Typed(binary.Left).Parenthesized + "[" + this.Typed(binary.Right).Source + "]");
                 if (binary.Conversion != null)
                     throw new NotSupportedException("Coalesce conversion lambdas are not supported.");
 
-                var (op, precedence) = Operator(binary.NodeType);
-                var left = this.Exact(binary.Left);
-                var right = this.Exact(binary.Right);
-                if (binary.Type != typeof(double) && binary.Type != typeof(float) &&
-                    binary.NodeType != ExpressionType.Divide && binary.NodeType != ExpressionType.Modulo)
-                {
-                    left = binary.Left.Type == typeof(object) ? this.Exact(binary.Left) : this.Typed(binary.Left);
-                    right = binary.Right.Type == typeof(object) ? this.Exact(binary.Right) : this.Typed(binary.Right);
-                }
-                var rightAssociative = binary.NodeType == ExpressionType.Coalesce;
-                var source = left.At(precedence + (rightAssociative ? 1 : 0)) + " " + op + " " +
-                    right.At(precedence + (rightAssociative ? 0 : 1));
+                var op = Operator(binary.NodeType);
+                var left = this.Typed(binary.Left);
+                var right = this.Typed(binary.Right);
+                var source = left.Parenthesized + " " + op + " " + right.Parenthesized;
                 if (binary.NodeType == ExpressionType.AddChecked || binary.NodeType == ExpressionType.SubtractChecked ||
                     binary.NodeType == ExpressionType.MultiplyChecked)
                     return new SourceFragment("checked(" + source + ")");
-                return new SourceFragment(source, precedence);
+                return new SourceFragment(source);
             }
 
-            private static (string, int) Operator(ExpressionType type)
+            private static string Operator(ExpressionType type)
             {
                 switch (type)
                 {
-                    case ExpressionType.Coalesce: return ("??", 3);
-                    case ExpressionType.OrElse: return ("||", 4);
-                    case ExpressionType.AndAlso: return ("&&", 5);
-                    case ExpressionType.Or: return ("|", 6);
-                    case ExpressionType.ExclusiveOr: return ("^", 7);
-                    case ExpressionType.And: return ("&", 8);
-                    case ExpressionType.Equal: return ("==", 9);
-                    case ExpressionType.NotEqual: return ("!=", 9);
-                    case ExpressionType.LessThan: return ("<", 10);
-                    case ExpressionType.LessThanOrEqual: return ("<=", 10);
-                    case ExpressionType.GreaterThan: return (">", 10);
-                    case ExpressionType.GreaterThanOrEqual: return (">=", 10);
-                    case ExpressionType.LeftShift: return ("<<", 11);
-                    case ExpressionType.RightShift: return (">>", 11);
+                    case ExpressionType.Coalesce: return "??";
+                    case ExpressionType.OrElse: return "||";
+                    case ExpressionType.AndAlso: return "&&";
+                    case ExpressionType.Or: return "|";
+                    case ExpressionType.ExclusiveOr: return "^";
+                    case ExpressionType.And: return "&";
+                    case ExpressionType.Equal: return "==";
+                    case ExpressionType.NotEqual: return "!=";
+                    case ExpressionType.LessThan: return "<";
+                    case ExpressionType.LessThanOrEqual: return "<=";
+                    case ExpressionType.GreaterThan: return ">";
+                    case ExpressionType.GreaterThanOrEqual: return ">=";
+                    case ExpressionType.LeftShift: return "<<";
+                    case ExpressionType.RightShift: return ">>";
                     case ExpressionType.Add:
-                    case ExpressionType.AddChecked: return ("+", 12);
+                    case ExpressionType.AddChecked: return "+";
                     case ExpressionType.Subtract:
-                    case ExpressionType.SubtractChecked: return ("-", 12);
+                    case ExpressionType.SubtractChecked: return "-";
                     case ExpressionType.Multiply:
-                    case ExpressionType.MultiplyChecked: return ("*", 13);
-                    case ExpressionType.Divide: return ("/", 13);
-                    case ExpressionType.Modulo: return ("%", 13);
+                    case ExpressionType.MultiplyChecked: return "*";
+                    case ExpressionType.Divide: return "/";
+                    case ExpressionType.Modulo: return "%";
                     default: throw new NotSupportedException($"Unsupported C# binary operator: {type}");
                 }
             }
@@ -538,20 +528,21 @@ namespace Microsoft.Azure.Workflows.Sdk
             private SourceFragment Unary(UnaryExpression unary)
             {
                 if (unary.NodeType == ExpressionType.Quote) return this.Write(unary.Operand);
-                var operand = this.Exact(unary.Operand);
+                var operand = this.Typed(unary.Operand);
                 switch (unary.NodeType)
                 {
                     case ExpressionType.Convert:
                     case ExpressionType.ConvertChecked:
-                        var cast = new SourceFragment("(" + TypeName(unary.Type) + ")" + operand.At(80), 80);
+                        var cast = new SourceFragment("(" + TypeName(unary.Type) + ")" + operand.Parenthesized);
                         return unary.NodeType == ExpressionType.ConvertChecked ? new SourceFragment("checked(" + cast.Source + ")") : cast;
-                    case ExpressionType.Negate: return new SourceFragment("-" + operand.At(81), 80);
-                    case ExpressionType.NegateChecked: return new SourceFragment("checked(-" + operand.At(81) + ")");
-                    case ExpressionType.UnaryPlus: return new SourceFragment("+" + operand.At(81), 80);
+                    case ExpressionType.Negate: return new SourceFragment("-" + operand.Parenthesized);
+                    case ExpressionType.NegateChecked: return new SourceFragment("checked(-" + operand.Parenthesized + ")");
+                    case ExpressionType.UnaryPlus: return new SourceFragment("+" + operand.Parenthesized);
                     case ExpressionType.Not:
                         return new SourceFragment((unary.Type == typeof(bool) || Nullable.GetUnderlyingType(unary.Type) == typeof(bool) ?
-                            "!" : "~") + operand.At(81), 80);
-                    case ExpressionType.TypeAs: return new SourceFragment(operand.At(10) + " as " + TypeName(unary.Type), 10);
+                            "!" : "~") + operand.Parenthesized);
+                    case ExpressionType.TypeAs:
+                        return new SourceFragment(operand.Parenthesized + " as " + TypeName(unary.Type));
                     default: throw new NotSupportedException($"Unsupported C# unary operator: {unary.NodeType}");
                 }
             }
@@ -577,29 +568,27 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (call.Method.Name == "get_Item" && call.Object != null)
                 {
                     var indexed = this.Write(call.Object);
-                    return new SourceFragment(indexed.At(90) + (indexed.NullSafe ? "?" : "") + "[" +
+                    return new SourceFragment(indexed.Parenthesized + (indexed.NullSafe ? "?" : "") + "[" +
                         string.Join(", ", call.Arguments.Select(a => this.Typed(a).Source)) + "]",
                         workflowData: indexed.WorkflowData, nullSafe: indexed.NullSafe);
                 }
 
                 var extension = call.Method.IsDefined(typeof(ExtensionAttribute), false);
                 var targetExpression = extension ? call.Arguments[0] : call.Object;
-                var target = targetExpression == null ? new SourceFragment(TypeName(call.Method.DeclaringType)) : this.Receiver(targetExpression);
-                if (targetExpression != null && TryReadValue(targetExpression, out var literal) && literal != null &&
-                    !(literal is string) && !(literal is Array) && !(literal is IDictionary) && !(literal is JToken))
-                    target = new SourceFragment("(" + target.Source + ")");
+                var target = targetExpression == null
+                    ? TypeName(call.Method.DeclaringType)
+                    : this.Receiver(targetExpression).Parenthesized;
 
                 if (call.Method.GetParameters().Any(p => p.ParameterType.IsByRef))
                     throw new NotSupportedException($"Calls with ref/out arguments are not supported: {call.Method}");
-                var overloaded = call.Method.DeclaringType.GetMethods().Count(m => m.Name == call.Method.Name) > 1;
-                var arguments = call.Arguments.Skip(extension ? 1 : 0).Select(a =>
-                    overloaded && call.Method.DeclaringType != typeof(string) ? this.Exact(a).Source : this.Typed(a).Source);
+                var arguments = call.Arguments.Skip(extension ? 1 : 0).Select(a => this.Typed(a).Source);
                 var inferGenerics = call.Method.IsGenericMethod && call.Method.DeclaringType == typeof(Enumerable) &&
                     call.Method.GetGenericMethodDefinition().GetGenericArguments().All(parameter =>
                         call.Method.GetGenericMethodDefinition().GetParameters().Any(p => ContainsType(p.ParameterType, parameter)));
                 var generic = call.Method.IsGenericMethod && !inferGenerics ?
                     "<" + string.Join(", ", call.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
-                return new SourceFragment(target.At(90) + "." + Identifier(call.Method.Name) + generic + "(" + string.Join(", ", arguments) + ")");
+                return new SourceFragment(
+                    target + "." + Identifier(call.Method.Name) + generic + "(" + string.Join(", ", arguments) + ")");
             }
 
             private static bool ContainsType(Type type, Type parameter) =>
@@ -637,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     var index = int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
                     if (index >= codes.Length) throw new FormatException("Composite format argument index is out of range.");
-                    return "{" + codes[index].At(3) + "}";
+                    return "{" + codes[index].Parenthesized + "}";
                 });
                 return new SourceFragment("$\"" + source + "\"");
             }
@@ -670,7 +659,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
 
                 return new SourceFragment("new " + TypeName(creation.Type) + "(" +
-                    string.Join(", ", creation.Arguments.Select(a => this.Exact(a).Source)) + ")");
+                    string.Join(", ", creation.Arguments.Select(a => this.Typed(a).Source)) + ")");
             }
 
             private string Binding(MemberBinding binding)

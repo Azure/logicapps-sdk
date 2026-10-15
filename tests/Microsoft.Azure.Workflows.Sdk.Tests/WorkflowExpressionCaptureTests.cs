@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             previous.WithName("Late");
 
             var source = NormalizeNode(ReturnExpression(Input(action)));
-            Assert.Contains("""outputs("Late").ToObject<string>()""", source);
+            Assert.Contains("""(outputs("Late")).ToObject<string>()""", source);
             Assert.Contains("\"!\"", source);
             Assert.Contains("""new global::System.Guid("00000000-0000-0000-0000-000000000001")""", source);
             Assert.Contains("new global::System.DateTime(639268452000000000L, global::System.DateTimeKind.Utc)", source);

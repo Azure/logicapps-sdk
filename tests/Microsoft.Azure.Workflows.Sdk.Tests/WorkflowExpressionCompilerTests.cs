@@ -24,6 +24,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void ComposedExpressionsAreUniversallyParenthesized()
+        {
+            var source = WorkflowActions.BuiltIn.Compose<int>(() => 1).WithName("Source");
+
+            var precedence = Input(WorkflowActions.BuiltIn.Compose(() => (source.Output + 2) * 3));
+            Assert.Equal(
+                """#{(((outputs("Source")).ToObject<int>()) + (2)) * (3)}""",
+                precedence);
+
+            var associativity = Input(WorkflowActions.BuiltIn.Compose(
+                () => source.Output - (source.Output - 1)));
+            Assert.Equal(
+                """#{((outputs("Source")).ToObject<int>()) - (((outputs("Source")).ToObject<int>()) - (1))}""",
+                associativity);
+        }
+
+        [Fact]
         public void SpecialClrValuesRemainRuntimeExpressions()
         {
             AssertReturnExpression(
@@ -76,15 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var action = WorkflowActions.BuiltIn.Compose(() =>
                 checked(((SendMessageInputMessageType)value.Output).MessageId.Length + 1));
 
-            var expression = ReturnExpression(Input(action));
-            Assert.IsType<Microsoft.CodeAnalysis.CSharp.Syntax.CheckedExpressionSyntax>(expression);
-            var source = NormalizeNode(expression);
-            Assert.Contains("""outputs("Object")""", source);
-            Assert.Contains("ToObject<object>()", source);
-            Assert.Contains(
-                "(global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType)",
-                source);
-            Assert.Contains(".MessageId.Length + 1", source);
+            AssertReturnExpression(
+                """checked(((global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType)outputs("Object").ToObject<object>()).MessageId.Length + 1)""",
+                Input(action));
         }
 
         [Fact]
