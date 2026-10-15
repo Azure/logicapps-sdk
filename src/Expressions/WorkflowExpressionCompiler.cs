@@ -316,22 +316,18 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             private SourceFragment Literal(object value, Type type)
             {
-                if (value is Array or IDictionary)
+                if (value is ForEachItemToken item)
+                    return this.Bind(WorkflowExpressionBinding.Item(item));
+                if (value is Array or IDictionary or JToken)
                     throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
-                return this.LiteralValue(value, type);
-            }
-
-            private SourceFragment LiteralValue(object value, Type type)
-            {
-                if (value is ForEachItemToken item) return this.Bind(WorkflowExpressionBinding.Item(item));
                 if (value == null) return Cast(type, new SourceFragment("null"));
 
                 if (Nullable.GetUnderlyingType(type) is Type underlying)
-                    return Cast(type, this.LiteralValue(value, underlying));
+                    return Cast(type, this.Literal(value, underlying));
 
                 var runtimeType = value.GetType();
                 if (runtimeType != type && type.IsAssignableFrom(runtimeType))
-                    return Cast(type, this.LiteralValue(value, runtimeType));
+                    return Cast(type, this.Literal(value, runtimeType));
 
                 if (value is string text) return new SourceFragment(Quote(text));
                 if (value is bool flag) return new SourceFragment(flag ? "true" : "false");
@@ -349,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
                     var enumUnderlyingType = Enum.GetUnderlyingType(value.GetType());
                     var enumValue = System.Convert.ChangeType(value, enumUnderlyingType, CultureInfo.InvariantCulture);
-                    return Cast(value.GetType(), this.LiteralValue(enumValue, enumUnderlyingType));
+                    return Cast(value.GetType(), this.Literal(enumValue, enumUnderlyingType));
                 }
 
                 if (value is DateTime date)
@@ -371,8 +367,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (value is HttpMethod method)
                     return new SourceFragment(
                         "new global::System.Net.Http.HttpMethod(" + Quote(method.Method) + ")");
-                if (value is JToken)
-                    throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
 
                 if (value is double number)
                 {
