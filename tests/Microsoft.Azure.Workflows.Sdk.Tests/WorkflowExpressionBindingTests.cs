@@ -106,6 +106,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void BindingLikeLiteralTextCannotCollideWithBindings()
+        {
+            var source = WorkflowActions.BuiltIn.Compose<string>(() => "value").WithName("Source");
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => "__binding0:" + source.Output + ":__binding1");
+
+            AssertReturnExpression(
+                "\"__binding0:\" + outputs(\"Source\").ToObject<string>() + \":__binding1\"",
+                Input(action));
+        }
+
+        [Fact]
         public void ControlCallbacksRunOnceAndDefinitionsResolveNamesLate()
         {
             var count = 0;

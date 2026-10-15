@@ -56,18 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             var writer = new Writer();
-            var source = writer.WriteRoot(expression.Body);
-            var segments = new List<string>();
-            var orderedBindings = new List<WorkflowExpressionBinding>();
-            var cursor = 0;
-            foreach (Match match in Regex.Matches(source, @"__binding(?<index>\d+)"))
-            {
-                segments.Add(source.Substring(cursor, match.Index - cursor));
-                orderedBindings.Add(writer.Bindings[int.Parse(match.Groups["index"].Value, CultureInfo.InvariantCulture)]);
-                cursor = match.Index + match.Length;
-            }
-            segments.Add(source.Substring(cursor));
-            return WorkflowExpression.Create<T>(segments.ToArray(), orderedBindings.ToArray());
+            return WorkflowExpression.Create<T>(writer.WriteRoot(expression.Body));
         }
 
         private static bool CanUseWorkflowLiteral(Type type) =>
@@ -199,34 +188,16 @@ namespace Microsoft.Azure.Workflows.Sdk
              "true try typeof uint ulong unchecked unsafe ushort using virtual void volatile while").Split(' '),
             StringComparer.Ordinal);
 
-        private sealed class SourceFragment
-        {
-            public string Source { get; }
-
-            public SourceFragment(string source)
-            {
-                this.Source = source;
-            }
-
-            public string Parenthesized => "(" + this.Source + ")";
-        }
-
         private sealed class Writer
         {
             private readonly HashSet<ParameterExpression> parameters = new HashSet<ParameterExpression>();
-            private readonly List<WorkflowExpressionBinding> bindings = new List<WorkflowExpressionBinding>();
 
-            internal IReadOnlyList<WorkflowExpressionBinding> Bindings => this.bindings;
-            internal string WriteRoot(Expression expression) => this.Typed(expression).Source;
+            internal SourceProgram WriteRoot(Expression expression) => this.Typed(expression);
 
-            private SourceFragment BindRaw(WorkflowExpressionBinding binding)
-            {
-                var placeholder = "__binding" + this.bindings.Count.ToString(CultureInfo.InvariantCulture);
-                this.bindings.Add(binding);
-                return new SourceFragment(placeholder);
-            }
+            private SourceProgram BindRaw(WorkflowExpressionBinding binding) =>
+                SourceProgram.Binding(binding);
 
-            public SourceFragment Write(Expression expression)
+            public SourceProgram Write(Expression expression)
             {
                 if (this.TryCustomWorkflowPath(expression, out var customPath))
                 {
@@ -250,63 +221,88 @@ namespace Microsoft.Azure.Workflows.Sdk
                     case UnaryExpression unary: return this.Unary(unary);
                     case MethodCallExpression call: return this.Call(call);
                     case ConditionalExpression conditional:
-                        return new SourceFragment(
-                            this.Typed(conditional.Test).Parenthesized + " ? " +
-                            this.Typed(conditional.IfTrue).Parenthesized + " : " +
-                            this.Typed(conditional.IfFalse).Parenthesized);
+                        return SourceProgram.Concat(
+                            this.Typed(conditional.Test).Parenthesized(),
+                            SourceProgram.Text(" ? "),
+                            this.Typed(conditional.IfTrue).Parenthesized(),
+                            SourceProgram.Text(" : "),
+                            this.Typed(conditional.IfFalse).Parenthesized());
                     case NewArrayExpression array:
                         if (array.NodeType == ExpressionType.NewArrayBounds)
                         {
-                            return new SourceFragment("new " + TypeName(array.Type.GetElementType()) + "[" +
-                                string.Join(", ", array.Expressions.Select(e => this.Typed(e).Source)) + "]");
+                            return SourceProgram.Concat(
+                                SourceProgram.Text("new " + TypeName(array.Type.GetElementType()) + "["),
+                                SourceProgram.Join(", ", array.Expressions.Select(this.Typed)),
+                                SourceProgram.Text("]"));
                         }
 
-                        var elements = array.Expressions.Select(e => this.Typed(e).Source).ToArray();
-                        var inferred = elements.Any(e => e != "null") && array.Type.GetElementType() != typeof(object) &&
+                        var elements = array.Expressions.Select(this.Typed).ToArray();
+                        var inferred = elements.Any(element => !element.IsText("null")) &&
+                            array.Type.GetElementType() != typeof(object) &&
                             array.Expressions.All(e => e.Type == array.Type.GetElementType());
-                        return new SourceFragment((inferred ? "new[]" : "new " + TypeName(array.Type)) +
-                            " { " + string.Join(", ", elements) + " }");
+                        return SourceProgram.Concat(
+                            SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(array.Type)) + " { "),
+                            SourceProgram.Join(", ", elements),
+                            SourceProgram.Text(" }"));
                     case NewExpression creation: return this.New(creation);
                     case MemberInitExpression initializer:
-                        return new SourceFragment((initializer.NewExpression.Arguments.Count == 0 ?
-                            "new " + TypeName(initializer.Type) : this.New(initializer.NewExpression).Source) +
-                            " { " + string.Join(", ", initializer.Bindings.Select(this.Binding)) + " }");
+                        return SourceProgram.Concat(
+                            initializer.NewExpression.Arguments.Count == 0
+                                ? SourceProgram.Text("new " + TypeName(initializer.Type))
+                                : this.New(initializer.NewExpression),
+                            SourceProgram.Text(" { "),
+                            SourceProgram.Join(", ", initializer.Bindings.Select(this.Binding)),
+                            SourceProgram.Text(" }"));
                     case ListInitExpression list:
-                        return new SourceFragment(this.New(list.NewExpression).Source + " { " +
-                            string.Join(", ", list.Initializers.Select(i =>
-                                i.Arguments.Count == 1 ? this.Typed(i.Arguments[0]).Source :
-                                "{ " + string.Join(", ", i.Arguments.Select(a => this.Typed(a).Source)) + " }")) + " }");
+                        return SourceProgram.Concat(
+                            this.New(list.NewExpression),
+                            SourceProgram.Text(" { "),
+                            SourceProgram.Join(", ", list.Initializers.Select(initializer =>
+                                initializer.Arguments.Count == 1
+                                    ? this.Typed(initializer.Arguments[0])
+                                    : SourceProgram.Concat(
+                                        SourceProgram.Text("{ "),
+                                        SourceProgram.Join(", ", initializer.Arguments.Select(this.Typed)),
+                                        SourceProgram.Text(" }")))),
+                            SourceProgram.Text(" }"));
                     case ParameterExpression parameter when this.parameters.Contains(parameter):
-                        return new SourceFragment(Identifier(parameter.Name));
+                        return SourceProgram.Text(Identifier(parameter.Name));
                     case LambdaExpression lambda:
                         foreach (var parameter in lambda.Parameters) this.parameters.Add(parameter);
                         var body = this.Typed(lambda.Body);
                         foreach (var parameter in lambda.Parameters) this.parameters.Remove(parameter);
-                        return new SourceFragment("(" + string.Join(", ", lambda.Parameters.Select(p => TypeName(p.Type) + " " + Identifier(p.Name))) +
-                            ") => " + body.Source);
+                        return SourceProgram.Concat(
+                            SourceProgram.Text(
+                                "(" + string.Join(", ", lambda.Parameters.Select(p => TypeName(p.Type) + " " + Identifier(p.Name))) +
+                                ") => "),
+                            body);
                     case IndexExpression index:
-                        return new SourceFragment(this.Write(index.Object).Parenthesized + "[" +
-                            string.Join(", ", index.Arguments.Select(a => this.Typed(a).Source)) + "]");
+                        return SourceProgram.Concat(
+                            this.Write(index.Object).Parenthesized(),
+                            SourceProgram.Text("["),
+                            SourceProgram.Join(", ", index.Arguments.Select(this.Typed)),
+                            SourceProgram.Text("]"));
                     case DefaultExpression defaultExpression:
-                        return new SourceFragment("default(" + TypeName(defaultExpression.Type) + ")");
+                        return SourceProgram.Text("default(" + TypeName(defaultExpression.Type) + ")");
                     case TypeBinaryExpression typeTest when typeTest.NodeType == ExpressionType.TypeIs:
-                        return new SourceFragment(
-                            this.Write(typeTest.Expression).Parenthesized + " is " + TypeName(typeTest.TypeOperand));
+                        return SourceProgram.Concat(
+                            this.Write(typeTest.Expression).Parenthesized(),
+                            SourceProgram.Text(" is " + TypeName(typeTest.TypeOperand)));
                     default:
                         throw new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
                 }
             }
 
-            private SourceFragment Typed(Expression expression)
+            private SourceProgram Typed(Expression expression)
                 => this.Write(expression);
 
-            private SourceFragment Literal(object value, Type type)
+            private SourceProgram Literal(object value, Type type)
             {
                 if (value is ForEachItemToken item)
                     return this.BindRaw(WorkflowExpressionBinding.Item(item));
                 if (value is Array or IDictionary or JToken)
                     throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
-                if (value == null) return Cast(type, new SourceFragment("null"));
+                if (value == null) return Cast(type, SourceProgram.Text("null"));
 
                 if (Nullable.GetUnderlyingType(type) is Type underlying)
                     return Cast(type, this.Literal(value, underlying));
@@ -315,19 +311,20 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (runtimeType != type && type.IsAssignableFrom(runtimeType))
                     return Cast(type, this.Literal(value, runtimeType));
 
-                if (value is string text) return new SourceFragment(Quote(text));
-                if (value is bool flag) return new SourceFragment(flag ? "true" : "false");
+                if (value is string text) return SourceProgram.Text(Quote(text));
+                if (value is bool flag) return SourceProgram.Text(flag ? "true" : "false");
                 if (value is char character)
                 {
                     var escaped = Quote(character.ToString());
-                    return new SourceFragment("'" + escaped.Substring(1, escaped.Length - 2).Replace("'", "\\'").Replace("\\\"", "\"") + "'");
+                    return SourceProgram.Text(
+                        "'" + escaped.Substring(1, escaped.Length - 2).Replace("'", "\\'").Replace("\\\"", "\"") + "'");
                 }
 
                 if (value is Enum enumeration)
                 {
                     var name = Enum.GetName(value.GetType(), value);
                     if (name != null)
-                        return new SourceFragment(TypeName(value.GetType()) + "." + name);
+                        return SourceProgram.Text(TypeName(value.GetType()) + "." + name);
 
                     var enumUnderlyingType = Enum.GetUnderlyingType(value.GetType());
                     var enumValue = System.Convert.ChangeType(value, enumUnderlyingType, CultureInfo.InvariantCulture);
@@ -336,41 +333,41 @@ namespace Microsoft.Azure.Workflows.Sdk
 
                 if (value is DateTime date)
                 {
-                    return new SourceFragment(
+                    return SourceProgram.Text(
                         $"new global::System.DateTime({date.Ticks}L, global::System.DateTimeKind.{date.Kind})");
                 }
 
                 if (value is DateTimeOffset offset)
-                    return new SourceFragment(
+                    return SourceProgram.Text(
                         $"new global::System.DateTimeOffset({offset.Ticks}L, new global::System.TimeSpan({offset.Offset.Ticks}L))");
                 if (value is TimeSpan span)
-                    return new SourceFragment($"new global::System.TimeSpan({span.Ticks}L)");
+                    return SourceProgram.Text($"new global::System.TimeSpan({span.Ticks}L)");
                 if (value is Guid guid)
-                    return new SourceFragment("new global::System.Guid(" + Quote(guid.ToString("D")) + ")");
+                    return SourceProgram.Text("new global::System.Guid(" + Quote(guid.ToString("D")) + ")");
                 if (value is Uri uri)
-                    return new SourceFragment(
+                    return SourceProgram.Text(
                         "new global::System.Uri(" + Quote(uri.OriginalString) + ", global::System.UriKind.RelativeOrAbsolute)");
                 if (value is HttpMethod method)
-                    return new SourceFragment(
+                    return SourceProgram.Text(
                         "new global::System.Net.Http.HttpMethod(" + Quote(method.Method) + ")");
 
                 if (value is double number)
                 {
-                    if (double.IsNaN(number)) return new SourceFragment("double.NaN");
-                    if (double.IsPositiveInfinity(number)) return new SourceFragment("double.PositiveInfinity");
-                    if (double.IsNegativeInfinity(number)) return new SourceFragment("double.NegativeInfinity");
-                    if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0) return new SourceFragment("-0.0d");
-                    return new SourceFragment(number.ToString("R", CultureInfo.InvariantCulture) + "d");
+                    if (double.IsNaN(number)) return SourceProgram.Text("double.NaN");
+                    if (double.IsPositiveInfinity(number)) return SourceProgram.Text("double.PositiveInfinity");
+                    if (double.IsNegativeInfinity(number)) return SourceProgram.Text("double.NegativeInfinity");
+                    if (number == 0 && BitConverter.DoubleToInt64Bits(number) < 0) return SourceProgram.Text("-0.0d");
+                    return SourceProgram.Text(number.ToString("R", CultureInfo.InvariantCulture) + "d");
                 }
 
                 if (value is float single)
                 {
-                    if (float.IsNaN(single)) return new SourceFragment("float.NaN");
-                    if (float.IsPositiveInfinity(single)) return new SourceFragment("float.PositiveInfinity");
-                    if (float.IsNegativeInfinity(single)) return new SourceFragment("float.NegativeInfinity");
+                    if (float.IsNaN(single)) return SourceProgram.Text("float.NaN");
+                    if (float.IsPositiveInfinity(single)) return SourceProgram.Text("float.PositiveInfinity");
+                    if (float.IsNegativeInfinity(single)) return SourceProgram.Text("float.NegativeInfinity");
                     if (single == 0 && BitConverter.ToInt32(BitConverter.GetBytes(single), 0) < 0)
-                        return new SourceFragment("-0.0f");
-                    return new SourceFragment(single.ToString("R", CultureInfo.InvariantCulture) + "f");
+                        return SourceProgram.Text("-0.0f");
+                    return SourceProgram.Text(single.ToString("R", CultureInfo.InvariantCulture) + "f");
                 }
 
                 if (value is decimal || value is long || value is ulong || value is uint ||
@@ -378,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     var suffix = value is decimal ? "m" : value is long ? "L" : value is ulong ? "UL" : value is uint ? "U" : "";
                     var source = System.Convert.ToString(value, CultureInfo.InvariantCulture) + suffix;
-                    var literal = new SourceFragment(source);
+                    var literal = SourceProgram.Text(source);
                     return value is byte or sbyte or short or ushort
                         ? Cast(value.GetType(), literal)
                         : literal;
@@ -387,32 +384,37 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new NotSupportedException($"Cannot serialize captured value of type {value.GetType()}. Construct the object inside the lambda instead.");
             }
 
-            private static SourceFragment Cast(Type type, SourceFragment value) =>
-                new SourceFragment("(" + TypeName(type) + ")" + value.Parenthesized);
+            private static SourceProgram Cast(Type type, SourceProgram value) =>
+                SourceProgram.Concat(
+                    SourceProgram.Text("(" + TypeName(type) + ")"),
+                    value.Parenthesized());
 
-            private static SourceFragment ReadWorkflowValue(SourceFragment source, Type type)
+            private static SourceProgram ReadWorkflowValue(SourceProgram source, Type type)
             {
                 if (typeof(JToken).IsAssignableFrom(type))
                     return source;
 
                 ValidateRuntimeType(type);
-                return new SourceFragment(source.Parenthesized + ".ToObject<" + TypeName(type) + ">()");
+                return SourceProgram.Concat(
+                    source.Parenthesized(),
+                    SourceProgram.Text(".ToObject<" + TypeName(type) + ">()"));
             }
 
-            private SourceFragment Member(MemberExpression member)
+            private SourceProgram Member(MemberExpression member)
             {
                 if (member.Expression == null)
                 {
                     if (member.Member.DeclaringType == typeof(HttpMethod) && member.Member is PropertyInfo httpProperty)
                         return this.Literal(httpProperty.GetValue(null), typeof(HttpMethod));
-                    return new SourceFragment(TypeName(member.Member.DeclaringType) + "." + Identifier(member.Member.Name));
+                    return SourceProgram.Text(TypeName(member.Member.DeclaringType) + "." + Identifier(member.Member.Name));
                 }
 
-                return new SourceFragment(
-                    this.Receiver(member.Expression).Parenthesized + "." + Identifier(member.Member.Name));
+                return SourceProgram.Concat(
+                    this.Receiver(member.Expression).Parenthesized(),
+                    SourceProgram.Text("." + Identifier(member.Member.Name)));
             }
 
-            private bool TryCustomWorkflowPath(Expression expression, out SourceFragment code)
+            private bool TryCustomWorkflowPath(Expression expression, out SourceProgram code)
             {
                 code = null;
                 var properties = new List<PropertyInfo>();
@@ -426,7 +428,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                 foreach (var property in properties)
                 {
                     var jsonName = property.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? property.Name;
-                    code = new SourceFragment(code.Parenthesized + "[" + Quote(jsonName) + "]");
+                    code = SourceProgram.Concat(
+                        code.Parenthesized(),
+                        SourceProgram.Text("[" + Quote(jsonName) + "]"));
                 }
 
                 code = ReadWorkflowValue(code, expression.Type);
@@ -436,7 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             private bool TryCollectCustomWorkflowPath(
                 Expression expression,
                 List<PropertyInfo> properties,
-                out SourceFragment root)
+                out SourceProgram root)
             {
                 if (expression is MemberExpression workflowMember &&
                     TryCreateWorkflowBinding(workflowMember, out var binding))
@@ -467,7 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             private static bool IsStoredDtoProperty(PropertyInfo property) =>
                 property.GetMethod?.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) == true;
 
-            private bool TryWorkflowTokenSource(Expression expression, out SourceFragment code)
+            private bool TryWorkflowTokenSource(Expression expression, out SourceProgram code)
             {
                 if (expression is MemberExpression member && TryCreateWorkflowBinding(member, out var binding))
                 {
@@ -527,22 +531,31 @@ namespace Microsoft.Azure.Workflows.Sdk
                 return false;
             }
 
-            private SourceFragment Binary(BinaryExpression binary)
+            private SourceProgram Binary(BinaryExpression binary)
             {
                 if (binary.NodeType == ExpressionType.ArrayIndex)
-                    return new SourceFragment(
-                        this.Typed(binary.Left).Parenthesized + "[" + this.Typed(binary.Right).Source + "]");
+                    return SourceProgram.Concat(
+                        this.Typed(binary.Left).Parenthesized(),
+                        SourceProgram.Text("["),
+                        this.Typed(binary.Right),
+                        SourceProgram.Text("]"));
                 if (binary.Conversion != null)
                     throw new NotSupportedException("Coalesce conversion lambdas are not supported.");
 
                 var op = Operator(binary.NodeType);
                 var left = this.Typed(binary.Left);
                 var right = this.Typed(binary.Right);
-                var source = left.Parenthesized + " " + op + " " + right.Parenthesized;
+                var source = SourceProgram.Concat(
+                    left.Parenthesized(),
+                    SourceProgram.Text(" " + op + " "),
+                    right.Parenthesized());
                 if (binary.NodeType == ExpressionType.AddChecked || binary.NodeType == ExpressionType.SubtractChecked ||
                     binary.NodeType == ExpressionType.MultiplyChecked)
-                    return new SourceFragment("checked(" + source + ")");
-                return new SourceFragment(source);
+                    return SourceProgram.Concat(
+                        SourceProgram.Text("checked("),
+                        source,
+                        SourceProgram.Text(")"));
+                return source;
             }
 
             private static string Operator(ExpressionType type)
@@ -575,7 +588,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
             }
 
-            private SourceFragment Unary(UnaryExpression unary)
+            private SourceProgram Unary(UnaryExpression unary)
             {
                 if (unary.NodeType == ExpressionType.Quote) return this.Write(unary.Operand);
                 var operand = this.Typed(unary.Operand);
@@ -583,21 +596,37 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     case ExpressionType.Convert:
                     case ExpressionType.ConvertChecked:
-                        var cast = new SourceFragment("(" + TypeName(unary.Type) + ")" + operand.Parenthesized);
-                        return unary.NodeType == ExpressionType.ConvertChecked ? new SourceFragment("checked(" + cast.Source + ")") : cast;
-                    case ExpressionType.Negate: return new SourceFragment("-" + operand.Parenthesized);
-                    case ExpressionType.NegateChecked: return new SourceFragment("checked(-" + operand.Parenthesized + ")");
-                    case ExpressionType.UnaryPlus: return new SourceFragment("+" + operand.Parenthesized);
+                        var cast = SourceProgram.Concat(
+                            SourceProgram.Text("(" + TypeName(unary.Type) + ")"),
+                            operand.Parenthesized());
+                        return unary.NodeType == ExpressionType.ConvertChecked
+                            ? SourceProgram.Concat(SourceProgram.Text("checked("), cast, SourceProgram.Text(")"))
+                            : cast;
+                    case ExpressionType.Negate:
+                        return SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized());
+                    case ExpressionType.NegateChecked:
+                        return SourceProgram.Concat(
+                            SourceProgram.Text("checked(-"),
+                            operand.Parenthesized(),
+                            SourceProgram.Text(")"));
+                    case ExpressionType.UnaryPlus:
+                        return SourceProgram.Concat(SourceProgram.Text("+"), operand.Parenthesized());
                     case ExpressionType.Not:
-                        return new SourceFragment((unary.Type == typeof(bool) || Nullable.GetUnderlyingType(unary.Type) == typeof(bool) ?
-                            "!" : "~") + operand.Parenthesized);
+                        return SourceProgram.Concat(
+                            SourceProgram.Text(
+                                unary.Type == typeof(bool) || Nullable.GetUnderlyingType(unary.Type) == typeof(bool)
+                                    ? "!"
+                                    : "~"),
+                            operand.Parenthesized());
                     case ExpressionType.TypeAs:
-                        return new SourceFragment(operand.Parenthesized + " as " + TypeName(unary.Type));
+                        return SourceProgram.Concat(
+                            operand.Parenthesized(),
+                            SourceProgram.Text(" as " + TypeName(unary.Type)));
                     default: throw new NotSupportedException($"Unsupported C# unary operator: {unary.NodeType}");
                 }
             }
 
-            private SourceFragment Call(MethodCallExpression call)
+            private SourceProgram Call(MethodCallExpression call)
             {
                 ValidateRuntimeType(call.Method.DeclaringType);
                 if (!call.Method.IsPublic)
@@ -614,32 +643,37 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (call.Method.Name == "get_Item" && call.Object != null)
                 {
                     var indexed = this.Typed(call.Object);
-                    return new SourceFragment(
-                        indexed.Parenthesized + "[" +
-                        string.Join(", ", call.Arguments.Select(a => this.Typed(a).Source)) + "]");
+                    return SourceProgram.Concat(
+                        indexed.Parenthesized(),
+                        SourceProgram.Text("["),
+                        SourceProgram.Join(", ", call.Arguments.Select(this.Typed)),
+                        SourceProgram.Text("]"));
                 }
 
                 var extension = call.Method.IsDefined(typeof(ExtensionAttribute), false);
                 var targetExpression = extension ? call.Arguments[0] : call.Object;
                 var target = targetExpression == null
-                    ? TypeName(call.Method.DeclaringType)
-                    : this.Receiver(targetExpression).Parenthesized;
+                    ? SourceProgram.Text(TypeName(call.Method.DeclaringType))
+                    : this.Receiver(targetExpression).Parenthesized();
 
                 if (call.Method.GetParameters().Any(p => p.ParameterType.IsByRef))
                     throw new NotSupportedException($"Calls with ref/out arguments are not supported: {call.Method}");
-                var arguments = call.Arguments.Skip(extension ? 1 : 0).Select(a => this.Typed(a).Source);
+                var arguments = call.Arguments.Skip(extension ? 1 : 0).Select(this.Typed);
                 var inferGenerics = call.Method.IsGenericMethod && call.Method.DeclaringType == typeof(Enumerable) &&
                     call.Method.GetGenericMethodDefinition().GetGenericArguments().All(parameter =>
                         call.Method.GetGenericMethodDefinition().GetParameters().Any(p => ContainsType(p.ParameterType, parameter)));
                 var generic = call.Method.IsGenericMethod && !inferGenerics ?
                     "<" + string.Join(", ", call.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
-                return new SourceFragment(
-                    target + "." + Identifier(call.Method.Name) + generic + "(" + string.Join(", ", arguments) + ")");
+                return SourceProgram.Concat(
+                    target,
+                    SourceProgram.Text("." + Identifier(call.Method.Name) + generic + "("),
+                    SourceProgram.Join(", ", arguments),
+                    SourceProgram.Text(")"));
             }
 
             private bool TryWriteWorkflowFunction(
                 MethodCallExpression call,
-                out SourceFragment code,
+                out SourceProgram code,
                 out bool returnsToken)
             {
                 code = null;
@@ -649,10 +683,10 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (!WorkflowFunctionNames.TryGetValue(call.Method.Name, out var function))
                     throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
 
-                code = new SourceFragment(
-                    function + "(" +
-                    string.Join(", ", call.Arguments.Select(argument => this.Typed(argument).Source)) +
-                    ")");
+                code = SourceProgram.Concat(
+                    SourceProgram.Text(function + "("),
+                    SourceProgram.Join(", ", call.Arguments.Select(this.Typed)),
+                    SourceProgram.Text(")"));
                 returnsToken = call.Method.ReturnType != typeof(string) &&
                     call.Method.ReturnType != typeof(bool);
                 return true;
@@ -662,13 +696,15 @@ namespace Microsoft.Azure.Workflows.Sdk
                 type == parameter || (type.HasElementType && ContainsType(type.GetElementType(), parameter)) ||
                 (type.IsGenericType && type.GetGenericArguments().Any(t => ContainsType(t, parameter)));
 
-            private SourceFragment Receiver(Expression expression)
+            private SourceProgram Receiver(Expression expression)
             {
                 var code = this.Typed(expression);
-                return code.Source == "null" ? new SourceFragment("((" + TypeName(expression.Type) + ")null)") : code;
+                return code.IsText("null")
+                    ? SourceProgram.Text("((" + TypeName(expression.Type) + ")null)")
+                    : code;
             }
 
-            private SourceFragment Format(MethodCallExpression call)
+            private SourceProgram Format(MethodCallExpression call)
             {
                 var formatIndex = call.Arguments[0].Type == typeof(string) ? 0 : 1;
                 if (!(call.Arguments[formatIndex] is ConstantExpression constant) || !(constant.Value is string format))
@@ -683,7 +719,10 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (format == "{0}" && codes.Length == 1)
                 {
                     if (values[0] is NewExpression creation && !IsAnonymous(creation.Type) || values[0] is MemberInitExpression)
-                        return new SourceFragment("JsonConvert.SerializeObject(" + codes[0].Source + ")");
+                        return SourceProgram.Concat(
+                            SourceProgram.Text("JsonConvert.SerializeObject("),
+                            codes[0],
+                            SourceProgram.Text(")"));
                     return codes[0];
                 }
 
@@ -694,38 +733,54 @@ namespace Microsoft.Azure.Workflows.Sdk
                 expression is UnaryExpression unary && unary.NodeType == ExpressionType.Convert && unary.Type == typeof(object) ?
                     unary.Operand : expression;
 
-            private SourceFragment PlainFormat(MethodCallExpression call)
+            private SourceProgram PlainFormat(MethodCallExpression call)
             {
-                var arguments = call.Arguments.Select(argument =>
+                var arguments = call.Arguments.Select<Expression, SourceProgram>(argument =>
                 {
                     if (argument is NewArrayExpression array && array.Type == typeof(object[]))
-                        return "new object[] { " + string.Join(", ", array.Expressions.Select(e => this.Write(Unbox(e)).Source)) + " }";
-                    return this.Write(Unbox(argument)).Source;
+                        return SourceProgram.Concat(
+                            SourceProgram.Text("new object[] { "),
+                            SourceProgram.Join(", ", array.Expressions.Select(expression => this.Write(Unbox(expression)))),
+                            SourceProgram.Text(" }"));
+                    return this.Write(Unbox(argument));
                 });
-                return new SourceFragment("string.Format(" + string.Join(", ", arguments) + ")");
+                return SourceProgram.Concat(
+                    SourceProgram.Text("string.Format("),
+                    SourceProgram.Join(", ", arguments),
+                    SourceProgram.Text(")"));
             }
 
-            private SourceFragment New(NewExpression creation)
+            private SourceProgram New(NewExpression creation)
             {
                 if (IsAnonymous(creation.Type))
                 {
-                    return new SourceFragment("new { " + string.Join(", ", creation.Arguments.Select((argument, index) =>
-                    {
-                        var value = this.Typed(argument);
-                        var source = value.Source == "null" ? "(" + TypeName(argument.Type) + ")null" : value.Source;
-                        return Identifier(creation.Members[index].Name) + " = " + source;
-                    })) + " }");
+                    return SourceProgram.Concat(
+                        SourceProgram.Text("new { "),
+                        SourceProgram.Join(", ", creation.Arguments.Select((argument, index) =>
+                        {
+                            var value = this.Typed(argument);
+                            return SourceProgram.Concat(
+                                SourceProgram.Text(Identifier(creation.Members[index].Name) + " = "),
+                                value.IsText("null")
+                                    ? SourceProgram.Text("(" + TypeName(argument.Type) + ")null")
+                                    : value);
+                        })),
+                        SourceProgram.Text(" }"));
                 }
 
-                return new SourceFragment("new " + TypeName(creation.Type) + "(" +
-                    string.Join(", ", creation.Arguments.Select(a => this.Typed(a).Source)) + ")");
+                return SourceProgram.Concat(
+                    SourceProgram.Text("new " + TypeName(creation.Type) + "("),
+                    SourceProgram.Join(", ", creation.Arguments.Select(this.Typed)),
+                    SourceProgram.Text(")"));
             }
 
-            private string Binding(MemberBinding binding)
+            private SourceProgram Binding(MemberBinding binding)
             {
                 if (!(binding is MemberAssignment assignment))
                     throw new NotSupportedException($"Unsupported object initializer binding: {binding.BindingType}");
-                return Identifier(binding.Member.Name) + " = " + this.Typed(assignment.Expression).Source;
+                return SourceProgram.Concat(
+                    SourceProgram.Text(Identifier(binding.Member.Name) + " = "),
+                    this.Typed(assignment.Expression));
             }
         }
     }

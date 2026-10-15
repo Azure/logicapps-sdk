@@ -2,35 +2,29 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
-    using System.ComponentModel;
     using System.Globalization;
     using System.Linq.Expressions;
+    using System.Text;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
 
     /// <summary>Authoring-time source and bindings; never an executable placeholder delegate.</summary>
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public abstract class WorkflowExpression
+    internal abstract class WorkflowExpression
     {
         internal abstract JToken LiteralToken { get; }
         internal abstract string Render();
 
-        public static WorkflowExpression<T> Literal<T>(T value) =>
-            new WorkflowExpression<T>(Serialize(value), null, null);
+        internal static WorkflowExpression<T> Literal<T>(T value) =>
+            new WorkflowExpression<T>(Serialize(value), null);
 
         internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression) =>
             WorkflowExpressionCompiler.Compile(expression);
 
-        public static WorkflowExpression<T> Create<T>(string[] segments, WorkflowExpressionBinding[] bindings)
-        {
-            if (segments == null || bindings == null || segments.Length != bindings.Length + 1 ||
-                segments.Any(segment => segment == null) || bindings.Any(binding => binding == null))
-                throw new ArgumentException("A source program needs one more non-null segment than bindings.");
-            return new WorkflowExpression<T>(null, (string[])segments.Clone(), (WorkflowExpressionBinding[])bindings.Clone());
-        }
+        internal static WorkflowExpression<T> Create<T>(SourceProgram program) =>
+            new WorkflowExpression<T>(null, program ?? throw new ArgumentNullException(nameof(program)));
 
-        public static void Validate(WorkflowExpression value, string name, bool required)
+        internal static void Validate(WorkflowExpression value, string name, bool required)
         {
             if (required && value == null) throw new ArgumentNullException(name);
             if (required && value.LiteralToken?.Type == JTokenType.Null)
@@ -53,23 +47,94 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
     }
 
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public sealed class WorkflowExpression<T> : WorkflowExpression
+    internal sealed class WorkflowExpression<T> : WorkflowExpression
     {
         private readonly JToken literal;
-        private readonly string[] segments;
-        private readonly WorkflowExpressionBinding[] bindings;
-        internal WorkflowExpression(JToken literal, string[] segments, WorkflowExpressionBinding[] bindings)
+        private readonly SourceProgram program;
+        internal WorkflowExpression(JToken literal, SourceProgram program)
         {
             this.literal = literal;
-            this.segments = segments;
-            this.bindings = bindings;
+            this.program = program;
         }
         internal override JToken LiteralToken => this.literal?.DeepClone();
         internal override string Render()
         {
             if (this.literal != null) throw new InvalidOperationException("A literal has no source program.");
-            var source = new System.Text.StringBuilder(this.segments[0]);
+            return this.program.Render();
+        }
+    }
+
+    /// <summary>
+    /// Immutable C# source segments interleaved with late-bound workflow references.
+    /// </summary>
+    internal sealed class SourceProgram
+    {
+        private readonly string[] segments;
+        private readonly WorkflowExpressionBinding[] bindings;
+
+        private SourceProgram(string[] segments, WorkflowExpressionBinding[] bindings)
+        {
+            if (segments == null || bindings == null || segments.Length != bindings.Length + 1 ||
+                segments.Any(segment => segment == null) || bindings.Any(binding => binding == null))
+                throw new ArgumentException("A source program needs one more non-null segment than bindings.");
+
+            this.segments = segments;
+            this.bindings = bindings;
+        }
+
+        internal static SourceProgram Text(string text) =>
+            new SourceProgram(new[] { text ?? throw new ArgumentNullException(nameof(text)) }, Array.Empty<WorkflowExpressionBinding>());
+
+        internal static SourceProgram Binding(WorkflowExpressionBinding binding) =>
+            new SourceProgram(
+                new[] { string.Empty, string.Empty },
+                new[] { binding ?? throw new ArgumentNullException(nameof(binding)) });
+
+        internal static SourceProgram Concat(params SourceProgram[] programs) =>
+            Concat((IEnumerable<SourceProgram>)programs);
+
+        internal static SourceProgram Concat(IEnumerable<SourceProgram> programs)
+        {
+            if (programs == null) throw new ArgumentNullException(nameof(programs));
+            var segments = new List<string> { string.Empty };
+            var bindings = new List<WorkflowExpressionBinding>();
+            foreach (var program in programs)
+            {
+                if (program == null) throw new ArgumentException("Source programs cannot contain null.", nameof(programs));
+                segments[segments.Count - 1] += program.segments[0];
+                for (var index = 0; index < program.bindings.Length; index++)
+                {
+                    bindings.Add(program.bindings[index]);
+                    segments.Add(program.segments[index + 1]);
+                }
+            }
+
+            return new SourceProgram(segments.ToArray(), bindings.ToArray());
+        }
+
+        internal static SourceProgram Join(string separator, IEnumerable<SourceProgram> programs)
+        {
+            if (separator == null) throw new ArgumentNullException(nameof(separator));
+            if (programs == null) throw new ArgumentNullException(nameof(programs));
+            var parts = new List<SourceProgram>();
+            foreach (var program in programs)
+            {
+                if (parts.Count != 0) parts.Add(Text(separator));
+                parts.Add(program);
+            }
+
+            return Concat(parts);
+        }
+
+        internal SourceProgram Parenthesized() =>
+            Concat(Text("("), this, Text(")"));
+
+        internal bool IsText(string text) =>
+            this.bindings.Length == 0 && this.segments[0] == text;
+
+        internal string Render()
+        {
+            var source = new StringBuilder(this.segments[0]);
             for (var index = 0; index < this.bindings.Length; index++)
                 source.Append(this.bindings[index].Render()).Append(this.segments[index + 1]);
             return source.ToString();
@@ -77,8 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     /// <summary>Late-bound workflow context references.</summary>
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public sealed class WorkflowExpressionBinding
+    internal sealed class WorkflowExpressionBinding
     {
         private readonly IWorkflowOperation operation;
         private readonly string function;
@@ -89,18 +153,18 @@ namespace Microsoft.Azure.Workflows.Sdk
             this.function = function;
             this.argument = argument;
         }
-        public static WorkflowExpressionBinding Output(IWorkflowAction action) =>
+        internal static WorkflowExpressionBinding Output(IWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "outputs");
-        public static WorkflowExpressionBinding Body(IWorkflowAction action) =>
+        internal static WorkflowExpressionBinding Body(IWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "body");
-        public static WorkflowExpressionBinding Trigger(IWorkflowTrigger trigger, bool body) =>
+        internal static WorkflowExpressionBinding Trigger(IWorkflowTrigger trigger, bool body) =>
             new WorkflowExpressionBinding(trigger ?? throw new ArgumentNullException(nameof(trigger)), body ? "triggerBody" : "triggerOutputs");
-        public static WorkflowExpressionBinding Variable(IVariableWorkflowAction action) =>
+        internal static WorkflowExpressionBinding Variable(IVariableWorkflowAction action) =>
             new WorkflowExpressionBinding(action ?? throw new ArgumentNullException(nameof(action)), "variables");
-        public static WorkflowExpressionBinding Item(JToken item) =>
+        internal static WorkflowExpressionBinding Item(JToken item) =>
             item is ForEachItemToken ? new WorkflowExpressionBinding(null, "item") :
                 throw new ArgumentException("Expected a workflow foreach item.", nameof(item));
-        public static WorkflowExpressionBinding AgentParameter(object context, string name) =>
+        internal static WorkflowExpressionBinding AgentParameter(object context, string name) =>
             context != null ? new WorkflowExpressionBinding(null, "agentparameters", name) :
                 throw new ArgumentNullException(nameof(context));
 

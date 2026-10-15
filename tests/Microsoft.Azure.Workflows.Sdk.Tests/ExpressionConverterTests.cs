@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var name = "value";
             var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => name, value: () => 1);
             Assert.Equal("value", variable.VariableName);
-            Assert.Throws<ArgumentNullException>(() => WorkflowExpression.Validate(null, "input", true));
-            Assert.Throws<ArgumentException>(() => WorkflowExpression.Create<int>(new[] { "" }, new WorkflowExpressionBinding[] { null }));
+            Assert.Throws<ArgumentNullException>(
+                () => WorkflowActions.BuiltIn.Compose<string>(null));
         }
 
         [Theory]

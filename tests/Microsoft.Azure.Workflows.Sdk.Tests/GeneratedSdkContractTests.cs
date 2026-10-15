@@ -24,7 +24,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             Assert.All(methods, method => Assert.DoesNotContain(
                 method.GetParameters(),
                 parameter => parameter.ParameterType.IsGenericType &&
-                    parameter.ParameterType.GetGenericTypeDefinition() == typeof(WorkflowExpression<>)));
+                    parameter.ParameterType.GetGenericTypeDefinition().Name == "WorkflowExpression`1"));
+            Assert.DoesNotContain(
+                typeof(WorkflowActions).Assembly.GetExportedTypes(),
+                type => type.Name is "WorkflowExpression" or "WorkflowExpression`1" or "WorkflowExpressionBinding");
         }
 
         [Fact]
