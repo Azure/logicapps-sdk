@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 name => name.Identifier.ValueText == "ToObject");
             Assert.Equal("\"X\"", triggerReturn.DescendantNodesAndSelf().OfType<BracketedArgumentListSyntax>().Last()
                 .Arguments.Single().Expression.ToString());
+            Assert.Empty(triggerReturn.DescendantNodesAndSelf().OfType<ConditionalAccessExpressionSyntax>());
         }
 
         [Fact]

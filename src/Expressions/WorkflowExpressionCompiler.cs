@@ -203,18 +203,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             public string Source { get; }
             public bool WorkflowData { get; }
-            public bool NullSafe { get; }
             public object AgentContext { get; }
 
             public SourceFragment(
                 string source,
                 bool workflowData = false,
-                bool nullSafe = false,
                 object agentContext = null)
             {
                 this.Source = source;
                 this.WorkflowData = workflowData;
-                this.NullSafe = nullSafe;
                 this.AgentContext = agentContext;
             }
 
@@ -229,11 +226,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             internal IReadOnlyList<WorkflowExpressionBinding> Bindings => this.bindings;
             internal string WriteRoot(Expression expression) => this.Typed(expression).Source;
 
-            private SourceFragment Bind(WorkflowExpressionBinding binding, bool nullSafe = false)
+            private SourceFragment Bind(WorkflowExpressionBinding binding)
             {
                 var placeholder = "__binding" + this.bindings.Count.ToString(CultureInfo.InvariantCulture);
                 this.bindings.Add(binding);
-                return new SourceFragment(placeholder, workflowData: true, nullSafe: nullSafe);
+                return new SourceFragment(placeholder, workflowData: true);
             }
 
             public SourceFragment Write(Expression expression)
@@ -422,8 +419,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                     !targetType.IsPrimitive && !targetType.IsEnum && targetType != typeof(string) &&
                     !targetType.IsArray && targetType.Namespace != "System")
                 {
-                    return new SourceFragment(target.Parenthesized + (target.NullSafe ? "?" : "") + "[" + Quote(jsonName) + "]",
-                        workflowData: true, nullSafe: target.NullSafe);
+                    return new SourceFragment(
+                        target.Parenthesized + "[" + Quote(jsonName) + "]",
+                        workflowData: true);
                 }
 
                 return new SourceFragment(
@@ -437,9 +435,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     var type = instance.GetType();
                     if (Implements(type, typeof(IOutputWorkflowTrigger<>)) && member.Member.Name == "TriggerOutput")
-                        code = this.Bind(WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: false), nullSafe: true);
+                        code = this.Bind(WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: false));
                     else if (Implements(type, typeof(IBodyWorkflowTrigger<>)) && member.Member.Name == "TriggerBody")
-                        code = this.Bind(WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: true), nullSafe: true);
+                        code = this.Bind(WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: true));
                     else if (Implements(type, typeof(IOutputWorkflowAction<>)) && member.Member.Name == "Output")
                         code = this.Bind(WorkflowExpressionBinding.Output((IWorkflowAction)instance));
                     else if (Implements(type, typeof(IBodyWorkflowAction<>)) && member.Member.Name == "Body")
@@ -562,9 +560,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (call.Method.Name == "get_Item" && call.Object != null)
                 {
                     var indexed = this.Write(call.Object);
-                    return new SourceFragment(indexed.Parenthesized + (indexed.NullSafe ? "?" : "") + "[" +
+                    return new SourceFragment(indexed.Parenthesized + "[" +
                         string.Join(", ", call.Arguments.Select(a => this.Typed(a).Source)) + "]",
-                        workflowData: indexed.WorkflowData, nullSafe: indexed.NullSafe);
+                        workflowData: indexed.WorkflowData);
                 }
 
                 var extension = call.Method.IsDefined(typeof(ExtensionAttribute), false);
