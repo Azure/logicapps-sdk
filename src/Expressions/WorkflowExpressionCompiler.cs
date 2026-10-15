@@ -203,16 +203,13 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             public string Source { get; }
             public bool WorkflowData { get; }
-            public object AgentContext { get; }
 
             public SourceFragment(
                 string source,
-                bool workflowData = false,
-                object agentContext = null)
+                bool workflowData = false)
             {
                 this.Source = source;
                 this.WorkflowData = workflowData;
-                this.AgentContext = agentContext;
             }
 
             public string Parenthesized => "(" + this.Source + ")";
@@ -412,8 +409,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 
                 var target = this.Write(member.Expression);
                 var jsonName = member.Member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? member.Member.Name;
-                if (target.AgentContext != null)
-                    return this.Bind(WorkflowExpressionBinding.AgentParameter(target.AgentContext, jsonName));
                 var targetType = member.Expression.Type;
                 if (target.WorkflowData && !typeof(JToken).IsAssignableFrom(targetType) &&
                     !targetType.IsPrimitive && !targetType.IsEnum && targetType != typeof(string) &&
@@ -444,8 +439,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                         code = this.Bind(WorkflowExpressionBinding.Body((IWorkflowAction)instance));
                     else if (instance is IVariableWorkflowAction variable && member.Member.Name == "Value")
                         code = this.Bind(WorkflowExpressionBinding.Variable(variable));
-                    else if (Implements(type, typeof(IAgentToolContext<>)) && member.Member.Name == "Parameters")
-                        code = new SourceFragment("", agentContext: instance);
                 }
 
                 if (code != null)

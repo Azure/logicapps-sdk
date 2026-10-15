@@ -11,6 +11,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         private sealed class ToolParameters
         {
             public string Name { get; set; }
+            public ToolDetails Details { get; set; }
+        }
+
+        private sealed class ToolDetails
+        {
+            public string Value { get; set; }
         }
 
         private IOutputWorkflowAction<string> instanceSource;
@@ -75,6 +81,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             AssertReturnExpression(
                 """agentparameters("Name").ToObject<string>().ToUpperInvariant()""",
                 Input(action));
+
+            var nested = WorkflowActions.BuiltIn.Compose(
+                () => context.Parameters.Details.Value.ToUpperInvariant());
+            AssertReturnExpression(
+                """agentparameters("Details")["Value"].ToObject<string>().ToUpperInvariant()""",
+                Input(nested));
+
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose(() => context.Parameters.ToString()));
         }
 
         [Fact]
