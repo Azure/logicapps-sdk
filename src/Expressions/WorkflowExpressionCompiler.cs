@@ -231,9 +231,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                         if (array.NodeType == ExpressionType.NewArrayBounds)
                         {
                             return SourceProgram.Concat(
-                                SourceProgram.Text("new " + TypeName(array.Type.GetElementType()) + "["),
-                                SourceProgram.Join(", ", array.Expressions.Select(this.Typed)),
-                                SourceProgram.Text("]"));
+                                SourceProgram.Text("new " + TypeName(array.Type.GetElementType())),
+                                SourceProgram.CommaSeparated(array.Expressions.Select(this.Typed)).Bracketed());
                         }
 
                         var elements = array.Expressions.Select(this.Typed).ToArray();
@@ -241,30 +240,25 @@ namespace Microsoft.Azure.Workflows.Sdk
                             array.Type.GetElementType() != typeof(object) &&
                             array.Expressions.All(e => e.Type == array.Type.GetElementType());
                         return SourceProgram.Concat(
-                            SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(array.Type)) + " { "),
-                            SourceProgram.Join(", ", elements),
-                            SourceProgram.Text(" }"));
+                            SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(array.Type)) + " "),
+                            SourceProgram.CommaSeparated(elements).Braced());
                     case NewExpression creation: return this.New(creation);
                     case MemberInitExpression initializer:
                         return SourceProgram.Concat(
                             initializer.NewExpression.Arguments.Count == 0
                                 ? SourceProgram.Text("new " + TypeName(initializer.Type))
                                 : this.New(initializer.NewExpression),
-                            SourceProgram.Text(" { "),
-                            SourceProgram.Join(", ", initializer.Bindings.Select(this.Binding)),
-                            SourceProgram.Text(" }"));
+                            SourceProgram.Text(" "),
+                            SourceProgram.CommaSeparated(initializer.Bindings.Select(this.Binding)).Braced());
                     case ListInitExpression list:
                         return SourceProgram.Concat(
                             this.New(list.NewExpression),
-                            SourceProgram.Text(" { "),
-                            SourceProgram.Join(", ", list.Initializers.Select(initializer =>
+                            SourceProgram.Text(" "),
+                            SourceProgram.CommaSeparated(list.Initializers.Select(initializer =>
                                 initializer.Arguments.Count == 1
                                     ? this.Typed(initializer.Arguments[0])
-                                    : SourceProgram.Concat(
-                                        SourceProgram.Text("{ "),
-                                        SourceProgram.Join(", ", initializer.Arguments.Select(this.Typed)),
-                                        SourceProgram.Text(" }")))),
-                            SourceProgram.Text(" }"));
+                                    : SourceProgram.CommaSeparated(initializer.Arguments.Select(this.Typed)).Braced()))
+                                .Braced());
                     case ParameterExpression parameter when this.parameters.Contains(parameter):
                         return SourceProgram.Text(Identifier(parameter.Name));
                     case LambdaExpression lambda:
@@ -273,15 +267,14 @@ namespace Microsoft.Azure.Workflows.Sdk
                         foreach (var parameter in lambda.Parameters) this.parameters.Remove(parameter);
                         return SourceProgram.Concat(
                             SourceProgram.Text(
-                                "(" + string.Join(", ", lambda.Parameters.Select(p => TypeName(p.Type) + " " + Identifier(p.Name))) +
-                                ") => "),
+                                string.Join(", ", lambda.Parameters.Select(p => TypeName(p.Type) + " " + Identifier(p.Name))))
+                                .Parenthesized(),
+                            SourceProgram.Text(" => "),
                             body);
                     case IndexExpression index:
                         return SourceProgram.Concat(
                             this.Write(index.Object).Parenthesized(),
-                            SourceProgram.Text("["),
-                            SourceProgram.Join(", ", index.Arguments.Select(this.Typed)),
-                            SourceProgram.Text("]"));
+                            SourceProgram.CommaSeparated(index.Arguments.Select(this.Typed)).Bracketed());
                     case DefaultExpression defaultExpression:
                         return SourceProgram.Text("default(" + TypeName(defaultExpression.Type) + ")");
                     case TypeBinaryExpression typeTest when typeTest.NodeType == ExpressionType.TypeIs:
@@ -386,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             private static SourceProgram Cast(Type type, SourceProgram value) =>
                 SourceProgram.Concat(
-                    SourceProgram.Text("(" + TypeName(type) + ")"),
+                    SourceProgram.Text(TypeName(type)).Parenthesized(),
                     value.Parenthesized());
 
             private static SourceProgram ReadWorkflowValue(SourceProgram source, Type type)
@@ -430,7 +423,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     var jsonName = property.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? property.Name;
                     code = SourceProgram.Concat(
                         code.Parenthesized(),
-                        SourceProgram.Text("[" + Quote(jsonName) + "]"));
+                        SourceProgram.Text(Quote(jsonName)).Bracketed());
                 }
 
                 code = ReadWorkflowValue(code, expression.Type);
@@ -536,9 +529,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (binary.NodeType == ExpressionType.ArrayIndex)
                     return SourceProgram.Concat(
                         this.Typed(binary.Left).Parenthesized(),
-                        SourceProgram.Text("["),
-                        this.Typed(binary.Right),
-                        SourceProgram.Text("]"));
+                        this.Typed(binary.Right).Bracketed());
                 if (binary.Conversion != null)
                     throw new NotSupportedException("Coalesce conversion lambdas are not supported.");
 
@@ -552,9 +543,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (binary.NodeType == ExpressionType.AddChecked || binary.NodeType == ExpressionType.SubtractChecked ||
                     binary.NodeType == ExpressionType.MultiplyChecked)
                     return SourceProgram.Concat(
-                        SourceProgram.Text("checked("),
-                        source,
-                        SourceProgram.Text(")"));
+                        SourceProgram.Text("checked"),
+                        source.Parenthesized());
                 return source;
             }
 
@@ -597,18 +587,17 @@ namespace Microsoft.Azure.Workflows.Sdk
                     case ExpressionType.Convert:
                     case ExpressionType.ConvertChecked:
                         var cast = SourceProgram.Concat(
-                            SourceProgram.Text("(" + TypeName(unary.Type) + ")"),
+                            SourceProgram.Text(TypeName(unary.Type)).Parenthesized(),
                             operand.Parenthesized());
                         return unary.NodeType == ExpressionType.ConvertChecked
-                            ? SourceProgram.Concat(SourceProgram.Text("checked("), cast, SourceProgram.Text(")"))
+                            ? SourceProgram.Concat(SourceProgram.Text("checked"), cast.Parenthesized())
                             : cast;
                     case ExpressionType.Negate:
                         return SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized());
                     case ExpressionType.NegateChecked:
                         return SourceProgram.Concat(
-                            SourceProgram.Text("checked(-"),
-                            operand.Parenthesized(),
-                            SourceProgram.Text(")"));
+                            SourceProgram.Text("checked"),
+                            SourceProgram.Concat(SourceProgram.Text("-"), operand.Parenthesized()).Parenthesized());
                     case ExpressionType.UnaryPlus:
                         return SourceProgram.Concat(SourceProgram.Text("+"), operand.Parenthesized());
                     case ExpressionType.Not:
@@ -645,9 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     var indexed = this.Typed(call.Object);
                     return SourceProgram.Concat(
                         indexed.Parenthesized(),
-                        SourceProgram.Text("["),
-                        SourceProgram.Join(", ", call.Arguments.Select(this.Typed)),
-                        SourceProgram.Text("]"));
+                        SourceProgram.CommaSeparated(call.Arguments.Select(this.Typed)).Bracketed());
                 }
 
                 var extension = call.Method.IsDefined(typeof(ExtensionAttribute), false);
@@ -666,9 +653,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                     "<" + string.Join(", ", call.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
                 return SourceProgram.Concat(
                     target,
-                    SourceProgram.Text("." + Identifier(call.Method.Name) + generic + "("),
-                    SourceProgram.Join(", ", arguments),
-                    SourceProgram.Text(")"));
+                    SourceProgram.Text("." + Identifier(call.Method.Name) + generic),
+                    SourceProgram.CommaSeparated(arguments).Parenthesized());
             }
 
             private bool TryWriteWorkflowFunction(
@@ -684,9 +670,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                     throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
 
                 code = SourceProgram.Concat(
-                    SourceProgram.Text(function + "("),
-                    SourceProgram.Join(", ", call.Arguments.Select(this.Typed)),
-                    SourceProgram.Text(")"));
+                    SourceProgram.Text(function),
+                    SourceProgram.CommaSeparated(call.Arguments.Select(this.Typed)).Parenthesized());
                 returnsToken = call.Method.ReturnType != typeof(string) &&
                     call.Method.ReturnType != typeof(bool);
                 return true;
@@ -720,9 +705,8 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     if (values[0] is NewExpression creation && !IsAnonymous(creation.Type) || values[0] is MemberInitExpression)
                         return SourceProgram.Concat(
-                            SourceProgram.Text("JsonConvert.SerializeObject("),
-                            codes[0],
-                            SourceProgram.Text(")"));
+                            SourceProgram.Text("JsonConvert.SerializeObject"),
+                            codes[0].Parenthesized());
                     return codes[0];
                 }
 
@@ -739,15 +723,15 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     if (argument is NewArrayExpression array && array.Type == typeof(object[]))
                         return SourceProgram.Concat(
-                            SourceProgram.Text("new object[] { "),
-                            SourceProgram.Join(", ", array.Expressions.Select(expression => this.Write(Unbox(expression)))),
-                            SourceProgram.Text(" }"));
+                            SourceProgram.Text("new object[] "),
+                            SourceProgram.CommaSeparated(
+                                array.Expressions.Select(expression => this.Write(Unbox(expression))))
+                                .Braced());
                     return this.Write(Unbox(argument));
                 });
                 return SourceProgram.Concat(
-                    SourceProgram.Text("string.Format("),
-                    SourceProgram.Join(", ", arguments),
-                    SourceProgram.Text(")"));
+                    SourceProgram.Text("string.Format"),
+                    SourceProgram.CommaSeparated(arguments).Parenthesized());
             }
 
             private SourceProgram New(NewExpression creation)
@@ -755,23 +739,24 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (IsAnonymous(creation.Type))
                 {
                     return SourceProgram.Concat(
-                        SourceProgram.Text("new { "),
-                        SourceProgram.Join(", ", creation.Arguments.Select((argument, index) =>
-                        {
-                            var value = this.Typed(argument);
-                            return SourceProgram.Concat(
-                                SourceProgram.Text(Identifier(creation.Members[index].Name) + " = "),
-                                value.IsText("null")
-                                    ? SourceProgram.Text("(" + TypeName(argument.Type) + ")null")
-                                    : value);
-                        })),
-                        SourceProgram.Text(" }"));
+                        SourceProgram.Text("new "),
+                        SourceProgram.CommaSeparated(creation.Arguments.Select((argument, index) =>
+                            {
+                                var value = this.Typed(argument);
+                                return SourceProgram.Concat(
+                                    SourceProgram.Text(Identifier(creation.Members[index].Name) + " = "),
+                                    value.IsText("null")
+                                        ? SourceProgram.Concat(
+                                            SourceProgram.Text(TypeName(argument.Type)).Parenthesized(),
+                                            SourceProgram.Text("null"))
+                                        : value);
+                            }))
+                            .Braced());
                 }
 
                 return SourceProgram.Concat(
-                    SourceProgram.Text("new " + TypeName(creation.Type) + "("),
-                    SourceProgram.Join(", ", creation.Arguments.Select(this.Typed)),
-                    SourceProgram.Text(")"));
+                    SourceProgram.Text("new " + TypeName(creation.Type)),
+                    SourceProgram.CommaSeparated(creation.Arguments.Select(this.Typed)).Parenthesized());
             }
 
             private SourceProgram Binding(MemberBinding binding)

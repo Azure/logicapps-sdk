@@ -126,8 +126,20 @@ namespace Microsoft.Azure.Workflows.Sdk
             return Concat(parts);
         }
 
+        internal static SourceProgram CommaSeparated(IEnumerable<SourceProgram> programs) =>
+            Join(", ", programs);
+
+        internal SourceProgram Wrapped(string prefix, string suffix) =>
+            Concat(Text(prefix), this, Text(suffix));
+
         internal SourceProgram Parenthesized() =>
-            Concat(Text("("), this, Text(")"));
+            this.Wrapped("(", ")");
+
+        internal SourceProgram Bracketed() =>
+            this.Wrapped("[", "]");
+
+        internal SourceProgram Braced() =>
+            this.Wrapped("{ ", " }");
 
         internal bool IsText(string text) =>
             this.bindings.Length == 0 && this.segments[0] == text;
