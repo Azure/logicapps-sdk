@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             new WorkflowExpression<T>(Serialize(value), null, null);
 
         internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression) =>
-            ExpressionTreeWorkflowExpressionCompiler.Compile(expression);
+            WorkflowExpressionCompiler.Compile(expression);
 
         public static WorkflowExpression<T> Create<T>(string[] segments, WorkflowExpressionBinding[] bindings)
         {

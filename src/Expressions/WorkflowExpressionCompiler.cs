@@ -16,7 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Compiles expression-tree authoring lambdas into workflow expression descriptors.
     /// </summary>
-    internal static class ExpressionTreeWorkflowExpressionCompiler
+    internal static class WorkflowExpressionCompiler
     {
         private static readonly IReadOnlyDictionary<string, string> WorkflowFunctionNames =
             new Dictionary<string, string>(StringComparer.Ordinal)
@@ -201,6 +201,12 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         private sealed class SourceFragment
         {
+            public string Source { get; }
+            public int Precedence { get; }
+            public bool WorkflowData { get; }
+            public bool NullSafe { get; }
+            public object AgentContext { get; }
+
             public SourceFragment(
                 string source,
                 int precedence = 100,
@@ -215,11 +221,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 this.AgentContext = agentContext;
             }
 
-            public string Source { get; }
-            public int Precedence { get; }
-            public bool WorkflowData { get; }
-            public bool NullSafe { get; }
-            public object AgentContext { get; }
             public string At(int precedence) => this.Precedence < precedence ? "(" + this.Source + ")" : this.Source;
         }
 
@@ -231,11 +232,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             internal IReadOnlyList<WorkflowExpressionBinding> Bindings => this.bindings;
             internal string WriteRoot(Expression expression) => this.Typed(expression).Source;
 
-            private SourceFragment Bind(WorkflowExpressionBinding binding, bool workflowData = true, bool nullSafe = false)
+            private SourceFragment Bind(WorkflowExpressionBinding binding, bool nullSafe = false)
             {
                 var placeholder = "__binding" + this.bindings.Count.ToString(CultureInfo.InvariantCulture);
                 this.bindings.Add(binding);
-                return new SourceFragment(placeholder, workflowData: workflowData, nullSafe: nullSafe);
+                return new SourceFragment(placeholder, workflowData: true, nullSafe: nullSafe);
             }
 
             public SourceFragment Write(Expression expression)
