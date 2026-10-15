@@ -15,8 +15,9 @@ var action = WorkflowActions.ServiceProviders.ServiceBus("serviceBus").SendMessa
 suffix = "?";
 previous.WithName("Prepare");
 var source = JObject.FromObject(action.GetActionDefinition("flow").Inputs)["parameters"]["message"].Value<string>();
-if (!source.Contains("outputs(\"Prepare\")") || !source.Contains("""["messageId"]""") ||
-    !source.Contains("ToObject<string>()") ||
+if (!source.Contains("outputs(\"Prepare\")") ||
+    !source.Contains("ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>()") ||
+    !source.Contains(".MessageId") ||
     !source.Contains("\"!\"") || source.Contains("\"?\"") ||
     source.Contains("JsonTextReader") || source.Contains("workflowValue"))
     throw new InvalidOperationException("The packaged expression-tree compiler did not preserve the native expression boundary.");

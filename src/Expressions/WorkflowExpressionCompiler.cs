@@ -124,26 +124,26 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         private static void ValidateRuntimeType(Type type)
         {
-            if (type.IsArray)
-            {
-                ValidateRuntimeType(type.GetElementType());
-                return;
-            }
+            if (!IsRuntimeTypeAvailable(type))
+                throw new NotSupportedException(
+                    $"Runtime type '{type}' is unavailable. Use framework/SDK types or move custom code into a CustomCode action.");
+        }
 
-            if (type.IsGenericParameter)
-                throw new NotSupportedException($"Runtime type '{type}' is unavailable.");
+        private static bool IsRuntimeTypeAvailable(Type type)
+        {
+            if (type.IsArray)
+                return IsRuntimeTypeAvailable(type.GetElementType());
+            if (type.IsGenericParameter ||
+                type.Namespace?.StartsWith("System.Threading.Tasks", StringComparison.Ordinal) == true)
+                return false;
 
             var assembly = type.Assembly.GetName().Name;
             if (assembly is not ("System.Private.CoreLib" or "mscorlib" or "System.Runtime" or "netstandard" or
                 "System.Linq" or "System.Collections" or "System.Net.Http" or "System.Net.Primitives" or
-                "System.Private.Uri" or "System.Runtime.Numerics" or "Newtonsoft.Json" or "Microsoft.Azure.Workflows.Sdk") ||
-                type.Namespace?.StartsWith("System.Threading.Tasks", StringComparison.Ordinal) == true)
-                throw new NotSupportedException(
-                    $"Runtime type '{type}' is unavailable. Use framework/SDK types or move custom code into a CustomCode action.");
+                "System.Private.Uri" or "System.Runtime.Numerics" or "Newtonsoft.Json" or "Microsoft.Azure.Workflows.Sdk"))
+                return false;
 
-            if (type.IsGenericType)
-                foreach (var argument in type.GetGenericArguments())
-                    ValidateRuntimeType(argument);
+            return !type.IsGenericType || type.GetGenericArguments().All(IsRuntimeTypeAvailable);
         }
 
         private static string TypeName(Type type)
@@ -202,14 +202,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         private sealed class SourceFragment
         {
             public string Source { get; }
-            public bool WorkflowData { get; }
 
-            public SourceFragment(
-                string source,
-                bool workflowData = false)
+            public SourceFragment(string source)
             {
                 this.Source = source;
-                this.WorkflowData = workflowData;
             }
 
             public string Parenthesized => "(" + this.Source + ")";
@@ -223,19 +219,23 @@ namespace Microsoft.Azure.Workflows.Sdk
             internal IReadOnlyList<WorkflowExpressionBinding> Bindings => this.bindings;
             internal string WriteRoot(Expression expression) => this.Typed(expression).Source;
 
-            private SourceFragment Bind(WorkflowExpressionBinding binding)
+            private SourceFragment BindRaw(WorkflowExpressionBinding binding)
             {
                 var placeholder = "__binding" + this.bindings.Count.ToString(CultureInfo.InvariantCulture);
                 this.bindings.Add(binding);
-                return new SourceFragment(placeholder, workflowData: true);
+                return new SourceFragment(placeholder);
             }
 
             public SourceFragment Write(Expression expression)
             {
-                if (expression is MemberExpression workflowMember &&
-                    this.TryWorkflowBinding(workflowMember, out var workflowBinding))
+                if (this.TryCustomWorkflowPath(expression, out var customPath))
                 {
-                    return workflowBinding;
+                    return customPath;
+                }
+
+                if (this.TryWorkflowTokenSource(expression, out var workflowSource))
+                {
+                    return ReadWorkflowValue(workflowSource, expression.Type);
                 }
 
                 if (TryReadValue(expression, out var value))
@@ -298,20 +298,12 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             private SourceFragment Typed(Expression expression)
-            {
-                var code = this.Write(expression);
-                if (code.WorkflowData && !typeof(JToken).IsAssignableFrom(expression.Type))
-                {
-                    return new SourceFragment(code.Parenthesized + ".ToObject<" + TypeName(expression.Type) + ">()");
-                }
-
-                return code;
-            }
+                => this.Write(expression);
 
             private SourceFragment Literal(object value, Type type)
             {
                 if (value is ForEachItemToken item)
-                    return this.Bind(WorkflowExpressionBinding.Item(item));
+                    return this.BindRaw(WorkflowExpressionBinding.Item(item));
                 if (value is Array or IDictionary or JToken)
                     throw new NotSupportedException("Capture immutable scalar values, not mutable objects or collections.");
                 if (value == null) return Cast(type, new SourceFragment("null"));
@@ -398,6 +390,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             private static SourceFragment Cast(Type type, SourceFragment value) =>
                 new SourceFragment("(" + TypeName(type) + ")" + value.Parenthesized);
 
+            private static SourceFragment ReadWorkflowValue(SourceFragment source, Type type)
+            {
+                if (typeof(JToken).IsAssignableFrom(type))
+                    return source;
+
+                ValidateRuntimeType(type);
+                return new SourceFragment(source.Parenthesized + ".ToObject<" + TypeName(type) + ">()");
+            }
+
             private SourceFragment Member(MemberExpression member)
             {
                 if (member.Expression == null)
@@ -407,41 +408,105 @@ namespace Microsoft.Azure.Workflows.Sdk
                     return new SourceFragment(TypeName(member.Member.DeclaringType) + "." + Identifier(member.Member.Name));
                 }
 
-                var target = this.Write(member.Expression);
-                var jsonName = member.Member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? member.Member.Name;
-                var targetType = member.Expression.Type;
-                if (target.WorkflowData && !typeof(JToken).IsAssignableFrom(targetType) &&
-                    !targetType.IsPrimitive && !targetType.IsEnum && targetType != typeof(string) &&
-                    !targetType.IsArray && targetType.Namespace != "System")
-                {
-                    return new SourceFragment(
-                        target.Parenthesized + "[" + Quote(jsonName) + "]",
-                        workflowData: true);
-                }
-
                 return new SourceFragment(
                     this.Receiver(member.Expression).Parenthesized + "." + Identifier(member.Member.Name));
             }
 
-            private bool TryWorkflowBinding(MemberExpression member, out SourceFragment code)
+            private bool TryCustomWorkflowPath(Expression expression, out SourceFragment code)
             {
                 code = null;
+                var properties = new List<PropertyInfo>();
+                if (!this.TryCollectCustomWorkflowPath(expression, properties, out var root) ||
+                    properties.Count == 0)
+                {
+                    return false;
+                }
+
+                code = root;
+                foreach (var property in properties)
+                {
+                    var jsonName = property.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ?? property.Name;
+                    code = new SourceFragment(code.Parenthesized + "[" + Quote(jsonName) + "]");
+                }
+
+                code = ReadWorkflowValue(code, expression.Type);
+                return true;
+            }
+
+            private bool TryCollectCustomWorkflowPath(
+                Expression expression,
+                List<PropertyInfo> properties,
+                out SourceFragment root)
+            {
+                if (expression is MemberExpression workflowMember &&
+                    TryCreateWorkflowBinding(workflowMember, out var binding))
+                {
+                    root = this.BindRaw(binding);
+                    return true;
+                }
+
+                if (expression is MethodCallExpression call &&
+                    this.TryWriteWorkflowFunction(call, out root, out var returnsToken) &&
+                    returnsToken)
+                    return true;
+
+                if (expression is not MemberExpression member ||
+                    member.Member is not PropertyInfo property ||
+                    IsRuntimeTypeAvailable(property.DeclaringType) ||
+                    !IsStoredDtoProperty(property) ||
+                    !this.TryCollectCustomWorkflowPath(member.Expression, properties, out root))
+                {
+                    root = null;
+                    return false;
+                }
+
+                properties.Add(property);
+                return true;
+            }
+
+            private static bool IsStoredDtoProperty(PropertyInfo property) =>
+                property.GetMethod?.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) == true;
+
+            private bool TryWorkflowTokenSource(Expression expression, out SourceFragment code)
+            {
+                if (expression is MemberExpression member && TryCreateWorkflowBinding(member, out var binding))
+                {
+                    code = this.BindRaw(binding);
+                    return true;
+                }
+
+                if (expression is MethodCallExpression call &&
+                    TryWriteWorkflowFunction(call, out code, out var returnsToken) &&
+                    returnsToken)
+                {
+                    return true;
+                }
+
+                code = null;
+                return false;
+            }
+
+            private static bool TryCreateWorkflowBinding(
+                MemberExpression member,
+                out WorkflowExpressionBinding binding)
+            {
+                binding = null;
                 if (member.Expression != null && TryReadValue(member.Expression, out var instance) && instance != null)
                 {
                     var type = instance.GetType();
                     if (Implements(type, typeof(IOutputWorkflowTrigger<>)) && member.Member.Name == "TriggerOutput")
-                        code = this.Bind(WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: false));
+                        binding = WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: false);
                     else if (Implements(type, typeof(IBodyWorkflowTrigger<>)) && member.Member.Name == "TriggerBody")
-                        code = this.Bind(WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: true));
+                        binding = WorkflowExpressionBinding.Trigger((IWorkflowTrigger)instance, body: true);
                     else if (Implements(type, typeof(IOutputWorkflowAction<>)) && member.Member.Name == "Output")
-                        code = this.Bind(WorkflowExpressionBinding.Output((IWorkflowAction)instance));
+                        binding = WorkflowExpressionBinding.Output((IWorkflowAction)instance);
                     else if (Implements(type, typeof(IBodyWorkflowAction<>)) && member.Member.Name == "Body")
-                        code = this.Bind(WorkflowExpressionBinding.Body((IWorkflowAction)instance));
+                        binding = WorkflowExpressionBinding.Body((IWorkflowAction)instance);
                     else if (instance is IVariableWorkflowAction variable && member.Member.Name == "Value")
-                        code = this.Bind(WorkflowExpressionBinding.Variable(variable));
+                        binding = WorkflowExpressionBinding.Variable(variable);
                 }
 
-                if (code != null)
+                if (binding != null)
                     return true;
 
                 if (member.Expression is MemberExpression
@@ -455,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 {
                     var jsonName = member.Member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName ??
                         member.Member.Name;
-                    code = this.Bind(WorkflowExpressionBinding.AgentParameter(context, jsonName));
+                    binding = WorkflowExpressionBinding.AgentParameter(context, jsonName);
                     return true;
                 }
 
@@ -538,24 +603,20 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (!call.Method.IsPublic)
                     throw new NotSupportedException($"Expression runtime member must be public: {call.Method}");
 
-                if (call.Method.DeclaringType == typeof(WorkflowFunctions))
-                {
-                    if (!WorkflowFunctionNames.TryGetValue(call.Method.Name, out var function))
-                        throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
-                    return new SourceFragment(
-                        function + "(" + string.Join(", ", call.Arguments.Select(argument => this.Typed(argument).Source)) + ")",
-                        workflowData: call.Method.ReturnType != typeof(string) && call.Method.ReturnType != typeof(bool));
-                }
+                if (TryWriteWorkflowFunction(call, out var workflowFunction, out var returnsToken))
+                    return returnsToken
+                        ? ReadWorkflowValue(workflowFunction, call.Type)
+                        : workflowFunction;
 
                 if (call.Method.DeclaringType == typeof(string) && call.Method.Name == "Format")
                     return this.Format(call);
 
                 if (call.Method.Name == "get_Item" && call.Object != null)
                 {
-                    var indexed = this.Write(call.Object);
-                    return new SourceFragment(indexed.Parenthesized + "[" +
-                        string.Join(", ", call.Arguments.Select(a => this.Typed(a).Source)) + "]",
-                        workflowData: indexed.WorkflowData);
+                    var indexed = this.Typed(call.Object);
+                    return new SourceFragment(
+                        indexed.Parenthesized + "[" +
+                        string.Join(", ", call.Arguments.Select(a => this.Typed(a).Source)) + "]");
                 }
 
                 var extension = call.Method.IsDefined(typeof(ExtensionAttribute), false);
@@ -574,6 +635,27 @@ namespace Microsoft.Azure.Workflows.Sdk
                     "<" + string.Join(", ", call.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
                 return new SourceFragment(
                     target + "." + Identifier(call.Method.Name) + generic + "(" + string.Join(", ", arguments) + ")");
+            }
+
+            private bool TryWriteWorkflowFunction(
+                MethodCallExpression call,
+                out SourceFragment code,
+                out bool returnsToken)
+            {
+                code = null;
+                returnsToken = false;
+                if (call.Method.DeclaringType != typeof(WorkflowFunctions))
+                    return false;
+                if (!WorkflowFunctionNames.TryGetValue(call.Method.Name, out var function))
+                    throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
+
+                code = new SourceFragment(
+                    function + "(" +
+                    string.Join(", ", call.Arguments.Select(argument => this.Typed(argument).Source)) +
+                    ")");
+                returnsToken = call.Method.ReturnType != typeof(string) &&
+                    call.Method.ReturnType != typeof(bool);
+                return true;
             }
 
             private static bool ContainsType(Type type, Type parameter) =>
@@ -605,15 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     return codes[0];
                 }
 
-                if (!codes.Any(c => c.WorkflowData)) return this.PlainFormat(call);
-                var escaped = Quote(format);
-                var source = Regex.Replace(escaped.Substring(1, escaped.Length - 2), @"\{(\d+)\}", match =>
-                {
-                    var index = int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture);
-                    if (index >= codes.Length) throw new FormatException("Composite format argument index is out of range.");
-                    return "{" + codes[index].Parenthesized + "}";
-                });
-                return new SourceFragment("$\"" + source + "\"");
+                return this.PlainFormat(call);
             }
 
             private static Expression Unbox(Expression expression) =>

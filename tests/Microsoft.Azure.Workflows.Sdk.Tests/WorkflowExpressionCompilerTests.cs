@@ -86,6 +86,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         [Fact]
+        public void SdkDtoWorkflowRootsUseClrMemberAccess()
+        {
+            var message = WorkflowActions.BuiltIn.Compose<SendMessageInputMessageType>(
+                () => new SendMessageInputMessageType { MessageId = "id" })
+                .WithName("Message");
+            var action = WorkflowActions.BuiltIn.Compose(
+                () => message.Output.MessageId.ToUpperInvariant());
+
+            AssertReturnExpression(
+                """outputs("Message").ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>().MessageId.ToUpperInvariant()""",
+                Input(action));
+        }
+
+        [Fact]
         public void CheckedCastsAndConditionalsRemainCSharp()
         {
             var value = WorkflowActions.BuiltIn.Compose<object>(
@@ -105,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 WorkflowFunctions.ToJson<SendMessageInputMessageType>("{\"messageId\":\"id\"}").MessageId);
 
             AssertReturnExpression(
-                """json("{\"messageId\":\"id\"}")["messageId"].ToObject<string>()""",
+                """json("{\"messageId\":\"id\"}").ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>().MessageId""",
                 Input(action));
         }
 
@@ -118,6 +132,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             AssertReturnExpression(
                 """outputs("Customer")["address"]["city_name"].ToObject<string>()""",
                 Input(action));
+
+            var function = WorkflowActions.BuiltIn.Compose(
+                () => WorkflowFunctions.ToJson<Customer>(
+                    "{\"address\":{\"city_name\":\"Seattle\"}}").Address.City);
+            AssertReturnExpression(
+                """json("{\"address\":{\"city_name\":\"Seattle\"}}")["address"]["city_name"].ToObject<string>()""",
+                Input(function));
+
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose<Customer>(() => customer.Output));
         }
 
         [Fact]
