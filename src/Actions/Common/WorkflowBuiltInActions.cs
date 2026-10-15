@@ -160,11 +160,17 @@ namespace Microsoft.Azure.Workflows.Sdk
             });
         }
 
-        public AgentAction Agent(AgentModelType agentModelType, string deploymentId, AgentModelSettings agentModelSettings, string connectionName, Expression<Func<AgentPromptMessage[]>> messages)
+        public IAgentWorkflowAction Agent(AgentModelType agentModelType, string deploymentId, AgentModelSettings agentModelSettings, string connectionName, Expression<Func<AgentPromptMessage[]>> messages)
         {
-            var descriptor = messages == null ? null : WorkflowExpression.Compile(messages);
-            WorkflowExpression.Validate(descriptor, nameof(messages), required: true);
-            return new AgentAction(agentModelType, deploymentId, agentModelSettings, connectionName, descriptor);
+            var messagesDescriptor = messages == null ? null : WorkflowExpression.Compile(messages);
+            WorkflowExpression.Validate(messagesDescriptor, nameof(messages), required: true);
+            return new DeferredAgentAction(() =>
+                new AgentAction(
+                    agentModelType,
+                    deploymentId,
+                    agentModelSettings,
+                    connectionName,
+                    ExpressionConverter.ConvertO(messagesDescriptor)));
         }
     }
 }

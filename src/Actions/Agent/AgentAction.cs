@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk
 {
     using Microsoft.Azure.Workflows.Sdk.Entities;
-    using Microsoft.Azure.Workflows.Sdk.Runtime;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -14,12 +13,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     public class AgentAction : WorkflowActionBase
     {
-        /// <summary>
-        /// The tools for the agent action.
-        /// </summary>
-        private readonly Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>> Tools = new Dictionary<string, Func<string, FlowKind?, FlowTemplateActionToolBranch>>();
-        private WorkflowExpression<AgentPromptMessage[]> sourceMessages;
-
         /// <summary>
         /// Gets or sets the agent model type.
         /// </summary>
@@ -49,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the messages.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public AgentPromptMessage[] Messages { get; set; }
+        public object Messages { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AgentAction"/> class.
@@ -64,61 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk
             string deploymentId,
             AgentModelSettings agentModelSettings,
             string connectionName,
-            AgentPromptMessage[] messages)
+            object messages)
         {
             this.AgentModelType = agentModelType;
             this.DeploymentId = deploymentId;
             this.AgentModelSettings = agentModelSettings;
             this.ConnectionName = connectionName;
             this.Messages = messages;
-        }
-
-        internal AgentAction(AgentModelType type, string deployment, AgentModelSettings settings, string connection, WorkflowExpression<AgentPromptMessage[]> messages)
-            : this(type, deployment, settings, connection, (AgentPromptMessage[])null) => this.sourceMessages = messages;
-
-        /// <summary>
-        /// Adds a tool to the agent action. The lambda receives parameters and returns the tool branch root action.
-        /// </summary>
-        /// <param name="tool">A function that receives tool parameters and returns the tool branch root action.</param>
-        /// <param name="description">The description of the tool.</param>
-        /// <param name="parameters">The schema parameters.</param>
-        public AgentAction AddTool<T>(Func<IAgentToolContext<T>, IWorkflowAction> tool, string description, T parameters) where T : class
-        {
-            if (tool == null)
-            {
-                throw new ArgumentNullException(nameof(tool), "The tool definition callback cannot be null.");
-            }
-            var toolContext = new AgentToolContext<T>(parameters);
-            var rootAction = tool.Invoke(toolContext)
-                ?? throw new InvalidOperationException("The tool definition callback must return an action.");
-
-            var toolName = "Tool" + (this.Tools.Count + 1);
-            this.Tools.Add(toolName, (flowName, flowKind) => AgentAction.BuildToolBranch(rootAction, description, parameters, flowName, flowKind));
-
-            return this;
-        }
-
-        /// <summary>
-        /// Adds a tool to the agent action. The lambda receives parameters and returns the tool branch chain.
-        /// </summary>
-        /// <param name="tool">A function that receives tool parameters and returns the tool branch chain.</param>
-        /// <param name="description">The description of the tool.</param>
-        /// <param name="parameters">The schema parameters.</param>
-        public AgentAction AddTool<T>(Func<IAgentToolContext<T>, OperationChain> tool, string description, T parameters) where T : class
-        {
-            if (tool == null)
-            {
-                throw new ArgumentNullException(nameof(tool), "The tool definition callback cannot be null.");
-            }
-            var toolContext = new AgentToolContext<T>(parameters);
-            var toolChain = tool.Invoke(toolContext)
-                ?? throw new InvalidOperationException("The tool definition callback must return an operation chain.");
-            var rootAction = toolChain.GetRootOperation() as IWorkflowAction ?? throw new InvalidOperationException("The first operation in a tool definition must be an action, not a trigger.");
-
-            var toolName = "Tool" + (this.Tools.Count + 1);
-            this.Tools.Add(toolName, (flowName, flowKind) => AgentAction.BuildToolBranch(rootAction, description, parameters, flowName, flowKind));
-
-            return this;
         }
 
         /// <summary>
@@ -132,7 +77,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.Agent,
-                Tools = this.Tools.ToDictionary(pair => pair.Key, pair => pair.Value(flowName, flowKind)),
                 Inputs = new AgentActionInput
                 {
                     Parameters = new AgentActionInputParameters
@@ -140,14 +84,13 @@ namespace Microsoft.Azure.Workflows.Sdk
                         AgentModelSettings = this.AgentModelSettings,
                         AgentModelType = this.AgentModelType,
                         DeploymentId = this.DeploymentId,
-                        Messages = this.sourceMessages != null ? ExpressionConverter.ConvertO(this.sourceMessages) : (object)this.Messages,
+                        Messages = this.Messages,
                     },
                     ModelConfigurations = new Dictionary<string, AgentModelConfiguration>
                     {
                         { "model1", new AgentModelConfiguration { ReferenceName = this.ConnectionName } },
                     }
                 },
-                RunAfter = this.RunAfterConfig.Count > 0 ? new Dictionary<string, FlowStatus[]>(this.RunAfterConfig) : null,
                 Limit = flowKind == FlowKind.Stateful || flowKind == FlowKind.Agentic
                     ? new JObject
                     {
@@ -155,62 +98,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     }
                     : null
             };
-        }
-
-        /// <summary>
-        /// Builds a FlowTemplateActionToolBranch by walking the action node graph.
-        /// </summary>
-        private static FlowTemplateActionToolBranch BuildToolBranch<T>(IWorkflowAction rootAction, string description, T parameters, string flowName, FlowKind? flowKind) where T : class
-        {
-            var actions = new Dictionary<string, FlowTemplateAction>();
-            var visited = new Dictionary<string, IWorkflowAction>();
-            var queue = new Queue<IWorkflowAction>();
-            queue.Enqueue(rootAction);
-
-            while (queue.Count > 0)
-            {
-                var node = queue.Dequeue();
-
-                if (visited.ContainsKey(node.Name))
-                {
-                    if (!object.ReferenceEquals(visited[node.Name], node))
-                    {
-                        throw new InvalidOperationException($"Duplicate action name '{node.Name}' detected. Action names must be unique within a tool definition.");
-                    }
-                    continue;
-                }
-
-                visited.Add(node.Name, node);
-
-                var definition = node.GetActionDefinition(flowName, flowKind);
-
-                if (node.RunAfterConfig.Count > 0)
-                {
-                    definition.RunAfter = new Dictionary<string, FlowStatus[]>(node.RunAfterConfig);
-                }
-
-                actions[node.Name] = definition;
-
-                foreach (var child in node.Children)
-                {
-                    queue.Enqueue(child);
-                }
-            }
-
-            var toolBranch = new FlowTemplateActionToolBranch
-            {
-                Actions = actions,
-                Description = description,
-            };
-
-            if (parameters != null)
-            {
-                var desc = new JObject();
-                var schema = TypeGenerator.GenerateSchema(parameters.GetType(), desc);
-                toolBranch.AgentParameterSchema = schema;
-            }
-
-            return toolBranch;
         }
     }
 }
