@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal static bool IsAnonymous(Type type) =>
             type.IsDefined(typeof(CompilerGeneratedAttribute), false) && type.Name.Contains("AnonymousType");
 
+        private static bool ContainsAnonymousType(Type type) =>
+            IsAnonymous(type) ||
+            type.HasElementType && ContainsAnonymousType(type.GetElementType()) ||
+            type.IsGenericType && type.GetGenericArguments().Any(ContainsAnonymousType);
+
         // Only read stored values, never invoke a captured lambda, arbitrary getter or method.
         internal static bool TryReadValue(Expression expression, out object value)
         {
@@ -330,9 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                     ? ReadWorkflowValue(workflowFunction, methodCallExpression.Type)
                     : workflowFunction;
 
-            if (methodCallExpression.Method.DeclaringType == typeof(string) && methodCallExpression.Method.Name == "Format")
-                return this.Format(methodCallExpression);
-
             if (methodCallExpression.Method.Name == "get_Item" && methodCallExpression.Object != null)
             {
                 var indexed = this.Visit(methodCallExpression.Object);
@@ -341,24 +343,42 @@ namespace Microsoft.Azure.Workflows.Sdk
                     SourceProgram.CommaSeparated(methodCallExpression.Arguments.Select(this.Visit)).Bracketed());
             }
 
-            var extension = methodCallExpression.Method.IsDefined(typeof(ExtensionAttribute), false);
-            var targetExpression = extension ? methodCallExpression.Arguments[0] : methodCallExpression.Object;
-            var target = targetExpression == null
+            var target = methodCallExpression.Object == null
                 ? SourceProgram.Text(TypeName(methodCallExpression.Method.DeclaringType))
-                : this.Receiver(targetExpression).Parenthesized();
+                : this.Receiver(methodCallExpression.Object).Parenthesized();
 
             if (methodCallExpression.Method.GetParameters().Any(p => p.ParameterType.IsByRef))
                 throw new NotSupportedException($"Calls with ref/out arguments are not supported: {methodCallExpression.Method}");
-            var arguments = methodCallExpression.Arguments.Skip(extension ? 1 : 0).Select(this.Visit);
-            var inferGenerics = methodCallExpression.Method.IsGenericMethod && methodCallExpression.Method.DeclaringType == typeof(Enumerable) &&
-                methodCallExpression.Method.GetGenericMethodDefinition().GetGenericArguments().All(parameter =>
-                    methodCallExpression.Method.GetGenericMethodDefinition().GetParameters().Any(p => ContainsType(p.ParameterType, parameter)));
-            var generic = methodCallExpression.Method.IsGenericMethod && !inferGenerics ?
-                "<" + string.Join(", ", methodCallExpression.Method.GetGenericArguments().Select(TypeName)) + ">" : "";
+            var parameters = methodCallExpression.Method.GetParameters();
+            var overloaded = methodCallExpression.Method.DeclaringType.GetMethods()
+                .Count(method => method.Name == methodCallExpression.Method.Name) > 1;
+            var arguments = methodCallExpression.Arguments.Select(
+                (argument, index) => this.Argument(argument, parameters[index].ParameterType, overloaded));
+            var generic = this.GenericArguments(methodCallExpression.Method);
             return SourceProgram.Concat(
                 target,
                 SourceProgram.Text("." + Identifier(methodCallExpression.Method.Name) + generic),
                 SourceProgram.CommaSeparated(arguments).Parenthesized());
+        }
+
+        private string GenericArguments(MethodInfo method)
+        {
+            if (!method.IsGenericMethod)
+                return string.Empty;
+
+            var arguments = method.GetGenericArguments();
+            var canRender = true;
+            foreach (var argument in arguments)
+            {
+                if (ContainsAnonymousType(argument))
+                    canRender = false;
+                else
+                    ValidateRuntimeType(argument);
+            }
+
+            return canRender
+                ? "<" + string.Join(", ", arguments.Select(TypeName)) + ">"
+                : string.Empty;
         }
 
         public SourceProgram Visit(ConditionalExpression conditionalExpression) =>
@@ -397,20 +417,29 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public SourceProgram Visit(ListInitExpression listInitExpression) =>
             SourceProgram.Concat(
-                this.New(listInitExpression.NewExpression),
+                this.Visit(listInitExpression.NewExpression),
                 SourceProgram.Text(" "),
                 SourceProgram.CommaSeparated(listInitExpression.Initializers.Select(initializer =>
-                    initializer.Arguments.Count == 1
-                        ? this.Visit(initializer.Arguments[0])
-                        : SourceProgram.CommaSeparated(initializer.Arguments.Select(this.Visit)).Braced()))
+                {
+                    if (!initializer.AddMethod.IsPublic || initializer.AddMethod.IsStatic)
+                        throw new NotSupportedException(
+                            $"Collection initializer method must be a public instance method: {initializer.AddMethod}");
+
+                    var parameters = initializer.AddMethod.GetParameters();
+                    var overloaded = initializer.AddMethod.DeclaringType.GetMethods()
+                        .Count(method => method.Name == initializer.AddMethod.Name) > 1;
+                    var arguments = initializer.Arguments.Select(
+                        (argument, index) => this.Argument(argument, parameters[index].ParameterType, overloaded));
+                    return initializer.Arguments.Count == 1
+                        ? arguments.Single()
+                        : SourceProgram.CommaSeparated(arguments).Braced();
+                }))
                     .Braced());
 
         public SourceProgram Visit(MemberExpression memberExpression)
         {
             if (memberExpression.Expression == null)
             {
-                if (memberExpression.Member.DeclaringType == typeof(HttpMethod) && memberExpression.Member is PropertyInfo httpProperty)
-                    return this.Literal(httpProperty.GetValue(null), typeof(HttpMethod));
                 return SourceProgram.Text(TypeName(memberExpression.Member.DeclaringType) + "." + Identifier(memberExpression.Member.Name));
             }
 
@@ -423,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             SourceProgram.Concat(
                 memberInitExpression.NewExpression.Arguments.Count == 0
                     ? SourceProgram.Text("new " + TypeName(memberInitExpression.Type))
-                    : this.New(memberInitExpression.NewExpression),
+                    : this.Visit(memberInitExpression.NewExpression),
                 SourceProgram.Text(" "),
                 SourceProgram.CommaSeparated(memberInitExpression.Bindings.Select(this.Binding)).Braced());
         
@@ -437,7 +466,36 @@ namespace Microsoft.Azure.Workflows.Sdk
                 this.Visit(assignment.Expression));
         }
 
-        public SourceProgram Visit(NewExpression newExpression) => this.New(newExpression);
+        public SourceProgram Visit(NewExpression newExpression)
+        {
+            if (IsAnonymous(newExpression.Type))
+            {
+                return SourceProgram.Concat(
+                    SourceProgram.Text("new "),
+                    SourceProgram.CommaSeparated(newExpression.Arguments.Select((argument, index) =>
+                        {
+                            var value = this.Visit(argument);
+                            return SourceProgram.Concat(
+                                SourceProgram.Text(Identifier(newExpression.Members[index].Name) + " = "),
+                                value.IsText("null")
+                                    ? SourceProgram.Concat(
+                                        SourceProgram.Text(TypeName(argument.Type)).Parenthesized(),
+                                        SourceProgram.Text("null"))
+                                    : value);
+                        }))
+                        .Braced());
+            }
+
+            var parameters = newExpression.Constructor?.GetParameters() ?? Array.Empty<ParameterInfo>();
+            var overloaded = newExpression.Constructor != null &&
+                newExpression.Type.GetConstructors().Length > 1;
+            
+            return SourceProgram.Concat(
+                SourceProgram.Text("new " + TypeName(newExpression.Type)),
+                SourceProgram.CommaSeparated(newExpression.Arguments.Select(
+                    (argument, index) => this.Argument(argument, parameters[index].ParameterType, overloaded)))
+                    .Parenthesized());
+        }
 
         public SourceProgram Visit(NewArrayExpression newArrayExpression)
         {
@@ -448,13 +506,13 @@ namespace Microsoft.Azure.Workflows.Sdk
                     SourceProgram.CommaSeparated(newArrayExpression.Expressions.Select(this.Visit)).Bracketed());
             }
 
-            var elements = newArrayExpression.Expressions.Select(this.Visit).ToArray();
-            var inferred = elements.Any(element => !element.IsText("null")) &&
-                newArrayExpression.Type.GetElementType() != typeof(object) &&
-                newArrayExpression.Expressions.All(element => element.Type == newArrayExpression.Type.GetElementType());
-            
+            var elements = newArrayExpression.Expressions.Select(this.Visit);
+            var elementType = newArrayExpression.Type.GetElementType();
             return SourceProgram.Concat(
-                SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(newArrayExpression.Type)) + " "),
+                SourceProgram.Text(
+                    ContainsAnonymousType(elementType)
+                        ? "new[] "
+                        : "new " + TypeName(newArrayExpression.Type) + " "),
                 SourceProgram.CommaSeparated(elements).Braced());
         }
 
@@ -729,9 +787,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             return true;
         }
 
-        private static bool ContainsType(Type type, Type parameter) =>
-            type == parameter || (type.HasElementType && ContainsType(type.GetElementType(), parameter)) ||
-            (type.IsGenericType && type.GetGenericArguments().Any(t => ContainsType(t, parameter)));
+        private SourceProgram Argument(Expression expression, Type parameterType, bool forceType)
+        {
+            var source = this.Visit(expression);
+            if (!forceType || expression.Type == parameterType || ContainsAnonymousType(parameterType))
+                return source;
+
+            ValidateRuntimeType(parameterType);
+            return Cast(parameterType, source);
+        }
 
         private SourceProgram Receiver(Expression expression)
         {
@@ -739,76 +803,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             return code.IsText("null")
                 ? SourceProgram.Text("((" + TypeName(expression.Type) + ")null)")
                 : code;
-        }
-
-        private SourceProgram Format(MethodCallExpression methodCallExpression)
-        {
-            var formatIndex = methodCallExpression.Arguments[0].Type == typeof(string) ? 0 : 1;
-            if (!(methodCallExpression.Arguments[formatIndex] is ConstantExpression constant) || !(constant.Value is string format))
-                return this.PlainFormat(methodCallExpression);
-            var values = methodCallExpression.Arguments.Skip(formatIndex + 1).ToArray();
-            if (values.Length == 1 && values[0] is NewArrayExpression array) values = array.Expressions.ToArray();
-            values = values.Select(Unbox).ToArray();
-            var codes = values.Select(this.Visit).ToArray();
-            if (formatIndex != 0 || format.Contains("{{") || format.Contains("}}") ||
-                Regex.Replace(format, @"\{\d+\}", "").IndexOfAny(new[] { '{', '}' }) >= 0)
-                return this.PlainFormat(methodCallExpression);
-            if (format == "{0}" && codes.Length == 1)
-            {
-                if (values[0] is NewExpression creation && !IsAnonymous(creation.Type) || values[0] is MemberInitExpression)
-                    return SourceProgram.Concat(
-                        SourceProgram.Text("JsonConvert.SerializeObject"),
-                        codes[0].Parenthesized());
-                return codes[0];
-            }
-
-            return this.PlainFormat(methodCallExpression);
-        }
-
-        private static Expression Unbox(Expression expression) =>
-            expression is UnaryExpression unary && unary.NodeType == ExpressionType.Convert && unary.Type == typeof(object) ?
-                unary.Operand : expression;
-
-        private SourceProgram PlainFormat(MethodCallExpression methodCallExpression)
-        {
-            var arguments = methodCallExpression.Arguments.Select<Expression, SourceProgram>(argument =>
-            {
-                if (argument is NewArrayExpression array && array.Type == typeof(object[]))
-                    return SourceProgram.Concat(
-                        SourceProgram.Text("new object[] "),
-                        SourceProgram.CommaSeparated(
-                            array.Expressions.Select(expression => this.Visit(Unbox(expression))))
-                            .Braced());
-                return this.Visit(Unbox(argument));
-            });
-            return SourceProgram.Concat(
-                SourceProgram.Text("string.Format"),
-                SourceProgram.CommaSeparated(arguments).Parenthesized());
-        }
-
-        private SourceProgram New(NewExpression newExpression)
-        {
-            if (IsAnonymous(newExpression.Type))
-            {
-                return SourceProgram.Concat(
-                    SourceProgram.Text("new "),
-                    SourceProgram.CommaSeparated(newExpression.Arguments.Select((argument, index) =>
-                        {
-                            var value = this.Visit(argument);
-                            return SourceProgram.Concat(
-                                SourceProgram.Text(Identifier(newExpression.Members[index].Name) + " = "),
-                                value.IsText("null")
-                                    ? SourceProgram.Concat(
-                                        SourceProgram.Text(TypeName(argument.Type)).Parenthesized(),
-                                        SourceProgram.Text("null"))
-                                    : value);
-                        }))
-                        .Braced());
-            }
-
-            return SourceProgram.Concat(
-                SourceProgram.Text("new " + TypeName(newExpression.Type)),
-                SourceProgram.CommaSeparated(newExpression.Arguments.Select(this.Visit)).Parenthesized());
         }
     }
 }

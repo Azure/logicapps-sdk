@@ -139,12 +139,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(name: () => "counter", value: () => 1);
             var read = WorkflowActions.BuiltIn.Compose(() => variable.Value.Value<int>() + 1);
             var readSource = Input(read);
-            AssertReturnExpression("""variables("counter").Value<int>() + 1""", readSource);
+            AssertReturnExpression(
+                """
+                global::Newtonsoft.Json.Linq.Extensions.Value<int>(
+                    (global::System.Collections.Generic.IEnumerable<global::Newtonsoft.Json.Linq.JToken>)variables("counter")) + 1
+                """,
+                readSource);
             var loop = WorkflowActions.BuiltIn.Control.ForEach(
                 items: () => new[] { "hello" },
                 actions: item => WorkflowActions.BuiltIn.Compose(() => item.Value<string>().ToUpperInvariant()).WithName("Upper"));
             var inner = loop.GetActionDefinition("flow").Actions["Upper"].Inputs as JToken;
-            AssertReturnExpression("item().Value<string>().ToUpperInvariant()", inner.Value<string>());
+            AssertReturnExpression(
+                """
+                global::Newtonsoft.Json.Linq.Extensions.Value<string>(
+                    (global::System.Collections.Generic.IEnumerable<global::Newtonsoft.Json.Linq.JToken>)item()).ToUpperInvariant()
+                """,
+                inner.Value<string>());
         }
     }
 }

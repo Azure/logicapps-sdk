@@ -19,7 +19,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             offset = 100;
 
             AssertReturnExpression(
-                """new[] { outputs("Source").ToObject<int>(), 2 }.Select((int value) => value + 3).Single()""",
+                """
+                global::System.Linq.Enumerable.Single<int>(
+                    global::System.Linq.Enumerable.Select<int, int>(
+                        (global::System.Collections.Generic.IEnumerable<int>)new int[] { outputs("Source").ToObject<int>(), 2 },
+                        (int value) => value + 3))
+                """,
                 Input(action));
         }
 
@@ -44,10 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         public void SpecialClrValuesRemainRuntimeExpressions()
         {
             AssertReturnExpression(
-                "new[] { (byte)1, (byte)2, (byte)3 }",
+                "new byte[] { (byte)1, (byte)2, (byte)3 }",
                 Input(WorkflowActions.BuiltIn.Compose(() => new byte[] { 1, 2, 3 })));
             AssertReturnExpression(
-                """new global::System.Net.Http.HttpMethod("POST")""",
+                "global::System.Net.Http.HttpMethod.Post",
                 Input(WorkflowActions.BuiltIn.Compose(() => System.Net.Http.HttpMethod.Post)));
 
             var method = System.Net.Http.HttpMethod.Patch;
@@ -121,6 +126,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             AssertReturnExpression(
                 """json("{\"messageId\":\"id\"}").ToObject<global::Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus.SendMessageInputMessageType>().MessageId""",
                 Input(action));
+        }
+
+        [Fact]
+        public void StringFormatAndSelectedOverloadsRemainExplicit()
+        {
+            var value = 1;
+            var formatted = WorkflowActions.BuiltIn.Compose<string>(() => $"{value}");
+            var formattedSource = Input(formatted);
+            Assert.Contains("string.Format", formattedSource);
+            Assert.DoesNotContain("JsonConvert.SerializeObject", formattedSource);
+            AssertReturnExpression(
+                """string.Format("{0}", (object)1)""",
+                formattedSource);
+
+            var concatMethod = typeof(string).GetMethod(
+                nameof(string.Concat),
+                new[] { typeof(object), typeof(object) });
+            var concatExpression = Expression.Lambda<Func<string>>(
+                Expression.Call(
+                    concatMethod,
+                    Expression.Constant("a"),
+                    Expression.Constant("b")));
+            AssertReturnExpression(
+                """string.Concat((object)"a", (object)"b")""",
+                Input(WorkflowActions.BuiltIn.Compose(concatExpression)));
         }
 
         [Fact]
