@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,30 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
         public IBodyWorkflowAction<LatestGetResponse> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<fullContentInput>> fullContent = null, Expression<Func<imageInput>> image = null, Expression<Func<videoInput>> video = null, Expression<Func<string>> page = null)
         {
-            var apiCallPath = "/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (qInTitle != null)
-                callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(qInTitle);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            if (fullContent != null)
-                callPayload.Queries["full_content"] = ExpressionConverter.Convert(fullContent);
-            if (image != null)
-                callPayload.Queries["image"] = ExpressionConverter.Convert(image);
-            if (video != null)
-                callPayload.Queries["video"] = ExpressionConverter.Convert(video);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<LatestGetResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_qInTitle = WorkflowExpression.Compile(qInTitle, nameof(qInTitle), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_fullContent = WorkflowExpression.Compile(fullContent, nameof(fullContent), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            var __workflow_video = WorkflowExpression.Compile(video, nameof(video), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<LatestGetResponse>(() =>
+            {
+                var apiCallPath = "/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                if (__workflow_qInTitle != null)
+                    callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(__workflow_qInTitle);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_domain != null)
+                    callPayload.Queries["domain"] = ExpressionConverter.Convert(__workflow_domain);
+                if (__workflow_fullContent != null)
+                    callPayload.Queries["full_content"] = ExpressionConverter.Convert(__workflow_fullContent);
+                if (__workflow_image != null)
+                    callPayload.Queries["image"] = ExpressionConverter.Convert(__workflow_image);
+                if (__workflow_video != null)
+                    callPayload.Queries["video"] = ExpressionConverter.Convert(__workflow_video);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<LatestGetResponse>(callPayload);
+            });
         }
     }
 
@@ -102,6 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         public string Language { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum fullContentInput
     {
         [EnumMember(Value = "0")]
@@ -110,6 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum imageInput
     {
         [EnumMember(Value = "0")]
@@ -118,6 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum videoInput
     {
         [EnumMember(Value = "0")]

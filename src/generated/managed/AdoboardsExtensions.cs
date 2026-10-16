@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,129 +14,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListAccount> ListAccounts(Expression<Func<string>> memberId)
         {
-            var apiCallPath = "/_apis/Accounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["memberId"] = ExpressionConverter.Convert(memberId);
-            return new ApiConnectionAction<VstsListAccount>(callPayload);
+            var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
+            return new DeferredBodyAction<VstsListAccount>(() =>
+            {
+                var apiCallPath = "/_apis/Accounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["memberId"] = ExpressionConverter.Convert(__workflow_memberId);
+                return new ApiConnectionAction<VstsListAccount>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Profile>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Profile>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Profile>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListProject> ListProjects(Expression<Func<string>> account)
         {
-            var apiCallPath = String.Format("/{0}/_apis/projects", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VstsListProject>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            return new DeferredBodyAction<VstsListProject>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/projects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VstsListProject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/queries", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/queries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/workitemtypes", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            return new DeferredBodyAction<VstsListWorkItemType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitemtypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> ids)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
+            return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/queries/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(folderPath, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/queries/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderPath, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListJObject> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/wiql/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VstsListJObject>(callPayload);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_queryId = WorkflowExpression.Compile(queryId, nameof(queryId), required: true);
+            return new DeferredBodyAction<VstsListJObject>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/wiql/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queryId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VstsListJObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<VstsListSubject> GetSubject(Expression<Func<string>> account, Expression<Func<string>> subjectQueryDetailssearchTerm, Expression<Func<string[]>> subjectQueryDetailssubjectKind, Expression<Func<string>> subjectQueryDetailsscopeDescriptor = null)
         {
-            var apiCallPath = String.Format("/{0}/_apis/graph/subjectquery", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subjectQueryDetails = new JObject();
-            var subjectQueryDetailspropCount = 0;
-            subjectQueryDetailspropCount++;
-            subjectQueryDetails["query"] = ExpressionConverter.ConvertO(subjectQueryDetailssearchTerm);
-            subjectQueryDetailspropCount++;
-            subjectQueryDetails["subjectKind"] = ExpressionConverter.ConvertO(subjectQueryDetailssubjectKind);
-            if (subjectQueryDetailsscopeDescriptor != null)
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_subjectQueryDetailssearchTerm = WorkflowExpression.Compile(subjectQueryDetailssearchTerm, nameof(subjectQueryDetailssearchTerm), required: true);
+            var __workflow_subjectQueryDetailssubjectKind = WorkflowExpression.Compile(subjectQueryDetailssubjectKind, nameof(subjectQueryDetailssubjectKind), required: true);
+            var __workflow_subjectQueryDetailsscopeDescriptor = WorkflowExpression.Compile(subjectQueryDetailsscopeDescriptor, nameof(subjectQueryDetailsscopeDescriptor), required: false);
+            return new DeferredBodyAction<VstsListSubject>(() =>
             {
-                subjectQueryDetails["scopeDescriptor"] = ExpressionConverter.ConvertO(subjectQueryDetailsscopeDescriptor);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/graph/subjectquery", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subjectQueryDetails = new JObject();
+                var subjectQueryDetailspropCount = 0;
                 subjectQueryDetailspropCount++;
-            }
+                subjectQueryDetails["query"] = ExpressionConverter.ConvertO(__workflow_subjectQueryDetailssearchTerm);
+                subjectQueryDetailspropCount++;
+                subjectQueryDetails["subjectKind"] = ExpressionConverter.ConvertO(__workflow_subjectQueryDetailssubjectKind);
+                if (__workflow_subjectQueryDetailsscopeDescriptor != null)
+                {
+                    subjectQueryDetails["scopeDescriptor"] = ExpressionConverter.ConvertO(__workflow_subjectQueryDetailsscopeDescriptor);
+                    subjectQueryDetailspropCount++;
+                }
 
-            if (subjectQueryDetailspropCount > 0)
-            {
-                callPayload.Body = subjectQueryDetails;
-            }
+                if (subjectQueryDetailspropCount > 0)
+                {
+                    callPayload.Body = subjectQueryDetails;
+                }
 
-            return new ApiConnectionAction<VstsListSubject>(callPayload);
+                return new ApiConnectionAction<VstsListSubject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adoboards")]
         public IBodyWorkflowAction<JToken> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project, Expression<Func<int>> workItempriority = null, Expression<Func<KeyValuePair[]>> workItemotherFields = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/_apis/wit/workitems/{2}", ExpressionConverter.ConvertWithUrlEncoding(account, 1), ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var workItem = new JObject();
-            var workItempropCount = 0;
-            if (workItempriority != null)
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_workItempriority = WorkflowExpression.Compile(workItempriority, nameof(workItempriority), required: false);
+            var __workflow_workItemotherFields = WorkflowExpression.Compile(workItemotherFields, nameof(workItemotherFields), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
-                workItempropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/_apis/wit/workitems/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var workItem = new JObject();
+                var workItempropCount = 0;
+                if (__workflow_workItempriority != null)
+                {
+                    workItem["priority"] = ExpressionConverter.ConvertO(__workflow_workItempriority);
+                    workItempropCount++;
+                }
 
-            if (workItemotherFields != null)
-            {
-                workItem["userEnteredFields"] = ExpressionConverter.ConvertO(workItemotherFields);
-                workItempropCount++;
-            }
+                if (__workflow_workItemotherFields != null)
+                {
+                    workItem["userEnteredFields"] = ExpressionConverter.ConvertO(__workflow_workItemotherFields);
+                    workItempropCount++;
+                }
 
-            if (workItempropCount > 0)
-            {
-                callPayload.Body = workItem;
-            }
+                if (workItempropCount > 0)
+                {
+                    callPayload.Body = workItem;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

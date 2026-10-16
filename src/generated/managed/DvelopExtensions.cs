@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,27 +15,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(triggerId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodycondition != null)
+            var __workflow_triggerId = WorkflowExpression.Compile(triggerId, nameof(triggerId), required: true);
+            var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodycondition);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_triggerId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodycondition != null)
+                {
+                    body["conditions"] = ExpressionConverter.ConvertO(__workflow_bodycondition);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

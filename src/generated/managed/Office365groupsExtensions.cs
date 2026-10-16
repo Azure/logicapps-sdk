@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,22 +14,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers(Expression<Func<string>> groupId, Expression<Func<int>> top = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<ListGroupMembersResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<ListGroupMembersResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<ListGroupMembersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction AddMemberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> userUpn)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userUpn"] = ExpressionConverter.Convert(userUpn);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_userUpn = WorkflowExpression.Compile(userUpn, nameof(userUpn), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userUpn"] = ExpressionConverter.Convert(__workflow_userUpn);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
@@ -44,146 +54,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse> ListGroups(Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null)
         {
-            var apiCallPath = "/v1.0/groups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(extractSensitivityLabel);
-            if (fetchSensitivityLabelMetadata != null)
-                callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(fetchSensitivityLabelMetadata);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            return new DeferredBodyAction<ListGroupsResponse>(() =>
+            {
+                var apiCallPath = "/v1.0/groups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = ExpressionConverter.Convert(__workflow_extractSensitivityLabel);
+                if (__workflow_fetchSensitivityLabelMetadata != null)
+                    callPayload.Queries["fetchSensitivityLabelMetadata"] = ExpressionConverter.Convert(__workflow_fetchSensitivityLabelMetadata);
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(__workflow_skiptoken);
+                return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(@event, 2));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            var startObject = new JObject();
-            var startObjectpropCount = 0;
-            if (bodystartstartTime != null)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodystartstartTime = WorkflowExpression.Compile(bodystartstartTime, nameof(bodystartstartTime), required: false);
+            var __workflow_bodyendendTime = WorkflowExpression.Compile(bodyendendTime, nameof(bodyendendTime), required: false);
+            var __workflow_bodybodybody = WorkflowExpression.Compile(bodybodybody, nameof(bodybodybody), required: false);
+            var __workflow_bodylocationlocation = WorkflowExpression.Compile(bodylocationlocation, nameof(bodylocationlocation), required: false);
+            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
+            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
+            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_bodyreminderStartDuration = WorkflowExpression.Compile(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
+            var __workflow_bodyshowAs = WorkflowExpression.Compile(bodyshowAs, nameof(bodyshowAs), required: false);
+            var __workflow_bodyresponseRequested = WorkflowExpression.Compile(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
+            return new DeferredBodyAction<CreateCalendarEventResponse>(() =>
             {
-                startObject["dateTime"] = ExpressionConverter.ConvertO(bodystartstartTime);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_event, 2));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                var startObject = new JObject();
+                var startObjectpropCount = 0;
+                if (__workflow_bodystartstartTime != null)
+                {
+                    startObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartstartTime);
+                    startObjectpropCount++;
+                }
+
+                startObject["timeZone"] = "UTC";
                 startObjectpropCount++;
-            }
+                if (startObjectpropCount > 0)
+                {
+                    body["start"] = startObject;
+                    bodypropCount++;
+                }
 
-            startObject["timeZone"] = "UTC";
-            startObjectpropCount++;
-            if (startObjectpropCount > 0)
-            {
-                body["start"] = startObject;
-                bodypropCount++;
-            }
+                var endObject = new JObject();
+                var endObjectpropCount = 0;
+                if (__workflow_bodyendendTime != null)
+                {
+                    endObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyendendTime);
+                    endObjectpropCount++;
+                }
 
-            var endObject = new JObject();
-            var endObjectpropCount = 0;
-            if (bodyendendTime != null)
-            {
-                endObject["dateTime"] = ExpressionConverter.ConvertO(bodyendendTime);
+                endObject["timeZone"] = "UTC";
                 endObjectpropCount++;
-            }
+                if (endObjectpropCount > 0)
+                {
+                    body["end"] = endObject;
+                    bodypropCount++;
+                }
 
-            endObject["timeZone"] = "UTC";
-            endObjectpropCount++;
-            if (endObjectpropCount > 0)
-            {
-                body["end"] = endObject;
-                bodypropCount++;
-            }
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (__workflow_bodybodybody != null)
+                {
+                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodybodybody);
+                    bodyObjectpropCount++;
+                }
 
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodybodybody != null)
-            {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodybody);
+                bodyObject["contentType"] = "Html";
                 bodyObjectpropCount++;
-            }
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
 
-            bodyObject["contentType"] = "Html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodylocationlocation != null)
+                {
+                    locationObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodylocationlocation);
+                    locationObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodylocationlocation != null)
-            {
-                locationObject["displayName"] = ExpressionConverter.ConvertO(bodylocationlocation);
-                locationObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    body["location"] = locationObject;
+                    bodypropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                body["location"] = locationObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodyimportance != null)
+                {
+                    body["importance"] = ExpressionConverter.ConvertO(__workflow_bodyimportance);
+                    bodypropCount++;
+                }
 
-            if (bodyimportance != null)
-            {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisAllDay != null)
+                {
+                    body["isAllDay"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
+                    bodypropCount++;
+                }
 
-            if (bodyisAllDay != null)
-            {
-                body["isAllDay"] = ExpressionConverter.ConvertO(bodyisAllDay);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisReminderOn != null)
+                {
+                    body["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_bodyisReminderOn);
+                    bodypropCount++;
+                }
 
-            if (bodyisReminderOn != null)
-            {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreminderStartDuration != null)
+                {
+                    body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_bodyreminderStartDuration);
+                    bodypropCount++;
+                }
 
-            if (bodyreminderStartDuration != null)
-            {
-                body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(bodyreminderStartDuration);
-                bodypropCount++;
-            }
+                if (__workflow_bodyshowAs != null)
+                {
+                    body["showAs"] = ExpressionConverter.ConvertO(__workflow_bodyshowAs);
+                    bodypropCount++;
+                }
 
-            if (bodyshowAs != null)
-            {
-                body["showAs"] = ExpressionConverter.ConvertO(bodyshowAs);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresponseRequested != null)
+                {
+                    body["responseRequested"] = ExpressionConverter.ConvertO(__workflow_bodyresponseRequested);
+                    bodypropCount++;
+                }
 
-            if (bodyresponseRequested != null)
-            {
-                body["responseRequested"] = ExpressionConverter.ConvertO(bodyresponseRequested);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
+                return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RemoveMemberFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> userUpn)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members/memberId/$ref", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userUpn"] = ExpressionConverter.Convert(userUpn);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_userUpn = WorkflowExpression.Compile(userUpn, nameof(userUpn), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/memberId/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userUpn"] = ExpressionConverter.Convert(__workflow_userUpn);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
@@ -198,191 +237,239 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RestoreDeletedGroup(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/directory/deletedItems/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/directory/deletedItems/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse> ListDeletedGroupsByOwner(Expression<Func<string>> userId)
         {
-            var apiCallPath = "/v1.0/directory/deletedItems/getUserOwnedObjects";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["userId"] = ExpressionConverter.Convert(userId);
-            return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<ListGroupsResponse>(() =>
+            {
+                var apiCallPath = "/v1.0/directory/deletedItems/getUserOwnedObjects";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["userId"] = ExpressionConverter.Convert(__workflow_userId);
+                return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction CalendarDeleteItem(Expression<Func<string>> groupId, Expression<Func<string>> @event)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(@event, 2));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_event, 2));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
-            var apiCallPath = String.Format("/v2/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            var startObject = new JObject();
-            var startObjectpropCount = 0;
-            if (bodystartstartTime != null)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodystartstartTime = WorkflowExpression.Compile(bodystartstartTime, nameof(bodystartstartTime), required: false);
+            var __workflow_bodyendendTime = WorkflowExpression.Compile(bodyendendTime, nameof(bodyendendTime), required: false);
+            var __workflow_bodybodybody = WorkflowExpression.Compile(bodybodybody, nameof(bodybodybody), required: false);
+            var __workflow_bodylocationlocation = WorkflowExpression.Compile(bodylocationlocation, nameof(bodylocationlocation), required: false);
+            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
+            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
+            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_bodyreminderStartDuration = WorkflowExpression.Compile(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
+            var __workflow_bodyshowAs = WorkflowExpression.Compile(bodyshowAs, nameof(bodyshowAs), required: false);
+            var __workflow_bodyresponseRequested = WorkflowExpression.Compile(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
+            return new DeferredBodyAction<CreateCalendarEventResponse>(() =>
             {
-                startObject["dateTime"] = ExpressionConverter.ConvertO(bodystartstartTime);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                var startObject = new JObject();
+                var startObjectpropCount = 0;
+                if (__workflow_bodystartstartTime != null)
+                {
+                    startObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodystartstartTime);
+                    startObjectpropCount++;
+                }
+
+                startObject["timeZone"] = "UTC";
                 startObjectpropCount++;
-            }
+                if (startObjectpropCount > 0)
+                {
+                    body["start"] = startObject;
+                    bodypropCount++;
+                }
 
-            startObject["timeZone"] = "UTC";
-            startObjectpropCount++;
-            if (startObjectpropCount > 0)
-            {
-                body["start"] = startObject;
-                bodypropCount++;
-            }
+                var endObject = new JObject();
+                var endObjectpropCount = 0;
+                if (__workflow_bodyendendTime != null)
+                {
+                    endObject["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodyendendTime);
+                    endObjectpropCount++;
+                }
 
-            var endObject = new JObject();
-            var endObjectpropCount = 0;
-            if (bodyendendTime != null)
-            {
-                endObject["dateTime"] = ExpressionConverter.ConvertO(bodyendendTime);
+                endObject["timeZone"] = "UTC";
                 endObjectpropCount++;
-            }
+                if (endObjectpropCount > 0)
+                {
+                    body["end"] = endObject;
+                    bodypropCount++;
+                }
 
-            endObject["timeZone"] = "UTC";
-            endObjectpropCount++;
-            if (endObjectpropCount > 0)
-            {
-                body["end"] = endObject;
-                bodypropCount++;
-            }
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (__workflow_bodybodybody != null)
+                {
+                    bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodybodybody);
+                    bodyObjectpropCount++;
+                }
 
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodybodybody != null)
-            {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodybody);
+                bodyObject["contentType"] = "Html";
                 bodyObjectpropCount++;
-            }
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
 
-            bodyObject["contentType"] = "Html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (__workflow_bodylocationlocation != null)
+                {
+                    locationObject["displayName"] = ExpressionConverter.ConvertO(__workflow_bodylocationlocation);
+                    locationObjectpropCount++;
+                }
 
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodylocationlocation != null)
-            {
-                locationObject["displayName"] = ExpressionConverter.ConvertO(bodylocationlocation);
-                locationObjectpropCount++;
-            }
+                if (locationObjectpropCount > 0)
+                {
+                    body["location"] = locationObject;
+                    bodypropCount++;
+                }
 
-            if (locationObjectpropCount > 0)
-            {
-                body["location"] = locationObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodyimportance != null)
+                {
+                    body["importance"] = ExpressionConverter.ConvertO(__workflow_bodyimportance);
+                    bodypropCount++;
+                }
 
-            if (bodyimportance != null)
-            {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisAllDay != null)
+                {
+                    body["isAllDay"] = ExpressionConverter.ConvertO(__workflow_bodyisAllDay);
+                    bodypropCount++;
+                }
 
-            if (bodyisAllDay != null)
-            {
-                body["isAllDay"] = ExpressionConverter.ConvertO(bodyisAllDay);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisReminderOn != null)
+                {
+                    body["isReminderOn"] = ExpressionConverter.ConvertO(__workflow_bodyisReminderOn);
+                    bodypropCount++;
+                }
 
-            if (bodyisReminderOn != null)
-            {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreminderStartDuration != null)
+                {
+                    body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(__workflow_bodyreminderStartDuration);
+                    bodypropCount++;
+                }
 
-            if (bodyreminderStartDuration != null)
-            {
-                body["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(bodyreminderStartDuration);
-                bodypropCount++;
-            }
+                if (__workflow_bodyshowAs != null)
+                {
+                    body["showAs"] = ExpressionConverter.ConvertO(__workflow_bodyshowAs);
+                    bodypropCount++;
+                }
 
-            if (bodyshowAs != null)
-            {
-                body["showAs"] = ExpressionConverter.ConvertO(bodyshowAs);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresponseRequested != null)
+                {
+                    body["responseRequested"] = ExpressionConverter.ConvertO(__workflow_bodyresponseRequested);
+                    bodypropCount++;
+                }
 
-            if (bodyresponseRequested != null)
-            {
-                body["responseRequested"] = ExpressionConverter.ConvertO(bodyresponseRequested);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
+                return new ApiConnectionAction<CreateCalendarEventResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var apiCallPath = "/v2/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
-            callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-            if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-            if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-            if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-            if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-            if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/v2/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(__workflow_uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["ContentType"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(__workflow_customHeader1);
+                if (__workflow_customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(__workflow_customHeader2);
+                if (__workflow_customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(__workflow_customHeader3);
+                if (__workflow_customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
+                if (__workflow_customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class Office365groupsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1.0/groups/delta";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/v1.0/groups/delta";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["$select"] = Convert.ToString("members");
+                return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OnNewEventResponseItem[]>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnNewEventResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OnNewEventResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -653,6 +740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyimportanceInput
     {
         Low,
@@ -660,6 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         High
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyshowAsInput
     {
         Free,
@@ -670,6 +759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         Unknown
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

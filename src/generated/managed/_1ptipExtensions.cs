@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,13 +14,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
         public IBodyWorkflowAction<URLGetResponse> URLGet(Expression<Func<string>> @long, Expression<Func<string>> @short = null)
         {
-            var apiCallPath = "/addURL";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
-            if (@short != null)
-                callPayload.Queries["short"] = ExpressionConverter.Convert(@short);
-            return new ApiConnectionAction<URLGetResponse>(callPayload);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
+            var __workflow_short = WorkflowExpression.Compile(@short, nameof(@short), required: false);
+            return new DeferredBodyAction<URLGetResponse>(() =>
+            {
+                var apiCallPath = "/addURL";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["long"] = ExpressionConverter.Convert(__workflow_long);
+                if (__workflow_short != null)
+                    callPayload.Queries["short"] = ExpressionConverter.Convert(__workflow_short);
+                return new ApiConnectionAction<URLGetResponse>(callPayload);
+            });
         }
     }
 

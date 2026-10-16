@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,29 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp> GetGenerationResultAsync(Expression<Func<string>> generatedLivedocId)
         {
-            var apiCallPath = String.Format("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(callPayload);
+            var __workflow_generatedLivedocId = WorkflowExpression.Compile(generatedLivedocId, nameof(generatedLivedocId), required: true);
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_generatedLivedocId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2CommonModelsDownloadLocationResp> GetGeneratedLiveDocContent(Expression<Func<string>> generatedLivedocId, Expression<Func<string>> outputId)
         {
-            var apiCallPath = String.Format("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(outputId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["redirect"] = Convert.ToString(false);
-            return new ApiConnectionAction<V2CommonModelsDownloadLocationResp>(callPayload);
+            var __workflow_generatedLivedocId = WorkflowExpression.Compile(generatedLivedocId, nameof(generatedLivedocId), required: true);
+            var __workflow_outputId = WorkflowExpression.Compile(outputId, nameof(outputId), required: true);
+            return new DeferredBodyAction<V2CommonModelsDownloadLocationResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_outputId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["redirect"] = Convert.ToString(false);
+                return new ApiConnectionAction<V2CommonModelsDownloadLocationResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2PredictiveContentModelsPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
         {
-            var apiCallPath = String.Format("/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(contextId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2PredictiveContentModelsPredictiveContentResponse[]>(callPayload);
+            var __workflow_predictiveContentId = WorkflowExpression.Compile(predictiveContentId, nameof(predictiveContentId), required: true);
+            var __workflow_contextId = WorkflowExpression.Compile(contextId, nameof(contextId), required: true);
+            return new DeferredBodyAction<V2PredictiveContentModelsPredictiveContentResponse[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contextId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2PredictiveContentModelsPredictiveContentResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -51,218 +65,284 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> metadata, Expression<Func<object>> content)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(callPayload);
+            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
+            return new DeferredBodyAction<V2LibraryContentManagementModelsFileResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse> GetItemInformation(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LibraryContentManagementModelsItemResponse>(callPayload);
+            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
+            return new DeferredBodyAction<V2LibraryContentManagementModelsItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LibraryContentManagementModelsItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IWorkflowAction SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> commentcomments = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            if (commentcomments != null)
+            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentId = WorkflowExpression.Compile(libraryContentId, nameof(libraryContentId), required: true);
+            var __workflow_commentcomments = WorkflowExpression.Compile(commentcomments, nameof(commentcomments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                comment["comments"] = ExpressionConverter.ConvertO(commentcomments);
-                commentpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                if (__workflow_commentcomments != null)
+                {
+                    comment["comments"] = ExpressionConverter.ConvertO(__workflow_commentcomments);
+                    commentpropCount++;
+                }
 
-            if (commentpropCount > 0)
-            {
-                callPayload.Body = comment;
-            }
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp> GetLiveDocInputParams(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(callPayload);
+            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentVersionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<genInputReqoutputsInputItem[]>> genInputReqoutputs, Expression<Func<V2AdHocInputs[]>> genInputReqadHocInputs = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var genInputReq = new JObject();
-            var genInputReqpropCount = 0;
-            if (genInputReqadHocInputs != null)
+            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_libraryContentVersionId = WorkflowExpression.Compile(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
+            var __workflow_genInputReqoutputs = WorkflowExpression.Compile(genInputReqoutputs, nameof(genInputReqoutputs), required: true);
+            var __workflow_genInputReqadHocInputs = WorkflowExpression.Compile(genInputReqadHocInputs, nameof(genInputReqadHocInputs), required: false);
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(() =>
             {
-                genInputReq["adHocInputs"] = ExpressionConverter.ConvertO(genInputReqadHocInputs);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_libraryContentVersionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var genInputReq = new JObject();
+                var genInputReqpropCount = 0;
+                if (__workflow_genInputReqadHocInputs != null)
+                {
+                    genInputReq["adHocInputs"] = ExpressionConverter.ConvertO(__workflow_genInputReqadHocInputs);
+                    genInputReqpropCount++;
+                }
+
                 genInputReqpropCount++;
-            }
+                genInputReq["outputs"] = ExpressionConverter.ConvertO(__workflow_genInputReqoutputs);
+                if (genInputReqpropCount > 0)
+                {
+                    callPayload.Body = genInputReq;
+                }
 
-            genInputReqpropCount++;
-            genInputReq["outputs"] = ExpressionConverter.ConvertO(genInputReqoutputs);
-            if (genInputReqpropCount > 0)
-            {
-                callPayload.Body = genInputReq;
-            }
-
-            return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
+                return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2LibraryPublishingPublishResponse> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> publishRequestcomment = null, Expression<Func<V2LibraryPublishingPublishContentItem[]>> publishRequestcontent = null, Expression<Func<string>> publishRequestpublishAt = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var publishRequest = new JObject();
-            var publishRequestpropCount = 0;
-            if (publishRequestcomment != null)
+            var __workflow_teamsiteId = WorkflowExpression.Compile(teamsiteId, nameof(teamsiteId), required: true);
+            var __workflow_publishRequestcomment = WorkflowExpression.Compile(publishRequestcomment, nameof(publishRequestcomment), required: false);
+            var __workflow_publishRequestcontent = WorkflowExpression.Compile(publishRequestcontent, nameof(publishRequestcontent), required: false);
+            var __workflow_publishRequestpublishAt = WorkflowExpression.Compile(publishRequestpublishAt, nameof(publishRequestpublishAt), required: false);
+            return new DeferredBodyAction<V2LibraryPublishingPublishResponse>(() =>
             {
-                publishRequest["comment"] = ExpressionConverter.ConvertO(publishRequestcomment);
-                publishRequestpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var publishRequest = new JObject();
+                var publishRequestpropCount = 0;
+                if (__workflow_publishRequestcomment != null)
+                {
+                    publishRequest["comment"] = ExpressionConverter.ConvertO(__workflow_publishRequestcomment);
+                    publishRequestpropCount++;
+                }
 
-            if (publishRequestcontent != null)
-            {
-                publishRequest["content"] = ExpressionConverter.ConvertO(publishRequestcontent);
-                publishRequestpropCount++;
-            }
+                if (__workflow_publishRequestcontent != null)
+                {
+                    publishRequest["content"] = ExpressionConverter.ConvertO(__workflow_publishRequestcontent);
+                    publishRequestpropCount++;
+                }
 
-            if (publishRequestpublishAt != null)
-            {
-                publishRequest["publishAt"] = ExpressionConverter.ConvertO(publishRequestpublishAt);
-                publishRequestpropCount++;
-            }
+                if (__workflow_publishRequestpublishAt != null)
+                {
+                    publishRequest["publishAt"] = ExpressionConverter.ConvertO(__workflow_publishRequestpublishAt);
+                    publishRequestpropCount++;
+                }
 
-            if (publishRequestpropCount > 0)
-            {
-                callPayload.Body = publishRequest;
-            }
+                if (publishRequestpropCount > 0)
+                {
+                    callPayload.Body = publishRequest;
+                }
 
-            return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
+                return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2UsersUserResponse> GetUserDetails(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2UsersUserResponse>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<V2UsersUserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2UsersUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp> CreateFile(Expression<Func<string>> metadata, Expression<Func<object>> content)
         {
-            var apiCallPath = "/workspace/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(callPayload);
+            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFileResp>(() =>
+            {
+                var apiCallPath = "/workspace/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceFolder(Expression<Func<string>> foldername = null, Expression<Func<string>> folderparentFolderId = null)
         {
-            var apiCallPath = "/workspace/folders";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var folder = new JObject();
-            var folderpropCount = 0;
-            if (foldername != null)
+            var __workflow_foldername = WorkflowExpression.Compile(foldername, nameof(foldername), required: false);
+            var __workflow_folderparentFolderId = WorkflowExpression.Compile(folderparentFolderId, nameof(folderparentFolderId), required: false);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp>(() =>
             {
-                folder["name"] = ExpressionConverter.ConvertO(foldername);
-                folderpropCount++;
-            }
+                var apiCallPath = "/workspace/folders";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var folder = new JObject();
+                var folderpropCount = 0;
+                if (__workflow_foldername != null)
+                {
+                    folder["name"] = ExpressionConverter.ConvertO(__workflow_foldername);
+                    folderpropCount++;
+                }
 
-            if (folderparentFolderId != null)
-            {
-                folder["parentFolderId"] = ExpressionConverter.ConvertO(folderparentFolderId);
-                folderpropCount++;
-            }
+                if (__workflow_folderparentFolderId != null)
+                {
+                    folder["parentFolderId"] = ExpressionConverter.ConvertO(__workflow_folderparentFolderId);
+                    folderpropCount++;
+                }
 
-            if (folderpropCount > 0)
-            {
-                callPayload.Body = folder;
-            }
+                if (folderpropCount > 0)
+                {
+                    callPayload.Body = folder;
+                }
 
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceContextualFolder(Expression<Func<string>> foldercontextId = null, Expression<Func<string>> foldercontextType = null, Expression<Func<string>> foldercontextTypePlural = null, Expression<Func<string>> foldername = null, Expression<Func<string>> foldersystemType = null)
         {
-            var apiCallPath = "/workspace/folders/createContextualFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var folder = new JObject();
-            var folderpropCount = 0;
-            if (foldercontextId != null)
+            var __workflow_foldercontextId = WorkflowExpression.Compile(foldercontextId, nameof(foldercontextId), required: false);
+            var __workflow_foldercontextType = WorkflowExpression.Compile(foldercontextType, nameof(foldercontextType), required: false);
+            var __workflow_foldercontextTypePlural = WorkflowExpression.Compile(foldercontextTypePlural, nameof(foldercontextTypePlural), required: false);
+            var __workflow_foldername = WorkflowExpression.Compile(foldername, nameof(foldername), required: false);
+            var __workflow_foldersystemType = WorkflowExpression.Compile(foldersystemType, nameof(foldersystemType), required: false);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp>(() =>
             {
-                folder["contextId"] = ExpressionConverter.ConvertO(foldercontextId);
-                folderpropCount++;
-            }
+                var apiCallPath = "/workspace/folders/createContextualFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var folder = new JObject();
+                var folderpropCount = 0;
+                if (__workflow_foldercontextId != null)
+                {
+                    folder["contextId"] = ExpressionConverter.ConvertO(__workflow_foldercontextId);
+                    folderpropCount++;
+                }
 
-            if (foldercontextType != null)
-            {
-                folder["contextType"] = ExpressionConverter.ConvertO(foldercontextType);
-                folderpropCount++;
-            }
+                if (__workflow_foldercontextType != null)
+                {
+                    folder["contextType"] = ExpressionConverter.ConvertO(__workflow_foldercontextType);
+                    folderpropCount++;
+                }
 
-            if (foldercontextTypePlural != null)
-            {
-                folder["contextTypePlural"] = ExpressionConverter.ConvertO(foldercontextTypePlural);
-                folderpropCount++;
-            }
+                if (__workflow_foldercontextTypePlural != null)
+                {
+                    folder["contextTypePlural"] = ExpressionConverter.ConvertO(__workflow_foldercontextTypePlural);
+                    folderpropCount++;
+                }
 
-            if (foldername != null)
-            {
-                folder["name"] = ExpressionConverter.ConvertO(foldername);
-                folderpropCount++;
-            }
+                if (__workflow_foldername != null)
+                {
+                    folder["name"] = ExpressionConverter.ConvertO(__workflow_foldername);
+                    folderpropCount++;
+                }
 
-            if (foldersystemType != null)
-            {
-                folder["systemType"] = ExpressionConverter.ConvertO(foldersystemType);
-                folderpropCount++;
-            }
+                if (__workflow_foldersystemType != null)
+                {
+                    folder["systemType"] = ExpressionConverter.ConvertO(__workflow_foldersystemType);
+                    folderpropCount++;
+                }
 
-            if (folderpropCount > 0)
-            {
-                callPayload.Body = folder;
-            }
+                if (folderpropCount > 0)
+                {
+                    callPayload.Body = folder;
+                }
 
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp> GetWorkspaceFolderItems(Expression<Func<string>> workspaceFolderId)
         {
-            var apiCallPath = String.Format("/workspace/folders/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            var __workflow_workspaceFolderId = WorkflowExpression.Compile(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workspace/folders/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceFolderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
         public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsItemResp> GetItem(Expression<Func<string>> workspaceContentId)
         {
-            var apiCallPath = String.Format("/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            var __workflow_workspaceContentId = WorkflowExpression.Compile(workspaceContentId, nameof(workspaceContentId), required: true);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsItemResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            });
         }
     }
 
@@ -294,6 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public V2LiveDocsModelsResponseModelsLiveDocGenOutputResultRespStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2LiveDocsModelsResponseModelsLiveDocGenOutputResultRespStatusType
     {
         Queued,
@@ -533,6 +614,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string[] Values { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2LibraryContentManagementModelsFileResponseTypeType
     {
         [EnumMember(Value = "unknown")]
@@ -626,6 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2LibraryContentManagementModelsItemResponseTypeType
     {
         [EnumMember(Value = "unknown")]
@@ -710,6 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public genInputReqoutputsInputItemDocxOptionsTypeImageDpiType ImageDpi { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemDocxOptionsTypeImageDpiType
     {
         [EnumMember(Value = "0")]
@@ -728,6 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         _400
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemFormatType
     {
         PPTX,
@@ -754,6 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string OwnerPassword { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemPdfOptionsTypeCompatibilityType
     {
         [EnumMember(Value = "Acrobat 5.0")]
@@ -764,6 +850,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         Acrobat90
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemPdfOptionsTypeLayoutType
     {
         [EnumMember(Value = "Full Page Slides")]
@@ -781,6 +868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public genInputReqoutputsInputItemPptxOptionsTypeImageDpiType ImageDpi { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genInputReqoutputsInputItemPptxOptionsTypeImageDpiType
     {
         [EnumMember(Value = "0")]
@@ -913,6 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Username { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2UsersUserResponseLicenseTypeType
     {
         [EnumMember(Value = "business")]
@@ -989,6 +1078,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2WorkSpaceContentManagerModelsWsFileRespTypeType
     {
         [EnumMember(Value = "folder")]
@@ -1053,6 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2WorkSpaceContentManagerModelsWsFolderRespTypeType
     {
         [EnumMember(Value = "folder")]
@@ -1129,6 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum V2WorkSpaceContentManagerModelsWsItemRespTypeType
     {
         [EnumMember(Value = "folder")]

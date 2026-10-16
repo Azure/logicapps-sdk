@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,79 +23,91 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<Application> PostApplication(Expression<Func<string>> bodydisplayName = null, Expression<Func<bool>> bodyisFallbackPublicClient = null, Expression<Func<string[]>> bodywebredirectUris = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableIdTokenIssuance = null, Expression<Func<bool>> bodywebimplicitGrantSettingsenableAccessTokenIssuance = null)
         {
-            var apiCallPath = "/v1.0/applications";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydisplayName != null)
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodyisFallbackPublicClient = WorkflowExpression.Compile(bodyisFallbackPublicClient, nameof(bodyisFallbackPublicClient), required: false);
+            var __workflow_bodywebredirectUris = WorkflowExpression.Compile(bodywebredirectUris, nameof(bodywebredirectUris), required: false);
+            var __workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance = WorkflowExpression.Compile(bodywebimplicitGrantSettingsenableIdTokenIssuance, nameof(bodywebimplicitGrantSettingsenableIdTokenIssuance), required: false);
+            var __workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance = WorkflowExpression.Compile(bodywebimplicitGrantSettingsenableAccessTokenIssuance, nameof(bodywebimplicitGrantSettingsenableAccessTokenIssuance), required: false);
+            return new DeferredBodyAction<Application>(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1.0/applications";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyisFallbackPublicClient != null)
-            {
-                body["isFallbackPublicClient"] = ExpressionConverter.ConvertO(bodyisFallbackPublicClient);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisFallbackPublicClient != null)
+                {
+                    body["isFallbackPublicClient"] = ExpressionConverter.ConvertO(__workflow_bodyisFallbackPublicClient);
+                    bodypropCount++;
+                }
 
-            var webObject = new JObject();
-            var webObjectpropCount = 0;
-            if (bodywebredirectUris != null)
-            {
-                webObject["redirectUris"] = ExpressionConverter.ConvertO(bodywebredirectUris);
-                webObjectpropCount++;
-            }
+                var webObject = new JObject();
+                var webObjectpropCount = 0;
+                if (__workflow_bodywebredirectUris != null)
+                {
+                    webObject["redirectUris"] = ExpressionConverter.ConvertO(__workflow_bodywebredirectUris);
+                    webObjectpropCount++;
+                }
 
-            var implicitGrantSettingsObject = new JObject();
-            var implicitGrantSettingsObjectpropCount = 0;
-            if (bodywebimplicitGrantSettingsenableIdTokenIssuance != null)
-            {
-                implicitGrantSettingsObject["enableIdTokenIssuance"] = ExpressionConverter.ConvertO(bodywebimplicitGrantSettingsenableIdTokenIssuance);
-                implicitGrantSettingsObjectpropCount++;
-            }
+                var implicitGrantSettingsObject = new JObject();
+                var implicitGrantSettingsObjectpropCount = 0;
+                if (__workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance != null)
+                {
+                    implicitGrantSettingsObject["enableIdTokenIssuance"] = ExpressionConverter.ConvertO(__workflow_bodywebimplicitGrantSettingsenableIdTokenIssuance);
+                    implicitGrantSettingsObjectpropCount++;
+                }
 
-            if (bodywebimplicitGrantSettingsenableAccessTokenIssuance != null)
-            {
-                implicitGrantSettingsObject["enableAccessTokenIssuance"] = ExpressionConverter.ConvertO(bodywebimplicitGrantSettingsenableAccessTokenIssuance);
-                implicitGrantSettingsObjectpropCount++;
-            }
+                if (__workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance != null)
+                {
+                    implicitGrantSettingsObject["enableAccessTokenIssuance"] = ExpressionConverter.ConvertO(__workflow_bodywebimplicitGrantSettingsenableAccessTokenIssuance);
+                    implicitGrantSettingsObjectpropCount++;
+                }
 
-            if (implicitGrantSettingsObjectpropCount > 0)
-            {
-                webObject["implicitGrantSettings"] = implicitGrantSettingsObject;
-                webObjectpropCount++;
-            }
+                if (implicitGrantSettingsObjectpropCount > 0)
+                {
+                    webObject["implicitGrantSettings"] = implicitGrantSettingsObject;
+                    webObjectpropCount++;
+                }
 
-            if (webObjectpropCount > 0)
-            {
-                body["web"] = webObject;
-                bodypropCount++;
-            }
+                if (webObjectpropCount > 0)
+                {
+                    body["web"] = webObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Application>(callPayload);
+                return new ApiConnectionAction<Application>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IWorkflowAction PatchApplication(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -119,47 +131,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<PermissionGrant> PostPermissionGrant(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodyconsentType = null, Expression<Func<string>> bodyprincipalId = null, Expression<Func<string>> bodyresourceId = null, Expression<Func<string>> bodyscope = null)
         {
-            var apiCallPath = "/v1.0/oauth2PermissionGrants";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyclientId != null)
+            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
+            var __workflow_bodyconsentType = WorkflowExpression.Compile(bodyconsentType, nameof(bodyconsentType), required: false);
+            var __workflow_bodyprincipalId = WorkflowExpression.Compile(bodyprincipalId, nameof(bodyprincipalId), required: false);
+            var __workflow_bodyresourceId = WorkflowExpression.Compile(bodyresourceId, nameof(bodyresourceId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
+            return new DeferredBodyAction<PermissionGrant>(() =>
             {
-                body["clientId"] = ExpressionConverter.ConvertO(bodyclientId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1.0/oauth2PermissionGrants";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyclientId != null)
+                {
+                    body["clientId"] = ExpressionConverter.ConvertO(__workflow_bodyclientId);
+                    bodypropCount++;
+                }
 
-            if (bodyconsentType != null)
-            {
-                body["consentType"] = ExpressionConverter.ConvertO(bodyconsentType);
-                bodypropCount++;
-            }
+                if (__workflow_bodyconsentType != null)
+                {
+                    body["consentType"] = ExpressionConverter.ConvertO(__workflow_bodyconsentType);
+                    bodypropCount++;
+                }
 
-            if (bodyprincipalId != null)
-            {
-                body["principalId"] = ExpressionConverter.ConvertO(bodyprincipalId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprincipalId != null)
+                {
+                    body["principalId"] = ExpressionConverter.ConvertO(__workflow_bodyprincipalId);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceId != null)
-            {
-                body["resourceId"] = ExpressionConverter.ConvertO(bodyresourceId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceId != null)
+                {
+                    body["resourceId"] = ExpressionConverter.ConvertO(__workflow_bodyresourceId);
+                    bodypropCount++;
+                }
 
-            if (bodyscope != null)
-            {
-                body["scope"] = ExpressionConverter.ConvertO(bodyscope);
-                bodypropCount++;
-            }
+                if (__workflow_bodyscope != null)
+                {
+                    body["scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PermissionGrant>(callPayload);
+                return new ApiConnectionAction<PermissionGrant>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -174,35 +194,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<UserFlow> PostUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null)
         {
-            var apiCallPath = "/beta/identity/userFlows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyuserFlowType = WorkflowExpression.Compile(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
+            var __workflow_bodyuserFlowTypeVersion = WorkflowExpression.Compile(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
+            return new DeferredBodyAction<UserFlow>(() =>
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
+                var apiCallPath = "/beta/identity/userFlows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyid != null)
+                {
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
+                    bodypropCount++;
+                }
 
-            if (bodyuserFlowType != null)
-            {
-                body["userFlowType"] = ExpressionConverter.ConvertO(bodyuserFlowType);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuserFlowType != null)
+                {
+                    body["userFlowType"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowType);
+                    bodypropCount++;
+                }
 
-            if (bodyuserFlowTypeVersion != null)
-            {
-                body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuserFlowTypeVersion != null)
+                {
+                    body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowTypeVersion);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UserFlow>(callPayload);
+                return new ApiConnectionAction<UserFlow>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -217,69 +243,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<UserFlow> PostB2cUserflow(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyuserFlowType = null, Expression<Func<int>> bodyuserFlowTypeVersion = null, Expression<Func<bool>> bodytokenClaimsConfigurationisIssuerEntityUserFlow = null)
         {
-            var apiCallPath = "/beta/identity/b2cUserflows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyuserFlowType = WorkflowExpression.Compile(bodyuserFlowType, nameof(bodyuserFlowType), required: false);
+            var __workflow_bodyuserFlowTypeVersion = WorkflowExpression.Compile(bodyuserFlowTypeVersion, nameof(bodyuserFlowTypeVersion), required: false);
+            var __workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow = WorkflowExpression.Compile(bodytokenClaimsConfigurationisIssuerEntityUserFlow, nameof(bodytokenClaimsConfigurationisIssuerEntityUserFlow), required: false);
+            return new DeferredBodyAction<UserFlow>(() =>
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyuserFlowType != null)
-            {
-                body["userFlowType"] = ExpressionConverter.ConvertO(bodyuserFlowType);
-                bodypropCount++;
-            }
-
-            if (bodyuserFlowTypeVersion != null)
-            {
-                if (bodyuserFlowTypeVersion != null)
+                var apiCallPath = "/beta/identity/b2cUserflows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyid != null)
                 {
-                    body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(bodyuserFlowTypeVersion);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["userFlowTypeVersion"] = 1;
-                bodypropCount++;
-            }
-
-            var tokenClaimsConfigurationObject = new JObject();
-            var tokenClaimsConfigurationObjectpropCount = 0;
-            if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
-            {
-                if (bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
+                if (__workflow_bodyuserFlowType != null)
                 {
-                    tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+                    body["userFlowType"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowType);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyuserFlowTypeVersion != null)
+                {
+                    if (__workflow_bodyuserFlowTypeVersion != null)
+                    {
+                        body["userFlowTypeVersion"] = ExpressionConverter.ConvertO(__workflow_bodyuserFlowTypeVersion);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["userFlowTypeVersion"] = 1;
+                    bodypropCount++;
+                }
+
+                var tokenClaimsConfigurationObject = new JObject();
+                var tokenClaimsConfigurationObjectpropCount = 0;
+                if (__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
+                {
+                    if (__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow != null)
+                    {
+                        tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = ExpressionConverter.ConvertO(__workflow_bodytokenClaimsConfigurationisIssuerEntityUserFlow);
+                        tokenClaimsConfigurationObjectpropCount++;
+                    }
+
+                    tokenClaimsConfigurationObjectpropCount++;
+                }
+                else
+                {
+                    tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = true;
                     tokenClaimsConfigurationObjectpropCount++;
                 }
 
-                tokenClaimsConfigurationObjectpropCount++;
-            }
-            else
-            {
-                tokenClaimsConfigurationObject["isIssuerEntityUserFlow"] = true;
-                tokenClaimsConfigurationObjectpropCount++;
-            }
+                if (tokenClaimsConfigurationObjectpropCount > 0)
+                {
+                    body["tokenClaimsConfiguration"] = tokenClaimsConfigurationObject;
+                    bodypropCount++;
+                }
 
-            if (tokenClaimsConfigurationObjectpropCount > 0)
-            {
-                body["tokenClaimsConfiguration"] = tokenClaimsConfigurationObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserFlow>(callPayload);
+                return new ApiConnectionAction<UserFlow>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
@@ -294,41 +327,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.B2cidpconfiguration
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "b2cidpconfiguration")]
         public IBodyWorkflowAction<ServicePrinciple> PostServicePrinciple(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodyappId = null, Expression<Func<bool>> bodyappRoleAssignmentRequired = null, Expression<Func<string[]>> bodyreplyUrls = null)
         {
-            var apiCallPath = "/v1.0/serviceprincipals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountEnabled != null)
+            var __workflow_bodyaccountEnabled = WorkflowExpression.Compile(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            var __workflow_bodyappId = WorkflowExpression.Compile(bodyappId, nameof(bodyappId), required: false);
+            var __workflow_bodyappRoleAssignmentRequired = WorkflowExpression.Compile(bodyappRoleAssignmentRequired, nameof(bodyappRoleAssignmentRequired), required: false);
+            var __workflow_bodyreplyUrls = WorkflowExpression.Compile(bodyreplyUrls, nameof(bodyreplyUrls), required: false);
+            return new DeferredBodyAction<ServicePrinciple>(() =>
             {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1.0/serviceprincipals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyaccountEnabled != null)
+                {
+                    body["accountEnabled"] = ExpressionConverter.ConvertO(__workflow_bodyaccountEnabled);
+                    bodypropCount++;
+                }
 
-            if (bodyappId != null)
-            {
-                body["appId"] = ExpressionConverter.ConvertO(bodyappId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyappId != null)
+                {
+                    body["appId"] = ExpressionConverter.ConvertO(__workflow_bodyappId);
+                    bodypropCount++;
+                }
 
-            if (bodyappRoleAssignmentRequired != null)
-            {
-                body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(bodyappRoleAssignmentRequired);
-                bodypropCount++;
-            }
+                if (__workflow_bodyappRoleAssignmentRequired != null)
+                {
+                    body["appRoleAssignmentRequired"] = ExpressionConverter.ConvertO(__workflow_bodyappRoleAssignmentRequired);
+                    bodypropCount++;
+                }
 
-            if (bodyreplyUrls != null)
-            {
-                body["replyUrls"] = ExpressionConverter.ConvertO(bodyreplyUrls);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreplyUrls != null)
+                {
+                    body["replyUrls"] = ExpressionConverter.ConvertO(__workflow_bodyreplyUrls);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ServicePrinciple>(callPayload);
+                return new ApiConnectionAction<ServicePrinciple>(callPayload);
+            });
         }
     }
 

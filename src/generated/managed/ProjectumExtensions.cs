@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,69 +14,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> GeneratePowerpointDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
         {
-            var apiCallPath = "/api/Powerpoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var generationInfo = new JObject();
-            var generationInfopropCount = 0;
-            generationInfopropCount++;
-            generationInfo["dataMap"] = ExpressionConverter.ConvertO(generationInfodataMap);
-            if (generationInfofile != null)
+            var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
+            var __workflow_generationInfofile = WorkflowExpression.Compile(generationInfofile, nameof(generationInfofile), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                generationInfo["file"] = ExpressionConverter.ConvertO(generationInfofile);
+                var apiCallPath = "/api/Powerpoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var generationInfo = new JObject();
+                var generationInfopropCount = 0;
                 generationInfopropCount++;
-            }
+                generationInfo["dataMap"] = ExpressionConverter.ConvertO(__workflow_generationInfodataMap);
+                if (__workflow_generationInfofile != null)
+                {
+                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfofile);
+                    generationInfopropCount++;
+                }
 
-            if (generationInfopropCount > 0)
-            {
-                callPayload.Body = generationInfo;
-            }
+                if (generationInfopropCount > 0)
+                {
+                    callPayload.Body = generationInfo;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> GenerateWordDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
         {
-            var apiCallPath = "/api/Word";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var generationInfo = new JObject();
-            var generationInfopropCount = 0;
-            generationInfopropCount++;
-            generationInfo["dataMap"] = ExpressionConverter.ConvertO(generationInfodataMap);
-            if (generationInfofile != null)
+            var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
+            var __workflow_generationInfofile = WorkflowExpression.Compile(generationInfofile, nameof(generationInfofile), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                generationInfo["file"] = ExpressionConverter.ConvertO(generationInfofile);
+                var apiCallPath = "/api/Word";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var generationInfo = new JObject();
+                var generationInfopropCount = 0;
                 generationInfopropCount++;
-            }
+                generationInfo["dataMap"] = ExpressionConverter.ConvertO(__workflow_generationInfodataMap);
+                if (__workflow_generationInfofile != null)
+                {
+                    generationInfo["file"] = ExpressionConverter.ConvertO(__workflow_generationInfofile);
+                    generationInfopropCount++;
+                }
 
-            if (generationInfopropCount > 0)
-            {
-                callPayload.Body = generationInfo;
-            }
+                if (generationInfopropCount > 0)
+                {
+                    callPayload.Body = generationInfo;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> MergePowerpointDocuments(Expression<Func<string[]>> documents = null)
         {
-            var apiCallPath = "/api/Powerpoint/Merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(documents);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/Powerpoint/Merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_documents);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> MergeWordDocuments(Expression<Func<string[]>> documents = null)
         {
-            var apiCallPath = "/api/Word/Merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(documents);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/Word/Merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_documents);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

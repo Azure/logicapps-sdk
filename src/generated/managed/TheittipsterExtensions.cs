@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,45 +14,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
         public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
         {
-            var apiCallPath = "/api/generateBarcode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybarcodeNumber != null)
+            var __workflow_bodybarcodeNumber = WorkflowExpression.Compile(bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
+            return new DeferredBodyAction<GenerateBarcodeResponse>(() =>
             {
-                body["barcodeNumber"] = ExpressionConverter.ConvertO(bodybarcodeNumber);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/generateBarcode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodybarcodeNumber != null)
+                {
+                    body["barcodeNumber"] = ExpressionConverter.ConvertO(__workflow_bodybarcodeNumber);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GenerateBarcodeResponse>(callPayload);
+                return new ApiConnectionAction<GenerateBarcodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
         public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
         {
-            var apiCallPath = "/api/generateQRCode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyqrcodeText != null)
+            var __workflow_bodyqrcodeText = WorkflowExpression.Compile(bodyqrcodeText, nameof(bodyqrcodeText), required: false);
+            return new DeferredBodyAction<GenerateQRCodeResponse>(() =>
             {
-                body["qrcodeText"] = ExpressionConverter.ConvertO(bodyqrcodeText);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/generateQRCode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyqrcodeText != null)
+                {
+                    body["qrcodeText"] = ExpressionConverter.ConvertO(__workflow_bodyqrcodeText);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GenerateQRCodeResponse>(callPayload);
+                return new ApiConnectionAction<GenerateQRCodeResponse>(callPayload);
+            });
         }
     }
 

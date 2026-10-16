@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,12 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalizeioip")]
         public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality(Expression<Func<string>> name)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            return new DeferredBodyAction<CheckNamesNationalityResponseItem[]>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -25,62 +25,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IWorkflowAction ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<callbackBodyflowResultInput>> callbackBodyflowResult = null)
         {
-            var apiCallPath = String.Format("/callback/{0}", ExpressionConverter.ConvertWithUrlEncoding(callbackId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var callbackBody = new JObject();
-            var callbackBodypropCount = 0;
-            if (callbackBodyflowResult != null)
+            var __workflow_callbackId = WorkflowExpression.Compile(callbackId, nameof(callbackId), required: true);
+            var __workflow_callbackBodyflowResult = WorkflowExpression.Compile(callbackBodyflowResult, nameof(callbackBodyflowResult), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callbackBody["result"] = ExpressionConverter.ConvertO(callbackBodyflowResult);
-                callbackBodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/callback/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_callbackId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var callbackBody = new JObject();
+                var callbackBodypropCount = 0;
+                if (__workflow_callbackBodyflowResult != null)
+                {
+                    callbackBody["result"] = ExpressionConverter.ConvertO(__workflow_callbackBodyflowResult);
+                    callbackBodypropCount++;
+                }
 
-            if (callbackBodypropCount > 0)
-            {
-                callPayload.Body = callbackBody;
-            }
+                if (callbackBodypropCount > 0)
+                {
+                    callPayload.Body = callbackBody;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnApiInfo> GetBttnInfo(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BttnApiInfo>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<BttnApiInfo>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BttnApiInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnApiCounter> GetBttnCounter(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/{0}/counter", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BttnApiCounter>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<BttnApiCounter>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/counter", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BttnApiCounter>(callPayload);
+            });
         }
     }
 
     public class BttnTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var webhookRequestBody = new JObject();
-            var webhookRequestBodypropCount = 0;
-            webhookRequestBody["url"] = "@listCallbackUrl()";
-            webhookRequestBodypropCount++;
-            if (webhookRequestBodypropCount > 0)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = webhookRequestBody;
-            }
+                var apiCallPath = "/hook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                var webhookRequestBody = new JObject();
+                var webhookRequestBodypropCount = 0;
+                webhookRequestBody["url"] = "#{listCallbackUrl()}";
+                webhookRequestBodypropCount++;
+                if (webhookRequestBodypropCount > 0)
+                {
+                    callPayload.Body = webhookRequestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -93,6 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         public string NameId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum callbackBodyflowResultInput
     {
         Positive,

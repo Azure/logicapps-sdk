@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,10 +23,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints(Expression<Func<string>> author, Expression<Func<string>> slug)
         {
-            var apiCallPath = String.Format("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(author, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
+            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            return new DeferredBodyAction<ListModelEndpointsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_author, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
@@ -41,51 +46,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<GetGenerationResponse> GetGeneration(Expression<Func<string>> id)
         {
-            var apiCallPath = "/v1/generation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<GetGenerationResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetGenerationResponse>(() =>
+            {
+                var apiCallPath = "/v1/generation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                return new ApiConnectionAction<GetGenerationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages)
         {
-            var apiCallPath = "/v1/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-            if (bodypropCount > 0)
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                bodypropCount++;
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+                return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<CompletionResponse> Completion(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyprompt)
         {
-            var apiCallPath = "/v1/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-            if (bodypropCount > 0)
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            return new DeferredBodyAction<CompletionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                bodypropCount++;
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CompletionResponse>(callPayload);
+                return new ApiConnectionAction<CompletionResponse>(callPayload);
+            });
         }
     }
 
@@ -330,6 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         public string Content { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymessagesInputItemRoleType
     {
         [EnumMember(Value = "system")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,46 +14,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> pantryID)
         {
-            var apiCallPath = String.Format("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            return new DeferredBodyAction<GetDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<GetContentsResponse> GetContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContentsResponse>(callPayload);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<GetContentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetContentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<string> Delete(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<string> CreateAndOrReplace(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UpdateContentsResponse>(callPayload);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<UpdateContentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UpdateContentsResponse>(callPayload);
+            });
         }
     }
 

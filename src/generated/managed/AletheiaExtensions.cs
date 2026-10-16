@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,271 +14,366 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
         {
-            var apiCallPath = "/EntityFilings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (filing != null)
-                callPayload.Queries["filing"] = ExpressionConverter.Convert(filing);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_filing = WorkflowExpression.Compile(filing, nameof(filing), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<EntityFilingsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/EntityFilings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_filing != null)
+                    callPayload.Queries["filing"] = ExpressionConverter.Convert(__workflow_filing);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<OpenForm4Response> OpenForm4(Expression<Func<string>> filingurl)
         {
-            var apiCallPath = "/OpenForm4";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
-            return new ApiConnectionAction<OpenForm4Response>(callPayload);
+            var __workflow_filingurl = WorkflowExpression.Compile(filingurl, nameof(filingurl), required: true);
+            return new DeferredBodyAction<OpenForm4Response>(() =>
+            {
+                var apiCallPath = "/OpenForm4";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(__workflow_filingurl);
+                return new ApiConnectionAction<OpenForm4Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials(Expression<Func<string>> filingurl)
         {
-            var apiCallPath = "/OpenCommonFinancials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
-            return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
+            var __workflow_filingurl = WorkflowExpression.Compile(filingurl, nameof(filingurl), required: true);
+            return new DeferredBodyAction<OpenCommonFinancialsResponse>(() =>
+            {
+                var apiCallPath = "/OpenCommonFinancials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(__workflow_filingurl);
+                return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
         {
-            var apiCallPath = "/SearchEntities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            callPayload.Queries["top"] = Convert.ToString(12);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<SearchEntitiesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/SearchEntities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["term"] = ExpressionConverter.Convert(__workflow_term);
+                callPayload.Queries["top"] = Convert.ToString(12);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> id)
         {
-            var apiCallPath = "/GetEntity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<GetEntityResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetEntityResponse>(() =>
+            {
+                var apiCallPath = "/GetEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                return new ApiConnectionAction<GetEntityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetFilingResponse> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
         {
-            var apiCallPath = "/GetFiling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (url != null)
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<GetFilingResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: false);
+            return new DeferredBodyAction<GetFilingResponse>(() =>
+            {
+                var apiCallPath = "/GetFiling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_url != null)
+                    callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                return new ApiConnectionAction<GetFilingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
         {
-            var apiCallPath = "/LatestTransactions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (issuer != null)
-                callPayload.Queries["issuer"] = ExpressionConverter.Convert(issuer);
-            if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
-            callPayload.Queries["top"] = Convert.ToString(20);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (securitytype != null)
-                callPayload.Queries["securitytype"] = ExpressionConverter.Convert(securitytype);
-            if (transactiontype != null)
-                callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(transactiontype);
-            if (cascade != null)
-                callPayload.Queries["cascade"] = ExpressionConverter.Convert(cascade);
-            return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
+            var __workflow_issuer = WorkflowExpression.Compile(issuer, nameof(issuer), required: false);
+            var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_securitytype = WorkflowExpression.Compile(securitytype, nameof(securitytype), required: false);
+            var __workflow_transactiontype = WorkflowExpression.Compile(transactiontype, nameof(transactiontype), required: false);
+            var __workflow_cascade = WorkflowExpression.Compile(cascade, nameof(cascade), required: false);
+            return new DeferredBodyAction<LatestTransactionsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/LatestTransactions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_issuer != null)
+                    callPayload.Queries["issuer"] = ExpressionConverter.Convert(__workflow_issuer);
+                if (__workflow_owner != null)
+                    callPayload.Queries["owner"] = ExpressionConverter.Convert(__workflow_owner);
+                callPayload.Queries["top"] = Convert.ToString(20);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                if (__workflow_securitytype != null)
+                    callPayload.Queries["securitytype"] = ExpressionConverter.Convert(__workflow_securitytype);
+                if (__workflow_transactiontype != null)
+                    callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(__workflow_transactiontype);
+                if (__workflow_cascade != null)
+                    callPayload.Queries["cascade"] = ExpressionConverter.Convert(__workflow_cascade);
+                return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners(Expression<Func<string>> id)
         {
-            var apiCallPath = "/AffiliatedOwners";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<AffiliatedOwnersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/AffiliatedOwners";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = "/CommonFinancials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<GetCommonFinancialsResponse>(() =>
+            {
+                var apiCallPath = "/CommonFinancials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(__workflow_period);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = "/FinancialFactTrend";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["label"] = ExpressionConverter.Convert(label);
-            if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<FinancialFactTrendResponseItem[]>(() =>
+            {
+                var apiCallPath = "/FinancialFactTrend";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                callPayload.Queries["label"] = ExpressionConverter.Convert(__workflow_label);
+                if (__workflow_period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(__workflow_period);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = "/SearchEarningsCalls";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (company != null)
-                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (quarter != null)
-                callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<SearchEarningsCallsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/SearchEarningsCalls";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_company != null)
+                    callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                if (__workflow_year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_quarter != null)
+                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(__workflow_quarter);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EarningsCallResponse> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
         {
-            var apiCallPath = "/EarningsCall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (quarter != null)
-                callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-            if (begin != null)
-                callPayload.Queries["begin"] = ExpressionConverter.Convert(begin);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<EarningsCallResponse>(callPayload);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: false);
+            var __workflow_begin = WorkflowExpression.Compile(begin, nameof(begin), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            return new DeferredBodyAction<EarningsCallResponse>(() =>
+            {
+                var apiCallPath = "/EarningsCall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                if (__workflow_year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                if (__workflow_quarter != null)
+                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(__workflow_quarter);
+                if (__workflow_begin != null)
+                    callPayload.Queries["begin"] = ExpressionConverter.Convert(__workflow_begin);
+                if (__workflow_end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                return new ApiConnectionAction<EarningsCallResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
         {
-            var apiCallPath = "/EarningsCallHighlights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            return new DeferredBodyAction<EarningsCallHighlightsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/EarningsCallHighlights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = ExpressionConverter.Convert(__workflow_company);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(__workflow_year);
+                callPayload.Queries["quarter"] = ExpressionConverter.Convert(__workflow_quarter);
+                if (__workflow_category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(__workflow_category);
+                if (__workflow_top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(__workflow_top);
+                return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote(Expression<Func<string>> symbol)
         {
-            var apiCallPath = "/Crypto";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
+            return new DeferredBodyAction<CryptoQuoteResponse>(() =>
+            {
+                var apiCallPath = "/Crypto";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
+                return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
         {
-            var apiCallPath = "/v2/StockData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Headers["Accept-Version"] = Convert.ToString(2);
-            return new ApiConnectionAction<StockDataV2Response>(callPayload);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<StockDataV2Response>(() =>
+            {
+                var apiCallPath = "/v2/StockData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(__workflow_symbol);
+                if (__workflow_fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(__workflow_fields);
+                callPayload.Headers["Accept-Version"] = Convert.ToString(2);
+                return new ApiConnectionAction<StockDataV2Response>(callPayload);
+            });
         }
     }
 
     public class AletheiaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewFilings(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewFilings(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/SubscribeToNewFilingsWebhook";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["endpoint"] = "@listCallbackUrl()";
+            body["endpoint"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/SubscribeToInsiderTradingWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["endpoint"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyissuer != null)
+            var __workflow_bodyissuer = WorkflowExpression.Compile(bodyissuer, nameof(bodyissuer), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodytransactionType = WorkflowExpression.Compile(bodytransactionType, nameof(bodytransactionType), required: false);
+            var __workflow_bodysecurityType = WorkflowExpression.Compile(bodysecurityType, nameof(bodysecurityType), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["issuer"] = ExpressionConverter.ConvertO(bodyissuer);
+                var apiCallPath = "/SubscribeToInsiderTradingWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["endpoint"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodyissuer != null)
+                {
+                    body["issuer"] = ExpressionConverter.ConvertO(__workflow_bodyissuer);
+                    bodypropCount++;
+                }
 
-            if (bodyowner != null)
-            {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
-                bodypropCount++;
-            }
+                if (__workflow_bodyowner != null)
+                {
+                    body["owner"] = ExpressionConverter.ConvertO(__workflow_bodyowner);
+                    bodypropCount++;
+                }
 
-            if (bodytransactionType != null)
-            {
-                body["transactionType"] = ExpressionConverter.ConvertO(bodytransactionType);
-                bodypropCount++;
-            }
+                if (__workflow_bodytransactionType != null)
+                {
+                    body["transactionType"] = ExpressionConverter.ConvertO(__workflow_bodytransactionType);
+                    bodypropCount++;
+                }
 
-            if (bodysecurityType != null)
-            {
-                body["securityType"] = ExpressionConverter.ConvertO(bodysecurityType);
-                bodypropCount++;
-            }
+                if (__workflow_bodysecurityType != null)
+                {
+                    body["securityType"] = ExpressionConverter.ConvertO(__workflow_bodysecurityType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -486,6 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public double Cash { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum periodInput
     {
         [EnumMember(Value = "0")]
@@ -667,6 +763,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         public string LastSplitDate { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytransactionTypeInput
     {
         [EnumMember(Value = "0")]
@@ -711,6 +808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         _19
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysecurityTypeInput
     {
         [EnumMember(Value = "0")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecportabilitycheck")]
         public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber(Expression<Func<string>> phonenumber)
         {
-            var apiCallPath = String.Format("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(phonenumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);
+            var __workflow_phonenumber = WorkflowExpression.Compile(phonenumber, nameof(phonenumber), required: true);
+            return new DeferredBodyAction<VerifyPhoneNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phonenumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);
+            });
         }
     }
 

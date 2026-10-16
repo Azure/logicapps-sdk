@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,205 +32,257 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<SearchResponse[]> SearchGet(Expression<Func<string>> query, Expression<Func<filterInput>> filter = null, Expression<Func<int>> take = null)
         {
-            var apiCallPath = "/api/q";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (take != null)
-                callPayload.Queries["take"] = ExpressionConverter.Convert(take);
-            return new ApiConnectionAction<SearchResponse[]>(callPayload);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
+            return new DeferredBodyAction<SearchResponse[]>(() =>
+            {
+                var apiCallPath = "/api/q";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_take != null)
+                    callPayload.Queries["take"] = ExpressionConverter.Convert(__workflow_take);
+                return new ApiConnectionAction<SearchResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseResponse> CaseGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/c/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CaseResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CaseResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CaseResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/c/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CaseFieldsResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CaseFieldsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CaseFieldsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrint(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
         {
-            var apiCallPath = String.Format("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyasynchronous != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyasynchronous = WorkflowExpression.Compile(bodyasynchronous, nameof(bodyasynchronous), required: false);
+            var __workflow_bodyuseCustom = WorkflowExpression.Compile(bodyuseCustom, nameof(bodyuseCustom), required: false);
+            var __workflow_bodydisplayGallery = WorkflowExpression.Compile(bodydisplayGallery, nameof(bodydisplayGallery), required: false);
+            var __workflow_bodydisplayText = WorkflowExpression.Compile(bodydisplayText, nameof(bodydisplayText), required: false);
+            return new DeferredBodyAction<object>(() =>
             {
-                body["Asynchronous"] = ExpressionConverter.ConvertO(bodyasynchronous);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyasynchronous != null)
+                {
+                    body["Asynchronous"] = ExpressionConverter.ConvertO(__workflow_bodyasynchronous);
+                    bodypropCount++;
+                }
 
-            if (bodyuseCustom != null)
-            {
-                body["UseCustom"] = ExpressionConverter.ConvertO(bodyuseCustom);
-                bodypropCount++;
-            }
+                if (__workflow_bodyuseCustom != null)
+                {
+                    body["UseCustom"] = ExpressionConverter.ConvertO(__workflow_bodyuseCustom);
+                    bodypropCount++;
+                }
 
-            if (bodydisplayGallery != null)
-            {
-                body["DisplayGallery"] = ExpressionConverter.ConvertO(bodydisplayGallery);
-                bodypropCount++;
-            }
+                if (__workflow_bodydisplayGallery != null)
+                {
+                    body["DisplayGallery"] = ExpressionConverter.ConvertO(__workflow_bodydisplayGallery);
+                    bodypropCount++;
+                }
 
-            if (bodydisplayText != null)
-            {
-                body["DisplayText"] = ExpressionConverter.ConvertO(bodydisplayText);
-                bodypropCount++;
-            }
+                if (__workflow_bodydisplayText != null)
+                {
+                    body["DisplayText"] = ExpressionConverter.ConvertO(__workflow_bodydisplayText);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<object>(callPayload);
+                return new ApiConnectionAction<object>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrintGet(Expression<Func<string>> id, Expression<Func<string>> requestId)
         {
-            var apiCallPath = String.Format("/api/c/{0}/print/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            return new DeferredBodyAction<object>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<object>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CaseReplyResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CaseReplyResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CaseReplyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReply(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
         {
-            var apiCallPath = String.Format("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodywithoutNotification = WorkflowExpression.Compile(bodywithoutNotification, nameof(bodywithoutNotification), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            return new DeferredBodyAction<CaseReplyResponse>(() =>
             {
-                body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodymessage != null)
+                {
+                    body["Message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["WithoutNotification"] = ExpressionConverter.ConvertO(__workflow_bodywithoutNotification);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["WithoutNotification"] = ExpressionConverter.ConvertO(bodywithoutNotification);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CaseReplyResponse>(callPayload);
+                return new ApiConnectionAction<CaseReplyResponse>(callPayload);
+            });
         }
     }
 
     public class GlaassproTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/t/casecreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytemplateId != null)
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                var apiCallPath = "/api/t/casecreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytemplateId != null)
+                {
+                    body["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyscope != null)
+                {
+                    body["Scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
+                    bodypropCount++;
+                }
+
+                body["Notification"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyscope != null)
-            {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
-                bodypropCount++;
-            }
-
-            body["Notification"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/t/caseupdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytemplateId != null)
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                var apiCallPath = "/api/t/caseupdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytemplateId != null)
+                {
+                    body["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyscope != null)
+                {
+                    body["Scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
+                    bodypropCount++;
+                }
+
+                body["Notification"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyscope != null)
-            {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
-                bodypropCount++;
-            }
-
-            body["Notification"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/t/caseclosed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytemplateId != null)
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["TemplateId"] = ExpressionConverter.ConvertO(bodytemplateId);
+                var apiCallPath = "/api/t/caseclosed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytemplateId != null)
+                {
+                    body["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyscope != null)
+                {
+                    body["Scope"] = ExpressionConverter.ConvertO(__workflow_bodyscope);
+                    bodypropCount++;
+                }
+
+                body["Notification"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyscope != null)
-            {
-                body["Scope"] = ExpressionConverter.ConvertO(bodyscope);
-                bodypropCount++;
-            }
-
-            body["Notification"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -259,6 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Link { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         Location,
@@ -306,12 +359,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydisplayGalleryInput
     {
         Gallery,
         List
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydisplayTextInput
     {
         Beside,
@@ -326,6 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         public ProjectUserResponse[] RecipientsCc { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyscopeInput
     {
         ByMe,

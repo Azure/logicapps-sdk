@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,21 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
         public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink(Expression<Func<string>> url)
         {
-            var apiCallPath = "/shorten";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            return new DeferredBodyAction<ShortenLinkResponse>(() =>
+            {
+                var apiCallPath = "/shorten";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                return new ApiConnectionAction<ShortenLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
         public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink(Expression<Func<string>> code)
         {
-            var apiCallPath = "/info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
+            return new DeferredBodyAction<GettingInformationLinkResponse>(() =>
+            {
+                var apiCallPath = "/info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(__workflow_code);
+                return new ApiConnectionAction<GettingInformationLinkResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervision
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,156 +14,229 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DetectResponse> DetectObjects(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var apiCallPath = "/vision/v2.0/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DetectResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<DetectResponse>(() =>
+            {
+                var apiCallPath = "/vision/v2.0/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<DetectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var apiCallPath = "/vision/v2.0/areaOfInterest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<AreaOfInterestResponse>(() =>
+            {
+                var apiCallPath = "/vision/v2.0/areaOfInterest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/analyze", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["visualFeatures"] = Convert.ToString("Tags,Description,Categories");
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Queries["visualFeatures"] = Convert.ToString("Tags,Description,Categories");
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/describe", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (maxCandidates != null)
-                callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DescribeResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<DescribeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_maxCandidates != null)
+                    callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(__workflow_maxCandidates);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/describeImageContent", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (maxCandidates != null)
-                callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DescribeResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<DescribeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_maxCandidates != null)
+                    callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(__workflow_maxCandidates);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> imageURLimageURL = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/describeImageURL", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (maxCandidates != null)
-                callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            var imageURL = new JObject();
-            var imageURLpropCount = 0;
-            if (imageURLimageURL != null)
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_imageURLimageURL = WorkflowExpression.Compile(imageURLimageURL, nameof(imageURLimageURL), required: false);
+            return new DeferredBodyAction<DescribeResponse>(() =>
             {
-                imageURL["url"] = ExpressionConverter.ConvertO(imageURLimageURL);
-                imageURLpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_maxCandidates != null)
+                    callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(__workflow_maxCandidates);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                var imageURL = new JObject();
+                var imageURLpropCount = 0;
+                if (__workflow_imageURLimageURL != null)
+                {
+                    imageURL["url"] = ExpressionConverter.ConvertO(__workflow_imageURLimageURL);
+                    imageURLpropCount++;
+                }
 
-            if (imageURLpropCount > 0)
-            {
-                callPayload.Body = imageURL;
-            }
+                if (imageURLpropCount > 0)
+                {
+                    callPayload.Body = imageURL;
+                }
 
-            return new ApiConnectionAction<DescribeResponse>(callPayload);
+                return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<string> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<formatInput>> format, Expression<Func<bool>> smartCropping = null, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-            callPayload.Queries["smartCropping"] = Convert.ToString(true);
-            if (smartCropping != null)
-                callPayload.Queries["smartCropping"] = ExpressionConverter.Convert(smartCropping);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: true);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_smartCropping = WorkflowExpression.Compile(smartCropping, nameof(smartCropping), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["width"] = ExpressionConverter.Convert(__workflow_width);
+                callPayload.Queries["height"] = ExpressionConverter.Convert(__workflow_height);
+                callPayload.Queries["smartCropping"] = Convert.ToString(true);
+                if (__workflow_smartCropping != null)
+                    callPayload.Queries["smartCropping"] = ExpressionConverter.Convert(__workflow_smartCropping);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<OCRJsonResponse> OCR(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/ocr", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = Convert.ToString("unk");
-            callPayload.Queries["detectOrientation"] = Convert.ToString(true);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<OCRJsonResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<OCRJsonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = Convert.ToString("unk");
+                callPayload.Queries["detectOrientation"] = Convert.ToString(true);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<OCRJsonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<OCRTextResponse> OCRText(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/ocrtext", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = Convert.ToString("unk");
-            callPayload.Queries["detectOrientation"] = Convert.ToString(true);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<OCRTextResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<OCRTextResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = Convert.ToString("unk");
+                callPayload.Queries["detectOrientation"] = Convert.ToString(true);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<OCRTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DomainModelResponse> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<modelInput>> model, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DomainModelResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<DomainModelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<DomainModelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<TagResponse> TagImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/tag", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<TagResponse>(callPayload);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            return new DeferredBodyAction<TagResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_image);
+                return new ApiConnectionAction<TagResponse>(callPayload);
+            });
         }
     }
 
@@ -189,6 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string ObjectName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "Image Content")]
@@ -251,6 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string TagName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         [EnumMember(Value = "en")]
@@ -335,6 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         public string LandmarkName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum modelInput
     {
         [EnumMember(Value = "celebrities")]

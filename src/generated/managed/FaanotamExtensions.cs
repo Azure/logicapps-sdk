@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,12 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
         public IBodyWorkflowAction<GetNotamResponse> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
-            var apiCallPath = "/notamapi/v1/notams";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["client_secret"] = ExpressionConverter.Convert(clientSecret);
-            return new ApiConnectionAction<GetNotamResponse>(callPayload);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
+            return new DeferredBodyAction<GetNotamResponse>(() =>
+            {
+                var apiCallPath = "/notamapi/v1/notams";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["client_id"] = ExpressionConverter.Convert(__workflow_clientId);
+                callPayload.Headers["client_secret"] = ExpressionConverter.Convert(__workflow_clientSecret);
+                return new ApiConnectionAction<GetNotamResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowregularexpr
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,12 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowregularexpr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowregularexpr")]
         public IBodyWorkflowAction<RegexMultiGroupResponse> RegexMultiGroup(Expression<Func<string>> pattern, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/RegexMultiGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<RegexMultiGroupResponse>(callPayload);
+            var __workflow_pattern = WorkflowExpression.Compile(pattern, nameof(pattern), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<RegexMultiGroupResponse>(() =>
+            {
+                var apiCallPath = "/RegexMultiGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["pattern"] = ExpressionConverter.Convert(__workflow_pattern);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<RegexMultiGroupResponse>(callPayload);
+            });
         }
     }
 

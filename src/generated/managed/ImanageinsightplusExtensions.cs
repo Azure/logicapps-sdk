@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,259 +14,306 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<GetCurationPropertiesForDocumentResponse> GetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest)
         {
-            var apiCallPath = "/getCurationPropertiesForDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["latest"] = ExpressionConverter.ConvertO(bodylatest);
-            if (bodypropCount > 0)
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: true);
+            return new DeferredBodyAction<GetCurationPropertiesForDocumentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/getCurationPropertiesForDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
+                bodypropCount++;
+                body["latest"] = ExpressionConverter.ConvertO(__workflow_bodylatest);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetCurationPropertiesForDocumentResponse>(callPayload);
+                return new ApiConnectionAction<GetCurationPropertiesForDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<SetCurationPropertiesForDocumentResponseBody> SetCurationPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyapprover = null, Expression<Func<string>> bodydraftingNotes = null, Expression<Func<bool>> bodyisMaintained = null, Expression<Func<string>> bodyknowledgeOwner = null, Expression<Func<string>> bodyknowledgeType = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodylastReviewDate = null, Expression<Func<string>> bodyminiSummary = null, Expression<Func<string>> bodynextReviewDate = null, Expression<Func<string>> bodyotherNoteworthy = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodysubmitDate = null, Expression<Func<string>> bodytaxonomy1 = null, Expression<Func<string>> bodytaxonomy2 = null, Expression<Func<string>> bodytaxonomy3 = null, Expression<Func<string>> bodytaxonomy4 = null, Expression<Func<string>> bodytaxonomy5 = null, Expression<Func<string>> bodysubmitter = null, Expression<Func<string>> bodysubmittedDocId = null)
         {
-            var apiCallPath = "/setCurationPropertiesForDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodyapprover != null)
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyapprover = WorkflowExpression.Compile(bodyapprover, nameof(bodyapprover), required: false);
+            var __workflow_bodydraftingNotes = WorkflowExpression.Compile(bodydraftingNotes, nameof(bodydraftingNotes), required: false);
+            var __workflow_bodyisMaintained = WorkflowExpression.Compile(bodyisMaintained, nameof(bodyisMaintained), required: false);
+            var __workflow_bodyknowledgeOwner = WorkflowExpression.Compile(bodyknowledgeOwner, nameof(bodyknowledgeOwner), required: false);
+            var __workflow_bodyknowledgeType = WorkflowExpression.Compile(bodyknowledgeType, nameof(bodyknowledgeType), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodylastReviewDate = WorkflowExpression.Compile(bodylastReviewDate, nameof(bodylastReviewDate), required: false);
+            var __workflow_bodyminiSummary = WorkflowExpression.Compile(bodyminiSummary, nameof(bodyminiSummary), required: false);
+            var __workflow_bodynextReviewDate = WorkflowExpression.Compile(bodynextReviewDate, nameof(bodynextReviewDate), required: false);
+            var __workflow_bodyotherNoteworthy = WorkflowExpression.Compile(bodyotherNoteworthy, nameof(bodyotherNoteworthy), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodysubmitDate = WorkflowExpression.Compile(bodysubmitDate, nameof(bodysubmitDate), required: false);
+            var __workflow_bodytaxonomy1 = WorkflowExpression.Compile(bodytaxonomy1, nameof(bodytaxonomy1), required: false);
+            var __workflow_bodytaxonomy2 = WorkflowExpression.Compile(bodytaxonomy2, nameof(bodytaxonomy2), required: false);
+            var __workflow_bodytaxonomy3 = WorkflowExpression.Compile(bodytaxonomy3, nameof(bodytaxonomy3), required: false);
+            var __workflow_bodytaxonomy4 = WorkflowExpression.Compile(bodytaxonomy4, nameof(bodytaxonomy4), required: false);
+            var __workflow_bodytaxonomy5 = WorkflowExpression.Compile(bodytaxonomy5, nameof(bodytaxonomy5), required: false);
+            var __workflow_bodysubmitter = WorkflowExpression.Compile(bodysubmitter, nameof(bodysubmitter), required: false);
+            var __workflow_bodysubmittedDocId = WorkflowExpression.Compile(bodysubmittedDocId, nameof(bodysubmittedDocId), required: false);
+            return new DeferredBodyAction<SetCurationPropertiesForDocumentResponseBody>(() =>
             {
-                body["approver"] = ExpressionConverter.ConvertO(bodyapprover);
+                var apiCallPath = "/setCurationPropertiesForDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["documentId"] = ExpressionConverter.ConvertO(__workflow_bodydocumentId);
+                if (__workflow_bodyapprover != null)
+                {
+                    body["approver"] = ExpressionConverter.ConvertO(__workflow_bodyapprover);
+                    bodypropCount++;
+                }
 
-            if (bodydraftingNotes != null)
-            {
-                body["drafting_notes"] = ExpressionConverter.ConvertO(bodydraftingNotes);
-                bodypropCount++;
-            }
+                if (__workflow_bodydraftingNotes != null)
+                {
+                    body["drafting_notes"] = ExpressionConverter.ConvertO(__workflow_bodydraftingNotes);
+                    bodypropCount++;
+                }
 
-            if (bodyisMaintained != null)
-            {
-                body["is_maintained"] = ExpressionConverter.ConvertO(bodyisMaintained);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisMaintained != null)
+                {
+                    body["is_maintained"] = ExpressionConverter.ConvertO(__workflow_bodyisMaintained);
+                    bodypropCount++;
+                }
 
-            if (bodyknowledgeOwner != null)
-            {
-                body["knowledge_owner"] = ExpressionConverter.ConvertO(bodyknowledgeOwner);
-                bodypropCount++;
-            }
+                if (__workflow_bodyknowledgeOwner != null)
+                {
+                    body["knowledge_owner"] = ExpressionConverter.ConvertO(__workflow_bodyknowledgeOwner);
+                    bodypropCount++;
+                }
 
-            if (bodyknowledgeType != null)
-            {
-                body["knowledge_type"] = ExpressionConverter.ConvertO(bodyknowledgeType);
-                bodypropCount++;
-            }
+                if (__workflow_bodyknowledgeType != null)
+                {
+                    body["knowledge_type"] = ExpressionConverter.ConvertO(__workflow_bodyknowledgeType);
+                    bodypropCount++;
+                }
 
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
+                if (__workflow_bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodylastReviewDate != null)
-            {
-                body["last_review_date"] = ExpressionConverter.ConvertO(bodylastReviewDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodylastReviewDate != null)
+                {
+                    body["last_review_date"] = ExpressionConverter.ConvertO(__workflow_bodylastReviewDate);
+                    bodypropCount++;
+                }
 
-            if (bodyminiSummary != null)
-            {
-                body["mini_summary"] = ExpressionConverter.ConvertO(bodyminiSummary);
-                bodypropCount++;
-            }
+                if (__workflow_bodyminiSummary != null)
+                {
+                    body["mini_summary"] = ExpressionConverter.ConvertO(__workflow_bodyminiSummary);
+                    bodypropCount++;
+                }
 
-            if (bodynextReviewDate != null)
-            {
-                body["next_review_date"] = ExpressionConverter.ConvertO(bodynextReviewDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodynextReviewDate != null)
+                {
+                    body["next_review_date"] = ExpressionConverter.ConvertO(__workflow_bodynextReviewDate);
+                    bodypropCount++;
+                }
 
-            if (bodyotherNoteworthy != null)
-            {
-                body["other_noteworthy"] = ExpressionConverter.ConvertO(bodyotherNoteworthy);
-                bodypropCount++;
-            }
+                if (__workflow_bodyotherNoteworthy != null)
+                {
+                    body["other_noteworthy"] = ExpressionConverter.ConvertO(__workflow_bodyotherNoteworthy);
+                    bodypropCount++;
+                }
 
-            if (bodystate != null)
-            {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
+                if (__workflow_bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
+                    bodypropCount++;
+                }
 
-            if (bodysubmitDate != null)
-            {
-                body["submit_date"] = ExpressionConverter.ConvertO(bodysubmitDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubmitDate != null)
+                {
+                    body["submit_date"] = ExpressionConverter.ConvertO(__workflow_bodysubmitDate);
+                    bodypropCount++;
+                }
 
-            if (bodytaxonomy1 != null)
-            {
-                body["taxonomy1"] = ExpressionConverter.ConvertO(bodytaxonomy1);
-                bodypropCount++;
-            }
+                if (__workflow_bodytaxonomy1 != null)
+                {
+                    body["taxonomy1"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy1);
+                    bodypropCount++;
+                }
 
-            if (bodytaxonomy2 != null)
-            {
-                body["taxonomy2"] = ExpressionConverter.ConvertO(bodytaxonomy2);
-                bodypropCount++;
-            }
+                if (__workflow_bodytaxonomy2 != null)
+                {
+                    body["taxonomy2"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy2);
+                    bodypropCount++;
+                }
 
-            if (bodytaxonomy3 != null)
-            {
-                body["taxonomy3"] = ExpressionConverter.ConvertO(bodytaxonomy3);
-                bodypropCount++;
-            }
+                if (__workflow_bodytaxonomy3 != null)
+                {
+                    body["taxonomy3"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy3);
+                    bodypropCount++;
+                }
 
-            if (bodytaxonomy4 != null)
-            {
-                body["taxonomy4"] = ExpressionConverter.ConvertO(bodytaxonomy4);
-                bodypropCount++;
-            }
+                if (__workflow_bodytaxonomy4 != null)
+                {
+                    body["taxonomy4"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy4);
+                    bodypropCount++;
+                }
 
-            if (bodytaxonomy5 != null)
-            {
-                body["taxonomy5"] = ExpressionConverter.ConvertO(bodytaxonomy5);
-                bodypropCount++;
-            }
+                if (__workflow_bodytaxonomy5 != null)
+                {
+                    body["taxonomy5"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomy5);
+                    bodypropCount++;
+                }
 
-            if (bodysubmitter != null)
-            {
-                body["submitter"] = ExpressionConverter.ConvertO(bodysubmitter);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubmitter != null)
+                {
+                    body["submitter"] = ExpressionConverter.ConvertO(__workflow_bodysubmitter);
+                    bodypropCount++;
+                }
 
-            if (bodysubmittedDocId != null)
-            {
-                body["submitted_doc_id"] = ExpressionConverter.ConvertO(bodysubmittedDocId);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubmittedDocId != null)
+                {
+                    body["submitted_doc_id"] = ExpressionConverter.ConvertO(__workflow_bodysubmittedDocId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SetCurationPropertiesForDocumentResponseBody>(callPayload);
+                return new ApiConnectionAction<SetCurationPropertiesForDocumentResponseBody>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<GetKnowledgeTypesResponse> GetKnowledgeTypes(Expression<Func<string>> libraryId)
         {
-            var apiCallPath = "/getKnowledgeTypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            return new ApiConnectionAction<GetKnowledgeTypesResponse>(callPayload);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            return new DeferredBodyAction<GetKnowledgeTypesResponse>(() =>
+            {
+                var apiCallPath = "/getKnowledgeTypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
+                return new ApiConnectionAction<GetKnowledgeTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<GetCurationConfigurationResponse> GetCurationConfiguration(Expression<Func<string>> libraryId)
         {
-            var apiCallPath = "/getCurationConfiguration";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            return new ApiConnectionAction<GetCurationConfigurationResponse>(callPayload);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            return new DeferredBodyAction<GetCurationConfigurationResponse>(() =>
+            {
+                var apiCallPath = "/getCurationConfiguration";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryId"] = ExpressionConverter.Convert(__workflow_libraryId);
+                return new ApiConnectionAction<GetCurationConfigurationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageinsightplus")]
         public IBodyWorkflowAction<SearchCurationTaxonomyNodeValuesResponse> SearchCurationTaxonomyNodeValues(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodytaxonomyProperty, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyquery = null, Expression<Func<bodyenabledStateInput>> bodyenabledState = null, Expression<Func<bool>> bodyincludePath = null, Expression<Func<string>> bodychildrenOfSsid = null, Expression<Func<bool>> bodyimmediateChildrenOnly = null)
         {
-            var apiCallPath = "/searchCurationTaxonomyNodeValues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
-            bodypropCount++;
-            body["taxonomyProperty"] = ExpressionConverter.ConvertO(bodytaxonomyProperty);
-            if (bodyid != null)
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodytaxonomyProperty = WorkflowExpression.Compile(bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyenabledState = WorkflowExpression.Compile(bodyenabledState, nameof(bodyenabledState), required: false);
+            var __workflow_bodyincludePath = WorkflowExpression.Compile(bodyincludePath, nameof(bodyincludePath), required: false);
+            var __workflow_bodychildrenOfSsid = WorkflowExpression.Compile(bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
+            var __workflow_bodyimmediateChildrenOnly = WorkflowExpression.Compile(bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
+            return new DeferredBodyAction<SearchCurationTaxonomyNodeValuesResponse>(() =>
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                var apiCallPath = "/searchCurationTaxonomyNodeValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                body["libraryId"] = ExpressionConverter.ConvertO(__workflow_bodylibraryId);
                 bodypropCount++;
-            }
-
-            if (bodyenabledState != null)
-            {
-                if (bodyenabledState != null)
+                body["taxonomyProperty"] = ExpressionConverter.ConvertO(__workflow_bodytaxonomyProperty);
+                if (__workflow_bodyid != null)
                 {
-                    body["enabled_state"] = ExpressionConverter.ConvertO(bodyenabledState);
+                    body["id"] = ExpressionConverter.ConvertO(__workflow_bodyid);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["enabled_state"] = "Enabled";
-                bodypropCount++;
-            }
-
-            if (bodyincludePath != null)
-            {
-                if (bodyincludePath != null)
+                if (__workflow_bodyquery != null)
                 {
-                    body["include_path"] = ExpressionConverter.ConvertO(bodyincludePath);
+                    body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["include_path"] = false;
-                bodypropCount++;
-            }
-
-            if (bodychildrenOfSsid != null)
-            {
-                body["children_of_ssid"] = ExpressionConverter.ConvertO(bodychildrenOfSsid);
-                bodypropCount++;
-            }
-
-            if (bodyimmediateChildrenOnly != null)
-            {
-                if (bodyimmediateChildrenOnly != null)
+                if (__workflow_bodyenabledState != null)
                 {
-                    body["immediate_children_only"] = ExpressionConverter.ConvertO(bodyimmediateChildrenOnly);
+                    if (__workflow_bodyenabledState != null)
+                    {
+                        body["enabled_state"] = ExpressionConverter.ConvertO(__workflow_bodyenabledState);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enabled_state"] = "Enabled";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["immediate_children_only"] = true;
-                bodypropCount++;
-            }
+                if (__workflow_bodyincludePath != null)
+                {
+                    if (__workflow_bodyincludePath != null)
+                    {
+                        body["include_path"] = ExpressionConverter.ConvertO(__workflow_bodyincludePath);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["include_path"] = false;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SearchCurationTaxonomyNodeValuesResponse>(callPayload);
+                if (__workflow_bodychildrenOfSsid != null)
+                {
+                    body["children_of_ssid"] = ExpressionConverter.ConvertO(__workflow_bodychildrenOfSsid);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyimmediateChildrenOnly != null)
+                {
+                    if (__workflow_bodyimmediateChildrenOnly != null)
+                    {
+                        body["immediate_children_only"] = ExpressionConverter.ConvertO(__workflow_bodyimmediateChildrenOnly);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["immediate_children_only"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SearchCurationTaxonomyNodeValuesResponse>(callPayload);
+            });
         }
     }
 
@@ -523,6 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public string Ssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CurationPropertiesStateType
     {
         [EnumMember(Value = "IN_DRAFT")]
@@ -633,6 +681,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public KnowledgeAdminTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum KnowledgeAdminTypeType
     {
         USER,
@@ -777,6 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageinsightplus
         public string Ssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyenabledStateInput
     {
         Enabled,

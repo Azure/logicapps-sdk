@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,176 +14,219 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
         public IBodyWorkflowAction<TeamResponseV2[]> GetTeams(Expression<Func<string>> xEpTenant)
         {
-            var apiCallPath = "/api/Teams";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            return new ApiConnectionAction<TeamResponseV2[]>(callPayload);
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            return new DeferredBodyAction<TeamResponseV2[]>(() =>
+            {
+                var apiCallPath = "/api/Teams";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                return new ApiConnectionAction<TeamResponseV2[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "evocom")]
         public IBodyWorkflowAction<RouteDefinitionsResponse> GetTemplates(Expression<Func<string>> xEpTenant, Expression<Func<int>> pageIndex = null, Expression<Func<int>> itemsPerPage = null)
         {
-            var apiCallPath = "/api/Route/Definitions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["pageIndex"] = Convert.ToString(0);
-            if (pageIndex != null)
-                callPayload.Queries["pageIndex"] = ExpressionConverter.Convert(pageIndex);
-            callPayload.Queries["itemsPerPage"] = Convert.ToString(1000);
-            if (itemsPerPage != null)
-                callPayload.Queries["itemsPerPage"] = ExpressionConverter.Convert(itemsPerPage);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            return new ApiConnectionAction<RouteDefinitionsResponse>(callPayload);
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            var __workflow_pageIndex = WorkflowExpression.Compile(pageIndex, nameof(pageIndex), required: false);
+            var __workflow_itemsPerPage = WorkflowExpression.Compile(itemsPerPage, nameof(itemsPerPage), required: false);
+            return new DeferredBodyAction<RouteDefinitionsResponse>(() =>
+            {
+                var apiCallPath = "/api/Route/Definitions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["pageIndex"] = Convert.ToString(0);
+                if (__workflow_pageIndex != null)
+                    callPayload.Queries["pageIndex"] = ExpressionConverter.Convert(__workflow_pageIndex);
+                callPayload.Queries["itemsPerPage"] = Convert.ToString(1000);
+                if (__workflow_itemsPerPage != null)
+                    callPayload.Queries["itemsPerPage"] = ExpressionConverter.Convert(__workflow_itemsPerPage);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                return new ApiConnectionAction<RouteDefinitionsResponse>(callPayload);
+            });
         }
     }
 
     public class EvocomTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodytaskType = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/Tasks/New";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodytaskType != null)
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                var apiCallPath = "/hooks/Tasks/New";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodytaskType != null)
+                {
+                    body["taskType"] = ExpressionConverter.ConvertO(__workflow_bodytaskType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedTaskTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<int>> bodytaskType = null, Expression<Func<int>> bodytaskStatus = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/Tasks/Change";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodytaskType != null)
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            var __workflow_bodychangeType = WorkflowExpression.Compile(bodychangeType, nameof(bodychangeType), required: true);
+            var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
+            var __workflow_bodytaskStatus = WorkflowExpression.Compile(bodytaskStatus, nameof(bodytaskStatus), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["taskType"] = ExpressionConverter.ConvertO(bodytaskType);
+                var apiCallPath = "/hooks/Tasks/Change";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (__workflow_bodytaskType != null)
+                {
+                    body["taskType"] = ExpressionConverter.ConvertO(__workflow_bodytaskType);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
-            if (bodytaskStatus != null)
-            {
-                body["taskStatus"] = ExpressionConverter.ConvertO(bodytaskStatus);
                 bodypropCount++;
-            }
+                body["changeType"] = ExpressionConverter.ConvertO(__workflow_bodychangeType);
+                if (__workflow_bodytaskStatus != null)
+                {
+                    body["taskStatus"] = ExpressionConverter.ConvertO(__workflow_bodytaskStatus);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewTeamTrigger(Expression<Func<string>> xEpTenant, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/Teams/New";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-        }
-
-        public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/hooks/Teams/Change";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-        }
-
-        public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/hooks/Processes/New";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["definitionId"] = ExpressionConverter.ConvertO(bodydefinitionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-        }
-
-        public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/hooks/Processes/Change";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(xEpTenant);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodydefinitionId != null)
-            {
-                body["definitionId"] = ExpressionConverter.ConvertO(bodydefinitionId);
+                var apiCallPath = "/hooks/Teams/New";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["changeType"] = ExpressionConverter.ConvertO(bodychangeType);
-            if (bodystepId != null)
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IWorkflowTrigger ChangedTeamTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, FlowRecurrence recurrence = null)
+        {
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            var __workflow_bodychangeType = WorkflowExpression.Compile(bodychangeType, nameof(bodychangeType), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["stepId"] = ExpressionConverter.ConvertO(bodystepId);
+                var apiCallPath = "/hooks/Teams/Change";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                bodypropCount++;
+                body["changeType"] = ExpressionConverter.ConvertO(__workflow_bodychangeType);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IWorkflowTrigger NewProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<string>> bodydefinitionId, FlowRecurrence recurrence = null)
+        {
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            var __workflow_bodydefinitionId = WorkflowExpression.Compile(bodydefinitionId, nameof(bodydefinitionId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/hooks/Processes/New";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["definitionId"] = ExpressionConverter.ConvertO(__workflow_bodydefinitionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IWorkflowTrigger ChangedProcessTrigger(Expression<Func<string>> xEpTenant, Expression<Func<int>> bodychangeType, Expression<Func<string>> bodydefinitionId = null, Expression<Func<string>> bodystepId = null, FlowRecurrence recurrence = null)
+        {
+            var __workflow_xEpTenant = WorkflowExpression.Compile(xEpTenant, nameof(xEpTenant), required: true);
+            var __workflow_bodychangeType = WorkflowExpression.Compile(bodychangeType, nameof(bodychangeType), required: true);
+            var __workflow_bodydefinitionId = WorkflowExpression.Compile(bodydefinitionId, nameof(bodydefinitionId), required: false);
+            var __workflow_bodystepId = WorkflowExpression.Compile(bodystepId, nameof(bodystepId), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/hooks/Processes/Change";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ep-tenant"] = ExpressionConverter.Convert(__workflow_xEpTenant);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (__workflow_bodydefinitionId != null)
+                {
+                    body["definitionId"] = ExpressionConverter.ConvertO(__workflow_bodydefinitionId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["changeType"] = ExpressionConverter.ConvertO(__workflow_bodychangeType);
+                if (__workflow_bodystepId != null)
+                {
+                    body["stepId"] = ExpressionConverter.ConvertO(__workflow_bodystepId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

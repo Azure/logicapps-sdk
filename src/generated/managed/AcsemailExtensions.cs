@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,112 +14,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         public IBodyWorkflowAction<EmailSendResult> SendEmailGAVersion(Expression<Func<string>> emailMessagesenderAddress, Expression<Func<string>> emailMessagecontentsubject, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<emailMessagerecipientstoInputItem[]>> emailMessagerecipientsto = null, Expression<Func<emailMessagerecipientscCInputItem[]>> emailMessagerecipientscC = null, Expression<Func<emailMessagerecipientsbCCInputItem[]>> emailMessagerecipientsbCC = null, Expression<Func<string>> emailMessagecontenthtml = null, Expression<Func<emailMessagereplyToInputItem[]>> emailMessagereplyTo = null, Expression<Func<emailMessageattachmentsInputItem[]>> emailMessageattachments = null, Expression<Func<EmailCustomHeader[]>> emailMessageheaders = null, Expression<Func<bool>> emailMessageuserEngagementTrackingDisabled = null)
         {
-            var apiCallPath = "/emails:sendGAVersion";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");
-            var emailMessage = new JObject();
-            var emailMessagepropCount = 0;
-            emailMessagepropCount++;
-            emailMessage["senderAddress"] = ExpressionConverter.ConvertO(emailMessagesenderAddress);
-            if (emailMessageimportance != null)
+            var __workflow_emailMessagesenderAddress = WorkflowExpression.Compile(emailMessagesenderAddress, nameof(emailMessagesenderAddress), required: true);
+            var __workflow_emailMessagecontentsubject = WorkflowExpression.Compile(emailMessagecontentsubject, nameof(emailMessagecontentsubject), required: true);
+            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessagerecipientsto = WorkflowExpression.Compile(emailMessagerecipientsto, nameof(emailMessagerecipientsto), required: false);
+            var __workflow_emailMessagerecipientscC = WorkflowExpression.Compile(emailMessagerecipientscC, nameof(emailMessagerecipientscC), required: false);
+            var __workflow_emailMessagerecipientsbCC = WorkflowExpression.Compile(emailMessagerecipientsbCC, nameof(emailMessagerecipientsbCC), required: false);
+            var __workflow_emailMessagecontenthtml = WorkflowExpression.Compile(emailMessagecontenthtml, nameof(emailMessagecontenthtml), required: false);
+            var __workflow_emailMessagereplyTo = WorkflowExpression.Compile(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
+            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessageheaders = WorkflowExpression.Compile(emailMessageheaders, nameof(emailMessageheaders), required: false);
+            var __workflow_emailMessageuserEngagementTrackingDisabled = WorkflowExpression.Compile(emailMessageuserEngagementTrackingDisabled, nameof(emailMessageuserEngagementTrackingDisabled), required: false);
+            return new DeferredBodyAction<EmailSendResult>(() =>
             {
-                if (emailMessageimportance != null)
+                var apiCallPath = "/emails:sendGAVersion";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");
+                var emailMessage = new JObject();
+                var emailMessagepropCount = 0;
+                emailMessagepropCount++;
+                emailMessage["senderAddress"] = ExpressionConverter.ConvertO(__workflow_emailMessagesenderAddress);
+                if (__workflow_emailMessageimportance != null)
                 {
-                    emailMessage["importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
+                    if (__workflow_emailMessageimportance != null)
+                    {
+                        emailMessage["importance"] = ExpressionConverter.ConvertO(__workflow_emailMessageimportance);
+                        emailMessagepropCount++;
+                    }
+
+                    emailMessagepropCount++;
+                }
+                else
+                {
+                    emailMessage["importance"] = "Normal";
                     emailMessagepropCount++;
                 }
 
-                emailMessagepropCount++;
-            }
-            else
-            {
-                emailMessage["importance"] = "Normal";
-                emailMessagepropCount++;
-            }
+                var recipientsObject = new JObject();
+                var recipientsObjectpropCount = 0;
+                if (__workflow_emailMessagerecipientsto != null)
+                {
+                    recipientsObject["to"] = ExpressionConverter.ConvertO(__workflow_emailMessagerecipientsto);
+                    recipientsObjectpropCount++;
+                }
 
-            var recipientsObject = new JObject();
-            var recipientsObjectpropCount = 0;
-            if (emailMessagerecipientsto != null)
-            {
-                recipientsObject["to"] = ExpressionConverter.ConvertO(emailMessagerecipientsto);
-                recipientsObjectpropCount++;
-            }
+                if (__workflow_emailMessagerecipientscC != null)
+                {
+                    recipientsObject["CC"] = ExpressionConverter.ConvertO(__workflow_emailMessagerecipientscC);
+                    recipientsObjectpropCount++;
+                }
 
-            if (emailMessagerecipientscC != null)
-            {
-                recipientsObject["CC"] = ExpressionConverter.ConvertO(emailMessagerecipientscC);
-                recipientsObjectpropCount++;
-            }
+                if (__workflow_emailMessagerecipientsbCC != null)
+                {
+                    recipientsObject["bCC"] = ExpressionConverter.ConvertO(__workflow_emailMessagerecipientsbCC);
+                    recipientsObjectpropCount++;
+                }
 
-            if (emailMessagerecipientsbCC != null)
-            {
-                recipientsObject["bCC"] = ExpressionConverter.ConvertO(emailMessagerecipientsbCC);
-                recipientsObjectpropCount++;
-            }
+                if (recipientsObjectpropCount > 0)
+                {
+                    emailMessage["recipients"] = recipientsObject;
+                    emailMessagepropCount++;
+                }
 
-            if (recipientsObjectpropCount > 0)
-            {
-                emailMessage["recipients"] = recipientsObject;
-                emailMessagepropCount++;
-            }
-
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObjectpropCount++;
-            contentObject["subject"] = ExpressionConverter.ConvertO(emailMessagecontentsubject);
-            if (emailMessagecontenthtml != null)
-            {
-                contentObject["html"] = ExpressionConverter.ConvertO(emailMessagecontenthtml);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
                 contentObjectpropCount++;
-            }
+                contentObject["subject"] = ExpressionConverter.ConvertO(__workflow_emailMessagecontentsubject);
+                if (__workflow_emailMessagecontenthtml != null)
+                {
+                    contentObject["html"] = ExpressionConverter.ConvertO(__workflow_emailMessagecontenthtml);
+                    contentObjectpropCount++;
+                }
 
-            if (contentObjectpropCount > 0)
-            {
-                emailMessage["content"] = contentObject;
-                emailMessagepropCount++;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    emailMessage["content"] = contentObject;
+                    emailMessagepropCount++;
+                }
 
-            if (emailMessagereplyTo != null)
-            {
-                emailMessage["replyTo"] = ExpressionConverter.ConvertO(emailMessagereplyTo);
-                emailMessagepropCount++;
-            }
+                if (__workflow_emailMessagereplyTo != null)
+                {
+                    emailMessage["replyTo"] = ExpressionConverter.ConvertO(__workflow_emailMessagereplyTo);
+                    emailMessagepropCount++;
+                }
 
-            if (emailMessageattachments != null)
-            {
-                emailMessage["attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
-                emailMessagepropCount++;
-            }
+                if (__workflow_emailMessageattachments != null)
+                {
+                    emailMessage["attachments"] = ExpressionConverter.ConvertO(__workflow_emailMessageattachments);
+                    emailMessagepropCount++;
+                }
 
-            if (emailMessageheaders != null)
-            {
-                emailMessage["headers"] = ExpressionConverter.ConvertO(emailMessageheaders);
-                emailMessagepropCount++;
-            }
+                if (__workflow_emailMessageheaders != null)
+                {
+                    emailMessage["headers"] = ExpressionConverter.ConvertO(__workflow_emailMessageheaders);
+                    emailMessagepropCount++;
+                }
 
-            if (emailMessageuserEngagementTrackingDisabled != null)
-            {
-                emailMessage["userEngagementTrackingDisabled"] = ExpressionConverter.ConvertO(emailMessageuserEngagementTrackingDisabled);
-                emailMessagepropCount++;
-            }
+                if (__workflow_emailMessageuserEngagementTrackingDisabled != null)
+                {
+                    emailMessage["userEngagementTrackingDisabled"] = ExpressionConverter.ConvertO(__workflow_emailMessageuserEngagementTrackingDisabled);
+                    emailMessagepropCount++;
+                }
 
-            if (emailMessagepropCount > 0)
-            {
-                callPayload.Body = emailMessage;
-            }
+                if (emailMessagepropCount > 0)
+                {
+                    callPayload.Body = emailMessage;
+                }
 
-            return new ApiConnectionAction<EmailSendResult>(callPayload);
+                return new ApiConnectionAction<EmailSendResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsemail")]
         public IBodyWorkflowAction<EmailSendResult> GetMessageStatusGAVersion(Expression<Func<string>> operationId)
         {
-            var apiCallPath = String.Format("/emails/operations/{0}", ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");
-            return new ApiConnectionAction<EmailSendResult>(callPayload);
+            var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
+            return new DeferredBodyAction<EmailSendResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/emails/operations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2023-03-31");
+                return new ApiConnectionAction<EmailSendResult>(callPayload);
+            });
         }
     }
 
@@ -139,6 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public ErrorDetail Error { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum EmailSendResultStatusType
     {
         NotStarted,
@@ -175,6 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsemail
         public JToken Info { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum emailMessageimportanceInput
     {
         High,

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,105 +14,122 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
         public IBodyWorkflowAction<JToken> UpdateInspection(Expression<Func<string>> bodyinspectionTemplateId, Expression<Func<string>> bodybuilderId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string[]>> bodyprograms = null, Expression<Func<string[]>> bodyraters = null, Expression<Func<string>> bodysharePointSubscriberId = null, Expression<Func<string>> bodyoutlookEventId = null, Expression<Func<string>> bodyaddress1 = null, Expression<Func<string>> bodyaddress2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzip = null, Expression<Func<string>> bodytimeZone = null)
         {
-            var apiCallPath = "/updateInspection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["inspectionTemplateId"] = ExpressionConverter.ConvertO(bodyinspectionTemplateId);
-            bodypropCount++;
-            body["builderId"] = ExpressionConverter.ConvertO(bodybuilderId);
-            if (bodyprograms != null)
+            var __workflow_bodyinspectionTemplateId = WorkflowExpression.Compile(bodyinspectionTemplateId, nameof(bodyinspectionTemplateId), required: true);
+            var __workflow_bodybuilderId = WorkflowExpression.Compile(bodybuilderId, nameof(bodybuilderId), required: true);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: true);
+            var __workflow_bodyprograms = WorkflowExpression.Compile(bodyprograms, nameof(bodyprograms), required: false);
+            var __workflow_bodyraters = WorkflowExpression.Compile(bodyraters, nameof(bodyraters), required: false);
+            var __workflow_bodysharePointSubscriberId = WorkflowExpression.Compile(bodysharePointSubscriberId, nameof(bodysharePointSubscriberId), required: false);
+            var __workflow_bodyoutlookEventId = WorkflowExpression.Compile(bodyoutlookEventId, nameof(bodyoutlookEventId), required: false);
+            var __workflow_bodyaddress1 = WorkflowExpression.Compile(bodyaddress1, nameof(bodyaddress1), required: false);
+            var __workflow_bodyaddress2 = WorkflowExpression.Compile(bodyaddress2, nameof(bodyaddress2), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyzip = WorkflowExpression.Compile(bodyzip, nameof(bodyzip), required: false);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["programs"] = ExpressionConverter.ConvertO(bodyprograms);
+                var apiCallPath = "/updateInspection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyraters != null)
-            {
-                body["raters"] = ExpressionConverter.ConvertO(bodyraters);
+                body["inspectionTemplateId"] = ExpressionConverter.ConvertO(__workflow_bodyinspectionTemplateId);
                 bodypropCount++;
-            }
+                body["builderId"] = ExpressionConverter.ConvertO(__workflow_bodybuilderId);
+                if (__workflow_bodyprograms != null)
+                {
+                    body["programs"] = ExpressionConverter.ConvertO(__workflow_bodyprograms);
+                    bodypropCount++;
+                }
 
-            if (bodysharePointSubscriberId != null)
-            {
-                body["sharePointSubscriberId"] = ExpressionConverter.ConvertO(bodysharePointSubscriberId);
+                if (__workflow_bodyraters != null)
+                {
+                    body["raters"] = ExpressionConverter.ConvertO(__workflow_bodyraters);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysharePointSubscriberId != null)
+                {
+                    body["sharePointSubscriberId"] = ExpressionConverter.ConvertO(__workflow_bodysharePointSubscriberId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyoutlookEventId != null)
+                {
+                    body["outlookEventId"] = ExpressionConverter.ConvertO(__workflow_bodyoutlookEventId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyaddress1 != null)
+                {
+                    body["address1"] = ExpressionConverter.ConvertO(__workflow_bodyaddress1);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyaddress2 != null)
+                {
+                    body["address2"] = ExpressionConverter.ConvertO(__workflow_bodyaddress2);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyzip != null)
+                {
+                    body["zip"] = ExpressionConverter.ConvertO(__workflow_bodyzip);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyoutlookEventId != null)
-            {
-                body["outlookEventId"] = ExpressionConverter.ConvertO(bodyoutlookEventId);
+                body["startTime"] = ExpressionConverter.ConvertO(__workflow_bodystartTime);
                 bodypropCount++;
-            }
+                body["endTime"] = ExpressionConverter.ConvertO(__workflow_bodyendTime);
+                if (__workflow_bodytimeZone != null)
+                {
+                    body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
+                    bodypropCount++;
+                }
 
-            if (bodyaddress1 != null)
-            {
-                body["address1"] = ExpressionConverter.ConvertO(bodyaddress1);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyaddress2 != null)
-            {
-                body["address2"] = ExpressionConverter.ConvertO(bodyaddress2);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodyzip != null)
-            {
-                body["zip"] = ExpressionConverter.ConvertO(bodyzip);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodytimeZone != null)
-            {
-                body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class HouseraterqaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InspectionStatusChange(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InspectionStatusChange(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/createWebhook/onSVStatusChange";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
+            body["callbackURL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 }

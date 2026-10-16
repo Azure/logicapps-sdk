@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,227 +14,245 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<CommandPostResponse> Command(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
         {
-            var apiCallPath = "/v1/command";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputsObject = new JObject();
-            var inputsObjectpropCount = 0;
-            if (bodyinputscommand != null)
+            var __workflow_bodyinputscommand = WorkflowExpression.Compile(bodyinputscommand, nameof(bodyinputscommand), required: false);
+            var __workflow_bodyinputscontext = WorkflowExpression.Compile(bodyinputscontext, nameof(bodyinputscontext), required: false);
+            var __workflow_bodyoptionsoutputCount = WorkflowExpression.Compile(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
+            var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            var __workflow_bodyoptionscompletionType = WorkflowExpression.Compile(bodyoptionscompletionType, nameof(bodyoptionscompletionType), required: false);
+            return new DeferredBodyAction<CommandPostResponse>(() =>
             {
-                inputsObject["command"] = ExpressionConverter.ConvertO(bodyinputscommand);
-                inputsObjectpropCount++;
-            }
-
-            if (bodyinputscontext != null)
-            {
-                inputsObject["context"] = ExpressionConverter.ConvertO(bodyinputscontext);
-                inputsObjectpropCount++;
-            }
-
-            if (inputsObjectpropCount > 0)
-            {
-                body["inputs"] = inputsObject;
-                bodypropCount++;
-            }
-
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionsoutputCount != null)
-            {
-                if (bodyoptionsoutputCount != null)
+                var apiCallPath = "/v1/command";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputsObject = new JObject();
+                var inputsObjectpropCount = 0;
+                if (__workflow_bodyinputscommand != null)
                 {
-                    optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
+                    inputsObject["command"] = ExpressionConverter.ConvertO(__workflow_bodyinputscommand);
+                    inputsObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputscontext != null)
+                {
+                    inputsObject["context"] = ExpressionConverter.ConvertO(__workflow_bodyinputscontext);
+                    inputsObjectpropCount++;
+                }
+
+                if (inputsObjectpropCount > 0)
+                {
+                    body["inputs"] = inputsObject;
+                    bodypropCount++;
+                }
+
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (__workflow_bodyoptionsoutputCount != null)
+                {
+                    if (__workflow_bodyoptionsoutputCount != null)
+                    {
+                        optionsObject["outputCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoutputCount);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputCount"] = 3;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputCount"] = 3;
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsinputLanguage != null)
-            {
-                if (bodyoptionsinputLanguage != null)
+                if (__workflow_bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    if (__workflow_bodyoptionsinputLanguage != null)
+                    {
+                        optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsinputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["inputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["inputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsoutputLanguage != null)
-            {
-                if (bodyoptionsoutputLanguage != null)
+                if (__workflow_bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    if (__workflow_bodyoptionsoutputLanguage != null)
+                    {
+                        optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoutputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionslanguageFormality != null)
-            {
-                if (bodyoptionslanguageFormality != null)
+                if (__workflow_bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    if (__workflow_bodyoptionslanguageFormality != null)
+                    {
+                        optionsObject["languageFormality"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslanguageFormality);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["languageFormality"] = "default";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["languageFormality"] = "default";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionscompletionType != null)
-            {
-                if (bodyoptionscompletionType != null)
+                if (__workflow_bodyoptionscompletionType != null)
                 {
-                    optionsObject["completionType"] = ExpressionConverter.ConvertO(bodyoptionscompletionType);
+                    if (__workflow_bodyoptionscompletionType != null)
+                    {
+                        optionsObject["completionType"] = ExpressionConverter.ConvertO(__workflow_bodyoptionscompletionType);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["completionType"] = "performance";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["completionType"] = "performance";
-                optionsObjectpropCount++;
-            }
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
 
-            if (optionsObjectpropCount > 0)
-            {
-                body["options"] = optionsObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CommandPostResponse>(callPayload);
+                return new ApiConnectionAction<CommandPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
-            var apiCallPath = "/v1/keep-writing";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputsObject = new JObject();
-            var inputsObjectpropCount = 0;
-            if (bodyinputstype != null)
+            var __workflow_bodyinputstype = WorkflowExpression.Compile(bodyinputstype, nameof(bodyinputstype), required: false);
+            var __workflow_bodyinputsvalue = WorkflowExpression.Compile(bodyinputsvalue, nameof(bodyinputsvalue), required: false);
+            var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            return new DeferredBodyAction<KeepWritingPostResponse>(() =>
             {
-                if (bodyinputstype != null)
+                var apiCallPath = "/v1/keep-writing";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputsObject = new JObject();
+                var inputsObjectpropCount = 0;
+                if (__workflow_bodyinputstype != null)
                 {
-                    inputsObject["type"] = ExpressionConverter.ConvertO(bodyinputstype);
+                    if (__workflow_bodyinputstype != null)
+                    {
+                        inputsObject["type"] = ExpressionConverter.ConvertO(__workflow_bodyinputstype);
+                        inputsObjectpropCount++;
+                    }
+
+                    inputsObjectpropCount++;
+                }
+                else
+                {
+                    inputsObject["type"] = "text";
                     inputsObjectpropCount++;
                 }
 
-                inputsObjectpropCount++;
-            }
-            else
-            {
-                inputsObject["type"] = "text";
-                inputsObjectpropCount++;
-            }
-
-            if (bodyinputsvalue != null)
-            {
-                inputsObject["value"] = ExpressionConverter.ConvertO(bodyinputsvalue);
-                inputsObjectpropCount++;
-            }
-
-            if (inputsObjectpropCount > 0)
-            {
-                body["inputs"] = inputsObject;
-                bodypropCount++;
-            }
-
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionsinputLanguage != null)
-            {
-                if (bodyoptionsinputLanguage != null)
+                if (__workflow_bodyinputsvalue != null)
                 {
-                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    inputsObject["value"] = ExpressionConverter.ConvertO(__workflow_bodyinputsvalue);
+                    inputsObjectpropCount++;
+                }
+
+                if (inputsObjectpropCount > 0)
+                {
+                    body["inputs"] = inputsObject;
+                    bodypropCount++;
+                }
+
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (__workflow_bodyoptionsinputLanguage != null)
+                {
+                    if (__workflow_bodyoptionsinputLanguage != null)
+                    {
+                        optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsinputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["inputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["inputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsoutputLanguage != null)
-            {
-                if (bodyoptionsoutputLanguage != null)
+                if (__workflow_bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    if (__workflow_bodyoptionsoutputLanguage != null)
+                    {
+                        optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoutputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionslanguageFormality != null)
-            {
-                if (bodyoptionslanguageFormality != null)
+                if (__workflow_bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    if (__workflow_bodyoptionslanguageFormality != null)
+                    {
+                        optionsObject["languageFormality"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslanguageFormality);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["languageFormality"] = "default";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["languageFormality"] = "default";
-                optionsObjectpropCount++;
-            }
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
 
-            if (optionsObjectpropCount > 0)
-            {
-                body["options"] = optionsObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
+                return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -249,229 +267,267 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
         {
-            var apiCallPath = String.Format("/v1/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
-            var apiCallPath = String.Format("/v1/templates/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputsObject = new JObject();
-            var inputsObjectpropCount = 0;
-            if (inputsObjectpropCount > 0)
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_bodyoptionsoutputCount = WorkflowExpression.Compile(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
+            var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            return new DeferredBodyAction<TemplatePostResponse>(() =>
             {
-                body["inputs"] = inputsObject;
-                bodypropCount++;
-            }
-
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionsoutputCount != null)
-            {
-                optionsObject["outputCount"] = ExpressionConverter.ConvertO(bodyoptionsoutputCount);
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsinputLanguage != null)
-            {
-                if (bodyoptionsinputLanguage != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputsObject = new JObject();
+                var inputsObjectpropCount = 0;
+                if (inputsObjectpropCount > 0)
                 {
-                    optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsinputLanguage);
+                    body["inputs"] = inputsObject;
+                    bodypropCount++;
+                }
+
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (__workflow_bodyoptionsoutputCount != null)
+                {
+                    optionsObject["outputCount"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoutputCount);
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["inputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsoutputLanguage != null)
-            {
-                if (bodyoptionsoutputLanguage != null)
+                if (__workflow_bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(bodyoptionsoutputLanguage);
+                    if (__workflow_bodyoptionsinputLanguage != null)
+                    {
+                        optionsObject["inputLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsinputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["inputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionslanguageFormality != null)
-            {
-                if (bodyoptionslanguageFormality != null)
+                if (__workflow_bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["languageFormality"] = ExpressionConverter.ConvertO(bodyoptionslanguageFormality);
+                    if (__workflow_bodyoptionsoutputLanguage != null)
+                    {
+                        optionsObject["outputLanguage"] = ExpressionConverter.ConvertO(__workflow_bodyoptionsoutputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["languageFormality"] = "default";
-                optionsObjectpropCount++;
-            }
+                if (__workflow_bodyoptionslanguageFormality != null)
+                {
+                    if (__workflow_bodyoptionslanguageFormality != null)
+                    {
+                        optionsObject["languageFormality"] = ExpressionConverter.ConvertO(__workflow_bodyoptionslanguageFormality);
+                        optionsObjectpropCount++;
+                    }
 
-            if (optionsObjectpropCount > 0)
-            {
-                body["options"] = optionsObject;
-                bodypropCount++;
-            }
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["languageFormality"] = "default";
+                    optionsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgesGetResponse> KnowledgesGet(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
-            var apiCallPath = "/v1/knowledge";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<KnowledgesGetResponse>(callPayload);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            return new DeferredBodyAction<KnowledgesGetResponse>(() =>
+            {
+                var apiCallPath = "/v1/knowledge";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
+                return new ApiConnectionAction<KnowledgesGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePostResponse> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
-            var apiCallPath = "/v1/knowledge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            return new DeferredBodyAction<KnowledgePostResponse>(() =>
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
-
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
-                if (bodysettingsappVisibility != null)
+                var apiCallPath = "/v1/knowledge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
                 {
-                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (__workflow_bodysettingsappVisibility != null)
+                {
+                    if (__workflow_bodysettingsappVisibility != null)
+                    {
+                        settingsObject["appVisibility"] = ExpressionConverter.ConvertO(__workflow_bodysettingsappVisibility);
+                        settingsObjectpropCount++;
+                    }
+
+                    settingsObjectpropCount++;
+                }
+                else
+                {
+                    settingsObject["appVisibility"] = "visible";
                     settingsObjectpropCount++;
                 }
 
-                settingsObjectpropCount++;
-            }
-            else
-            {
-                settingsObject["appVisibility"] = "visible";
-                settingsObjectpropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                bodypropCount++;
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KnowledgePostResponse>(callPayload);
+                return new ApiConnectionAction<KnowledgePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet(Expression<Func<string>> knowledgeId)
         {
-            var apiCallPath = String.Format("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
+            var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
+            return new DeferredBodyAction<KnowledgeGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete(Expression<Func<string>> knowledgeId)
         {
-            var apiCallPath = String.Format("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
+            var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
+            return new DeferredBodyAction<KnowledgeDeleteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
         {
-            var apiCallPath = String.Format("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(knowledgeId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            return new DeferredBodyAction<KnowledgePatchResponse>(() =>
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
-                settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
-                settingsObjectpropCount++;
-            }
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (__workflow_bodysettingsappVisibility != null)
+                {
+                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(__workflow_bodysettingsappVisibility);
+                    settingsObjectpropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyfile != null)
-            {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfile != null)
+                {
+                    body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<KnowledgePatchResponse>(callPayload);
+                return new ApiConnectionAction<KnowledgePatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
@@ -486,121 +542,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePostResponse> Tone(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
-            var apiCallPath = "/v1/tones";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            return new DeferredBodyAction<TonePostResponse>(() =>
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
-
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
-                if (bodysettingsappVisibility != null)
+                var apiCallPath = "/v1/tones";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
                 {
-                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (__workflow_bodysettingsappVisibility != null)
+                {
+                    if (__workflow_bodysettingsappVisibility != null)
+                    {
+                        settingsObject["appVisibility"] = ExpressionConverter.ConvertO(__workflow_bodysettingsappVisibility);
+                        settingsObjectpropCount++;
+                    }
+
+                    settingsObjectpropCount++;
+                }
+                else
+                {
+                    settingsObject["appVisibility"] = "visible";
                     settingsObjectpropCount++;
                 }
 
-                settingsObjectpropCount++;
-            }
-            else
-            {
-                settingsObject["appVisibility"] = "visible";
-                settingsObjectpropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TonePostResponse>(callPayload);
+                return new ApiConnectionAction<TonePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneGetResponse> ToneGet(Expression<Func<string>> toneId)
         {
-            var apiCallPath = String.Format("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(toneId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ToneGetResponse>(callPayload);
+            var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
+            return new DeferredBodyAction<ToneGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ToneGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePatchResponse> TonePatch(Expression<Func<string>> toneId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyvalue = null)
         {
-            var apiCallPath = String.Format("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(toneId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            return new DeferredBodyAction<TonePatchResponse>(() =>
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
-                settingsObject["appVisibility"] = ExpressionConverter.ConvertO(bodysettingsappVisibility);
-                settingsObjectpropCount++;
-            }
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (__workflow_bodysettingsappVisibility != null)
+                {
+                    settingsObject["appVisibility"] = ExpressionConverter.ConvertO(__workflow_bodysettingsappVisibility);
+                    settingsObjectpropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                if (__workflow_bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TonePatchResponse>(callPayload);
+                return new ApiConnectionAction<TonePatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete(Expression<Func<string>> toneId)
         {
-            var apiCallPath = String.Format("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(toneId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ToneDeleteResponse>(callPayload);
+            var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
+            return new DeferredBodyAction<ToneDeleteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ToneDeleteResponse>(callPayload);
+            });
         }
     }
 
@@ -629,6 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionsinputLanguageInput
     {
         English,
@@ -639,6 +717,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         German
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionsoutputLanguageInput
     {
         English,
@@ -649,6 +728,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         German
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionslanguageFormalityInput
     {
         [EnumMember(Value = "default")]
@@ -659,6 +739,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         Less
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoptionscompletionTypeInput
     {
         [EnumMember(Value = "performance")]
@@ -688,6 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyinputstypeInput
     {
         [EnumMember(Value = "text")]
@@ -927,6 +1009,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         public string AppVisibility { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysettingsappVisibilityInput
     {
         [EnumMember(Value = "visible")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,30 +14,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
         public IBodyWorkflowAction<Table> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
-            var apiCallPath = "/api/QueryDraft";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timerange"] = Convert.ToString("Last hour");
-            if (timerange != null)
-                callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
-            callPayload.Queries["version"] = Convert.ToString("2");
-            callPayload.Body = ExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction<Table>(callPayload);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: false);
+            return new DeferredBodyAction<Table>(() =>
+            {
+                var apiCallPath = "/api/QueryDraft";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timerange"] = Convert.ToString("Last hour");
+                if (__workflow_timerange != null)
+                    callPayload.Queries["timerange"] = ExpressionConverter.Convert(__workflow_timerange);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
+                return new ApiConnectionAction<Table>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
         public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
-            var apiCallPath = "/api/VisualizeQueryDraft";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timerange"] = Convert.ToString("Last hour");
-            if (timerange != null)
-                callPayload.Queries["timerange"] = ExpressionConverter.Convert(timerange);
-            callPayload.Queries["version"] = Convert.ToString("2");
-            callPayload.Queries["chartType"] = ExpressionConverter.Convert(chartType);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction<VisualizeResults>(callPayload);
+            var __workflow_chartType = WorkflowExpression.Compile(chartType, nameof(chartType), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: false);
+            return new DeferredBodyAction<VisualizeResults>(() =>
+            {
+                var apiCallPath = "/api/VisualizeQueryDraft";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timerange"] = Convert.ToString("Last hour");
+                if (__workflow_timerange != null)
+                    callPayload.Queries["timerange"] = ExpressionConverter.Convert(__workflow_timerange);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Queries["chartType"] = ExpressionConverter.Convert(__workflow_chartType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_query);
+                return new ApiConnectionAction<VisualizeResults>(callPayload);
+            });
         }
     }
 
@@ -51,6 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         public JToken[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timerangeInput
     {
         [EnumMember(Value = "Last hour")]
@@ -83,6 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         public string AttachmentName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum chartTypeInput
     {
         [EnumMember(Value = "Html Table")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,101 +14,147 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<AirQualityHealthIndexResponse> AirQualityHealthIndex(Expression<Func<string>> o3, Expression<Func<string>> nO2, Expression<Func<string>> pM)
         {
-            var apiCallPath = "/AirQualityHealthIndex";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["O3"] = ExpressionConverter.Convert(o3);
-            callPayload.Queries["NO2"] = ExpressionConverter.Convert(nO2);
-            callPayload.Queries["PM"] = ExpressionConverter.Convert(pM);
-            return new ApiConnectionAction<AirQualityHealthIndexResponse>(callPayload);
+            var __workflow_o3 = WorkflowExpression.Compile(o3, nameof(o3), required: true);
+            var __workflow_nO2 = WorkflowExpression.Compile(nO2, nameof(nO2), required: true);
+            var __workflow_pM = WorkflowExpression.Compile(pM, nameof(pM), required: true);
+            return new DeferredBodyAction<AirQualityHealthIndexResponse>(() =>
+            {
+                var apiCallPath = "/AirQualityHealthIndex";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["O3"] = ExpressionConverter.Convert(__workflow_o3);
+                callPayload.Queries["NO2"] = ExpressionConverter.Convert(__workflow_nO2);
+                callPayload.Queries["PM"] = ExpressionConverter.Convert(__workflow_pM);
+                return new ApiConnectionAction<AirQualityHealthIndexResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<TreeEquivalentResponse> TreeEquivalent(Expression<Func<string>> weight, Expression<Func<unitInput>> unit)
         {
-            var apiCallPath = "/TreeEquivalent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["weight"] = ExpressionConverter.Convert(weight);
-            callPayload.Queries["unit"] = ExpressionConverter.Convert(unit);
-            return new ApiConnectionAction<TreeEquivalentResponse>(callPayload);
+            var __workflow_weight = WorkflowExpression.Compile(weight, nameof(weight), required: true);
+            var __workflow_unit = WorkflowExpression.Compile(unit, nameof(unit), required: true);
+            return new DeferredBodyAction<TreeEquivalentResponse>(() =>
+            {
+                var apiCallPath = "/TreeEquivalent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["weight"] = ExpressionConverter.Convert(__workflow_weight);
+                callPayload.Queries["unit"] = ExpressionConverter.Convert(__workflow_unit);
+                return new ApiConnectionAction<TreeEquivalentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<TraditionalHydroToCarbonFootprintResponse> TraditionalHydroToCarbonFootprint(Expression<Func<string>> consumption, Expression<Func<locationInput>> location)
         {
-            var apiCallPath = "/TraditionalHydroToCarbonFootprint";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["consumption"] = ExpressionConverter.Convert(consumption);
-            callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-            return new ApiConnectionAction<TraditionalHydroToCarbonFootprintResponse>(callPayload);
+            var __workflow_consumption = WorkflowExpression.Compile(consumption, nameof(consumption), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            return new DeferredBodyAction<TraditionalHydroToCarbonFootprintResponse>(() =>
+            {
+                var apiCallPath = "/TraditionalHydroToCarbonFootprint";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["consumption"] = ExpressionConverter.Convert(__workflow_consumption);
+                callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
+                return new ApiConnectionAction<TraditionalHydroToCarbonFootprintResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CleanHydroToCarbonFootprintResponse> CleanHydroToCarbonFootprint(Expression<Func<energyInput>> energy, Expression<Func<string>> consumption)
         {
-            var apiCallPath = "/CleanHydroToCarbonFootprint";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["energy"] = ExpressionConverter.Convert(energy);
-            callPayload.Queries["consumption"] = ExpressionConverter.Convert(consumption);
-            return new ApiConnectionAction<CleanHydroToCarbonFootprintResponse>(callPayload);
+            var __workflow_energy = WorkflowExpression.Compile(energy, nameof(energy), required: true);
+            var __workflow_consumption = WorkflowExpression.Compile(consumption, nameof(consumption), required: true);
+            return new DeferredBodyAction<CleanHydroToCarbonFootprintResponse>(() =>
+            {
+                var apiCallPath = "/CleanHydroToCarbonFootprint";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["energy"] = ExpressionConverter.Convert(__workflow_energy);
+                callPayload.Queries["consumption"] = ExpressionConverter.Convert(__workflow_consumption);
+                return new ApiConnectionAction<CleanHydroToCarbonFootprintResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<FuelToCO2eResponse> FuelToCO2e(Expression<Func<typeInput>> type, Expression<Func<string>> litres)
         {
-            var apiCallPath = "/FuelToCO2e";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["litres"] = ExpressionConverter.Convert(litres);
-            return new ApiConnectionAction<FuelToCO2eResponse>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_litres = WorkflowExpression.Compile(litres, nameof(litres), required: true);
+            return new DeferredBodyAction<FuelToCO2eResponse>(() =>
+            {
+                var apiCallPath = "/FuelToCO2e";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                callPayload.Queries["litres"] = ExpressionConverter.Convert(__workflow_litres);
+                return new ApiConnectionAction<FuelToCO2eResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromCarTravelResponse> CarbonFootprintFromCarTravel(Expression<Func<string>> distance, Expression<Func<vehicleInput>> vehicle)
         {
-            var apiCallPath = "/CarbonFootprintFromCarTravel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            callPayload.Queries["vehicle"] = ExpressionConverter.Convert(vehicle);
-            return new ApiConnectionAction<CarbonFootprintFromCarTravelResponse>(callPayload);
+            var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
+            var __workflow_vehicle = WorkflowExpression.Compile(vehicle, nameof(vehicle), required: true);
+            return new DeferredBodyAction<CarbonFootprintFromCarTravelResponse>(() =>
+            {
+                var apiCallPath = "/CarbonFootprintFromCarTravel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
+                callPayload.Queries["vehicle"] = ExpressionConverter.Convert(__workflow_vehicle);
+                return new ApiConnectionAction<CarbonFootprintFromCarTravelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromFlightResponse> CarbonFootprintFromFlight(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
         {
-            var apiCallPath = "/CarbonFootprintFromFlight";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<CarbonFootprintFromFlightResponse>(callPayload);
+            var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            return new DeferredBodyAction<CarbonFootprintFromFlightResponse>(() =>
+            {
+                var apiCallPath = "/CarbonFootprintFromFlight";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                return new ApiConnectionAction<CarbonFootprintFromFlightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromMotorBikeResponse> CarbonFootprintFromMotorBike(Expression<Func<typeInput>> type, Expression<Func<string>> distance)
         {
-            var apiCallPath = "/CarbonFootprintFromMotorBike";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            return new ApiConnectionAction<CarbonFootprintFromMotorBikeResponse>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
+            return new DeferredBodyAction<CarbonFootprintFromMotorBikeResponse>(() =>
+            {
+                var apiCallPath = "/CarbonFootprintFromMotorBike";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
+                return new ApiConnectionAction<CarbonFootprintFromMotorBikeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carbonfootprintip")]
         public IBodyWorkflowAction<CarbonFootprintFromPublicTransitResponse> CarbonFootprintFromPublicTransit(Expression<Func<string>> distance, Expression<Func<typeInput>> type)
         {
-            var apiCallPath = "/CarbonFootprintFromPublicTransit";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<CarbonFootprintFromPublicTransitResponse>(callPayload);
+            var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            return new DeferredBodyAction<CarbonFootprintFromPublicTransitResponse>(() =>
+            {
+                var apiCallPath = "/CarbonFootprintFromPublicTransit";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
+                callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                return new ApiConnectionAction<CarbonFootprintFromPublicTransitResponse>(callPayload);
+            });
         }
     }
 
@@ -128,6 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double NumberOfTrees { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum unitInput
     {
         [EnumMember(Value = "kg")]
@@ -142,6 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum locationInput
     {
         USA,
@@ -160,6 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public int CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum energyInput
     {
         Solar,
@@ -177,6 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         Taxi,
@@ -196,6 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carbonfootprintip
         public double CarbonEquivalent { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum vehicleInput
     {
         SmallDieselCar,

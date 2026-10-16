@@ -121,4 +121,28 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         string VariableName { get; }
     }
+
+    /// <summary>
+    /// Represents an agent workflow action that can register tool branches.
+    /// </summary>
+    public interface IAgentWorkflowAction : IWorkflowAction
+    {
+        /// <summary>
+        /// Adds a tool whose callback returns the root action of the tool branch.
+        /// </summary>
+        IAgentWorkflowAction AddTool<T>(
+            Func<IAgentToolContext<T>, IWorkflowAction> tool,
+            string description,
+            T parameters)
+            where T : class;
+
+        /// <summary>
+        /// Adds a tool whose callback returns the tool branch chain.
+        /// </summary>
+        IAgentWorkflowAction AddTool<T>(
+            Func<IAgentToolContext<T>, OperationChain> tool,
+            string description,
+            T parameters)
+            where T : class;
+    }
 }

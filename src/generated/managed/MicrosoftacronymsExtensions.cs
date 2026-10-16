@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,23 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymSearchPostResponse> AcronymSearch(Expression<Func<bodyrequestsInputItem[]>> bodyrequests = null)
         {
-            var apiCallPath = "/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrequests != null)
+            var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: false);
+            return new DeferredBodyAction<AcronymSearchPostResponse>(() =>
             {
-                body["requests"] = ExpressionConverter.ConvertO(bodyrequests);
-                bodypropCount++;
-            }
+                var apiCallPath = "/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyrequests != null)
+                {
+                    body["requests"] = ExpressionConverter.ConvertO(__workflow_bodyrequests);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AcronymSearchPostResponse>(callPayload);
+                return new ApiConnectionAction<AcronymSearchPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
@@ -45,123 +49,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymPostResponse> Acronym(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodystandsFor, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
         {
-            var apiCallPath = "/acronyms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            bodypropCount++;
-            body["standsFor"] = ExpressionConverter.ConvertO(bodystandsFor);
-            if (bodydescription != null)
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodystandsFor = WorkflowExpression.Compile(bodystandsFor, nameof(bodystandsFor), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodywebUrl = WorkflowExpression.Compile(bodywebUrl, nameof(bodywebUrl), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            return new DeferredBodyAction<AcronymPostResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/acronyms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodywebUrl != null)
-            {
-                body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
+                body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                 bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                if (bodystate != null)
+                body["standsFor"] = ExpressionConverter.ConvertO(__workflow_bodystandsFor);
+                if (__workflow_bodydescription != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["state"] = "published";
-                bodypropCount++;
-            }
+                if (__workflow_bodywebUrl != null)
+                {
+                    body["webUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebUrl);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodystate != null)
+                {
+                    if (__workflow_bodystate != null)
+                    {
+                        body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction<AcronymPostResponse>(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["state"] = "published";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AcronymPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<AcronymGetResponse> AcronymGet(Expression<Func<string>> acronymsId)
         {
-            var apiCallPath = String.Format("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AcronymGetResponse>(callPayload);
+            var __workflow_acronymsId = WorkflowExpression.Compile(acronymsId, nameof(acronymsId), required: true);
+            return new DeferredBodyAction<AcronymGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AcronymGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<string> AcronymDelete(Expression<Func<string>> acronymsId)
         {
-            var apiCallPath = String.Format("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_acronymsId = WorkflowExpression.Compile(acronymsId, nameof(acronymsId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftacronyms")]
         public IBodyWorkflowAction<string> AcronymPatch(Expression<Func<string>> acronymsId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodystandsFor = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodywebUrl = null, Expression<Func<bodystateInput>> bodystate = null)
         {
-            var apiCallPath = String.Format("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(acronymsId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydisplayName != null)
+            var __workflow_acronymsId = WorkflowExpression.Compile(acronymsId, nameof(acronymsId), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodystandsFor = WorkflowExpression.Compile(bodystandsFor, nameof(bodystandsFor), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodywebUrl = WorkflowExpression.Compile(bodywebUrl, nameof(bodywebUrl), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
-
-            if (bodystandsFor != null)
-            {
-                body["standsFor"] = ExpressionConverter.ConvertO(bodystandsFor);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodywebUrl != null)
-            {
-                body["webUrl"] = ExpressionConverter.ConvertO(bodywebUrl);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                if (bodystate != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/acronyms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_acronymsId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydisplayName != null)
                 {
-                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    body["displayName"] = ExpressionConverter.ConvertO(__workflow_bodydisplayName);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["state"] = "published";
-                bodypropCount++;
-            }
+                if (__workflow_bodystandsFor != null)
+                {
+                    body["standsFor"] = ExpressionConverter.ConvertO(__workflow_bodystandsFor);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (__workflow_bodywebUrl != null)
+                {
+                    body["webUrl"] = ExpressionConverter.ConvertO(__workflow_bodywebUrl);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodystate != null)
+                {
+                    if (__workflow_bodystate != null)
+                    {
+                        body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["state"] = "published";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -313,6 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftacronyms
         public string Id { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystateInput
     {
         [EnumMember(Value = "published")]

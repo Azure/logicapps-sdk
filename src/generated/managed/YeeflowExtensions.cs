@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,348 +14,463 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddItemResponse> AddItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<object>> bodydata = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            return new DeferredBodyAction<AddItemResponse>(() =>
             {
-                body["Data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydata != null)
+                {
+                    body["Data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddItemResponse>(callPayload);
+                return new ApiConnectionAction<AddItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            return new ApiConnectionAction<GetItemResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                return new ApiConnectionAction<GetItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<DeleteItemResponse> DeleteItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            return new ApiConnectionAction<DeleteItemResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<DeleteItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                return new ApiConnectionAction<DeleteItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<UpdateItemResponse> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<int>> bodyrowVersion = null, Expression<Func<object>> bodydata = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrowVersion != null)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyrowVersion = WorkflowExpression.Compile(bodyrowVersion, nameof(bodyrowVersion), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            return new DeferredBodyAction<UpdateItemResponse>(() =>
             {
-                body["RowVersion"] = ExpressionConverter.ConvertO(bodyrowVersion);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyrowVersion != null)
+                {
+                    body["RowVersion"] = ExpressionConverter.ConvertO(__workflow_bodyrowVersion);
+                    bodypropCount++;
+                }
 
-            if (bodydata != null)
-            {
-                body["Data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+                if (__workflow_bodydata != null)
+                {
+                    body["Data"] = ExpressionConverter.ConvertO(__workflow_bodydata);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateItemResponse>(callPayload);
+                return new ApiConnectionAction<UpdateItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetListFieldsResponse> GetListFields(Expression<Func<string>> application, Expression<Func<string>> listID)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            return new ApiConnectionAction<GetListFieldsResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            return new DeferredBodyAction<GetListFieldsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                return new ApiConnectionAction<GetListFieldsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<string>> bodyapplicantID = null, Expression<Func<object>> bodyvariables = null)
         {
-            var apiCallPath = "/workflow/forms/start";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            callPayload.Queries["key"] = ExpressionConverter.Convert(key);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyapplicantID != null)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_bodyapplicantID = WorkflowExpression.Compile(bodyapplicantID, nameof(bodyapplicantID), required: false);
+            var __workflow_bodyvariables = WorkflowExpression.Compile(bodyvariables, nameof(bodyvariables), required: false);
+            return new DeferredBodyAction<StartWorkflowResponse>(() =>
             {
-                body["ApplicantID"] = ExpressionConverter.ConvertO(bodyapplicantID);
-                bodypropCount++;
-            }
+                var apiCallPath = "/workflow/forms/start";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                callPayload.Queries["key"] = ExpressionConverter.Convert(__workflow_key);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyapplicantID != null)
+                {
+                    body["ApplicantID"] = ExpressionConverter.ConvertO(__workflow_bodyapplicantID);
+                    bodypropCount++;
+                }
 
-            if (bodyvariables != null)
-            {
-                body["Variables"] = ExpressionConverter.ConvertO(bodyvariables);
-                bodypropCount++;
-            }
+                if (__workflow_bodyvariables != null)
+                {
+                    body["Variables"] = ExpressionConverter.ConvertO(__workflow_bodyvariables);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StartWorkflowResponse>(callPayload);
+                return new ApiConnectionAction<StartWorkflowResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetAgentDefinitionResponse> GetAgentDefinition(Expression<Func<string>> application, Expression<Func<string>> agentID)
         {
-            var apiCallPath = String.Format("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(agentID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            return new ApiConnectionAction<GetAgentDefinitionResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_agentID = WorkflowExpression.Compile(agentID, nameof(agentID), required: true);
+            return new DeferredBodyAction<GetAgentDefinitionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                return new ApiConnectionAction<GetAgentDefinitionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<RunAgentResponse> RunAgent(Expression<Func<string>> application, Expression<Func<string>> agentID, Expression<Func<object>> body = null)
         {
-            var apiCallPath = String.Format("/agents/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(agentID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<RunAgentResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_agentID = WorkflowExpression.Compile(agentID, nameof(agentID), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<RunAgentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<RunAgentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<QueryItemsResponse> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string[]>> bodyfields = null, Expression<Func<ListDataWhereRequest[]>> bodyfilters = null, Expression<Func<bodysortsInputItem[]>> bodysorts = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/items/query", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfields != null)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            var __workflow_bodyfilters = WorkflowExpression.Compile(bodyfilters, nameof(bodyfilters), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
+            return new DeferredBodyAction<QueryItemsResponse>(() =>
             {
-                body["Fields"] = ExpressionConverter.ConvertO(bodyfields);
-                bodypropCount++;
-            }
-
-            if (bodyfilters != null)
-            {
-                body["Filters"] = ExpressionConverter.ConvertO(bodyfilters);
-                bodypropCount++;
-            }
-
-            if (bodysorts != null)
-            {
-                body["Sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                if (bodypageNumber != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfields != null)
                 {
-                    body["PageIndex"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    body["Fields"] = ExpressionConverter.ConvertO(__workflow_bodyfields);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["PageIndex"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodypageSize != null)
-            {
-                if (bodypageSize != null)
+                if (__workflow_bodyfilters != null)
                 {
-                    body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                    body["Filters"] = ExpressionConverter.ConvertO(__workflow_bodyfilters);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["PageSize"] = 10;
-                bodypropCount++;
-            }
+                if (__workflow_bodysorts != null)
+                {
+                    body["Sorts"] = ExpressionConverter.ConvertO(__workflow_bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodypageNumber != null)
+                {
+                    if (__workflow_bodypageNumber != null)
+                    {
+                        body["PageIndex"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction<QueryItemsResponse>(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["PageIndex"] = 1;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodypageSize != null)
+                {
+                    if (__workflow_bodypageSize != null)
+                    {
+                        body["PageSize"] = ExpressionConverter.ConvertO(__workflow_bodypageSize);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["PageSize"] = 10;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<QueryItemsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddItemFileResponse> AddItemFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<string>> fileName, Expression<Func<string>> fieldID = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/items/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            if (fieldID != null)
-                callPayload.Queries["FieldID"] = ExpressionConverter.Convert(fieldID);
-            callPayload.Queries["FileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AddItemFileResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_fieldID = WorkflowExpression.Compile(fieldID, nameof(fieldID), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<AddItemFileResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                if (__workflow_fieldID != null)
+                    callPayload.Queries["FieldID"] = ExpressionConverter.Convert(__workflow_fieldID);
+                callPayload.Queries["FileName"] = ExpressionConverter.Convert(__workflow_fileName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AddItemFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> fileName, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<UploadFileResponse>(callPayload);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<UploadFileResponse>(() =>
+            {
+                var apiCallPath = "/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FileName"] = ExpressionConverter.Convert(__workflow_fileName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<UploadFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetFilePropertyResponse> GetFileProperty(Expression<Func<string>> fieldValue = null)
         {
-            var apiCallPath = "/files/properties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValue);
-            return new ApiConnectionAction<GetFilePropertyResponse>(callPayload);
+            var __workflow_fieldValue = WorkflowExpression.Compile(fieldValue, nameof(fieldValue), required: false);
+            return new DeferredBodyAction<GetFilePropertyResponse>(() =>
+            {
+                var apiCallPath = "/files/properties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_fieldValue);
+                return new ApiConnectionAction<GetFilePropertyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddLibraryFileResponse> AddLibraryFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> fileName, Expression<Func<string>> path = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/library", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            if (path != null)
-                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["FileName"] = ExpressionConverter.Convert(fileName);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AddLibraryFileResponse>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<AddLibraryFileResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                if (__workflow_path != null)
+                    callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
+                callPayload.Queries["FileName"] = ExpressionConverter.Convert(__workflow_fileName);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<AddLibraryFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<string> GetLibraryFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/library/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class YeeflowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/hooks/1", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            callPayload.Queries["channel"] = Convert.ToString("ms-power");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                callPayload.Queries["channel"] = Convert.ToString("ms-power");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/hooks/2", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            callPayload.Queries["channel"] = Convert.ToString("ms-power");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                callPayload.Queries["channel"] = Convert.ToString("ms-power");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/hooks/3", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            callPayload.Queries["channel"] = Convert.ToString("ms-power");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/3", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                callPayload.Queries["channel"] = Convert.ToString("ms-power");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/lists/41/{0}/hooks/4", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["application"] = ExpressionConverter.Convert(application);
-            callPayload.Queries["channel"] = Convert.ToString("ms-power");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            return new DeferredBodyTrigger<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["application"] = ExpressionConverter.Convert(__workflow_application);
+                callPayload.Queries["channel"] = Convert.ToString("ms-power");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -488,6 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         public ListDataWhereRequest[] Child { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ListDataWhereRequestPreType
     {
         [EnumMember(Value = "and")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,32 +14,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<CurrentTime> GetCurrentTime(Expression<Func<string>> timeZone)
         {
-            var apiCallPath = "/Time/current/zone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
-            return new ApiConnectionAction<CurrentTime>(callPayload);
+            var __workflow_timeZone = WorkflowExpression.Compile(timeZone, nameof(timeZone), required: true);
+            return new DeferredBodyAction<CurrentTime>(() =>
+            {
+                var apiCallPath = "/Time/current/zone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(__workflow_timeZone);
+                return new ApiConnectionAction<CurrentTime>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByTimezone(Expression<Func<double>> latitude, Expression<Func<double>> longitude)
         {
-            var apiCallPath = "/Time/current/coordinate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            return new ApiConnectionAction<CurrentTime>(callPayload);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            return new DeferredBodyAction<CurrentTime>(() =>
+            {
+                var apiCallPath = "/Time/current/coordinate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                return new ApiConnectionAction<CurrentTime>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<CurrentTime> GetCurrentTimeByIp(Expression<Func<string>> ipAddress)
         {
-            var apiCallPath = "/Time/current/ip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(ipAddress);
-            return new ApiConnectionAction<CurrentTime>(callPayload);
+            var __workflow_ipAddress = WorkflowExpression.Compile(ipAddress, nameof(ipAddress), required: true);
+            return new DeferredBodyAction<CurrentTime>(() =>
+            {
+                var apiCallPath = "/Time/current/ip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(__workflow_ipAddress);
+                return new ApiConnectionAction<CurrentTime>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
@@ -54,133 +67,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<TimeZoneData> GetTimezone(Expression<Func<string>> timeZone)
         {
-            var apiCallPath = "/TimeZone/zone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timeZone"] = ExpressionConverter.Convert(timeZone);
-            return new ApiConnectionAction<TimeZoneData>(callPayload);
+            var __workflow_timeZone = WorkflowExpression.Compile(timeZone, nameof(timeZone), required: true);
+            return new DeferredBodyAction<TimeZoneData>(() =>
+            {
+                var apiCallPath = "/TimeZone/zone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timeZone"] = ExpressionConverter.Convert(__workflow_timeZone);
+                return new ApiConnectionAction<TimeZoneData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<TimeZoneData> GetTimezoneByCoordinate(Expression<Func<double>> latitude, Expression<Func<double>> longitude)
         {
-            var apiCallPath = "/TimeZone/coordinate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            return new ApiConnectionAction<TimeZoneData>(callPayload);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            return new DeferredBodyAction<TimeZoneData>(() =>
+            {
+                var apiCallPath = "/TimeZone/coordinate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                return new ApiConnectionAction<TimeZoneData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<TimeZoneData> GetTimezoneByIp(Expression<Func<string>> ipAddress)
         {
-            var apiCallPath = "/TimeZone/ip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(ipAddress);
-            return new ApiConnectionAction<TimeZoneData>(callPayload);
+            var __workflow_ipAddress = WorkflowExpression.Compile(ipAddress, nameof(ipAddress), required: true);
+            return new DeferredBodyAction<TimeZoneData>(() =>
+            {
+                var apiCallPath = "/TimeZone/ip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ipAddress"] = ExpressionConverter.Convert(__workflow_ipAddress);
+                return new ApiConnectionAction<TimeZoneData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Conversion> ConvertTime(Expression<Func<string>> bodyfromTimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytoTimeZone, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
         {
-            var apiCallPath = "/Conversion/ConvertTimeZone";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fromTimeZone"] = ExpressionConverter.ConvertO(bodyfromTimeZone);
-            bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
-            bodypropCount++;
-            body["toTimeZone"] = ExpressionConverter.ConvertO(bodytoTimeZone);
-            bodypropCount++;
-            body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
-            if (bodypropCount > 0)
+            var __workflow_bodyfromTimeZone = WorkflowExpression.Compile(bodyfromTimeZone, nameof(bodyfromTimeZone), required: true);
+            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodytoTimeZone = WorkflowExpression.Compile(bodytoTimeZone, nameof(bodytoTimeZone), required: true);
+            var __workflow_bodydstAmbiguity = WorkflowExpression.Compile(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            return new DeferredBodyAction<Conversion>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Conversion/ConvertTimeZone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fromTimeZone"] = ExpressionConverter.ConvertO(__workflow_bodyfromTimeZone);
+                bodypropCount++;
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
+                bodypropCount++;
+                body["toTimeZone"] = ExpressionConverter.ConvertO(__workflow_bodytoTimeZone);
+                bodypropCount++;
+                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Conversion>(callPayload);
+                return new ApiConnectionAction<Conversion>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Translation> LocalizeTime(Expression<Func<string>> bodydateTime, Expression<Func<string>> bodylanguageCode)
         {
-            var apiCallPath = "/Conversion/Translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
-            bodypropCount++;
-            body["languageCode"] = ExpressionConverter.ConvertO(bodylanguageCode);
-            if (bodypropCount > 0)
+            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodylanguageCode = WorkflowExpression.Compile(bodylanguageCode, nameof(bodylanguageCode), required: true);
+            return new DeferredBodyAction<Translation>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Conversion/Translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
+                bodypropCount++;
+                body["languageCode"] = ExpressionConverter.ConvertO(__workflow_bodylanguageCode);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Translation>(callPayload);
+                return new ApiConnectionAction<Translation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<DayOfTheWeekResult> ConvertTimeToDay(Expression<Func<string>> date)
         {
-            var apiCallPath = String.Format("/Conversion/DayOfTheWeek/{0}", ExpressionConverter.ConvertWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DayOfTheWeekResult>(callPayload);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            return new DeferredBodyAction<DayOfTheWeekResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Conversion/DayOfTheWeek/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DayOfTheWeekResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Calculation> IncrementByTimespan(Expression<Func<string>> bodytimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimeSpan, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
         {
-            var apiCallPath = "/Calculation/custom/increment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
-            bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
-            bodypropCount++;
-            body["timeSpan"] = ExpressionConverter.ConvertO(bodytimeSpan);
-            bodypropCount++;
-            body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
-            if (bodypropCount > 0)
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
+            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodytimeSpan = WorkflowExpression.Compile(bodytimeSpan, nameof(bodytimeSpan), required: true);
+            var __workflow_bodydstAmbiguity = WorkflowExpression.Compile(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            return new DeferredBodyAction<Calculation>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Calculation/custom/increment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
+                bodypropCount++;
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
+                bodypropCount++;
+                body["timeSpan"] = ExpressionConverter.ConvertO(__workflow_bodytimeSpan);
+                bodypropCount++;
+                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Calculation>(callPayload);
+                return new ApiConnectionAction<Calculation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "timeapi")]
         public IBodyWorkflowAction<Calculation> DecrementByTimespan(Expression<Func<string>> bodytimeZone, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodytimeSpan, Expression<Func<bodydstAmbiguityInput>> bodydstAmbiguity)
         {
-            var apiCallPath = "/Calculation/custom/decrement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
-            bodypropCount++;
-            body["dateTime"] = ExpressionConverter.ConvertO(bodydateTime);
-            bodypropCount++;
-            body["timeSpan"] = ExpressionConverter.ConvertO(bodytimeSpan);
-            bodypropCount++;
-            body["dstAmbiguity"] = ExpressionConverter.ConvertO(bodydstAmbiguity);
-            if (bodypropCount > 0)
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
+            var __workflow_bodydateTime = WorkflowExpression.Compile(bodydateTime, nameof(bodydateTime), required: true);
+            var __workflow_bodytimeSpan = WorkflowExpression.Compile(bodytimeSpan, nameof(bodytimeSpan), required: true);
+            var __workflow_bodydstAmbiguity = WorkflowExpression.Compile(bodydstAmbiguity, nameof(bodydstAmbiguity), required: true);
+            return new DeferredBodyAction<Calculation>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Calculation/custom/decrement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["timeZone"] = ExpressionConverter.ConvertO(__workflow_bodytimeZone);
+                bodypropCount++;
+                body["dateTime"] = ExpressionConverter.ConvertO(__workflow_bodydateTime);
+                bodypropCount++;
+                body["timeSpan"] = ExpressionConverter.ConvertO(__workflow_bodytimeSpan);
+                bodypropCount++;
+                body["dstAmbiguity"] = ExpressionConverter.ConvertO(__workflow_bodydstAmbiguity);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Calculation>(callPayload);
+                return new ApiConnectionAction<Calculation>(callPayload);
+            });
         }
     }
 
@@ -230,6 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         public bool DstActive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DayOfWeek
     {
         Sunday,
@@ -406,6 +463,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Timeapi
         public bool DstActive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydstAmbiguityInput
     {
         [EnumMember(Value = "earlier")]

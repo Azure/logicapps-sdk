@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,42 +23,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
         {
-            var apiCallPath = String.Format("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
+            var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
+            return new DeferredBodyAction<GetRelocationPackageResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
         {
-            var apiCallPath = String.Format("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(includePicture);
-            return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
+            var __workflow_includePicture = WorkflowExpression.Compile(includePicture, nameof(includePicture), required: true);
+            var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
+            return new DeferredBodyAction<GetCounselorContactInformationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(__workflow_includePicture);
+                return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
         {
-            var apiCallPath = "/chat/topic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
-            bodypropCount++;
-            body["Query"] = ExpressionConverter.ConvertO(bodyquery);
-            bodypropCount++;
-            body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
-            if (bodypropCount > 0)
+            var __workflow_bodyrelocationId = WorkflowExpression.Compile(bodyrelocationId, nameof(bodyrelocationId), required: true);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
+            return new DeferredBodyAction<AskSirvaBotAboutTopicResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/chat/topic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["RelocationId"] = ExpressionConverter.ConvertO(__workflow_bodyrelocationId);
+                bodypropCount++;
+                body["Query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                bodypropCount++;
+                body["Topic"] = ExpressionConverter.ConvertO(__workflow_bodytopic);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(callPayload);
+                return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(callPayload);
+            });
         }
     }
 
@@ -627,6 +642,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         public string Answer { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytopicInput
     {
         Counselor,

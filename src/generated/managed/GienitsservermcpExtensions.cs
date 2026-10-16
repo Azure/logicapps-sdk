@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,12 +14,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gienitsservermcp")]
         public IBodyWorkflowAction<QueryResponse> GieniTSserver(Expression<Func<string>> sessionId = null)
         {
-            var apiCallPath = "/sse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyAction<QueryResponse>(() =>
+            {
+                var apiCallPath = "/sse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(__workflow_sessionId);
+                return new ApiConnectionAction<QueryResponse>(callPayload);
+            });
         }
     }
 

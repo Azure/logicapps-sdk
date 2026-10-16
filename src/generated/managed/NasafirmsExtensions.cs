@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,29 +14,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
         {
-            var apiCallPath = String.Format("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_areaCoord = WorkflowExpression.Compile(areaCoord, nameof(areaCoord), required: true);
+            var __workflow_dayRange = WorkflowExpression.Compile(dayRange, nameof(dayRange), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
         {
-            var apiCallPath = String.Format("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_dayRange = WorkflowExpression.Compile(dayRange, nameof(dayRange), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey(Expression<Func<string>> mAPKEY)
         {
-            var apiCallPath = "/mapserver/mapkey_status/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(mAPKEY);
-            return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
+            var __workflow_mAPKEY = WorkflowExpression.Compile(mAPKEY, nameof(mAPKEY), required: true);
+            return new DeferredBodyAction<CheckMapKeyResponse>(() =>
+            {
+                var apiCallPath = "/mapserver/mapkey_status/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["MAP_KEY"] = ExpressionConverter.Convert(__workflow_mAPKEY);
+                return new ApiConnectionAction<CheckMapKeyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
@@ -62,6 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dayRangeInput
     {
         [EnumMember(Value = "1")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,129 +23,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionPostResponse> Prediction(Expression<Func<string>> bodyversion, Expression<Func<string>> bodyinputtext = null, Expression<Func<string>> bodyinputprompt = null, Expression<Func<string>> bodyinputpromptStrength = null, Expression<Func<int>> bodyinputwidth = null, Expression<Func<int>> bodyinputheight = null, Expression<Func<string>> bodyinputscale = null, Expression<Func<int>> bodyinputnumOutputs = null, Expression<Func<int>> bodyinputnumInferenceSteps = null, Expression<Func<string>> bodyinputguidanceScale = null, Expression<Func<int>> bodyinputseed = null, Expression<Func<string>> bodywebhookCompleted = null)
         {
-            var apiCallPath = "/predictions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["version"] = ExpressionConverter.ConvertO(bodyversion);
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            if (bodyinputtext != null)
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: true);
+            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
+            var __workflow_bodyinputprompt = WorkflowExpression.Compile(bodyinputprompt, nameof(bodyinputprompt), required: false);
+            var __workflow_bodyinputpromptStrength = WorkflowExpression.Compile(bodyinputpromptStrength, nameof(bodyinputpromptStrength), required: false);
+            var __workflow_bodyinputwidth = WorkflowExpression.Compile(bodyinputwidth, nameof(bodyinputwidth), required: false);
+            var __workflow_bodyinputheight = WorkflowExpression.Compile(bodyinputheight, nameof(bodyinputheight), required: false);
+            var __workflow_bodyinputscale = WorkflowExpression.Compile(bodyinputscale, nameof(bodyinputscale), required: false);
+            var __workflow_bodyinputnumOutputs = WorkflowExpression.Compile(bodyinputnumOutputs, nameof(bodyinputnumOutputs), required: false);
+            var __workflow_bodyinputnumInferenceSteps = WorkflowExpression.Compile(bodyinputnumInferenceSteps, nameof(bodyinputnumInferenceSteps), required: false);
+            var __workflow_bodyinputguidanceScale = WorkflowExpression.Compile(bodyinputguidanceScale, nameof(bodyinputguidanceScale), required: false);
+            var __workflow_bodyinputseed = WorkflowExpression.Compile(bodyinputseed, nameof(bodyinputseed), required: false);
+            var __workflow_bodywebhookCompleted = WorkflowExpression.Compile(bodywebhookCompleted, nameof(bodywebhookCompleted), required: false);
+            return new DeferredBodyAction<PredictionPostResponse>(() =>
             {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputprompt != null)
-            {
-                inputObject["prompt"] = ExpressionConverter.ConvertO(bodyinputprompt);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputpromptStrength != null)
-            {
-                inputObject["prompt_strength"] = ExpressionConverter.ConvertO(bodyinputpromptStrength);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputwidth != null)
-            {
-                inputObject["width"] = ExpressionConverter.ConvertO(bodyinputwidth);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputheight != null)
-            {
-                inputObject["height"] = ExpressionConverter.ConvertO(bodyinputheight);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputscale != null)
-            {
-                inputObject["scale"] = ExpressionConverter.ConvertO(bodyinputscale);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputnumOutputs != null)
-            {
-                inputObject["num_outputs"] = ExpressionConverter.ConvertO(bodyinputnumOutputs);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputnumInferenceSteps != null)
-            {
-                inputObject["num_inference_steps"] = ExpressionConverter.ConvertO(bodyinputnumInferenceSteps);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputguidanceScale != null)
-            {
-                inputObject["guidance_scale"] = ExpressionConverter.ConvertO(bodyinputguidanceScale);
-                inputObjectpropCount++;
-            }
-
-            if (bodyinputseed != null)
-            {
-                inputObject["seed"] = ExpressionConverter.ConvertO(bodyinputseed);
-                inputObjectpropCount++;
-            }
-
-            if (inputObjectpropCount > 0)
-            {
-                body["input"] = inputObject;
+                var apiCallPath = "/predictions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["version"] = ExpressionConverter.ConvertO(__workflow_bodyversion);
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
+                if (__workflow_bodyinputtext != null)
+                {
+                    inputObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyinputtext);
+                    inputObjectpropCount++;
+                }
 
-            if (bodywebhookCompleted != null)
-            {
-                body["webhook_completed"] = ExpressionConverter.ConvertO(bodywebhookCompleted);
-                bodypropCount++;
-            }
+                if (__workflow_bodyinputprompt != null)
+                {
+                    inputObject["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyinputprompt);
+                    inputObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyinputpromptStrength != null)
+                {
+                    inputObject["prompt_strength"] = ExpressionConverter.ConvertO(__workflow_bodyinputpromptStrength);
+                    inputObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<PredictionPostResponse>(callPayload);
+                if (__workflow_bodyinputwidth != null)
+                {
+                    inputObject["width"] = ExpressionConverter.ConvertO(__workflow_bodyinputwidth);
+                    inputObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputheight != null)
+                {
+                    inputObject["height"] = ExpressionConverter.ConvertO(__workflow_bodyinputheight);
+                    inputObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputscale != null)
+                {
+                    inputObject["scale"] = ExpressionConverter.ConvertO(__workflow_bodyinputscale);
+                    inputObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputnumOutputs != null)
+                {
+                    inputObject["num_outputs"] = ExpressionConverter.ConvertO(__workflow_bodyinputnumOutputs);
+                    inputObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputnumInferenceSteps != null)
+                {
+                    inputObject["num_inference_steps"] = ExpressionConverter.ConvertO(__workflow_bodyinputnumInferenceSteps);
+                    inputObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputguidanceScale != null)
+                {
+                    inputObject["guidance_scale"] = ExpressionConverter.ConvertO(__workflow_bodyinputguidanceScale);
+                    inputObjectpropCount++;
+                }
+
+                if (__workflow_bodyinputseed != null)
+                {
+                    inputObject["seed"] = ExpressionConverter.ConvertO(__workflow_bodyinputseed);
+                    inputObjectpropCount++;
+                }
+
+                if (inputObjectpropCount > 0)
+                {
+                    body["input"] = inputObject;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodywebhookCompleted != null)
+                {
+                    body["webhook_completed"] = ExpressionConverter.ConvertO(__workflow_bodywebhookCompleted);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PredictionPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionGetResponse> PredictionGet(Expression<Func<string>> predictionId)
         {
-            var apiCallPath = String.Format("/predictions/{0}", ExpressionConverter.ConvertWithUrlEncoding(predictionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PredictionGetResponse>(callPayload);
+            var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
+            return new DeferredBodyAction<PredictionGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PredictionGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionCancelResponse> PredictionCancel(Expression<Func<string>> predictionId)
         {
-            var apiCallPath = String.Format("/predictions/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(predictionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PredictionCancelResponse>(callPayload);
+            var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
+            return new DeferredBodyAction<PredictionCancelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictions/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PredictionCancelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<string>> modelOwner, Expression<Func<string>> modelName)
         {
-            var apiCallPath = String.Format("/models/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(modelOwner, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelGetResponse>(callPayload);
+            var __workflow_modelOwner = WorkflowExpression.Compile(modelOwner, nameof(modelOwner), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            return new DeferredBodyAction<ModelGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelOwner, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelListResponse> ModelList(Expression<Func<string>> collectionSlug)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collectionSlug, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelListResponse>(callPayload);
+            var __workflow_collectionSlug = WorkflowExpression.Compile(collectionSlug, nameof(collectionSlug), required: true);
+            return new DeferredBodyAction<ModelListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionSlug, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ModelListResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,25 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
         public IWorkflowAction CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
         {
-            var apiCallPath = String.Format("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystartData != null)
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_bodystartData = WorkflowExpression.Compile(bodystartData, nameof(bodystartData), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["startData"] = ExpressionConverter.ConvertO(bodystartData);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodystartData != null)
+                {
+                    body["startData"] = ExpressionConverter.ConvertO(__workflow_bodystartData);
+                    bodypropCount++;
+                }
+
+                body["x-ntx-callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["x-ntx-callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

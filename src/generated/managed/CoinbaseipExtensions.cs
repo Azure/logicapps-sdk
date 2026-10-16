@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
         public IBodyWorkflowAction<GetSpotPriceResponse> GetSpotPrice(Expression<Func<string>> currencyPair)
         {
-            var apiCallPath = String.Format("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(currencyPair, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpotPriceResponse>(callPayload);
+            var __workflow_currencyPair = WorkflowExpression.Compile(currencyPair, nameof(currencyPair), required: true);
+            return new DeferredBodyAction<GetSpotPriceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(__workflow_currencyPair, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpotPriceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
@@ -32,11 +36,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
         public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> currency)
         {
-            var apiCallPath = "/exchange-rates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["currency"] = ExpressionConverter.Convert(currency);
-            return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
+            var __workflow_currency = WorkflowExpression.Compile(currency, nameof(currency), required: true);
+            return new DeferredBodyAction<GetExchangeRateResponse>(() =>
+            {
+                var apiCallPath = "/exchange-rates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["currency"] = ExpressionConverter.Convert(__workflow_currency);
+                return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
+            });
         }
     }
 

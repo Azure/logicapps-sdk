@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,15 +23,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<ListGroupsByDisplayNameSearchResponse> ListGroupsByDisplayNameSearch(Expression<Func<string>> search = null)
         {
-            var apiCallPath = "/v1.0/groups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$search"] = Convert.ToString("\"displayName:Sales\"");
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            callPayload.Queries["$count"] = Convert.ToString("true");
-            callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
-            return new ApiConnectionAction<ListGroupsByDisplayNameSearchResponse>(callPayload);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            return new DeferredBodyAction<ListGroupsByDisplayNameSearchResponse>(() =>
+            {
+                var apiCallPath = "/v1.0/groups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$search"] = Convert.ToString("\"displayName:Sales\"");
+                if (__workflow_search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(__workflow_search);
+                callPayload.Queries["$count"] = Convert.ToString("true");
+                callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
+                return new ApiConnectionAction<ListGroupsByDisplayNameSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
@@ -46,57 +50,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msgraphgroupsanduser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<ListDirectGroupMembersResponse> ListDirectGroupMembers(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = Convert.ToString("jobTitle ne null");
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["$select"] = Convert.ToString("displayName,userPrincipalName,id,jobTitle,mailNickname");
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            callPayload.Queries["$count"] = Convert.ToString("true");
-            callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
-            return new ApiConnectionAction<ListDirectGroupMembersResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<ListDirectGroupMembersResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = Convert.ToString("jobTitle ne null");
+                if (__workflow_filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(__workflow_filter);
+                callPayload.Queries["$select"] = Convert.ToString("displayName,userPrincipalName,id,jobTitle,mailNickname");
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                callPayload.Queries["$count"] = Convert.ToString("true");
+                callPayload.Headers["ConsistencyLevel"] = Convert.ToString("eventual");
+                return new ApiConnectionAction<ListDirectGroupMembersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetMemberLicenseDetailsResponse> GetMemberLicenseDetails(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$select"] = Convert.ToString("skuPartNumber,servicePlans");
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetMemberLicenseDetailsResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetMemberLicenseDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$select"] = Convert.ToString("skuPartNumber,servicePlans");
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionAction<GetMemberLicenseDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetGroupPropertiesResponse> GetGroupProperties(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGroupPropertiesResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<GetGroupPropertiesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetGroupPropertiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msgraphgroupsanduser")]
         public IBodyWorkflowAction<GetMemberGroupsResponse> GetMemberGroups(Expression<Func<string>> memberId, Expression<Func<bool>> bodysecurityEnabledOnly)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}/getMemberGroups", ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["securityEnabledOnly"] = ExpressionConverter.ConvertO(bodysecurityEnabledOnly);
-            if (bodypropCount > 0)
+            var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
+            var __workflow_bodysecurityEnabledOnly = WorkflowExpression.Compile(bodysecurityEnabledOnly, nameof(bodysecurityEnabledOnly), required: true);
+            return new DeferredBodyAction<GetMemberGroupsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}/getMemberGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["securityEnabledOnly"] = ExpressionConverter.ConvertO(__workflow_bodysecurityEnabledOnly);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetMemberGroupsResponse>(callPayload);
+                return new ApiConnectionAction<GetMemberGroupsResponse>(callPayload);
+            });
         }
     }
 

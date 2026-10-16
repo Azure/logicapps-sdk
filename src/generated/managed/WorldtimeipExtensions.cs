@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<DateTimeJsonResponse> GetCurrentTimeBasedOnIp(Expression<Func<string>> ipv4)
         {
-            var apiCallPath = String.Format("/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(ipv4, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            var __workflow_ipv4 = WorkflowExpression.Compile(ipv4, nameof(ipv4), required: true);
+            return new DeferredBodyAction<DateTimeJsonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ipv4, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
@@ -32,28 +36,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<string[]> GetAreaTimezones(Expression<Func<string>> area)
         {
-            var apiCallPath = String.Format("/timezone/{0}", ExpressionConverter.ConvertWithUrlEncoding(area, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
+            return new DeferredBodyAction<string[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<DateTimeJsonResponse> GetLocationTimezone(Expression<Func<string>> area, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/timezone/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(area, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            return new DeferredBodyAction<DateTimeJsonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<DateTimeJsonResponse> GetRegionTimezone(Expression<Func<string>> area, Expression<Func<string>> location, Expression<Func<string>> region)
         {
-            var apiCallPath = String.Format("/timezone/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(area, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1), ExpressionConverter.ConvertWithUrlEncoding(region, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            return new DeferredBodyAction<DateTimeJsonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            });
         }
     }
 

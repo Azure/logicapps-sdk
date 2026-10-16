@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,106 +14,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline(Expression<Func<string>> baseUrl, Expression<Func<string>> status = null)
         {
-            var apiCallPath = "/aimsapi/assets/configuration/base_line/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            return new ApiConnectionAction<ListBaseline[]>(callPayload);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            return new DeferredBodyAction<ListBaseline[]>(() =>
+            {
+                var apiCallPath = "/aimsapi/assets/configuration/base_line/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(__workflow_status);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
+                return new ApiConnectionAction<ListBaseline[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
         {
-            var apiCallPath = String.Format("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(baselineId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            return new ApiConnectionAction<ListBaseline>(callPayload);
+            var __workflow_baselineId = WorkflowExpression.Compile(baselineId, nameof(baselineId), required: true);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
+            return new DeferredBodyAction<ListBaseline>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baselineId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
+                return new ApiConnectionAction<ListBaseline>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<AssetSearchResult> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
         {
-            var apiCallPath = "/aimsapi/assets/search/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontractId != null)
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
+            var __workflow_bodycontractId = WorkflowExpression.Compile(bodycontractId, nameof(bodycontractId), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
+            var __workflow_bodymodifiedDategreaterThan = WorkflowExpression.Compile(bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
+            var __workflow_bodymodifiedDatelessThan = WorkflowExpression.Compile(bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
+            var __workflow_bodysortKey = WorkflowExpression.Compile(bodysortKey, nameof(bodysortKey), required: false);
+            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
+            var __workflow_bodyfilteredAssetClassCode = WorkflowExpression.Compile(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
+            return new DeferredBodyAction<AssetSearchResult>(() =>
             {
-                body["contract"] = ExpressionConverter.ConvertO(bodycontractId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/aimsapi/assets/search/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontractId != null)
+                {
+                    body["contract"] = ExpressionConverter.ConvertO(__workflow_bodycontractId);
+                    bodypropCount++;
+                }
 
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
+                if (__workflow_bodypageNumber != null)
+                {
+                    body["page"] = ExpressionConverter.ConvertO(__workflow_bodypageNumber);
+                    bodypropCount++;
+                }
 
-            if (bodypageSize != null)
-            {
-                body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
-                bodypropCount++;
-            }
+                if (__workflow_bodypageSize != null)
+                {
+                    body["pageSize"] = ExpressionConverter.ConvertO(__workflow_bodypageSize);
+                    bodypropCount++;
+                }
 
-            var modifiedDateObject = new JObject();
-            var modifiedDateObjectpropCount = 0;
-            if (bodymodifiedDategreaterThan != null)
-            {
-                modifiedDateObject["gt"] = ExpressionConverter.ConvertO(bodymodifiedDategreaterThan);
-                modifiedDateObjectpropCount++;
-            }
+                var modifiedDateObject = new JObject();
+                var modifiedDateObjectpropCount = 0;
+                if (__workflow_bodymodifiedDategreaterThan != null)
+                {
+                    modifiedDateObject["gt"] = ExpressionConverter.ConvertO(__workflow_bodymodifiedDategreaterThan);
+                    modifiedDateObjectpropCount++;
+                }
 
-            if (bodymodifiedDatelessThan != null)
-            {
-                modifiedDateObject["lt"] = ExpressionConverter.ConvertO(bodymodifiedDatelessThan);
-                modifiedDateObjectpropCount++;
-            }
+                if (__workflow_bodymodifiedDatelessThan != null)
+                {
+                    modifiedDateObject["lt"] = ExpressionConverter.ConvertO(__workflow_bodymodifiedDatelessThan);
+                    modifiedDateObjectpropCount++;
+                }
 
-            if (modifiedDateObjectpropCount > 0)
-            {
-                body["modified_date"] = modifiedDateObject;
-                bodypropCount++;
-            }
+                if (modifiedDateObjectpropCount > 0)
+                {
+                    body["modified_date"] = modifiedDateObject;
+                    bodypropCount++;
+                }
 
-            if (bodysortKey != null)
-            {
-                body["sortKey"] = ExpressionConverter.ConvertO(bodysortKey);
-                bodypropCount++;
-            }
+                if (__workflow_bodysortKey != null)
+                {
+                    body["sortKey"] = ExpressionConverter.ConvertO(__workflow_bodysortKey);
+                    bodypropCount++;
+                }
 
-            if (bodysortOrder != null)
-            {
-                body["sortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
-                bodypropCount++;
-            }
+                if (__workflow_bodysortOrder != null)
+                {
+                    body["sortOrder"] = ExpressionConverter.ConvertO(__workflow_bodysortOrder);
+                    bodypropCount++;
+                }
 
-            if (bodyfilteredAssetClassCode != null)
-            {
-                body["filteredAssetClassCode"] = ExpressionConverter.ConvertO(bodyfilteredAssetClassCode);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfilteredAssetClassCode != null)
+                {
+                    body["filteredAssetClassCode"] = ExpressionConverter.ConvertO(__workflow_bodyfilteredAssetClassCode);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AssetSearchResult>(callPayload);
+                return new ApiConnectionAction<AssetSearchResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<UserDataResponseDoc> GetUserData(Expression<Func<string>> baseUrl)
         {
-            var apiCallPath = "/aimsapi/user/user_data/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(baseUrl);
-            return new ApiConnectionAction<UserDataResponseDoc>(callPayload);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
+            return new DeferredBodyAction<UserDataResponseDoc>(() =>
+            {
+                var apiCallPath = "/aimsapi/user/user_data/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseUrl"] = ExpressionConverter.Convert(__workflow_baseUrl);
+                return new ApiConnectionAction<UserDataResponseDoc>(callPayload);
+            });
         }
     }
 

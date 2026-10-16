@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enadoc
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enadoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enadoc")]
         public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace(Expression<Func<string>> document, Expression<Func<string>> name)
         {
-            var apiCallPath = "/api/v3/workspace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SuccessResponse>(callPayload);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            return new DeferredBodyAction<SuccessResponse>(() =>
+            {
+                var apiCallPath = "/api/v3/workspace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SuccessResponse>(callPayload);
+            });
         }
     }
 

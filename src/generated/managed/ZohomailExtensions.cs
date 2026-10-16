@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,328 +23,412 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SendMailResponse> SendMail(Expression<Func<string>> accountId, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fromAddress"] = ExpressionConverter.ConvertO(bodyfromAddress);
-            bodypropCount++;
-            body["toAddress"] = ExpressionConverter.ConvertO(bodytoAddress);
-            if (bodyccAddress != null)
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodyfromAddress = WorkflowExpression.Compile(bodyfromAddress, nameof(bodyfromAddress), required: true);
+            var __workflow_bodytoAddress = WorkflowExpression.Compile(bodytoAddress, nameof(bodytoAddress), required: true);
+            var __workflow_bodyccAddress = WorkflowExpression.Compile(bodyccAddress, nameof(bodyccAddress), required: false);
+            var __workflow_bodybccAddress = WorkflowExpression.Compile(bodybccAddress, nameof(bodybccAddress), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyaskReceipt = WorkflowExpression.Compile(bodyaskReceipt, nameof(bodyaskReceipt), required: false);
+            var __workflow_bodymailFormat = WorkflowExpression.Compile(bodymailFormat, nameof(bodymailFormat), required: false);
+            var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
+            return new DeferredBodyAction<SendMailResponse>(() =>
             {
-                body["ccAddress"] = ExpressionConverter.ConvertO(bodyccAddress);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodybccAddress != null)
-            {
-                body["bccAddress"] = ExpressionConverter.ConvertO(bodybccAddress);
+                body["fromAddress"] = ExpressionConverter.ConvertO(__workflow_bodyfromAddress);
                 bodypropCount++;
-            }
+                body["toAddress"] = ExpressionConverter.ConvertO(__workflow_bodytoAddress);
+                if (__workflow_bodyccAddress != null)
+                {
+                    body["ccAddress"] = ExpressionConverter.ConvertO(__workflow_bodyccAddress);
+                    bodypropCount++;
+                }
 
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
+                if (__workflow_bodybccAddress != null)
+                {
+                    body["bccAddress"] = ExpressionConverter.ConvertO(__workflow_bodybccAddress);
+                    bodypropCount++;
+                }
 
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodyaskReceipt != null)
-            {
-                body["askReceipt"] = ExpressionConverter.ConvertO(bodyaskReceipt);
-                bodypropCount++;
-            }
+                if (__workflow_bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodymailFormat != null)
-            {
-                body["mailFormat"] = ExpressionConverter.ConvertO(bodymailFormat);
-                bodypropCount++;
-            }
+                if (__workflow_bodyaskReceipt != null)
+                {
+                    body["askReceipt"] = ExpressionConverter.ConvertO(__workflow_bodyaskReceipt);
+                    bodypropCount++;
+                }
 
-            if (bodyattachment != null)
-            {
-                body["attachmentDetails"] = ExpressionConverter.ConvertO(bodyattachment);
-                bodypropCount++;
-            }
+                if (__workflow_bodymailFormat != null)
+                {
+                    body["mailFormat"] = ExpressionConverter.ConvertO(__workflow_bodymailFormat);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyattachment != null)
+                {
+                    body["attachmentDetails"] = ExpressionConverter.ConvertO(__workflow_bodyattachment);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendMailResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendMailResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SaveDraftResponse> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/messages/draft", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
-            bodypropCount++;
-            body["fromAddress"] = ExpressionConverter.ConvertO(bodyfromAddress);
-            bodypropCount++;
-            body["toAddress"] = ExpressionConverter.ConvertO(bodytoAddress);
-            if (bodyccAddress != null)
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyfromAddress = WorkflowExpression.Compile(bodyfromAddress, nameof(bodyfromAddress), required: true);
+            var __workflow_bodytoAddress = WorkflowExpression.Compile(bodytoAddress, nameof(bodytoAddress), required: true);
+            var __workflow_bodyccAddress = WorkflowExpression.Compile(bodyccAddress, nameof(bodyccAddress), required: false);
+            var __workflow_bodybccAddress = WorkflowExpression.Compile(bodybccAddress, nameof(bodybccAddress), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyaskReceipt = WorkflowExpression.Compile(bodyaskReceipt, nameof(bodyaskReceipt), required: false);
+            var __workflow_bodymailFormat = WorkflowExpression.Compile(bodymailFormat, nameof(bodymailFormat), required: false);
+            var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
+            return new DeferredBodyAction<SaveDraftResponse>(() =>
             {
-                body["ccAddress"] = ExpressionConverter.ConvertO(bodyccAddress);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/draft", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodybccAddress != null)
-            {
-                body["bccAddress"] = ExpressionConverter.ConvertO(bodybccAddress);
+                body["mode"] = ExpressionConverter.ConvertO(__workflow_bodymode);
                 bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                body["fromAddress"] = ExpressionConverter.ConvertO(__workflow_bodyfromAddress);
                 bodypropCount++;
-            }
+                body["toAddress"] = ExpressionConverter.ConvertO(__workflow_bodytoAddress);
+                if (__workflow_bodyccAddress != null)
+                {
+                    body["ccAddress"] = ExpressionConverter.ConvertO(__workflow_bodyccAddress);
+                    bodypropCount++;
+                }
 
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+                if (__workflow_bodybccAddress != null)
+                {
+                    body["bccAddress"] = ExpressionConverter.ConvertO(__workflow_bodybccAddress);
+                    bodypropCount++;
+                }
 
-            if (bodyaskReceipt != null)
-            {
-                body["askReceipt"] = ExpressionConverter.ConvertO(bodyaskReceipt);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodymailFormat != null)
-            {
-                body["mailFormat"] = ExpressionConverter.ConvertO(bodymailFormat);
-                bodypropCount++;
-            }
+                if (__workflow_bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodyattachment != null)
-            {
-                body["attachmentDetails"] = ExpressionConverter.ConvertO(bodyattachment);
-                bodypropCount++;
-            }
+                if (__workflow_bodyaskReceipt != null)
+                {
+                    body["askReceipt"] = ExpressionConverter.ConvertO(__workflow_bodyaskReceipt);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodymailFormat != null)
+                {
+                    body["mailFormat"] = ExpressionConverter.ConvertO(__workflow_bodymailFormat);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SaveDraftResponse>(callPayload);
+                if (__workflow_bodyattachment != null)
+                {
+                    body["attachmentDetails"] = ExpressionConverter.ConvertO(__workflow_bodyattachment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SaveDraftResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetSenderDetailsResponse> GetSenderDetails(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSenderDetailsResponse>(callPayload);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            return new DeferredBodyAction<GetSenderDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSenderDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SearchMailResponse> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyin = null, Expression<Func<string>> bodylabel = null)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/messages/search", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentire != null)
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
+            var __workflow_bodyentire = WorkflowExpression.Compile(bodyentire, nameof(bodyentire), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodysender = WorkflowExpression.Compile(bodysender, nameof(bodysender), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycc = WorkflowExpression.Compile(bodycc, nameof(bodycc), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyfromDate = WorkflowExpression.Compile(bodyfromDate, nameof(bodyfromDate), required: false);
+            var __workflow_bodytoDate = WorkflowExpression.Compile(bodytoDate, nameof(bodytoDate), required: false);
+            var __workflow_bodygroupResult = WorkflowExpression.Compile(bodygroupResult, nameof(bodygroupResult), required: false);
+            var __workflow_bodyin = WorkflowExpression.Compile(bodyin, nameof(bodyin), required: false);
+            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: false);
+            return new DeferredBodyAction<SearchMailResponse>(() =>
             {
-                body["entire"] = ExpressionConverter.ConvertO(bodyentire);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyentire != null)
+                {
+                    body["entire"] = ExpressionConverter.ConvertO(__workflow_bodyentire);
+                    bodypropCount++;
+                }
 
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+                if (__workflow_bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodysender != null)
-            {
-                body["sender"] = ExpressionConverter.ConvertO(bodysender);
-                bodypropCount++;
-            }
+                if (__workflow_bodysender != null)
+                {
+                    body["sender"] = ExpressionConverter.ConvertO(__workflow_bodysender);
+                    bodypropCount++;
+                }
 
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
+                if (__workflow_bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                    bodypropCount++;
+                }
 
-            if (bodycc != null)
-            {
-                body["cc"] = ExpressionConverter.ConvertO(bodycc);
-                bodypropCount++;
-            }
+                if (__workflow_bodycc != null)
+                {
+                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycc);
+                    bodypropCount++;
+                }
 
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
+                if (__workflow_bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodyfileName != null)
-            {
-                body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfileName != null)
+                {
+                    body["fileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                    bodypropCount++;
+                }
 
-            if (bodyfileContent != null)
-            {
-                body["fileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfileContent != null)
+                {
+                    body["fileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
+                    bodypropCount++;
+                }
 
-            if (bodyfromDate != null)
-            {
-                body["fromDate"] = ExpressionConverter.ConvertO(bodyfromDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfromDate != null)
+                {
+                    body["fromDate"] = ExpressionConverter.ConvertO(__workflow_bodyfromDate);
+                    bodypropCount++;
+                }
 
-            if (bodytoDate != null)
-            {
-                body["toDate"] = ExpressionConverter.ConvertO(bodytoDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodytoDate != null)
+                {
+                    body["toDate"] = ExpressionConverter.ConvertO(__workflow_bodytoDate);
+                    bodypropCount++;
+                }
 
-            if (bodygroupResult != null)
-            {
-                body["groupResult"] = ExpressionConverter.ConvertO(bodygroupResult);
-                bodypropCount++;
-            }
+                if (__workflow_bodygroupResult != null)
+                {
+                    body["groupResult"] = ExpressionConverter.ConvertO(__workflow_bodygroupResult);
+                    bodypropCount++;
+                }
 
-            if (bodyin != null)
-            {
-                body["in"] = ExpressionConverter.ConvertO(bodyin);
-                bodypropCount++;
-            }
+                if (__workflow_bodyin != null)
+                {
+                    body["in"] = ExpressionConverter.ConvertO(__workflow_bodyin);
+                    bodypropCount++;
+                }
 
-            if (bodylabel != null)
-            {
-                body["label"] = ExpressionConverter.ConvertO(bodylabel);
-                bodypropCount++;
-            }
+                if (__workflow_bodylabel != null)
+                {
+                    body["label"] = ExpressionConverter.ConvertO(__workflow_bodylabel);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SearchMailResponse>(callPayload);
+                return new ApiConnectionAction<SearchMailResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetAllFolderResponse> GetAllFolder(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllFolderResponse>(callPayload);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            return new DeferredBodyAction<GetAllFolderResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllFolderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetAllLabelResponse> GetAllLabel(Expression<Func<string>> accountId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllLabelResponse>(callPayload);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            return new DeferredBodyAction<GetAllLabelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllLabelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetEmailContentResponse> GetEmailContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders/1/messages/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeBlockContent"] = Convert.ToString(true);
-            return new ApiConnectionAction<GetEmailContentResponse>(callPayload);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            return new DeferredBodyAction<GetEmailContentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeBlockContent"] = Convert.ToString(true);
+                return new ApiConnectionAction<GetEmailContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetEmailAttachmentInfoResponse> GetEmailAttachmentInfo(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEmailAttachmentInfoResponse>(callPayload);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            return new DeferredBodyAction<GetEmailAttachmentInfoResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetEmailAttachmentInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<string> GetEmailAttachmentContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
-            var apiCallPath = String.Format("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class ZohomailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["accId"] = ExpressionConverter.Convert(accId);
-            callPayload.Queries["category"] = Convert.ToString(3);
-            callPayload.Queries["action"] = Convert.ToString("CREATE_OWH");
-            callPayload.Queries["metaOnly"] = Convert.ToString(false);
-            callPayload.Queries["matchingCondition"] = Convert.ToString("and");
-            callPayload.Queries["criterias"] = ExpressionConverter.Convert(criterias);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
+            var __workflow_criterias = WorkflowExpression.Compile(criterias, nameof(criterias), required: true);
+            return new DeferredBodyTrigger<NewMailTriggerResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["accId"] = ExpressionConverter.Convert(__workflow_accId);
+                callPayload.Queries["category"] = Convert.ToString(3);
+                callPayload.Queries["action"] = Convert.ToString("CREATE_OWH");
+                callPayload.Queries["metaOnly"] = Convert.ToString(false);
+                callPayload.Queries["matchingCondition"] = Convert.ToString("and");
+                callPayload.Queries["criterias"] = ExpressionConverter.Convert(__workflow_criterias);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["accId"] = ExpressionConverter.Convert(accId);
-            callPayload.Queries["category"] = Convert.ToString(3);
-            callPayload.Queries["action"] = Convert.ToString("CREATE_OWH");
-            callPayload.Queries["metaOnly"] = Convert.ToString(false);
-            callPayload.Queries["matchingCondition"] = Convert.ToString("and");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["criterias"] = ExpressionConverter.ConvertO(bodycriterias);
-            body["webhookURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
+            var __workflow_bodycriterias = WorkflowExpression.Compile(bodycriterias, nameof(bodycriterias), required: true);
+            return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["accId"] = ExpressionConverter.Convert(__workflow_accId);
+                callPayload.Queries["category"] = Convert.ToString(3);
+                callPayload.Queries["action"] = Convert.ToString("CREATE_OWH");
+                callPayload.Queries["metaOnly"] = Convert.ToString(false);
+                callPayload.Queries["matchingCondition"] = Convert.ToString("and");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["criterias"] = ExpressionConverter.ConvertO(__workflow_bodycriterias);
+                body["webhookURL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<NEWCONDITIONALMAILResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<NEWCONDITIONALMAILResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -399,12 +483,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string CcAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaskReceiptInput
     {
         No,
         Yes
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymailFormatInput
     {
         [EnumMember(Value = "html")]
@@ -455,6 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string CcAddress { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodeInput
     {
         [EnumMember(Value = "draft")]
@@ -913,6 +1000,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         public string Rhs { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycriteriasInputItemLhsType
     {
         [EnumMember(Value = "sender")]
@@ -927,6 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         ToCc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodycriteriasInputItemOperatorType
     {
         [EnumMember(Value = "contains")]

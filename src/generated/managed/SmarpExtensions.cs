@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -24,77 +24,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
         public IWorkflowAction SmarpCreate(Expression<Func<string[]>> bodychannelList, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<bool>> bodyproposed = null, Expression<Func<bool>> bodyshareable = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyurl = null)
         {
-            var apiCallPath = "/publicapi/post";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybody != null)
+            var __workflow_bodychannelList = WorkflowExpression.Compile(bodychannelList, nameof(bodychannelList), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyimageUrl = WorkflowExpression.Compile(bodyimageUrl, nameof(bodyimageUrl), required: false);
+            var __workflow_bodyproposed = WorkflowExpression.Compile(bodyproposed, nameof(bodyproposed), required: false);
+            var __workflow_bodyshareable = WorkflowExpression.Compile(bodyshareable, nameof(bodyshareable), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["channelList"] = ExpressionConverter.ConvertO(bodychannelList);
-            if (bodyimageUrl != null)
-            {
-                body["imageUrl"] = ExpressionConverter.ConvertO(bodyimageUrl);
-                bodypropCount++;
-            }
-
-            if (bodyproposed != null)
-            {
-                if (bodyproposed != null)
+                var apiCallPath = "/publicapi/post";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodybody != null)
                 {
-                    body["proposed"] = ExpressionConverter.ConvertO(bodyproposed);
+                    body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["proposed"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyshareable != null)
-            {
-                if (bodyshareable != null)
+                body["channelList"] = ExpressionConverter.ConvertO(__workflow_bodychannelList);
+                if (__workflow_bodyimageUrl != null)
                 {
-                    body["shareable"] = ExpressionConverter.ConvertO(bodyshareable);
+                    body["imageUrl"] = ExpressionConverter.ConvertO(__workflow_bodyimageUrl);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["shareable"] = true;
-                bodypropCount++;
-            }
+                if (__workflow_bodyproposed != null)
+                {
+                    if (__workflow_bodyproposed != null)
+                    {
+                        body["proposed"] = ExpressionConverter.ConvertO(__workflow_bodyproposed);
+                        bodypropCount++;
+                    }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["proposed"] = true;
+                    bodypropCount++;
+                }
 
-            if (bodyurl != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
+                if (__workflow_bodyshareable != null)
+                {
+                    if (__workflow_bodyshareable != null)
+                    {
+                        body["shareable"] = ExpressionConverter.ConvertO(__workflow_bodyshareable);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["shareable"] = true;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyurl != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

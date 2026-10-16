@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,52 +14,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetReportData(Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/reports/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<Reports[]>(callPayload);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<Reports[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/reports/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<Reports[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetAgencyReportData(Expression<Func<agencyNameInput>> agencyName, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/agencies/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(agencyName, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<Reports[]>(callPayload);
+            var __workflow_agencyName = WorkflowExpression.Compile(agencyName, nameof(agencyName), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<Reports[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agencies/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agencyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<Reports[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var apiCallPath = String.Format("/domain/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(domain, 1), ExpressionConverter.ConvertWithUrlEncoding(reportName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<Reports[]>(callPayload);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            return new DeferredBodyAction<Reports[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domain/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(__workflow_before);
+                return new ApiConnectionAction<Reports[]>(callPayload);
+            });
         }
     }
 
@@ -163,6 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         public int Visits { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum reportNameInput
     {
         [EnumMember(Value = "download")]
@@ -175,6 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         SecondLevelDomain
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum agencyNameInput
     {
         [EnumMember(Value = "agency-international-development")]

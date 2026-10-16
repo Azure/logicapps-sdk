@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,69 +14,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodyn = null, Expression<Func<string>> bodystop = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<string>> bodyuser = null)
         {
-            var apiCallPath = "/v1/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-            if (bodymaxTokens != null)
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodystop = WorkflowExpression.Compile(bodystop, nameof(bodystop), required: false);
+            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            return new DeferredBodyAction<ChatPostResponse>(() =>
             {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                var apiCallPath = "/v1/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
                 bodypropCount++;
-            }
+                body["messages"] = ExpressionConverter.ConvertO(__workflow_bodymessages);
+                if (__workflow_bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
+                    bodypropCount++;
+                }
 
-            if (bodytopP != null)
-            {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodyn != null)
-            {
-                body["n"] = ExpressionConverter.ConvertO(bodyn);
-                bodypropCount++;
-            }
+                if (__workflow_bodytopP != null)
+                {
+                    body["top_p"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
+                    bodypropCount++;
+                }
 
-            if (bodystop != null)
-            {
-                body["stop"] = ExpressionConverter.ConvertO(bodystop);
-                bodypropCount++;
-            }
+                if (__workflow_bodyn != null)
+                {
+                    body["n"] = ExpressionConverter.ConvertO(__workflow_bodyn);
+                    bodypropCount++;
+                }
 
-            if (bodypresencePenalty != null)
-            {
-                body["presence_penalty"] = ExpressionConverter.ConvertO(bodypresencePenalty);
-                bodypropCount++;
-            }
+                if (__workflow_bodystop != null)
+                {
+                    body["stop"] = ExpressionConverter.ConvertO(__workflow_bodystop);
+                    bodypropCount++;
+                }
 
-            if (bodyfrequencyPenalty != null)
-            {
-                body["frequency_penalty"] = ExpressionConverter.ConvertO(bodyfrequencyPenalty);
-                bodypropCount++;
-            }
+                if (__workflow_bodypresencePenalty != null)
+                {
+                    body["presence_penalty"] = ExpressionConverter.ConvertO(__workflow_bodypresencePenalty);
+                    bodypropCount++;
+                }
 
-            if (bodyuser != null)
-            {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfrequencyPenalty != null)
+                {
+                    body["frequency_penalty"] = ExpressionConverter.ConvertO(__workflow_bodyfrequencyPenalty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyuser != null)
+                {
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ChatPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ChatPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
@@ -91,344 +104,429 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningPostResponse> FineTuning(Expression<Func<string>> bodytrainingFile, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyvalidationFile = null, Expression<Func<int>> bodyhyperparametersnEpochs = null, Expression<Func<string>> bodysuffix = null)
         {
-            var apiCallPath = "/v1/fine_tuning/jobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["training_file"] = ExpressionConverter.ConvertO(bodytrainingFile);
-            if (bodyvalidationFile != null)
+            var __workflow_bodytrainingFile = WorkflowExpression.Compile(bodytrainingFile, nameof(bodytrainingFile), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyvalidationFile = WorkflowExpression.Compile(bodyvalidationFile, nameof(bodyvalidationFile), required: false);
+            var __workflow_bodyhyperparametersnEpochs = WorkflowExpression.Compile(bodyhyperparametersnEpochs, nameof(bodyhyperparametersnEpochs), required: false);
+            var __workflow_bodysuffix = WorkflowExpression.Compile(bodysuffix, nameof(bodysuffix), required: false);
+            return new DeferredBodyAction<FineTuningPostResponse>(() =>
             {
-                body["validation_file"] = ExpressionConverter.ConvertO(bodyvalidationFile);
+                var apiCallPath = "/v1/fine_tuning/jobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["training_file"] = ExpressionConverter.ConvertO(__workflow_bodytrainingFile);
+                if (__workflow_bodyvalidationFile != null)
+                {
+                    body["validation_file"] = ExpressionConverter.ConvertO(__workflow_bodyvalidationFile);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            var hyperparametersObject = new JObject();
-            var hyperparametersObjectpropCount = 0;
-            if (bodyhyperparametersnEpochs != null)
-            {
-                hyperparametersObject["n_epochs"] = ExpressionConverter.ConvertO(bodyhyperparametersnEpochs);
-                hyperparametersObjectpropCount++;
-            }
-
-            if (hyperparametersObjectpropCount > 0)
-            {
-                body["hyperparameters"] = hyperparametersObject;
                 bodypropCount++;
-            }
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                var hyperparametersObject = new JObject();
+                var hyperparametersObjectpropCount = 0;
+                if (__workflow_bodyhyperparametersnEpochs != null)
+                {
+                    hyperparametersObject["n_epochs"] = ExpressionConverter.ConvertO(__workflow_bodyhyperparametersnEpochs);
+                    hyperparametersObjectpropCount++;
+                }
 
-            if (bodysuffix != null)
-            {
-                body["suffix"] = ExpressionConverter.ConvertO(bodysuffix);
-                bodypropCount++;
-            }
+                if (hyperparametersObjectpropCount > 0)
+                {
+                    body["hyperparameters"] = hyperparametersObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodysuffix != null)
+                {
+                    body["suffix"] = ExpressionConverter.ConvertO(__workflow_bodysuffix);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<FineTuningPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FineTuningPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningGetResponse> FineTuningGet(Expression<Func<string>> fineTuningJobId)
         {
-            var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FineTuningGetResponse>(callPayload);
+            var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
+            return new DeferredBodyAction<FineTuningGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FineTuningGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel(Expression<Func<string>> fineTuningJobId)
         {
-            var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FineTuningCancelPostResponse>(callPayload);
+            var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
+            return new DeferredBodyAction<FineTuningCancelPostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FineTuningCancelPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningEventsGetResponse> FineTuningEventsGet(Expression<Func<string>> fineTuningJobId, Expression<Func<string>> after = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(fineTuningJobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<FineTuningEventsGetResponse>(callPayload);
+            var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<FineTuningEventsGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(__workflow_after);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<FineTuningEventsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ModerationPostResponse> Moderation(Expression<Func<string>> bodyinput, Expression<Func<bodymodelInput>> bodymodel = null)
         {
-            var apiCallPath = "/v1/moderations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
-            if (bodymodel != null)
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            return new DeferredBodyAction<ModerationPostResponse>(() =>
             {
-                if (bodymodel != null)
+                var apiCallPath = "/v1/moderations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                if (__workflow_bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    if (__workflow_bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "text-moderation-latest";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "text-moderation-latest";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModerationPostResponse>(callPayload);
+                return new ApiConnectionAction<ModerationPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string>> bodyinput, Expression<Func<string>> bodymodel = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null, Expression<Func<string>> bodyuser = null)
         {
-            var apiCallPath = "/v1/embeddings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
-            if (bodymodel != null)
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyencodingFormat = WorkflowExpression.Compile(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            return new DeferredBodyAction<EmbedPostResponse>(() =>
             {
-                if (bodymodel != null)
+                var apiCallPath = "/v1/embeddings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                if (__workflow_bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    if (__workflow_bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "gpt-4-1106-preview";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "gpt-4-1106-preview";
-                bodypropCount++;
-            }
-
-            if (bodyencodingFormat != null)
-            {
-                if (bodyencodingFormat != null)
+                if (__workflow_bodyencodingFormat != null)
                 {
-                    body["encoding_format"] = ExpressionConverter.ConvertO(bodyencodingFormat);
+                    if (__workflow_bodyencodingFormat != null)
+                    {
+                        body["encoding_format"] = ExpressionConverter.ConvertO(__workflow_bodyencodingFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["encoding_format"] = "float";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["encoding_format"] = "float";
-                bodypropCount++;
-            }
+                if (__workflow_bodyuser != null)
+                {
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
+                    bodypropCount++;
+                }
 
-            if (bodyuser != null)
-            {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EmbedPostResponse>(callPayload);
+                return new ApiConnectionAction<EmbedPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeech(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
         {
-            var apiCallPath = "/v1/audio/speech";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
-            bodypropCount++;
-            body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
-            if (bodyresponseFormat != null)
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodyvoice = WorkflowExpression.Compile(bodyvoice, nameof(bodyvoice), required: true);
+            var __workflow_bodyresponseFormat = WorkflowExpression.Compile(bodyresponseFormat, nameof(bodyresponseFormat), required: false);
+            var __workflow_bodyspeed = WorkflowExpression.Compile(bodyspeed, nameof(bodyspeed), required: false);
+            return new DeferredBodyAction<AudioSpeechPostResponse>(() =>
             {
-                if (bodyresponseFormat != null)
+                var apiCallPath = "/v1/audio/speech";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                bodypropCount++;
+                body["input"] = ExpressionConverter.ConvertO(__workflow_bodyinput);
+                bodypropCount++;
+                body["voice"] = ExpressionConverter.ConvertO(__workflow_bodyvoice);
+                if (__workflow_bodyresponseFormat != null)
                 {
-                    body["response_format"] = ExpressionConverter.ConvertO(bodyresponseFormat);
+                    if (__workflow_bodyresponseFormat != null)
+                    {
+                        body["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyresponseFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["response_format"] = "mp3";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["response_format"] = "mp3";
-                bodypropCount++;
-            }
-
-            if (bodyspeed != null)
-            {
-                if (bodyspeed != null)
+                if (__workflow_bodyspeed != null)
                 {
-                    body["speed"] = ExpressionConverter.ConvertO(bodyspeed);
+                    if (__workflow_bodyspeed != null)
+                    {
+                        body["speed"] = ExpressionConverter.ConvertO(__workflow_bodyspeed);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["speed"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["speed"] = 1;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AudioSpeechPostResponse>(callPayload);
+                return new ApiConnectionAction<AudioSpeechPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscription(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> language = null, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
-            var apiCallPath = "/v1/audio/transcriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AudioTranscriptionPostResponse>(callPayload);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
+            var __workflow_temperature = WorkflowExpression.Compile(temperature, nameof(temperature), required: false);
+            return new DeferredBodyAction<AudioTranscriptionPostResponse>(() =>
+            {
+                var apiCallPath = "/v1/audio/transcriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AudioTranscriptionPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslation(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
-            var apiCallPath = "/v1/audio/translations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AudioTranslationPostResponse>(callPayload);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
+            var __workflow_temperature = WorkflowExpression.Compile(temperature, nameof(temperature), required: false);
+            return new DeferredBodyAction<AudioTranslationPostResponse>(() =>
+            {
+                var apiCallPath = "/v1/audio/translations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AudioTranslationPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
         {
-            var apiCallPath = "/v1/images/generations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymodel != null)
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodyquality = WorkflowExpression.Compile(bodyquality, nameof(bodyquality), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodystyle = WorkflowExpression.Compile(bodystyle, nameof(bodystyle), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            return new DeferredBodyAction<ImagePostResponse>(() =>
             {
-                if (bodymodel != null)
+                var apiCallPath = "/v1/images/generations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodymodel != null)
                 {
-                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    if (__workflow_bodymodel != null)
+                    {
+                        body["model"] = ExpressionConverter.ConvertO(__workflow_bodymodel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "dall-e-2";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "dall-e-2";
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-            if (bodyn != null)
-            {
-                body["n"] = ExpressionConverter.ConvertO(bodyn);
-                bodypropCount++;
-            }
-
-            if (bodyquality != null)
-            {
-                if (bodyquality != null)
+                body["prompt"] = ExpressionConverter.ConvertO(__workflow_bodyprompt);
+                if (__workflow_bodyn != null)
                 {
-                    body["quality"] = ExpressionConverter.ConvertO(bodyquality);
+                    body["n"] = ExpressionConverter.ConvertO(__workflow_bodyn);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["quality"] = "standard";
-                bodypropCount++;
-            }
-
-            body["response_format"] = "url";
-            bodypropCount++;
-            if (bodysize != null)
-            {
-                if (bodysize != null)
+                if (__workflow_bodyquality != null)
                 {
-                    body["size"] = ExpressionConverter.ConvertO(bodysize);
+                    if (__workflow_bodyquality != null)
+                    {
+                        body["quality"] = ExpressionConverter.ConvertO(__workflow_bodyquality);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["quality"] = "standard";
                     bodypropCount++;
                 }
 
+                body["response_format"] = "url";
                 bodypropCount++;
-            }
-            else
-            {
-                body["size"] = "1024x1024";
-                bodypropCount++;
-            }
+                if (__workflow_bodysize != null)
+                {
+                    if (__workflow_bodysize != null)
+                    {
+                        body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
+                        bodypropCount++;
+                    }
 
-            if (bodystyle != null)
-            {
-                body["style"] = ExpressionConverter.ConvertO(bodystyle);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["size"] = "1024x1024";
+                    bodypropCount++;
+                }
 
-            if (bodyuser != null)
-            {
-                body["user"] = ExpressionConverter.ConvertO(bodyuser);
-                bodypropCount++;
-            }
+                if (__workflow_bodystyle != null)
+                {
+                    body["style"] = ExpressionConverter.ConvertO(__workflow_bodystyle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyuser != null)
+                {
+                    body["user"] = ExpressionConverter.ConvertO(__workflow_bodyuser);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ImagePostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ImagePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<object>> image, Expression<Func<string>> prompt = null, Expression<Func<object>> mask = null, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
-            var apiCallPath = "/v1/images/edits";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ImageEditPostResponse>(callPayload);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
+            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
+            var __workflow_mask = WorkflowExpression.Compile(mask, nameof(mask), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
+            return new DeferredBodyAction<ImageEditPostResponse>(() =>
+            {
+                var apiCallPath = "/v1/images/edits";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ImageEditPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariation(Expression<Func<object>> image, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
-            var apiCallPath = "/v1/images/variations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ImageVariationPostResponse>(callPayload);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
+            return new DeferredBodyAction<ImageVariationPostResponse>(() =>
+            {
+                var apiCallPath = "/v1/images/variations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ImageVariationPostResponse>(callPayload);
+            });
         }
     }
 
@@ -826,6 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public double Violence { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymodelInput
     {
         [EnumMember(Value = "dall-e-2")]
@@ -870,6 +969,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public int TotalTokens { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyencodingFormatInput
     {
         [EnumMember(Value = "float")]
@@ -887,6 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string ContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyvoiceInput
     {
         [EnumMember(Value = "alloy")]
@@ -903,6 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Shimmer
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresponseFormatInput
     {
         [EnumMember(Value = "mp3")]
@@ -945,6 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string RevisedPrompt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyqualityInput
     {
         [EnumMember(Value = "standard")]
@@ -953,6 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         Hd
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysizeInput
     {
         [EnumMember(Value = "1024x1024")]
@@ -967,6 +1071,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         _1024x1792
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystyleInput
     {
         [EnumMember(Value = "vivid")]
@@ -993,6 +1098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         public string RevisedPrompt { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sizeInput
     {
         [EnumMember(Value = "1024x1024")]

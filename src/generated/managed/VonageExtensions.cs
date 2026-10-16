@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,47 +14,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> brand, Expression<Func<string>> country = null, Expression<Func<string>> senderId = null, Expression<Func<codeLengthInput>> codeLength = null, Expression<Func<lgInput>> lg = null, Expression<Func<int>> pinExpiry = null, Expression<Func<int>> nextEventWait = null, Expression<Func<workflowIdInput>> workflowId = null)
         {
-            var apiCallPath = String.Format("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = WorkflowExpression.Compile(apiSecret, nameof(apiSecret), required: true);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
+            var __workflow_brand = WorkflowExpression.Compile(brand, nameof(brand), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_senderId = WorkflowExpression.Compile(senderId, nameof(senderId), required: false);
+            var __workflow_codeLength = WorkflowExpression.Compile(codeLength, nameof(codeLength), required: false);
+            var __workflow_lg = WorkflowExpression.Compile(lg, nameof(lg), required: false);
+            var __workflow_pinExpiry = WorkflowExpression.Compile(pinExpiry, nameof(pinExpiry), required: false);
+            var __workflow_nextEventWait = WorkflowExpression.Compile(nextEventWait, nameof(nextEventWait), required: false);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: false);
+            return new DeferredBodyAction<VerifyRequestResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> requestId, Expression<Func<string>> code)
         {
-            var apiCallPath = String.Format("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = WorkflowExpression.Compile(apiSecret, nameof(apiSecret), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
+            return new DeferredBodyAction<VerifyCheckResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country)
         {
-            var apiCallPath = String.Format("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<BasicNumberInsightResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = WorkflowExpression.Compile(apiSecret, nameof(apiSecret), required: true);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            return new DeferredBodyAction<BasicNumberInsightResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api_key"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(__workflow_apiSecret);
+                callPayload.Queries["number"] = ExpressionConverter.Convert(__workflow_number);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                return new ApiConnectionAction<BasicNumberInsightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
         public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country, Expression<Func<string>> cnam = null)
         {
-            var apiCallPath = String.Format("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (cnam != null)
-                callPayload.Queries["cnam"] = ExpressionConverter.Convert(cnam);
-            return new ApiConnectionAction<StandardNumberInsightResponse>(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_apiSecret = WorkflowExpression.Compile(apiSecret, nameof(apiSecret), required: true);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_cnam = WorkflowExpression.Compile(cnam, nameof(cnam), required: false);
+            return new DeferredBodyAction<StandardNumberInsightResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api_key"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(__workflow_apiSecret);
+                callPayload.Queries["number"] = ExpressionConverter.Convert(__workflow_number);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                if (__workflow_cnam != null)
+                    callPayload.Queries["cnam"] = ExpressionConverter.Convert(__workflow_cnam);
+                return new ApiConnectionAction<StandardNumberInsightResponse>(callPayload);
+            });
         }
     }
 
@@ -71,6 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         public string RequestId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]
@@ -79,6 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum codeLengthInput
     {
         [EnumMember(Value = "4")]
@@ -87,6 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         _6
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum lgInput
     {
         [EnumMember(Value = "ar-xa")]
@@ -169,6 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
         ZhTw
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum workflowIdInput
     {
         [EnumMember(Value = "1")]

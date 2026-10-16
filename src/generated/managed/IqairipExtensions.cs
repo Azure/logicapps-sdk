@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,53 +23,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListStatesResponse> ListStates(Expression<Func<string>> country = null)
         {
-            var apiCallPath = "/states";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<ListStatesResponse>(callPayload);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            return new DeferredBodyAction<ListStatesResponse>(() =>
+            {
+                var apiCallPath = "/states";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                return new ApiConnectionAction<ListStatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListCitiesResponse> ListCities(Expression<Func<string>> state = null, Expression<Func<string>> country = null)
         {
-            var apiCallPath = "/cities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<ListCitiesResponse>(callPayload);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            return new DeferredBodyAction<ListCitiesResponse>(() =>
+            {
+                var apiCallPath = "/cities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                return new ApiConnectionAction<ListCitiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<CityResponse> GetDataByCoordinates(Expression<Func<string>> lat = null, Expression<Func<string>> lon = null)
         {
-            var apiCallPath = "/nearest_city";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            return new DeferredBodyAction<CityResponse>(() =>
+            {
+                var apiCallPath = "/nearest_city";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(__workflow_lon);
+                return new ApiConnectionAction<CityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<CityResponse> GetDataByCity(Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> country = null)
         {
-            var apiCallPath = "/city";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            return new DeferredBodyAction<CityResponse>(() =>
+            {
+                var apiCallPath = "/city";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(__workflow_country);
+                return new ApiConnectionAction<CityResponse>(callPayload);
+            });
         }
     }
 

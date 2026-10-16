@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,31 +14,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
         public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
         {
-            var apiCallPath = "/api/authentication/access_token";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/x-www-form-urlencoded");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
-            bodypropCount++;
-            body["client_id"] = ExpressionConverter.ConvertO(bodyclientId);
-            bodypropCount++;
-            body["client_secret"] = ExpressionConverter.ConvertO(bodyclientSecret);
-            body["grant_type"] = "password";
-            bodypropCount++;
-            body["auth_chain"] = "OAuthLdapService";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: true);
+            var __workflow_bodyclientSecret = WorkflowExpression.Compile(bodyclientSecret, nameof(bodyclientSecret), required: true);
+            return new DeferredBodyAction<GetAccessTokenResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/authentication/access_token";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/x-www-form-urlencoded");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
+                bodypropCount++;
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
+                bodypropCount++;
+                body["client_id"] = ExpressionConverter.ConvertO(__workflow_bodyclientId);
+                bodypropCount++;
+                body["client_secret"] = ExpressionConverter.ConvertO(__workflow_bodyclientSecret);
+                body["grant_type"] = "password";
+                bodypropCount++;
+                body["auth_chain"] = "OAuthLdapService";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetAccessTokenResponse>(callPayload);
+                return new ApiConnectionAction<GetAccessTokenResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,250 +14,340 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionSheet> ListSheets(Expression<Func<string>> optionalFolderId = null)
         {
-            var apiCallPath = "/sheets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (optionalFolderId != null)
-                callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
-            return new ApiConnectionAction<SmartsheetCollectionSheet>(callPayload);
+            var __workflow_optionalFolderId = WorkflowExpression.Compile(optionalFolderId, nameof(optionalFolderId), required: false);
+            return new DeferredBodyAction<SmartsheetCollectionSheet>(() =>
+            {
+                var apiCallPath = "/sheets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_optionalFolderId != null)
+                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(__workflow_optionalFolderId);
+                return new ApiConnectionAction<SmartsheetCollectionSheet>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SheetWithRows> GetSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
-            return new ApiConnectionAction<SheetWithRows>(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
+            return new DeferredBodyAction<SheetWithRows>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
+                return new ApiConnectionAction<SheetWithRows>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionColumn> GetColumns(Expression<Func<string>> sheetId)
         {
-            var apiCallPath = String.Format("/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SmartsheetCollectionColumn>(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            return new DeferredBodyAction<SmartsheetCollectionColumn>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SmartsheetCollectionColumn>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IWorkflowAction GetColumnsSchema(Expression<Func<string>> sheetId)
         {
-            var apiCallPath = String.Format("/remove/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/remove/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<RowsList> GetSheetData(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
-            return new ApiConnectionAction<RowsList>(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
+            return new DeferredBodyAction<RowsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
+                return new ApiConnectionAction<RowsList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<InsertRowResponse> InsertRow(Expression<Func<string>> sheetId, Expression<Func<object>> row = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(row);
-            return new ApiConnectionAction<InsertRowResponse>(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_row = WorkflowExpression.Compile(row, nameof(row), required: false);
+            return new DeferredBodyAction<InsertRowResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_row);
+                return new ApiConnectionAction<InsertRowResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionFolder> ListSubFolders(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/folders/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SmartsheetCollectionFolder>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<SmartsheetCollectionFolder>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/folders/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SmartsheetCollectionFolder>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> GetDiscussionsForSheet(Expression<Func<string>> sheetId)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SmartsheetCollectionGetDiscussionResponse>(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            return new DeferredBodyAction<SmartsheetCollectionGetDiscussionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SmartsheetCollectionGetDiscussionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToSheet(Expression<Func<string>> sheetId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var discussion = new JObject();
-            var discussionpropCount = 0;
-            if (discussiontitle != null)
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussiontitle = WorkflowExpression.Compile(discussiontitle, nameof(discussiontitle), required: false);
+            var __workflow_discussioncommenttext = WorkflowExpression.Compile(discussioncommenttext, nameof(discussioncommenttext), required: false);
+            return new DeferredBodyAction<DiscussionResponse>(() =>
             {
-                discussion["title"] = ExpressionConverter.ConvertO(discussiontitle);
-                discussionpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var discussion = new JObject();
+                var discussionpropCount = 0;
+                if (__workflow_discussiontitle != null)
+                {
+                    discussion["title"] = ExpressionConverter.ConvertO(__workflow_discussiontitle);
+                    discussionpropCount++;
+                }
 
-            var commentObject = new JObject();
-            var commentObjectpropCount = 0;
-            if (discussioncommenttext != null)
-            {
-                commentObject["text"] = ExpressionConverter.ConvertO(discussioncommenttext);
-                commentObjectpropCount++;
-            }
+                var commentObject = new JObject();
+                var commentObjectpropCount = 0;
+                if (__workflow_discussioncommenttext != null)
+                {
+                    commentObject["text"] = ExpressionConverter.ConvertO(__workflow_discussioncommenttext);
+                    commentObjectpropCount++;
+                }
 
-            if (commentObjectpropCount > 0)
-            {
-                discussion["comment"] = commentObject;
-                discussionpropCount++;
-            }
+                if (commentObjectpropCount > 0)
+                {
+                    discussion["comment"] = commentObject;
+                    discussionpropCount++;
+                }
 
-            if (discussionpropCount > 0)
-            {
-                callPayload.Body = discussion;
-            }
+                if (discussionpropCount > 0)
+                {
+                    callPayload.Body = discussion;
+                }
 
-            return new ApiConnectionAction<DiscussionResponse>(callPayload);
+                return new ApiConnectionAction<DiscussionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToRow(Expression<Func<string>> sheetId, Expression<Func<string>> rowId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/rows/{1}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(rowId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var discussion = new JObject();
-            var discussionpropCount = 0;
-            if (discussiontitle != null)
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
+            var __workflow_discussiontitle = WorkflowExpression.Compile(discussiontitle, nameof(discussiontitle), required: false);
+            var __workflow_discussioncommenttext = WorkflowExpression.Compile(discussioncommenttext, nameof(discussioncommenttext), required: false);
+            return new DeferredBodyAction<DiscussionResponse>(() =>
             {
-                discussion["title"] = ExpressionConverter.ConvertO(discussiontitle);
-                discussionpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows/{1}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var discussion = new JObject();
+                var discussionpropCount = 0;
+                if (__workflow_discussiontitle != null)
+                {
+                    discussion["title"] = ExpressionConverter.ConvertO(__workflow_discussiontitle);
+                    discussionpropCount++;
+                }
 
-            var commentObject = new JObject();
-            var commentObjectpropCount = 0;
-            if (discussioncommenttext != null)
-            {
-                commentObject["text"] = ExpressionConverter.ConvertO(discussioncommenttext);
-                commentObjectpropCount++;
-            }
+                var commentObject = new JObject();
+                var commentObjectpropCount = 0;
+                if (__workflow_discussioncommenttext != null)
+                {
+                    commentObject["text"] = ExpressionConverter.ConvertO(__workflow_discussioncommenttext);
+                    commentObjectpropCount++;
+                }
 
-            if (commentObjectpropCount > 0)
-            {
-                discussion["comment"] = commentObject;
-                discussionpropCount++;
-            }
+                if (commentObjectpropCount > 0)
+                {
+                    discussion["comment"] = commentObject;
+                    discussionpropCount++;
+                }
 
-            if (discussionpropCount > 0)
-            {
-                callPayload.Body = discussion;
-            }
+                if (discussionpropCount > 0)
+                {
+                    callPayload.Body = discussion;
+                }
 
-            return new ApiConnectionAction<DiscussionResponse>(callPayload);
+                return new ApiConnectionAction<DiscussionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<CreateCommentResponse> AddCommentToDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, Expression<Func<string>> commenttext = null)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            if (commenttext != null)
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
+            var __workflow_commenttext = WorkflowExpression.Compile(commenttext, nameof(commenttext), required: false);
+            return new DeferredBodyAction<CreateCommentResponse>(() =>
             {
-                comment["text"] = ExpressionConverter.ConvertO(commenttext);
-                commentpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                if (__workflow_commenttext != null)
+                {
+                    comment["text"] = ExpressionConverter.ConvertO(__workflow_commenttext);
+                    commentpropCount++;
+                }
 
-            if (commentpropCount > 0)
-            {
-                callPayload.Body = comment;
-            }
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
 
-            return new ApiConnectionAction<CreateCommentResponse>(callPayload);
+                return new ApiConnectionAction<CreateCommentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionData> GetDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId)
         {
-            var apiCallPath = String.Format("/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DiscussionData>(callPayload);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
+            return new DeferredBodyAction<DiscussionData>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DiscussionData>(callPayload);
+            });
         }
     }
 
     public class SmartsheetTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet(Expression<Func<string>> optionalFolderId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet(Expression<Func<string>> optionalFolderId = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/new_trigger/sheets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (optionalFolderId != null)
-                callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
-            return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, triggerName, recurrence);
+            var __workflow_optionalFolderId = WorkflowExpression.Compile(optionalFolderId, nameof(optionalFolderId), required: false);
+            return new DeferredBodyTrigger<SmartsheetCollectionSheet>(() =>
+            {
+                var apiCallPath = "/new_trigger/sheets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_optionalFolderId != null)
+                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(__workflow_optionalFolderId);
+                return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet(Expression<Func<string>> optionalFolderId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet(Expression<Func<string>> optionalFolderId = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/updated_trigger/sheets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (optionalFolderId != null)
-                callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(optionalFolderId);
-            return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, triggerName, recurrence);
+            var __workflow_optionalFolderId = WorkflowExpression.Compile(optionalFolderId, nameof(optionalFolderId), required: false);
+            return new DeferredBodyTrigger<SmartsheetCollectionSheet>(() =>
+            {
+                var apiCallPath = "/updated_trigger/sheets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_optionalFolderId != null)
+                    callPayload.Queries["optionalFolderId"] = ExpressionConverter.Convert(__workflow_optionalFolderId);
+                return new ApiConnectionTrigger<SmartsheetCollectionSheet>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SmartsheetCollectionDiscussionComment>(callPayload, triggerName, recurrence);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            return new DeferredBodyTrigger<SmartsheetCollectionDiscussionComment>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<SmartsheetCollectionDiscussionComment>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
-            return new ApiConnectionTrigger<SmartsheetCollectionSheetWithRows>(callPayload, triggerName, recurrence);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
+            return new DeferredBodyTrigger<SmartsheetCollectionSheetWithRows>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
+                return new ApiConnectionTrigger<SmartsheetCollectionSheetWithRows>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (columns != null)
-                callPayload.Queries["columns"] = ExpressionConverter.Convert(columns);
-            return new ApiConnectionTrigger<RowResponse>(callPayload, triggerName, recurrence);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
+            return new DeferredBodyTrigger<RowResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_columns != null)
+                    callPayload.Queries["columns"] = ExpressionConverter.Convert(__workflow_columns);
+                return new ApiConnectionTrigger<RowResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(discussionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CommentResponse>(callPayload, triggerName, recurrence);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
+            return new DeferredBodyTrigger<CommentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<CommentResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(sheetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SmartsheetCollectionGetDiscussionResponse>(callPayload, triggerName, recurrence);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            return new DeferredBodyTrigger<SmartsheetCollectionGetDiscussionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<SmartsheetCollectionGetDiscussionResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

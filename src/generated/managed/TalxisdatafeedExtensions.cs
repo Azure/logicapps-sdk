@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,56 +14,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IWorkflowAction CompanyLogo(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/v1.0/Companies/{0}/{1}/logo", ExpressionConverter.ConvertWithUrlEncoding(jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/logo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyDetail> GetCompany(Expression<Func<string>> jurisdictionCode, Expression<Func<string>> companyNumber, Expression<Func<string>> language = null)
         {
-            var apiCallPath = String.Format("/v1.0/Companies/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<DataFeedModelEntitiesCompanyCompanyDetail>(callPayload);
+            var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            return new DeferredBodyAction<DataFeedModelEntitiesCompanyCompanyDetail>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                return new ApiConnectionAction<DataFeedModelEntitiesCompanyCompanyDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance> GetCompanyFinace(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
-            var apiCallPath = String.Format("/v1.0/Companies/{0}/{1}/finance", ExpressionConverter.ConvertWithUrlEncoding(jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DataFeedModelEntitiesCompanyCompanyFinance>(callPayload);
+            var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<DataFeedModelEntitiesCompanyCompanyFinance>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/finance", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DataFeedModelEntitiesCompanyCompanyFinance>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<GetWeekOfYearResponse> GetWeekOfYear(Expression<Func<string>> time, Expression<Func<ruleInput>> rule, Expression<Func<firstDayOfWeekInput>> firstDayOfWeek)
         {
-            var apiCallPath = "/v1.0/DateTime/GetWeekOfYear";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["time"] = ExpressionConverter.Convert(time);
-            callPayload.Queries["rule"] = ExpressionConverter.Convert(rule);
-            callPayload.Queries["firstDayOfWeek"] = ExpressionConverter.Convert(firstDayOfWeek);
-            return new ApiConnectionAction<GetWeekOfYearResponse>(callPayload);
+            var __workflow_time = WorkflowExpression.Compile(time, nameof(time), required: true);
+            var __workflow_rule = WorkflowExpression.Compile(rule, nameof(rule), required: true);
+            var __workflow_firstDayOfWeek = WorkflowExpression.Compile(firstDayOfWeek, nameof(firstDayOfWeek), required: true);
+            return new DeferredBodyAction<GetWeekOfYearResponse>(() =>
+            {
+                var apiCallPath = "/v1.0/DateTime/GetWeekOfYear";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["time"] = ExpressionConverter.Convert(__workflow_time);
+                callPayload.Queries["rule"] = ExpressionConverter.Convert(__workflow_rule);
+                callPayload.Queries["firstDayOfWeek"] = ExpressionConverter.Convert(__workflow_firstDayOfWeek);
+                return new ApiConnectionAction<GetWeekOfYearResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesAddress[]> AddressGeocode(Expression<Func<string>> query, Expression<Func<string>> language = null, Expression<Func<string>> region = null)
         {
-            var apiCallPath = "/v1.0/Geospatial/address/geocode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (region != null)
-                callPayload.Queries["region"] = ExpressionConverter.Convert(region);
-            return new ApiConnectionAction<DataFeedModelEntitiesAddress[]>(callPayload);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            return new DeferredBodyAction<DataFeedModelEntitiesAddress[]>(() =>
+            {
+                var apiCallPath = "/v1.0/Geospatial/address/geocode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                if (__workflow_language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(__workflow_language);
+                if (__workflow_region != null)
+                    callPayload.Queries["region"] = ExpressionConverter.Convert(__workflow_region);
+                return new ApiConnectionAction<DataFeedModelEntitiesAddress[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
@@ -78,25 +106,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<string> GetSalutation(Expression<Func<languageInput>> language, Expression<Func<string>> surname, Expression<Func<genderInput>> gender, Expression<Func<string>> title = null, Expression<Func<string>> suffix = null)
         {
-            var apiCallPath = String.Format("/v1.0/Salutations/{0}/", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["surname"] = ExpressionConverter.Convert(surname);
-            callPayload.Queries["gender"] = ExpressionConverter.Convert(gender);
-            if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-            if (suffix != null)
-                callPayload.Queries["suffix"] = ExpressionConverter.Convert(suffix);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_surname = WorkflowExpression.Compile(surname, nameof(surname), required: true);
+            var __workflow_gender = WorkflowExpression.Compile(gender, nameof(gender), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_suffix = WorkflowExpression.Compile(suffix, nameof(suffix), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Salutations/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["surname"] = ExpressionConverter.Convert(__workflow_surname);
+                callPayload.Queries["gender"] = ExpressionConverter.Convert(__workflow_gender);
+                if (__workflow_title != null)
+                    callPayload.Queries["title"] = ExpressionConverter.Convert(__workflow_title);
+                if (__workflow_suffix != null)
+                    callPayload.Queries["suffix"] = ExpressionConverter.Convert(__workflow_suffix);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesHolidays[]> GetHolidays(Expression<Func<string>> countryIsoCode, Expression<Func<string>> year)
         {
-            var apiCallPath = String.Format("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", ExpressionConverter.ConvertWithUrlEncoding(countryIsoCode, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DataFeedModelEntitiesHolidays[]>(callPayload);
+            var __workflow_countryIsoCode = WorkflowExpression.Compile(countryIsoCode, nameof(countryIsoCode), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            return new DeferredBodyAction<DataFeedModelEntitiesHolidays[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryIsoCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DataFeedModelEntitiesHolidays[]>(callPayload);
+            });
         }
     }
 
@@ -104,6 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum jurisdictionCodeInput
     {
         CZ,
@@ -323,6 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public int WeekNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ruleInput
     {
         FirstDay,
@@ -330,6 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         FirstFourDayWeek
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum firstDayOfWeekInput
     {
         Sunday,
@@ -350,12 +394,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public string ExpiresOn { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum languageInput
     {
         CS,
         SK
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum genderInput
     {
         [EnumMember(Value = "male")]
@@ -394,6 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         public string CountryCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum DataFeedModelEntitiesHolidaysTypesType
     {
         Public,

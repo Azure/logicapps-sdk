@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,109 +14,146 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivesecurity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<StringAutomaticThreatDetection> ContentThreatDetectionAutomaticThreatDetectionString(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/content/automatic/detect/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<StringAutomaticThreatDetection>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<StringAutomaticThreatDetection>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/content/automatic/detect/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<StringAutomaticThreatDetection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<StringInsecureDeserializationJsonDetection> ContentThreatDetectionDetectInsecureDeserializationJsonString(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/content/insecure-deserialization/json/detect/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<StringInsecureDeserializationJsonDetection>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<StringInsecureDeserializationJsonDetection>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/content/insecure-deserialization/json/detect/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<StringInsecureDeserializationJsonDetection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<StringSqlInjectionDetectionResult> ContentThreatDetectionCheckSqlInjectionString(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/content/sql-injection/detect/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<StringSqlInjectionDetectionResult>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<StringSqlInjectionDetectionResult>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/content/sql-injection/detect/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<StringSqlInjectionDetectionResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<StringXssProtectionResult> ContentThreatDetectionProtectXss(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/content/xss/detect/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<StringXssProtectionResult>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<StringXssProtectionResult>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/content/xss/detect/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<StringXssProtectionResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<StringXxeDetectionResult> ContentThreatDetectionCheckXxe(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/content/xxe/detect/xml/string";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<StringXxeDetectionResult>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<StringXxeDetectionResult>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/content/xxe/detect/xml/string";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<StringXxeDetectionResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<UrlSsrfThreatDetectionResponseFull> NetworkThreatDetectionDetectSsrfUrl(Expression<Func<string>> requestuRL = null, Expression<Func<string[]>> requestblockedDomains = null)
         {
-            var apiCallPath = "/security/threat-detection/network/url/ssrf/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestuRL != null)
+            var __workflow_requestuRL = WorkflowExpression.Compile(requestuRL, nameof(requestuRL), required: false);
+            var __workflow_requestblockedDomains = WorkflowExpression.Compile(requestblockedDomains, nameof(requestblockedDomains), required: false);
+            return new DeferredBodyAction<UrlSsrfThreatDetectionResponseFull>(() =>
             {
-                request["URL"] = ExpressionConverter.ConvertO(requestuRL);
-                requestpropCount++;
-            }
+                var apiCallPath = "/security/threat-detection/network/url/ssrf/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (__workflow_requestuRL != null)
+                {
+                    request["URL"] = ExpressionConverter.ConvertO(__workflow_requestuRL);
+                    requestpropCount++;
+                }
 
-            if (requestblockedDomains != null)
-            {
-                request["BlockedDomains"] = ExpressionConverter.ConvertO(requestblockedDomains);
-                requestpropCount++;
-            }
+                if (__workflow_requestblockedDomains != null)
+                {
+                    request["BlockedDomains"] = ExpressionConverter.ConvertO(__workflow_requestblockedDomains);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            return new ApiConnectionAction<UrlSsrfThreatDetectionResponseFull>(callPayload);
+                return new ApiConnectionAction<UrlSsrfThreatDetectionResponseFull>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<IPThreatDetectionResponse> NetworkThreatDetectionIsThreat(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/network/ip/is-threat";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<IPThreatDetectionResponse>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<IPThreatDetectionResponse>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/network/ip/is-threat";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<IPThreatDetectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<ThreatDetectionBotCheckResponse> NetworkThreatDetectionIsBot(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/network/ip/is-bot";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<ThreatDetectionBotCheckResponse>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<ThreatDetectionBotCheckResponse>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/network/ip/is-bot";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<ThreatDetectionBotCheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivesecurity")]
         public IBodyWorkflowAction<ThreatDetectionTorNodeResponse> NetworkThreatDetectionIsTorNode(Expression<Func<string>> value = null)
         {
-            var apiCallPath = "/security/threat-detection/network/ip/is-tor-node";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<ThreatDetectionTorNodeResponse>(callPayload);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
+            return new DeferredBodyAction<ThreatDetectionTorNodeResponse>(() =>
+            {
+                var apiCallPath = "/security/threat-detection/network/ip/is-tor-node";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_value);
+                return new ApiConnectionAction<ThreatDetectionTorNodeResponse>(callPayload);
+            });
         }
     }
 

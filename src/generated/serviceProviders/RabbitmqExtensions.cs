@@ -1,11 +1,11 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
 {
     using System;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
@@ -16,66 +16,88 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         public IBodyWorkflowAction<SendRabbitMQMessageOutput> SendRabbitMQMessage(Expression<Func<string>> queueName, Expression<Func<object>> message, Expression<Func<string>> exchangeName = null, Expression<Func<string>> routingKey = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            if (exchangeName != null)
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_exchangeName = WorkflowExpression.Compile(exchangeName, nameof(exchangeName), required: false);
+            var __workflow_routingKey = WorkflowExpression.Compile(routingKey, nameof(routingKey), required: false);
+            return new DeferredBodyAction<SendRabbitMQMessageOutput>(() =>
             {
-                serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(exchangeName);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(__workflow_message);
+                if (__workflow_exchangeName != null)
+                {
+                    serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(__workflow_exchangeName);
+                }
 
-            if (routingKey != null)
-            {
-                serviceProviderParameters["routingKey"] = ExpressionConverter.ConvertO(routingKey);
-            }
+                if (__workflow_routingKey != null)
+                {
+                    serviceProviderParameters["routingKey"] = ExpressionConverter.ConvertO(__workflow_routingKey);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "sendRabbitMQMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendRabbitMQMessageOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "sendRabbitMQMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<SendRabbitMQMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         public IBodyWorkflowAction<CreateQueueOutput> CreateQueue(Expression<Func<object>> queueName, Expression<Func<bool>> durable, Expression<Func<string>> exchangeName, Expression<Func<CreateQueueInputExchangeTypeType>> exchangeType, Expression<Func<string>> bindingKey)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["durable"] = ExpressionConverter.ConvertO(durable);
-            serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(exchangeName);
-            serviceProviderParameters["exchangeType"] = ExpressionConverter.ConvertO(exchangeType);
-            serviceProviderParameters["bindingKey"] = ExpressionConverter.ConvertO(bindingKey);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_durable = WorkflowExpression.Compile(durable, nameof(durable), required: true);
+            var __workflow_exchangeName = WorkflowExpression.Compile(exchangeName, nameof(exchangeName), required: true);
+            var __workflow_exchangeType = WorkflowExpression.Compile(exchangeType, nameof(exchangeType), required: true);
+            var __workflow_bindingKey = WorkflowExpression.Compile(bindingKey, nameof(bindingKey), required: true);
+            return new DeferredBodyAction<CreateQueueOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "createQueue", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CreateQueueOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                serviceProviderParameters["durable"] = ExpressionConverter.ConvertO(__workflow_durable);
+                serviceProviderParameters["exchangeName"] = ExpressionConverter.ConvertO(__workflow_exchangeName);
+                serviceProviderParameters["exchangeType"] = ExpressionConverter.ConvertO(__workflow_exchangeType);
+                serviceProviderParameters["bindingKey"] = ExpressionConverter.ConvertO(__workflow_bindingKey);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "createQueue", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CreateQueueOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "rabbitmq")]
         public IOutputWorkflowAction<JToken> CompleteMessage(Expression<Func<int>> deliveryTag, Expression<Func<string>> consumerTag, Expression<Func<CompleteMessageInputAcknowledgementType>> acknowledgement, Expression<Func<bool>> requeueOnReject = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deliveryTag"] = ExpressionConverter.ConvertO(deliveryTag);
-            serviceProviderParameters["consumerTag"] = ExpressionConverter.ConvertO(consumerTag);
-            serviceProviderParameters["acknowledgement"] = ExpressionConverter.ConvertO(acknowledgement);
-            if (requeueOnReject != null)
+            var __workflow_deliveryTag = WorkflowExpression.Compile(deliveryTag, nameof(deliveryTag), required: true);
+            var __workflow_consumerTag = WorkflowExpression.Compile(consumerTag, nameof(consumerTag), required: true);
+            var __workflow_acknowledgement = WorkflowExpression.Compile(acknowledgement, nameof(acknowledgement), required: true);
+            var __workflow_requeueOnReject = WorkflowExpression.Compile(requeueOnReject, nameof(requeueOnReject), required: false);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                serviceProviderParameters["requeueOnReject"] = ExpressionConverter.ConvertO(requeueOnReject);
-            }
-            else
-            {
-                serviceProviderParameters["requeueOnReject"] = false;
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deliveryTag"] = ExpressionConverter.ConvertO(__workflow_deliveryTag);
+                serviceProviderParameters["consumerTag"] = ExpressionConverter.ConvertO(__workflow_consumerTag);
+                serviceProviderParameters["acknowledgement"] = ExpressionConverter.ConvertO(__workflow_acknowledgement);
+                if (__workflow_requeueOnReject != null)
+                {
+                    serviceProviderParameters["requeueOnReject"] = ExpressionConverter.ConvertO(__workflow_requeueOnReject);
+                }
+                else
+                {
+                    serviceProviderParameters["requeueOnReject"] = false;
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "completeMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "completeMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
     }
 
@@ -83,26 +105,34 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
     {
         public IBodyWorkflowTrigger<ReceiveRabbitMQMessagesOutput> ReceiveRabbitMQMessages(Expression<Func<object>> queueName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            return new DeferredBodyTrigger<ReceiveRabbitMQMessagesOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "receiveRabbitMQMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "receiveRabbitMQMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
+            });
         }
 
         public IBodyWorkflowTrigger<PeeklockRabbitMQMessagesOutput> PeeklockRabbitMQMessages(Expression<Func<object>> queueName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            return new DeferredBodyTrigger<PeeklockRabbitMQMessagesOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "peeklockRabbitMQMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(__workflow_queueName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/rabbitmq", operationId: "peeklockRabbitMQMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
+            });
         }
     }
 
@@ -160,14 +190,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
         public int ConsumerCount { get; set; }
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CreateQueueInputExchangeTypeType
     {
         Direct,
         Topic
     }
 
-    [JsonConverter(typeof(StringEnumConverter))]
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum CompleteMessageInputAcknowledgementType
     {
         Complete,

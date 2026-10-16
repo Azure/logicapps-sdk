@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,154 +14,213 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<DeviceGeoItem[]> MobileGeolocation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/device_geo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<DeviceGeoItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<DeviceGeoItem[]>(() =>
+            {
+                var apiCallPath = "/device_geo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<DeviceGeoItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SinkholeItem[]> Sinkhole(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/sinkhole";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<SinkholeItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<SinkholeItem[]>(() =>
+            {
+                var apiCallPath = "/sinkhole";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<SinkholeItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<PassivednsItem[]> PassiveDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/passivedns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<PassivednsItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<PassivednsItem[]>(() =>
+            {
+                var apiCallPath = "/passivedns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<PassivednsItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<DynamicdnsItem[]> DynamicDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/dynamicdns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<DynamicdnsItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<DynamicdnsItem[]>(() =>
+            {
+                var apiCallPath = "/dynamicdns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<DynamicdnsItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<PassivehashItem[]> PassiveHash(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/passivehash";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<PassivehashItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<PassivehashItem[]>(() =>
+            {
+                var apiCallPath = "/passivehash";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<PassivehashItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<Sslcertificate> SSLCertificate(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/ssl_certificate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<Sslcertificate>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<Sslcertificate>(() =>
+            {
+                var apiCallPath = "/ssl_certificate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<Sslcertificate>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<WhoisItem[]> Whois(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/whois";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<WhoisItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<WhoisItem[]>(() =>
+            {
+                var apiCallPath = "/whois";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<WhoisItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<C2attributionItem[]> C2Attribution(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/c2attribution";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<C2attributionItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<C2attributionItem[]>(() =>
+            {
+                var apiCallPath = "/c2attribution";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<C2attributionItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SampleInformation> SampleInformation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/sample/information";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<SampleInformation>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<SampleInformation>(() =>
+            {
+                var apiCallPath = "/sample/information";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<SampleInformation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SampleItem[]> Sample(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/sample";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<SampleItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<SampleItem[]>(() =>
+            {
+                var apiCallPath = "/sample";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<SampleItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<OsIndicatorsItem[]> OpenSourceIndicators(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var apiCallPath = "/os_indicators";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(indicatorType);
-            callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(indicatorValue);
-            return new ApiConnectionAction<OsIndicatorsItem[]>(callPayload);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
+            return new DeferredBodyAction<OsIndicatorsItem[]>(() =>
+            {
+                var apiCallPath = "/os_indicators";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indicator_type"] = ExpressionConverter.Convert(__workflow_indicatorType);
+                callPayload.Queries["indicator_value"] = ExpressionConverter.Convert(__workflow_indicatorValue);
+                return new ApiConnectionAction<OsIndicatorsItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<WhoisCurrent> CurrentWhois(Expression<Func<string>> bodyappliedFiltersdomain = null)
         {
-            var apiCallPath = "/whois/v1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var appliedFiltersObject = new JObject();
-            var appliedFiltersObjectpropCount = 0;
-            if (bodyappliedFiltersdomain != null)
+            var __workflow_bodyappliedFiltersdomain = WorkflowExpression.Compile(bodyappliedFiltersdomain, nameof(bodyappliedFiltersdomain), required: false);
+            return new DeferredBodyAction<WhoisCurrent>(() =>
             {
-                appliedFiltersObject["domain"] = ExpressionConverter.ConvertO(bodyappliedFiltersdomain);
+                var apiCallPath = "/whois/v1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var appliedFiltersObject = new JObject();
+                var appliedFiltersObjectpropCount = 0;
+                if (__workflow_bodyappliedFiltersdomain != null)
+                {
+                    appliedFiltersObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyappliedFiltersdomain);
+                    appliedFiltersObjectpropCount++;
+                }
+
+                appliedFiltersObject["current"] = true;
                 appliedFiltersObjectpropCount++;
-            }
+                if (appliedFiltersObjectpropCount > 0)
+                {
+                    body["applied_filters"] = appliedFiltersObject;
+                    bodypropCount++;
+                }
 
-            appliedFiltersObject["current"] = true;
-            appliedFiltersObjectpropCount++;
-            if (appliedFiltersObjectpropCount > 0)
-            {
-                body["applied_filters"] = appliedFiltersObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WhoisCurrent>(callPayload);
+                return new ApiConnectionAction<WhoisCurrent>(callPayload);
+            });
         }
     }
 
@@ -199,6 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         public string WifiBssid { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum indicatorTypeInput
     {
         [EnumMember(Value = "ipv4")]

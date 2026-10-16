@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,1098 +14,1373 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<string>> bodytoEmail = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppID = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem[]>> bodyfiles = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/CreateExternalTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            if (bodyfromEmail != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyfromEmail = WorkflowExpression.Compile(bodyfromEmail, nameof(bodyfromEmail), required: false);
+            var __workflow_bodytoEmail = WorkflowExpression.Compile(bodytoEmail, nameof(bodytoEmail), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodypriorityText = WorkflowExpression.Compile(bodypriorityText, nameof(bodypriorityText), required: false);
+            var __workflow_bodyassociatedContactEmail = WorkflowExpression.Compile(bodyassociatedContactEmail, nameof(bodyassociatedContactEmail), required: false);
+            var __workflow_bodyresourceAppName = WorkflowExpression.Compile(bodyresourceAppName, nameof(bodyresourceAppName), required: false);
+            var __workflow_bodyresourceAppUrl = WorkflowExpression.Compile(bodyresourceAppUrl, nameof(bodyresourceAppUrl), required: false);
+            var __workflow_bodyresourceAppID = WorkflowExpression.Compile(bodyresourceAppID, nameof(bodyresourceAppID), required: false);
+            var __workflow_bodyresourceAppData = WorkflowExpression.Compile(bodyresourceAppData, nameof(bodyresourceAppData), required: false);
+            var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
+            var __workflow_bodyreferenceData = WorkflowExpression.Compile(bodyreferenceData, nameof(bodyreferenceData), required: false);
+            var __workflow_bodyreferenceSource = WorkflowExpression.Compile(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
+            var __workflow_bodyprojectName = WorkflowExpression.Compile(bodyprojectName, nameof(bodyprojectName), required: false);
+            var __workflow_bodyprojectSectionName = WorkflowExpression.Compile(bodyprojectSectionName, nameof(bodyprojectSectionName), required: false);
+            var __workflow_bodyprojectTags = WorkflowExpression.Compile(bodyprojectTags, nameof(bodyprojectTags), required: false);
+            var __workflow_bodychecklists = WorkflowExpression.Compile(bodychecklists, nameof(bodychecklists), required: false);
+            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
-                body["fromEmail"] = ExpressionConverter.ConvertO(bodyfromEmail);
+                var apiCallPath = "/api/services/app/ExternalTask/CreateExternalTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
+                if (__workflow_bodyfromEmail != null)
+                {
+                    body["fromEmail"] = ExpressionConverter.ConvertO(__workflow_bodyfromEmail);
+                    bodypropCount++;
+                }
 
-            if (bodytoEmail != null)
-            {
-                body["toEmail"] = ExpressionConverter.ConvertO(bodytoEmail);
+                if (__workflow_bodytoEmail != null)
+                {
+                    body["toEmail"] = ExpressionConverter.ConvertO(__workflow_bodytoEmail);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
+                    bodypropCount++;
+                }
 
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriorityText != null)
+                {
+                    body["priorityText"] = ExpressionConverter.ConvertO(__workflow_bodypriorityText);
+                    bodypropCount++;
+                }
 
-            if (bodypriorityText != null)
-            {
-                body["priorityText"] = ExpressionConverter.ConvertO(bodypriorityText);
-                bodypropCount++;
-            }
+                if (__workflow_bodyassociatedContactEmail != null)
+                {
+                    body["associatedContactEmail"] = ExpressionConverter.ConvertO(__workflow_bodyassociatedContactEmail);
+                    bodypropCount++;
+                }
 
-            if (bodyassociatedContactEmail != null)
-            {
-                body["associatedContactEmail"] = ExpressionConverter.ConvertO(bodyassociatedContactEmail);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppName != null)
+                {
+                    body["resourceAppName"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppName);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppName != null)
-            {
-                body["resourceAppName"] = ExpressionConverter.ConvertO(bodyresourceAppName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppUrl != null)
+                {
+                    body["resourceAppUrl"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppUrl);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppUrl != null)
-            {
-                body["resourceAppUrl"] = ExpressionConverter.ConvertO(bodyresourceAppUrl);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppID != null)
+                {
+                    body["resourceAppID"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppID);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppID != null)
-            {
-                body["resourceAppID"] = ExpressionConverter.ConvertO(bodyresourceAppID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppData != null)
+                {
+                    body["resourceAppData"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppData);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppData != null)
-            {
-                body["resourceAppData"] = ExpressionConverter.ConvertO(bodyresourceAppData);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceId != null)
+                {
+                    body["referenceId"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceId);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceId != null)
-            {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceData != null)
+                {
+                    body["referenceData"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceData);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceData != null)
-            {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceSource != null)
+                {
+                    body["referenceSource"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceSource);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceSource != null)
-            {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprojectName != null)
+                {
+                    body["projectName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectName);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectName != null)
-            {
-                body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprojectSectionName != null)
+                {
+                    body["projectSectionName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectSectionName);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectSectionName != null)
-            {
-                body["projectSectionName"] = ExpressionConverter.ConvertO(bodyprojectSectionName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprojectTags != null)
+                {
+                    body["projectTags"] = ExpressionConverter.ConvertO(__workflow_bodyprojectTags);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectTags != null)
-            {
-                body["projectTags"] = ExpressionConverter.ConvertO(bodyprojectTags);
-                bodypropCount++;
-            }
+                if (__workflow_bodychecklists != null)
+                {
+                    body["checklists"] = ExpressionConverter.ConvertO(__workflow_bodychecklists);
+                    bodypropCount++;
+                }
 
-            if (bodychecklists != null)
-            {
-                body["checklists"] = ExpressionConverter.ConvertO(bodychecklists);
-                bodypropCount++;
-            }
+                if (__workflow_bodyfiles != null)
+                {
+                    body["files"] = ExpressionConverter.ConvertO(__workflow_bodyfiles);
+                    bodypropCount++;
+                }
 
-            if (bodyfiles != null)
-            {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<AlertResponse> Alert(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyalertToEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodymessage, Expression<Func<bodyresourceNameInput>> bodyresourceName = null, Expression<Func<string>> bodyresourceUrl = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/PushNotificationFromExternal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["alertToEmail"] = ExpressionConverter.ConvertO(bodyalertToEmail);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodyresourceName != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyalertToEmail = WorkflowExpression.Compile(bodyalertToEmail, nameof(bodyalertToEmail), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyresourceName = WorkflowExpression.Compile(bodyresourceName, nameof(bodyresourceName), required: false);
+            var __workflow_bodyresourceUrl = WorkflowExpression.Compile(bodyresourceUrl, nameof(bodyresourceUrl), required: false);
+            return new DeferredBodyAction<AlertResponse>(() =>
             {
-                body["resourceName"] = ExpressionConverter.ConvertO(bodyresourceName);
+                var apiCallPath = "/api/services/app/ExternalTask/PushNotificationFromExternal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyresourceUrl != null)
-            {
-                body["ResourceUrl"] = ExpressionConverter.ConvertO(bodyresourceUrl);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
+                body["alertToEmail"] = ExpressionConverter.ConvertO(__workflow_bodyalertToEmail);
+                bodypropCount++;
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                bodypropCount++;
+                body["message"] = ExpressionConverter.ConvertO(__workflow_bodymessage);
+                if (__workflow_bodyresourceName != null)
+                {
+                    body["resourceName"] = ExpressionConverter.ConvertO(__workflow_bodyresourceName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyresourceUrl != null)
+                {
+                    body["ResourceUrl"] = ExpressionConverter.ConvertO(__workflow_bodyresourceUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<AlertResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AlertResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateProjectResponse> CreateProject(Expression<Func<string>> bodyprojectName, Expression<Func<string>> bodycreatorEmail, Expression<Func<string>> bodyapiKey, Expression<Func<bodyfilesInputItem2[]>> bodyfiles, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodymembers = null, Expression<Func<string>> bodysections = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/CreateExternalProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
-            bodypropCount++;
-            body["creatorEmail"] = ExpressionConverter.ConvertO(bodycreatorEmail);
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            if (bodystartDate != null)
+            var __workflow_bodyprojectName = WorkflowExpression.Compile(bodyprojectName, nameof(bodyprojectName), required: true);
+            var __workflow_bodycreatorEmail = WorkflowExpression.Compile(bodycreatorEmail, nameof(bodycreatorEmail), required: true);
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodysections = WorkflowExpression.Compile(bodysections, nameof(bodysections), required: false);
+            var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
+            var __workflow_bodyreferenceData = WorkflowExpression.Compile(bodyreferenceData, nameof(bodyreferenceData), required: false);
+            var __workflow_bodyreferenceSource = WorkflowExpression.Compile(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
+            return new DeferredBodyAction<CreateProjectResponse>(() =>
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                var apiCallPath = "/api/services/app/ExternalTask/CreateExternalProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["projectName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectName);
                 bodypropCount++;
-            }
-
-            if (bodyisPrivate != null)
-            {
-                if (bodyisPrivate != null)
+                body["creatorEmail"] = ExpressionConverter.ConvertO(__workflow_bodycreatorEmail);
+                bodypropCount++;
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
+                if (__workflow_bodystartDate != null)
                 {
-                    body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyisPrivate != null)
+                {
+                    if (__workflow_bodyisPrivate != null)
+                    {
+                        body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["isPrivate"] = false;
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymembers != null)
+                {
+                    body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembers);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodysections != null)
+                {
+                    body["sections"] = ExpressionConverter.ConvertO(__workflow_bodysections);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["isPrivate"] = false;
-                bodypropCount++;
-            }
+                body["files"] = ExpressionConverter.ConvertO(__workflow_bodyfiles);
+                if (__workflow_bodyreferenceId != null)
+                {
+                    body["referenceId"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceId);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceData != null)
+                {
+                    body["referenceData"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceData);
+                    bodypropCount++;
+                }
 
-            if (bodymembers != null)
-            {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceSource != null)
+                {
+                    body["referenceSource"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceSource);
+                    bodypropCount++;
+                }
 
-            if (bodysections != null)
-            {
-                body["sections"] = ExpressionConverter.ConvertO(bodysections);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["files"] = ExpressionConverter.ConvertO(bodyfiles);
-            if (bodyreferenceId != null)
-            {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
-                bodypropCount++;
-            }
-
-            if (bodyreferenceData != null)
-            {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
-                bodypropCount++;
-            }
-
-            if (bodyreferenceSource != null)
-            {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+                return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytaskID, Expression<Func<string>> bodytoEmail, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfromEmail = null, Expression<Func<bodytaskStatusInput>> bodytaskStatus = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityTextInput>> bodypriorityText = null, Expression<Func<string>> bodyassociatedContactEmail = null, Expression<Func<bodyresourceAppNameInput>> bodyresourceAppName = null, Expression<Func<string>> bodyresourceAppUrl = null, Expression<Func<string>> bodyresourceAppID = null, Expression<Func<string>> bodyresourceAppData = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectSectionName = null, Expression<Func<string>> bodyprojectTags = null, Expression<Func<bodychecklistsInputItem[]>> bodychecklists = null, Expression<Func<bodyfilesInputItem22[]>> bodyfiles = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/UpdateExternalTask";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["taskID"] = ExpressionConverter.ConvertO(bodytaskID);
-            if (bodyfromEmail != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodytaskID = WorkflowExpression.Compile(bodytaskID, nameof(bodytaskID), required: true);
+            var __workflow_bodytoEmail = WorkflowExpression.Compile(bodytoEmail, nameof(bodytoEmail), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyfromEmail = WorkflowExpression.Compile(bodyfromEmail, nameof(bodyfromEmail), required: false);
+            var __workflow_bodytaskStatus = WorkflowExpression.Compile(bodytaskStatus, nameof(bodytaskStatus), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodypriorityText = WorkflowExpression.Compile(bodypriorityText, nameof(bodypriorityText), required: false);
+            var __workflow_bodyassociatedContactEmail = WorkflowExpression.Compile(bodyassociatedContactEmail, nameof(bodyassociatedContactEmail), required: false);
+            var __workflow_bodyresourceAppName = WorkflowExpression.Compile(bodyresourceAppName, nameof(bodyresourceAppName), required: false);
+            var __workflow_bodyresourceAppUrl = WorkflowExpression.Compile(bodyresourceAppUrl, nameof(bodyresourceAppUrl), required: false);
+            var __workflow_bodyresourceAppID = WorkflowExpression.Compile(bodyresourceAppID, nameof(bodyresourceAppID), required: false);
+            var __workflow_bodyresourceAppData = WorkflowExpression.Compile(bodyresourceAppData, nameof(bodyresourceAppData), required: false);
+            var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
+            var __workflow_bodyreferenceData = WorkflowExpression.Compile(bodyreferenceData, nameof(bodyreferenceData), required: false);
+            var __workflow_bodyreferenceSource = WorkflowExpression.Compile(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
+            var __workflow_bodyprojectName = WorkflowExpression.Compile(bodyprojectName, nameof(bodyprojectName), required: false);
+            var __workflow_bodyprojectSectionName = WorkflowExpression.Compile(bodyprojectSectionName, nameof(bodyprojectSectionName), required: false);
+            var __workflow_bodyprojectTags = WorkflowExpression.Compile(bodyprojectTags, nameof(bodyprojectTags), required: false);
+            var __workflow_bodychecklists = WorkflowExpression.Compile(bodychecklists, nameof(bodychecklists), required: false);
+            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
+            return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
-                body["fromEmail"] = ExpressionConverter.ConvertO(bodyfromEmail);
+                var apiCallPath = "/api/services/app/ExternalTask/UpdateExternalTask";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["toEmail"] = ExpressionConverter.ConvertO(bodytoEmail);
-            if (bodytaskStatus != null)
-            {
-                body["TaskStatus"] = ExpressionConverter.ConvertO(bodytaskStatus);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
+                body["taskID"] = ExpressionConverter.ConvertO(__workflow_bodytaskID);
+                if (__workflow_bodyfromEmail != null)
+                {
+                    body["fromEmail"] = ExpressionConverter.ConvertO(__workflow_bodyfromEmail);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
                 bodypropCount++;
-            }
+                body["toEmail"] = ExpressionConverter.ConvertO(__workflow_bodytoEmail);
+                if (__workflow_bodytaskStatus != null)
+                {
+                    body["TaskStatus"] = ExpressionConverter.ConvertO(__workflow_bodytaskStatus);
+                    bodypropCount++;
+                }
 
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
+                if (__workflow_bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodypriorityText != null)
-            {
-                body["priorityText"] = ExpressionConverter.ConvertO(bodypriorityText);
-                bodypropCount++;
-            }
+                if (__workflow_bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
+                    bodypropCount++;
+                }
 
-            if (bodyassociatedContactEmail != null)
-            {
-                body["associatedContactEmail"] = ExpressionConverter.ConvertO(bodyassociatedContactEmail);
-                bodypropCount++;
-            }
+                if (__workflow_bodypriorityText != null)
+                {
+                    body["priorityText"] = ExpressionConverter.ConvertO(__workflow_bodypriorityText);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppName != null)
-            {
-                body["resourceAppName"] = ExpressionConverter.ConvertO(bodyresourceAppName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyassociatedContactEmail != null)
+                {
+                    body["associatedContactEmail"] = ExpressionConverter.ConvertO(__workflow_bodyassociatedContactEmail);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppUrl != null)
-            {
-                body["resourceAppUrl"] = ExpressionConverter.ConvertO(bodyresourceAppUrl);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppName != null)
+                {
+                    body["resourceAppName"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppName);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppID != null)
-            {
-                body["resourceAppID"] = ExpressionConverter.ConvertO(bodyresourceAppID);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppUrl != null)
+                {
+                    body["resourceAppUrl"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppUrl);
+                    bodypropCount++;
+                }
 
-            if (bodyresourceAppData != null)
-            {
-                body["resourceAppData"] = ExpressionConverter.ConvertO(bodyresourceAppData);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppID != null)
+                {
+                    body["resourceAppID"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppID);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceId != null)
-            {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
-                bodypropCount++;
-            }
+                if (__workflow_bodyresourceAppData != null)
+                {
+                    body["resourceAppData"] = ExpressionConverter.ConvertO(__workflow_bodyresourceAppData);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceData != null)
-            {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceId != null)
+                {
+                    body["referenceId"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceId);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceSource != null)
-            {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceData != null)
+                {
+                    body["referenceData"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceData);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectName != null)
-            {
-                body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreferenceSource != null)
+                {
+                    body["referenceSource"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceSource);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectSectionName != null)
-            {
-                body["projectSectionName"] = ExpressionConverter.ConvertO(bodyprojectSectionName);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprojectName != null)
+                {
+                    body["projectName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectName);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectTags != null)
-            {
-                body["projectTags"] = ExpressionConverter.ConvertO(bodyprojectTags);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprojectSectionName != null)
+                {
+                    body["projectSectionName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectSectionName);
+                    bodypropCount++;
+                }
 
-            if (bodychecklists != null)
-            {
-                body["checklists"] = ExpressionConverter.ConvertO(bodychecklists);
-                bodypropCount++;
-            }
+                if (__workflow_bodyprojectTags != null)
+                {
+                    body["projectTags"] = ExpressionConverter.ConvertO(__workflow_bodyprojectTags);
+                    bodypropCount++;
+                }
 
-            if (bodyfiles != null)
-            {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
-                bodypropCount++;
-            }
+                if (__workflow_bodychecklists != null)
+                {
+                    body["checklists"] = ExpressionConverter.ConvertO(__workflow_bodychecklists);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfiles != null)
+                {
+                    body["files"] = ExpressionConverter.ConvertO(__workflow_bodyfiles);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactNote(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyownerEmail, Expression<Func<string>> bodycontactEmail, Expression<Func<string>> bodynotes)
         {
-            var apiCallPath = "/api/services/app/ExternalContact/CreateContactNotes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["ownerEmail"] = ExpressionConverter.ConvertO(bodyownerEmail);
-            bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
-            bodypropCount++;
-            body["notes"] = ExpressionConverter.ConvertO(bodynotes);
-            if (bodypropCount > 0)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyownerEmail = WorkflowExpression.Compile(bodyownerEmail, nameof(bodyownerEmail), required: true);
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: true);
+            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/services/app/ExternalContact/CreateContactNotes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
+                bodypropCount++;
+                body["ownerEmail"] = ExpressionConverter.ConvertO(__workflow_bodyownerEmail);
+                bodypropCount++;
+                body["contactEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
+                bodypropCount++;
+                body["notes"] = ExpressionConverter.ConvertO(__workflow_bodynotes);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateCompany(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodycompanyName, Expression<Func<string>> bodyuserEmail, Expression<Func<string>> bodystreet = null, Expression<Func<string>> bodysuiteUnitNumber = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<string>> bodycountryName = null, Expression<Func<string>> bodytaxId = null, Expression<Func<string>> bodysiteUrl = null)
         {
-            var apiCallPath = "/api/services/app/ExternalCompany/CreateCompanyExternal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["companyName"] = ExpressionConverter.ConvertO(bodycompanyName);
-            bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
-            if (bodystreet != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodycompanyName = WorkflowExpression.Compile(bodycompanyName, nameof(bodycompanyName), required: true);
+            var __workflow_bodyuserEmail = WorkflowExpression.Compile(bodyuserEmail, nameof(bodyuserEmail), required: true);
+            var __workflow_bodystreet = WorkflowExpression.Compile(bodystreet, nameof(bodystreet), required: false);
+            var __workflow_bodysuiteUnitNumber = WorkflowExpression.Compile(bodysuiteUnitNumber, nameof(bodysuiteUnitNumber), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypostalCode = WorkflowExpression.Compile(bodypostalCode, nameof(bodypostalCode), required: false);
+            var __workflow_bodycountryName = WorkflowExpression.Compile(bodycountryName, nameof(bodycountryName), required: false);
+            var __workflow_bodytaxId = WorkflowExpression.Compile(bodytaxId, nameof(bodytaxId), required: false);
+            var __workflow_bodysiteUrl = WorkflowExpression.Compile(bodysiteUrl, nameof(bodysiteUrl), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                var apiCallPath = "/api/services/app/ExternalCompany/CreateCompanyExternal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysuiteUnitNumber != null)
-            {
-                body["suite_UnitNumber"] = ExpressionConverter.ConvertO(bodysuiteUnitNumber);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["companyName"] = ExpressionConverter.ConvertO(__workflow_bodycompanyName);
                 bodypropCount++;
-            }
+                body["userEmail"] = ExpressionConverter.ConvertO(__workflow_bodyuserEmail);
+                if (__workflow_bodystreet != null)
+                {
+                    body["street"] = ExpressionConverter.ConvertO(__workflow_bodystreet);
+                    bodypropCount++;
+                }
 
-            if (bodystate != null)
-            {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
+                if (__workflow_bodysuiteUnitNumber != null)
+                {
+                    body["suite_UnitNumber"] = ExpressionConverter.ConvertO(__workflow_bodysuiteUnitNumber);
+                    bodypropCount++;
+                }
 
-            if (bodypostalCode != null)
-            {
-                body["postalCode"] = ExpressionConverter.ConvertO(bodypostalCode);
-                bodypropCount++;
-            }
+                if (__workflow_bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
+                    bodypropCount++;
+                }
 
-            if (bodycountryName != null)
-            {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
-                bodypropCount++;
-            }
+                if (__workflow_bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
+                    bodypropCount++;
+                }
 
-            if (bodytaxId != null)
-            {
-                body["taxId"] = ExpressionConverter.ConvertO(bodytaxId);
-                bodypropCount++;
-            }
+                if (__workflow_bodypostalCode != null)
+                {
+                    body["postalCode"] = ExpressionConverter.ConvertO(__workflow_bodypostalCode);
+                    bodypropCount++;
+                }
 
-            if (bodysiteUrl != null)
-            {
-                body["siteUrl"] = ExpressionConverter.ConvertO(bodysiteUrl);
-                bodypropCount++;
-            }
+                if (__workflow_bodycountryName != null)
+                {
+                    body["countryName"] = ExpressionConverter.ConvertO(__workflow_bodycountryName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodytaxId != null)
+                {
+                    body["taxId"] = ExpressionConverter.ConvertO(__workflow_bodytaxId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_bodysiteUrl != null)
+                {
+                    body["siteUrl"] = ExpressionConverter.ConvertO(__workflow_bodysiteUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyownerEmailAddress, Expression<Func<string>> bodycontactEmailAddress1, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodycontactEmailAddress2 = null, Expression<Func<string>> bodycontactEmailAddress3 = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodybirthDay = null, Expression<Func<int>> bodybirthMonth = null, Expression<Func<int>> bodybirthYear = null, Expression<Func<string>> bodycontactType = null, Expression<Func<string>> bodycompanyID1 = null, Expression<Func<string>> bodycompanyID2 = null, Expression<Func<string>> bodycompanyID3 = null, Expression<Func<string>> bodyaccountNumber = null, Expression<Func<string>> bodysocialSecurityNumber = null)
         {
-            var apiCallPath = "/api/services/app/ExternalContact/CreateContactExternal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["ownerEmailAddress"] = ExpressionConverter.ConvertO(bodyownerEmailAddress);
-            bodypropCount++;
-            body["contactEmailAddress1"] = ExpressionConverter.ConvertO(bodycontactEmailAddress1);
-            if (bodycontactEmailAddress2 != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyownerEmailAddress = WorkflowExpression.Compile(bodyownerEmailAddress, nameof(bodyownerEmailAddress), required: true);
+            var __workflow_bodycontactEmailAddress1 = WorkflowExpression.Compile(bodycontactEmailAddress1, nameof(bodycontactEmailAddress1), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodycontactEmailAddress2 = WorkflowExpression.Compile(bodycontactEmailAddress2, nameof(bodycontactEmailAddress2), required: false);
+            var __workflow_bodycontactEmailAddress3 = WorkflowExpression.Compile(bodycontactEmailAddress3, nameof(bodycontactEmailAddress3), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            var __workflow_bodybirthDay = WorkflowExpression.Compile(bodybirthDay, nameof(bodybirthDay), required: false);
+            var __workflow_bodybirthMonth = WorkflowExpression.Compile(bodybirthMonth, nameof(bodybirthMonth), required: false);
+            var __workflow_bodybirthYear = WorkflowExpression.Compile(bodybirthYear, nameof(bodybirthYear), required: false);
+            var __workflow_bodycontactType = WorkflowExpression.Compile(bodycontactType, nameof(bodycontactType), required: false);
+            var __workflow_bodycompanyID1 = WorkflowExpression.Compile(bodycompanyID1, nameof(bodycompanyID1), required: false);
+            var __workflow_bodycompanyID2 = WorkflowExpression.Compile(bodycompanyID2, nameof(bodycompanyID2), required: false);
+            var __workflow_bodycompanyID3 = WorkflowExpression.Compile(bodycompanyID3, nameof(bodycompanyID3), required: false);
+            var __workflow_bodyaccountNumber = WorkflowExpression.Compile(bodyaccountNumber, nameof(bodyaccountNumber), required: false);
+            var __workflow_bodysocialSecurityNumber = WorkflowExpression.Compile(bodysocialSecurityNumber, nameof(bodysocialSecurityNumber), required: false);
+            return new DeferredBodyAction<CreateContactResponse>(() =>
             {
-                body["contactEmailAddress2"] = ExpressionConverter.ConvertO(bodycontactEmailAddress2);
+                var apiCallPath = "/api/services/app/ExternalContact/CreateContactExternal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycontactEmailAddress3 != null)
-            {
-                body["contactEmailAddress3"] = ExpressionConverter.ConvertO(bodycontactEmailAddress3);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-            if (bodylastName != null)
-            {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                body["ownerEmailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyownerEmailAddress);
                 bodypropCount++;
-            }
+                body["contactEmailAddress1"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmailAddress1);
+                if (__workflow_bodycontactEmailAddress2 != null)
+                {
+                    body["contactEmailAddress2"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmailAddress2);
+                    bodypropCount++;
+                }
 
-            if (bodyjobTitle != null)
-            {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                if (__workflow_bodycontactEmailAddress3 != null)
+                {
+                    body["contactEmailAddress3"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmailAddress3);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
+                if (__workflow_bodylastName != null)
+                {
+                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodybirthDay != null)
-            {
-                body["birthDay"] = ExpressionConverter.ConvertO(bodybirthDay);
-                bodypropCount++;
-            }
+                if (__workflow_bodyjobTitle != null)
+                {
+                    body["jobTitle"] = ExpressionConverter.ConvertO(__workflow_bodyjobTitle);
+                    bodypropCount++;
+                }
 
-            if (bodybirthMonth != null)
-            {
-                body["birthMonth"] = ExpressionConverter.ConvertO(bodybirthMonth);
-                bodypropCount++;
-            }
+                if (__workflow_bodybirthDay != null)
+                {
+                    body["birthDay"] = ExpressionConverter.ConvertO(__workflow_bodybirthDay);
+                    bodypropCount++;
+                }
 
-            if (bodybirthYear != null)
-            {
-                body["birthYear"] = ExpressionConverter.ConvertO(bodybirthYear);
-                bodypropCount++;
-            }
+                if (__workflow_bodybirthMonth != null)
+                {
+                    body["birthMonth"] = ExpressionConverter.ConvertO(__workflow_bodybirthMonth);
+                    bodypropCount++;
+                }
 
-            if (bodycontactType != null)
-            {
-                body["contactType"] = ExpressionConverter.ConvertO(bodycontactType);
-                bodypropCount++;
-            }
+                if (__workflow_bodybirthYear != null)
+                {
+                    body["birthYear"] = ExpressionConverter.ConvertO(__workflow_bodybirthYear);
+                    bodypropCount++;
+                }
 
-            if (bodycompanyID1 != null)
-            {
-                body["companyID1"] = ExpressionConverter.ConvertO(bodycompanyID1);
-                bodypropCount++;
-            }
+                if (__workflow_bodycontactType != null)
+                {
+                    body["contactType"] = ExpressionConverter.ConvertO(__workflow_bodycontactType);
+                    bodypropCount++;
+                }
 
-            if (bodycompanyID2 != null)
-            {
-                body["companyID2"] = ExpressionConverter.ConvertO(bodycompanyID2);
-                bodypropCount++;
-            }
+                if (__workflow_bodycompanyID1 != null)
+                {
+                    body["companyID1"] = ExpressionConverter.ConvertO(__workflow_bodycompanyID1);
+                    bodypropCount++;
+                }
 
-            if (bodycompanyID3 != null)
-            {
-                body["companyID3"] = ExpressionConverter.ConvertO(bodycompanyID3);
-                bodypropCount++;
-            }
+                if (__workflow_bodycompanyID2 != null)
+                {
+                    body["companyID2"] = ExpressionConverter.ConvertO(__workflow_bodycompanyID2);
+                    bodypropCount++;
+                }
 
-            if (bodyaccountNumber != null)
-            {
-                body["accountNumber"] = ExpressionConverter.ConvertO(bodyaccountNumber);
-                bodypropCount++;
-            }
+                if (__workflow_bodycompanyID3 != null)
+                {
+                    body["companyID3"] = ExpressionConverter.ConvertO(__workflow_bodycompanyID3);
+                    bodypropCount++;
+                }
 
-            if (bodysocialSecurityNumber != null)
-            {
-                body["socialSecurityNumber"] = ExpressionConverter.ConvertO(bodysocialSecurityNumber);
-                bodypropCount++;
-            }
+                if (__workflow_bodyaccountNumber != null)
+                {
+                    body["accountNumber"] = ExpressionConverter.ConvertO(__workflow_bodyaccountNumber);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodysocialSecurityNumber != null)
+                {
+                    body["socialSecurityNumber"] = ExpressionConverter.ConvertO(__workflow_bodysocialSecurityNumber);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateContactResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactPhone(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodycontactEmail, Expression<Func<string>> bodyuserEmail, Expression<Func<string>> bodyphone, Expression<Func<bodyphoneTypeInput>> bodyphoneType, Expression<Func<string>> bodyextension = null)
         {
-            var apiCallPath = "/api/services/app/ExternalContact/CreateContactPhoneExternal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
-            bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
-            bodypropCount++;
-            body["phone"] = ExpressionConverter.ConvertO(bodyphone);
-            bodypropCount++;
-            body["phoneType"] = ExpressionConverter.ConvertO(bodyphoneType);
-            if (bodyextension != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: true);
+            var __workflow_bodyuserEmail = WorkflowExpression.Compile(bodyuserEmail, nameof(bodyuserEmail), required: true);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
+            var __workflow_bodyphoneType = WorkflowExpression.Compile(bodyphoneType, nameof(bodyphoneType), required: true);
+            var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["extension"] = ExpressionConverter.ConvertO(bodyextension);
+                var apiCallPath = "/api/services/app/ExternalContact/CreateContactPhoneExternal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
+                bodypropCount++;
+                body["contactEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
+                bodypropCount++;
+                body["userEmail"] = ExpressionConverter.ConvertO(__workflow_bodyuserEmail);
+                bodypropCount++;
+                body["phone"] = ExpressionConverter.ConvertO(__workflow_bodyphone);
+                bodypropCount++;
+                body["phoneType"] = ExpressionConverter.ConvertO(__workflow_bodyphoneType);
+                if (__workflow_bodyextension != null)
+                {
+                    body["extension"] = ExpressionConverter.ConvertO(__workflow_bodyextension);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactAddress(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodycontactEmail, Expression<Func<string>> bodyuserEmail, Expression<Func<bodyaddressTypeInput>> bodyaddressType, Expression<Func<string>> bodystreet = null, Expression<Func<string>> bodysuiteUnitNumber = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycountryName = null)
         {
-            var apiCallPath = "/api/services/app/ExternalContact/CreateContactAddressExternal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
-            bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
-            bodypropCount++;
-            body["addressType"] = ExpressionConverter.ConvertO(bodyaddressType);
-            if (bodystreet != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: true);
+            var __workflow_bodyuserEmail = WorkflowExpression.Compile(bodyuserEmail, nameof(bodyuserEmail), required: true);
+            var __workflow_bodyaddressType = WorkflowExpression.Compile(bodyaddressType, nameof(bodyaddressType), required: true);
+            var __workflow_bodystreet = WorkflowExpression.Compile(bodystreet, nameof(bodystreet), required: false);
+            var __workflow_bodysuiteUnitNumber = WorkflowExpression.Compile(bodysuiteUnitNumber, nameof(bodysuiteUnitNumber), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyzipCode = WorkflowExpression.Compile(bodyzipCode, nameof(bodyzipCode), required: false);
+            var __workflow_bodycountryName = WorkflowExpression.Compile(bodycountryName, nameof(bodycountryName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                var apiCallPath = "/api/services/app/ExternalContact/CreateContactAddressExternal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysuiteUnitNumber != null)
-            {
-                body["suiteUnitNumber"] = ExpressionConverter.ConvertO(bodysuiteUnitNumber);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
+                body["contactEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
                 bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                body["userEmail"] = ExpressionConverter.ConvertO(__workflow_bodyuserEmail);
                 bodypropCount++;
-            }
+                body["addressType"] = ExpressionConverter.ConvertO(__workflow_bodyaddressType);
+                if (__workflow_bodystreet != null)
+                {
+                    body["street"] = ExpressionConverter.ConvertO(__workflow_bodystreet);
+                    bodypropCount++;
+                }
 
-            if (bodyzipCode != null)
-            {
-                body["zipCode"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
+                if (__workflow_bodysuiteUnitNumber != null)
+                {
+                    body["suiteUnitNumber"] = ExpressionConverter.ConvertO(__workflow_bodysuiteUnitNumber);
+                    bodypropCount++;
+                }
 
-            if (bodycountryName != null)
-            {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
-                bodypropCount++;
-            }
+                if (__workflow_bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(__workflow_bodycity);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(__workflow_bodystate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_bodyzipCode != null)
+                {
+                    body["zipCode"] = ExpressionConverter.ConvertO(__workflow_bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycountryName != null)
+                {
+                    body["countryName"] = ExpressionConverter.ConvertO(__workflow_bodycountryName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IWorkflowAction CreateContactFamily(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodycontactEmail, Expression<Func<string>> bodyuserEmail, Expression<Func<string>> bodyfirstName, Expression<Func<bodyrelationshipInput>> bodyrelationship, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodybirthDate = null, Expression<Func<int>> bodybirthMonth = null, Expression<Func<int>> bodybirthYear = null, Expression<Func<string>> bodycountryName = null)
         {
-            var apiCallPath = "/api/services/app/ExternalContact/CreateContactFamilyExternal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["contactEmail"] = ExpressionConverter.ConvertO(bodycontactEmail);
-            bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
-            bodypropCount++;
-            body["firstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-            if (bodylastName != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: true);
+            var __workflow_bodyuserEmail = WorkflowExpression.Compile(bodyuserEmail, nameof(bodyuserEmail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: true);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodybirthDate = WorkflowExpression.Compile(bodybirthDate, nameof(bodybirthDate), required: false);
+            var __workflow_bodybirthMonth = WorkflowExpression.Compile(bodybirthMonth, nameof(bodybirthMonth), required: false);
+            var __workflow_bodybirthYear = WorkflowExpression.Compile(bodybirthYear, nameof(bodybirthYear), required: false);
+            var __workflow_bodycountryName = WorkflowExpression.Compile(bodycountryName, nameof(bodycountryName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["lastName"] = ExpressionConverter.ConvertO(bodylastName);
+                var apiCallPath = "/api/services/app/ExternalContact/CreateContactFamilyExternal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["relationship"] = ExpressionConverter.ConvertO(bodyrelationship);
-            if (bodybirthDate != null)
-            {
-                body["birthDate"] = ExpressionConverter.ConvertO(bodybirthDate);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
-
-            if (bodybirthMonth != null)
-            {
-                body["birthMonth"] = ExpressionConverter.ConvertO(bodybirthMonth);
+                body["contactEmail"] = ExpressionConverter.ConvertO(__workflow_bodycontactEmail);
                 bodypropCount++;
-            }
-
-            if (bodybirthYear != null)
-            {
-                body["birthYear"] = ExpressionConverter.ConvertO(bodybirthYear);
+                body["userEmail"] = ExpressionConverter.ConvertO(__workflow_bodyuserEmail);
                 bodypropCount++;
-            }
+                body["firstName"] = ExpressionConverter.ConvertO(__workflow_bodyfirstName);
+                if (__workflow_bodylastName != null)
+                {
+                    body["lastName"] = ExpressionConverter.ConvertO(__workflow_bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodycountryName != null)
-            {
-                body["countryName"] = ExpressionConverter.ConvertO(bodycountryName);
                 bodypropCount++;
-            }
+                body["relationship"] = ExpressionConverter.ConvertO(__workflow_bodyrelationship);
+                if (__workflow_bodybirthDate != null)
+                {
+                    body["birthDate"] = ExpressionConverter.ConvertO(__workflow_bodybirthDate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodybirthMonth != null)
+                {
+                    body["birthMonth"] = ExpressionConverter.ConvertO(__workflow_bodybirthMonth);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_bodybirthYear != null)
+                {
+                    body["birthYear"] = ExpressionConverter.ConvertO(__workflow_bodybirthYear);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodycountryName != null)
+                {
+                    body["countryName"] = ExpressionConverter.ConvertO(__workflow_bodycountryName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetContactFolderDetailsResponse> GetContactFolderDetails(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> contactEmail)
         {
-            var apiCallPath = "/api/services/app/ExternalContact/GetContactFolderDetailExternal";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
-            callPayload.Queries["ContactEmail"] = ExpressionConverter.Convert(contactEmail);
-            return new ApiConnectionAction<GetContactFolderDetailsResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: true);
+            var __workflow_contactEmail = WorkflowExpression.Compile(contactEmail, nameof(contactEmail), required: true);
+            return new DeferredBodyAction<GetContactFolderDetailsResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalContact/GetContactFolderDetailExternal";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
+                callPayload.Queries["ContactEmail"] = ExpressionConverter.Convert(__workflow_contactEmail);
+                return new ApiConnectionAction<GetContactFolderDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetCompanyDetailExternalResponse> GetCompanyDetailExternal(Expression<Func<string>> apiKey, Expression<Func<matchByInput>> matchBy, Expression<Func<string>> matchValue)
         {
-            var apiCallPath = "/api/services/app/ExternalCompany/GetCompanyDetailExternal";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["MatchBy"] = ExpressionConverter.Convert(matchBy);
-            callPayload.Queries["MatchValue"] = ExpressionConverter.Convert(matchValue);
-            return new ApiConnectionAction<GetCompanyDetailExternalResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_matchBy = WorkflowExpression.Compile(matchBy, nameof(matchBy), required: true);
+            var __workflow_matchValue = WorkflowExpression.Compile(matchValue, nameof(matchValue), required: true);
+            return new DeferredBodyAction<GetCompanyDetailExternalResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalCompany/GetCompanyDetailExternal";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["MatchBy"] = ExpressionConverter.Convert(__workflow_matchBy);
+                callPayload.Queries["MatchValue"] = ExpressionConverter.Convert(__workflow_matchValue);
+                return new ApiConnectionAction<GetCompanyDetailExternalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetTaskByResourceExtResponse> GetTaskByResourceExt(Expression<Func<string>> apiKey, Expression<Func<string>> resourceAppID)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/GetTaskByResourceExt";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["ResourceAppID"] = ExpressionConverter.Convert(resourceAppID);
-            return new ApiConnectionAction<GetTaskByResourceExtResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_resourceAppID = WorkflowExpression.Compile(resourceAppID, nameof(resourceAppID), required: true);
+            return new DeferredBodyAction<GetTaskByResourceExtResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalTask/GetTaskByResourceExt";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["ResourceAppID"] = ExpressionConverter.Convert(__workflow_resourceAppID);
+                return new ApiConnectionAction<GetTaskByResourceExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateTaskCommentExtResponse> CreateTaskCommentExt(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyuserEmail, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodycomment)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/CreateTaskCommentExt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["userEmail"] = ExpressionConverter.ConvertO(bodyuserEmail);
-            bodypropCount++;
-            body["taskId"] = ExpressionConverter.ConvertO(bodytaskId);
-            bodypropCount++;
-            body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-            if (bodypropCount > 0)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyuserEmail = WorkflowExpression.Compile(bodyuserEmail, nameof(bodyuserEmail), required: true);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
+            return new DeferredBodyAction<CreateTaskCommentExtResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/services/app/ExternalTask/CreateTaskCommentExt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
+                bodypropCount++;
+                body["userEmail"] = ExpressionConverter.ConvertO(__workflow_bodyuserEmail);
+                bodypropCount++;
+                body["taskId"] = ExpressionConverter.ConvertO(__workflow_bodytaskId);
+                bodypropCount++;
+                body["comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateTaskCommentExtResponse>(callPayload);
+                return new ApiConnectionAction<CreateTaskCommentExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodyprojectName, Expression<Func<string>> bodycurrentUserEmail, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<string>> bodyreferenceId = null, Expression<Func<string>> bodyreferenceData = null, Expression<Func<string>> bodyreferenceSource = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/UpdateProjectExt";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            bodypropCount++;
-            body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
-            bodypropCount++;
-            body["currentUserEmail"] = ExpressionConverter.ConvertO(bodycurrentUserEmail);
-            if (bodystartDate != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodyprojectName = WorkflowExpression.Compile(bodyprojectName, nameof(bodyprojectName), required: true);
+            var __workflow_bodycurrentUserEmail = WorkflowExpression.Compile(bodycurrentUserEmail, nameof(bodycurrentUserEmail), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_bodyreferenceId = WorkflowExpression.Compile(bodyreferenceId, nameof(bodyreferenceId), required: false);
+            var __workflow_bodyreferenceData = WorkflowExpression.Compile(bodyreferenceData, nameof(bodyreferenceData), required: false);
+            var __workflow_bodyreferenceSource = WorkflowExpression.Compile(bodyreferenceSource, nameof(bodyreferenceSource), required: false);
+            return new DeferredBodyAction<UpdateProjectResponse>(() =>
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                var apiCallPath = "/api/services/app/ExternalTask/UpdateProjectExt";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectId);
                 bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                if (bodystatus != null)
+                body["projectName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectName);
+                bodypropCount++;
+                body["currentUserEmail"] = ExpressionConverter.ConvertO(__workflow_bodycurrentUserEmail);
+                if (__workflow_bodystartDate != null)
                 {
-                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["status"] = "Active";
-                bodypropCount++;
-            }
-
-            if (bodyisPrivate != null)
-            {
-                if (bodyisPrivate != null)
+                if (__workflow_bodydueDate != null)
                 {
-                    body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    body["dueDate"] = ExpressionConverter.ConvertO(__workflow_bodydueDate);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["isPrivate"] = false;
-                bodypropCount++;
-            }
+                if (__workflow_bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(__workflow_bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceId != null)
-            {
-                body["referenceId"] = ExpressionConverter.ConvertO(bodyreferenceId);
-                bodypropCount++;
-            }
+                if (__workflow_bodystatus != null)
+                {
+                    if (__workflow_bodystatus != null)
+                    {
+                        body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                        bodypropCount++;
+                    }
 
-            if (bodyreferenceData != null)
-            {
-                body["referenceData"] = ExpressionConverter.ConvertO(bodyreferenceData);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["status"] = "Active";
+                    bodypropCount++;
+                }
 
-            if (bodyreferenceSource != null)
-            {
-                body["referenceSource"] = ExpressionConverter.ConvertO(bodyreferenceSource);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisPrivate != null)
+                {
+                    if (__workflow_bodyisPrivate != null)
+                    {
+                        body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["isPrivate"] = false;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateProjectResponse>(callPayload);
+                if (__workflow_bodyreferenceId != null)
+                {
+                    body["referenceId"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceId);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyreferenceData != null)
+                {
+                    body["referenceData"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceData);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyreferenceSource != null)
+                {
+                    body["referenceSource"] = ExpressionConverter.ConvertO(__workflow_bodyreferenceSource);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetTaskExtResponse> GetTaskExt(Expression<Func<string>> apiKey, Expression<Func<getByInput>> getBy, Expression<Func<string>> id, Expression<Func<string>> source = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/GetTaskExt";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["GetBy"] = ExpressionConverter.Convert(getBy);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
-            return new ApiConnectionAction<GetTaskExtResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_getBy = WorkflowExpression.Compile(getBy, nameof(getBy), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            return new DeferredBodyAction<GetTaskExtResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalTask/GetTaskExt";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["GetBy"] = ExpressionConverter.Convert(__workflow_getBy);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_source != null)
+                    callPayload.Queries["Source"] = ExpressionConverter.Convert(__workflow_source);
+                return new ApiConnectionAction<GetTaskExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetProjectExtResponse> GetProjectExt(Expression<Func<string>> apiKey, Expression<Func<getByInput>> getBy, Expression<Func<string>> id, Expression<Func<string>> source = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/GetProjectExt";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["GetBy"] = ExpressionConverter.Convert(getBy);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            if (source != null)
-                callPayload.Queries["Source"] = ExpressionConverter.Convert(source);
-            return new ApiConnectionAction<GetProjectExtResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_getBy = WorkflowExpression.Compile(getBy, nameof(getBy), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            return new DeferredBodyAction<GetProjectExtResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalTask/GetProjectExt";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["GetBy"] = ExpressionConverter.Convert(__workflow_getBy);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(__workflow_id);
+                if (__workflow_source != null)
+                    callPayload.Queries["Source"] = ExpressionConverter.Convert(__workflow_source);
+                return new ApiConnectionAction<GetProjectExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetProjectTemplatesExtResponse> GetProjectTemplatesExt(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/GetProjectTemplatesExt";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
-            return new ApiConnectionAction<GetProjectTemplatesExtResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: true);
+            return new DeferredBodyAction<GetProjectTemplatesExtResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalTask/GetProjectTemplatesExt";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
+                return new ApiConnectionAction<GetProjectTemplatesExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<GetProjectRolesExtResponse> GetProjectRolesExt(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<roleTypeInput>> roleType = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/GetProjectRolesExt";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
-            if (roleType != null)
-                callPayload.Queries["RoleType"] = ExpressionConverter.Convert(roleType);
-            return new ApiConnectionAction<GetProjectRolesExtResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: true);
+            var __workflow_roleType = WorkflowExpression.Compile(roleType, nameof(roleType), required: false);
+            return new DeferredBodyAction<GetProjectRolesExtResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalTask/GetProjectRolesExt";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
+                if (__workflow_roleType != null)
+                    callPayload.Queries["RoleType"] = ExpressionConverter.Convert(__workflow_roleType);
+                return new ApiConnectionAction<GetProjectRolesExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<CreateProjectFromTemplateExtResponse> CreateProjectFromTemplateExt(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycreatorEmail, Expression<Func<string>> bodyprojectName, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyclientName = null, Expression<Func<bodymembersInputItem[]>> bodymembers = null, Expression<Func<bodyfilesLinksInputItem[]>> bodyfilesLinks = null)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/CreateProjectFromTemplateExt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["apiKey"] = ExpressionConverter.ConvertO(bodyapiKey);
-            bodypropCount++;
-            body["templateId"] = ExpressionConverter.ConvertO(bodytemplateId);
-            bodypropCount++;
-            body["creatorEmail"] = ExpressionConverter.ConvertO(bodycreatorEmail);
-            bodypropCount++;
-            body["projectName"] = ExpressionConverter.ConvertO(bodyprojectName);
-            if (bodystartDate != null)
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodycreatorEmail = WorkflowExpression.Compile(bodycreatorEmail, nameof(bodycreatorEmail), required: true);
+            var __workflow_bodyprojectName = WorkflowExpression.Compile(bodyprojectName, nameof(bodyprojectName), required: true);
+            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyclientName = WorkflowExpression.Compile(bodyclientName, nameof(bodyclientName), required: false);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodyfilesLinks = WorkflowExpression.Compile(bodyfilesLinks, nameof(bodyfilesLinks), required: false);
+            return new DeferredBodyAction<CreateProjectFromTemplateExtResponse>(() =>
             {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                var apiCallPath = "/api/services/app/ExternalTask/CreateProjectFromTemplateExt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                body["apiKey"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
                 bodypropCount++;
-            }
-
-            if (bodyclientName != null)
-            {
-                body["clientName"] = ExpressionConverter.ConvertO(bodyclientName);
+                body["templateId"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["isPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
-            if (bodymembers != null)
-            {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                body["creatorEmail"] = ExpressionConverter.ConvertO(__workflow_bodycreatorEmail);
                 bodypropCount++;
-            }
+                body["projectName"] = ExpressionConverter.ConvertO(__workflow_bodyprojectName);
+                if (__workflow_bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(__workflow_bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyfilesLinks != null)
-            {
-                body["filesLinks"] = ExpressionConverter.ConvertO(bodyfilesLinks);
+                if (__workflow_bodyendDate != null)
+                {
+                    body["endDate"] = ExpressionConverter.ConvertO(__workflow_bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyclientName != null)
+                {
+                    body["clientName"] = ExpressionConverter.ConvertO(__workflow_bodyclientName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["isPrivate"] = ExpressionConverter.ConvertO(__workflow_bodyisPrivate);
+                if (__workflow_bodymembers != null)
+                {
+                    body["members"] = ExpressionConverter.ConvertO(__workflow_bodymembers);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyfilesLinks != null)
+                {
+                    body["filesLinks"] = ExpressionConverter.ConvertO(__workflow_bodyfilesLinks);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateProjectFromTemplateExtResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateProjectFromTemplateExtResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vineforce")]
         public IBodyWorkflowAction<DeletetaskResponse> Deletetask(Expression<Func<string>> apiKey, Expression<Func<string>> taskID)
         {
-            var apiCallPath = "/api/services/app/ExternalTask/DeleteExternalTask";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["TaskID"] = ExpressionConverter.Convert(taskID);
-            return new ApiConnectionAction<DeletetaskResponse>(callPayload);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_taskID = WorkflowExpression.Compile(taskID, nameof(taskID), required: true);
+            return new DeferredBodyAction<DeletetaskResponse>(() =>
+            {
+                var apiCallPath = "/api/services/app/ExternalTask/DeleteExternalTask";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["TaskID"] = ExpressionConverter.Convert(__workflow_taskID);
+                return new ApiConnectionAction<DeletetaskResponse>(callPayload);
+            });
         }
     }
 
     public class VineforceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/GetRecentCompletedTasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            if (projectName != null)
-                callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(projectName);
-            if (projectId != null)
-                callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(projectId);
-            if (assigneeEmail != null)
-                callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(assigneeEmail);
-            if (creatorEmail != null)
-                callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(creatorEmail);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-            return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, triggerName, recurrence);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
+            var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_assigneeEmail = WorkflowExpression.Compile(assigneeEmail, nameof(assigneeEmail), required: false);
+            var __workflow_creatorEmail = WorkflowExpression.Compile(creatorEmail, nameof(creatorEmail), required: false);
+            return new DeferredBodyTrigger<WhenTaskIsCompletedResponse>(() =>
+            {
+                var apiCallPath = "/trigger/api/GetRecentCompletedTasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                if (__workflow_projectName != null)
+                    callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(__workflow_projectName);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_assigneeEmail != null)
+                    callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(__workflow_assigneeEmail);
+                if (__workflow_creatorEmail != null)
+                    callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(__workflow_creatorEmail);
+                callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
+                return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged(Expression<Func<string>> apiKey, Expression<Func<string>> userEmail, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> taskId = null, Expression<Func<string>> oldSectionId = null, Expression<Func<string>> oldSectoinName = null, Expression<Func<string>> newSectionId = null, Expression<Func<string>> newSectoinName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/GetRecentModifiedSectionTasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(userEmail);
-            if (projectName != null)
-                callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(projectName);
-            if (projectId != null)
-                callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(projectId);
-            if (assigneeEmail != null)
-                callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(assigneeEmail);
-            if (taskId != null)
-                callPayload.Queries["TaskId"] = ExpressionConverter.Convert(taskId);
-            if (oldSectionId != null)
-                callPayload.Queries["OldSectionId"] = ExpressionConverter.Convert(oldSectionId);
-            if (oldSectoinName != null)
-                callPayload.Queries["OldSectoinName"] = ExpressionConverter.Convert(oldSectoinName);
-            if (newSectionId != null)
-                callPayload.Queries["NewSectionId"] = ExpressionConverter.Convert(newSectionId);
-            if (newSectoinName != null)
-                callPayload.Queries["NewSectoinName"] = ExpressionConverter.Convert(newSectoinName);
-            return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, triggerName, recurrence);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: true);
+            var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_assigneeEmail = WorkflowExpression.Compile(assigneeEmail, nameof(assigneeEmail), required: false);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: false);
+            var __workflow_oldSectionId = WorkflowExpression.Compile(oldSectionId, nameof(oldSectionId), required: false);
+            var __workflow_oldSectoinName = WorkflowExpression.Compile(oldSectoinName, nameof(oldSectoinName), required: false);
+            var __workflow_newSectionId = WorkflowExpression.Compile(newSectionId, nameof(newSectionId), required: false);
+            var __workflow_newSectoinName = WorkflowExpression.Compile(newSectoinName, nameof(newSectoinName), required: false);
+            return new DeferredBodyTrigger<WhenTaskSectionIsChangedResponse>(() =>
+            {
+                var apiCallPath = "/trigger/api/GetRecentModifiedSectionTasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["UserEmail"] = ExpressionConverter.Convert(__workflow_userEmail);
+                if (__workflow_projectName != null)
+                    callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(__workflow_projectName);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_assigneeEmail != null)
+                    callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(__workflow_assigneeEmail);
+                if (__workflow_taskId != null)
+                    callPayload.Queries["TaskId"] = ExpressionConverter.Convert(__workflow_taskId);
+                if (__workflow_oldSectionId != null)
+                    callPayload.Queries["OldSectionId"] = ExpressionConverter.Convert(__workflow_oldSectionId);
+                if (__workflow_oldSectoinName != null)
+                    callPayload.Queries["OldSectoinName"] = ExpressionConverter.Convert(__workflow_oldSectoinName);
+                if (__workflow_newSectionId != null)
+                    callPayload.Queries["NewSectionId"] = ExpressionConverter.Convert(__workflow_newSectionId);
+                if (__workflow_newSectoinName != null)
+                    callPayload.Queries["NewSectoinName"] = ExpressionConverter.Convert(__workflow_newSectoinName);
+                return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/GetRecentlyCreatedTask";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-            return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, triggerName, recurrence);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
+            return new DeferredBodyTrigger<WhenTaskIsCreatedResponse>(() =>
+            {
+                var apiCallPath = "/trigger/api/GetRecentlyCreatedTask";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
+                return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> updateFilter = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/GetRecentlyUpdatedTask";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            if (updateFilter != null)
-                callPayload.Queries["UpdateFilter"] = ExpressionConverter.Convert(updateFilter);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-            return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, triggerName, recurrence);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
+            var __workflow_updateFilter = WorkflowExpression.Compile(updateFilter, nameof(updateFilter), required: false);
+            return new DeferredBodyTrigger<WhenTaskIsUpdatedResponse>(() =>
+            {
+                var apiCallPath = "/trigger/api/GetRecentlyUpdatedTask";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                if (__workflow_updateFilter != null)
+                    callPayload.Queries["UpdateFilter"] = ExpressionConverter.Convert(__workflow_updateFilter);
+                callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
+                return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted(Expression<Func<string>> apiKey, Expression<Func<int>> duration, Expression<Func<string>> projectName = null, Expression<Func<string>> projectId = null, Expression<Func<string>> assigneeEmail = null, Expression<Func<string>> creatorEmail = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/api/GetRecentlyDeletedTasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
-            if (projectName != null)
-                callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(projectName);
-            if (projectId != null)
-                callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(projectId);
-            if (assigneeEmail != null)
-                callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(assigneeEmail);
-            if (creatorEmail != null)
-                callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(creatorEmail);
-            callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-            return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, triggerName, recurrence);
+            var __workflow_apiKey = WorkflowExpression.Compile(apiKey, nameof(apiKey), required: true);
+            var __workflow_duration = WorkflowExpression.Compile(duration, nameof(duration), required: true);
+            var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_assigneeEmail = WorkflowExpression.Compile(assigneeEmail, nameof(assigneeEmail), required: false);
+            var __workflow_creatorEmail = WorkflowExpression.Compile(creatorEmail, nameof(creatorEmail), required: false);
+            return new DeferredBodyTrigger<WhenTaskIsDeletedResponse>(() =>
+            {
+                var apiCallPath = "/trigger/api/GetRecentlyDeletedTasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(__workflow_apiKey);
+                if (__workflow_projectName != null)
+                    callPayload.Queries["ProjectName"] = ExpressionConverter.Convert(__workflow_projectName);
+                if (__workflow_projectId != null)
+                    callPayload.Queries["ProjectId"] = ExpressionConverter.Convert(__workflow_projectId);
+                if (__workflow_assigneeEmail != null)
+                    callPayload.Queries["AssigneeEmail"] = ExpressionConverter.Convert(__workflow_assigneeEmail);
+                if (__workflow_creatorEmail != null)
+                    callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(__workflow_creatorEmail);
+                callPayload.Queries["Duration"] = ExpressionConverter.Convert(__workflow_duration);
+                return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -1163,6 +1438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypriorityTextInput
     {
         Normal,
@@ -1170,6 +1446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Urgent
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresourceAppNameInput
     {
         [EnumMember(Value = "Adobe Cloud")]
@@ -1235,6 +1512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bodyfilesInputItemFileTypeType FileType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfilesInputItemFileTypeType
     {
         Word,
@@ -1294,6 +1572,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyresourceNameInput
     {
         [EnumMember(Value = "Adobe Cloud")]
@@ -1458,6 +1737,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string FieldName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytaskStatusInput
     {
         Completed,
@@ -1521,6 +1801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ContactId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyphoneTypeInput
     {
         Mobile,
@@ -1530,6 +1811,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyaddressTypeInput
     {
         Home,
@@ -1539,6 +1821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrelationshipInput
     {
         Spouse,
@@ -1677,6 +1960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsSharePointDrive { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum matchByInput
     {
         [EnumMember(Value = "Account No.")]
@@ -1861,6 +2145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool Abp { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         Active,
@@ -1954,6 +2239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string ReferenceSource { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum getByInput
     {
         [EnumMember(Value = "Trovve Id")]
@@ -2103,6 +2389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public string RoleType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum roleTypeInput
     {
         Member,
@@ -2172,6 +2459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
         public bool IsDefault { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyfilesLinksInputItemFileTypeType
     {
         Word,

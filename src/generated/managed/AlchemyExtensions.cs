@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
         public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
         {
-            var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<GetSelfHelpInsightsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetSelfHelpInsightsResponse>(callPayload);
+                return new ApiConnectionAction<GetSelfHelpInsightsResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,85 +14,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync(Expression<Func<string>> requestfrom, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret, Expression<Func<string[]>> requestto = null, Expression<Func<string[]>> requestcc = null, Expression<Func<string[]>> requestbcc = null, Expression<Func<string>> requestsubject = null, Expression<Func<Attachment[]>> requestattachments = null, Expression<Func<string>> requesthtmlBody = null, Expression<Func<string>> requesttextBody = null)
         {
-            var apiCallPath = String.Format("/v{0}/Email", ExpressionConverter.ConvertWithUrlEncoding(v, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(xAPIKey);
-            callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(xAPISecret);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["From"] = ExpressionConverter.ConvertO(requestfrom);
-            if (requestto != null)
+            var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
+            var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
+            var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
+            var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: false);
+            var __workflow_requestcc = WorkflowExpression.Compile(requestcc, nameof(requestcc), required: false);
+            var __workflow_requestbcc = WorkflowExpression.Compile(requestbcc, nameof(requestbcc), required: false);
+            var __workflow_requestsubject = WorkflowExpression.Compile(requestsubject, nameof(requestsubject), required: false);
+            var __workflow_requestattachments = WorkflowExpression.Compile(requestattachments, nameof(requestattachments), required: false);
+            var __workflow_requesthtmlBody = WorkflowExpression.Compile(requesthtmlBody, nameof(requesthtmlBody), required: false);
+            var __workflow_requesttextBody = WorkflowExpression.Compile(requesttextBody, nameof(requesttextBody), required: false);
+            return new DeferredBodyAction<SendSecureMessageResponse>(() =>
             {
-                request["To"] = ExpressionConverter.ConvertO(requestto);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/Email", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
+                callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(__workflow_xAPISecret);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
+                request["From"] = ExpressionConverter.ConvertO(__workflow_requestfrom);
+                if (__workflow_requestto != null)
+                {
+                    request["To"] = ExpressionConverter.ConvertO(__workflow_requestto);
+                    requestpropCount++;
+                }
 
-            if (requestcc != null)
-            {
-                request["Cc"] = ExpressionConverter.ConvertO(requestcc);
-                requestpropCount++;
-            }
+                if (__workflow_requestcc != null)
+                {
+                    request["Cc"] = ExpressionConverter.ConvertO(__workflow_requestcc);
+                    requestpropCount++;
+                }
 
-            if (requestbcc != null)
-            {
-                request["Bcc"] = ExpressionConverter.ConvertO(requestbcc);
-                requestpropCount++;
-            }
+                if (__workflow_requestbcc != null)
+                {
+                    request["Bcc"] = ExpressionConverter.ConvertO(__workflow_requestbcc);
+                    requestpropCount++;
+                }
 
-            if (requestsubject != null)
-            {
-                request["Subject"] = ExpressionConverter.ConvertO(requestsubject);
-                requestpropCount++;
-            }
+                if (__workflow_requestsubject != null)
+                {
+                    request["Subject"] = ExpressionConverter.ConvertO(__workflow_requestsubject);
+                    requestpropCount++;
+                }
 
-            if (requestattachments != null)
-            {
-                request["Attachments"] = ExpressionConverter.ConvertO(requestattachments);
-                requestpropCount++;
-            }
+                if (__workflow_requestattachments != null)
+                {
+                    request["Attachments"] = ExpressionConverter.ConvertO(__workflow_requestattachments);
+                    requestpropCount++;
+                }
 
-            if (requesthtmlBody != null)
-            {
-                request["HtmlBody"] = ExpressionConverter.ConvertO(requesthtmlBody);
-                requestpropCount++;
-            }
+                if (__workflow_requesthtmlBody != null)
+                {
+                    request["HtmlBody"] = ExpressionConverter.ConvertO(__workflow_requesthtmlBody);
+                    requestpropCount++;
+                }
 
-            if (requesttextBody != null)
-            {
-                request["TextBody"] = ExpressionConverter.ConvertO(requesttextBody);
-                requestpropCount++;
-            }
+                if (__workflow_requesttextBody != null)
+                {
+                    request["TextBody"] = ExpressionConverter.ConvertO(__workflow_requesttextBody);
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
 
-            return new ApiConnectionAction<SendSecureMessageResponse>(callPayload);
+                return new ApiConnectionAction<SendSecureMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IBodyWorkflowAction<TrackMessageResponse> TrackMessageAsync(Expression<Func<string>> transactionId, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
         {
-            var apiCallPath = String.Format("/v{0}/{1}/Track", ExpressionConverter.ConvertWithUrlEncoding(v, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(xAPIKey);
-            callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(xAPISecret);
-            return new ApiConnectionAction<TrackMessageResponse>(callPayload);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
+            var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
+            var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
+            return new DeferredBodyAction<TrackMessageResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Track", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
+                callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(__workflow_xAPISecret);
+                return new ApiConnectionAction<TrackMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IWorkflowAction RetractMessageAsync(Expression<Func<string>> transactionId, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
         {
-            var apiCallPath = String.Format("/v{0}/{1}/Retract", ExpressionConverter.ConvertWithUrlEncoding(v, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(xAPIKey);
-            callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(xAPISecret);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
+            var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
+            var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Retract", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-API-Key"] = ExpressionConverter.Convert(__workflow_xAPIKey);
+                callPayload.Headers["X-API-Secret"] = ExpressionConverter.Convert(__workflow_xAPISecret);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

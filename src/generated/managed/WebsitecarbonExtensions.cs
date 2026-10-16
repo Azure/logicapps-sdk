@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,22 +14,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis(Expression<Func<string>> url)
         {
-            var apiCallPath = "/site";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            return new DeferredBodyAction<SiteAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/site";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(__workflow_url);
+                return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
         {
-            var apiCallPath = "/data";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bytes"] = ExpressionConverter.Convert(bytes);
-            callPayload.Queries["green"] = ExpressionConverter.Convert(green);
-            return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
+            var __workflow_bytes = WorkflowExpression.Compile(bytes, nameof(bytes), required: true);
+            var __workflow_green = WorkflowExpression.Compile(green, nameof(green), required: true);
+            return new DeferredBodyAction<DataAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/data";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bytes"] = ExpressionConverter.Convert(__workflow_bytes);
+                callPayload.Queries["green"] = ExpressionConverter.Convert(__workflow_green);
+                return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
+            });
         }
     }
 
@@ -115,6 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         public bool Green { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum greenInput
     {
         [EnumMember(Value = "0")]

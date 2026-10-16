@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Conversionservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "conversionservice")]
         public IBodyWorkflowAction<string> HtmlToText(Expression<Func<string>> content = null)
         {
-            var apiCallPath = "/html2text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(content);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/html2text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_content);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

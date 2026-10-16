@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,41 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots(Expression<Func<string>> wauth)
         {
-            var apiCallPath = "/v1/depots";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
-            return new ApiConnectionAction<GetDepotsResponseItem[]>(callPayload);
+            var __workflow_wauth = WorkflowExpression.Compile(wauth, nameof(wauth), required: true);
+            return new DeferredBodyAction<GetDepotsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/depots";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Wauth"] = ExpressionConverter.Convert(__workflow_wauth);
+                return new ApiConnectionAction<GetDepotsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite(Expression<Func<string>> depot, Expression<Func<string>> testsuite, Expression<Func<string>> wauth)
         {
-            var apiCallPath = String.Format("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(depot, 1), ExpressionConverter.ConvertWithUrlEncoding(testsuite, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
-            return new ApiConnectionAction<GetTestsuiteResponse>(callPayload);
+            var __workflow_depot = WorkflowExpression.Compile(depot, nameof(depot), required: true);
+            var __workflow_testsuite = WorkflowExpression.Compile(testsuite, nameof(testsuite), required: true);
+            var __workflow_wauth = WorkflowExpression.Compile(wauth, nameof(wauth), required: true);
+            return new DeferredBodyAction<GetTestsuiteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_depot, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_testsuite, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Wauth"] = ExpressionConverter.Convert(__workflow_wauth);
+                return new ApiConnectionAction<GetTestsuiteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTokenResponse> GetToken(Expression<Func<string>> bodycode, Expression<Func<string>> bodyemail)
         {
-            var apiCallPath = "/v1/auth/exchange-api-code";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<GetTokenResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/auth/exchange-api-code";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["code"] = ExpressionConverter.ConvertO(__workflow_bodycode);
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(__workflow_bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetTokenResponse>(callPayload);
+                return new ApiConnectionAction<GetTokenResponse>(callPayload);
+            });
         }
     }
 

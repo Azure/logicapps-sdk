@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,19 +14,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRatesResponse> GetExchangeRates(Expression<Func<string>> basecurrency)
         {
-            var apiCallPath = String.Format("/latest/{0}", ExpressionConverter.ConvertWithUrlEncoding(basecurrency, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetExchangeRatesResponse>(callPayload);
+            var __workflow_basecurrency = WorkflowExpression.Compile(basecurrency, nameof(basecurrency), required: true);
+            return new DeferredBodyAction<GetExchangeRatesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/latest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_basecurrency, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetExchangeRatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> baseCurrency, Expression<Func<string>> targetCurrency)
         {
-            var apiCallPath = String.Format("/pair/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(targetCurrency, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
+            var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
+            var __workflow_targetCurrency = WorkflowExpression.Compile(targetCurrency, nameof(targetCurrency), required: true);
+            return new DeferredBodyAction<GetExchangeRateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pair/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetCurrency, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetExchangeRateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
@@ -41,19 +50,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalRatesResponse> GetHistoricalRates(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var apiCallPath = String.Format("/history/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetHistoricalRatesResponse>(callPayload);
+            var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
+            return new DeferredBodyAction<GetHistoricalRatesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetHistoricalRatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalConversionsResponse> GetHistoricalConversions(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day, Expression<Func<string>> amount)
         {
-            var apiCallPath = String.Format("/history/{0}/{1}/{2}/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1), ExpressionConverter.ConvertWithUrlEncoding(amount, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetHistoricalConversionsResponse>(callPayload);
+            var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
+            var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
+            return new DeferredBodyAction<GetHistoricalConversionsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_amount, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetHistoricalConversionsResponse>(callPayload);
+            });
         }
     }
 

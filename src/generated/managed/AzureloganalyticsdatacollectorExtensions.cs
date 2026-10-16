@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollector
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,14 +14,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollecto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureloganalyticsdatacollector")]
         public IWorkflowAction SendData(Expression<Func<string>> logType, Expression<Func<string>> body = null, Expression<Func<string>> timeGeneratedField = null)
         {
-            var apiCallPath = "/api/logs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Log-Type"] = ExpressionConverter.Convert(logType);
-            if (timeGeneratedField != null)
-                callPayload.Headers["time-generated-field"] = ExpressionConverter.Convert(timeGeneratedField);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_logType = WorkflowExpression.Compile(logType, nameof(logType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_timeGeneratedField = WorkflowExpression.Compile(timeGeneratedField, nameof(timeGeneratedField), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/logs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Log-Type"] = ExpressionConverter.Convert(__workflow_logType);
+                if (__workflow_timeGeneratedField != null)
+                    callPayload.Headers["time-generated-field"] = ExpressionConverter.Convert(__workflow_timeGeneratedField);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

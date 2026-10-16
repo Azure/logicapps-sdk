@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,161 +14,201 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var apiCallPath = "/ParseResumeBinary-Standard";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
+            return new DeferredBodyAction<ParseResumeStandardViaFileContentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseResumeBinary-Standard";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                bodypropCount++;
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseResumeStandardViaFileContentResponse>(callPayload);
+                return new ApiConnectionAction<ParseResumeStandardViaFileContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var apiCallPath = "/ParseResumeBinary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
+            return new DeferredBodyAction<ParseResumeDetailViaFileContentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseResumeBinary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                bodypropCount++;
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseResumeDetailViaFileContentResponse>(callPayload);
+                return new ApiConnectionAction<ParseResumeDetailViaFileContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var apiCallPath = "/ParseResume";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodypropCount > 0)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            return new DeferredBodyAction<ParseResumeDetailViaUrlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseResume";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseResumeDetailViaUrlResponse>(callPayload);
+                return new ApiConnectionAction<ParseResumeDetailViaUrlResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var apiCallPath = "/ParseJDBinary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
+            return new DeferredBodyAction<ParseJDViaFileContentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseJDBinary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                bodypropCount++;
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseJDViaFileContentResponse>(callPayload);
+                return new ApiConnectionAction<ParseJDViaFileContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var apiCallPath = "/ParseResume-Standard";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodypropCount > 0)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            return new DeferredBodyAction<ParseResumeStandardViaUrlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseResume-Standard";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseResumeStandardViaUrlResponse>(callPayload);
+                return new ApiConnectionAction<ParseResumeStandardViaUrlResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var apiCallPath = "/ParseJD";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodypropCount > 0)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            return new DeferredBodyAction<ParseJDViaUrlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseJD";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseJDViaUrlResponse>(callPayload);
+                return new ApiConnectionAction<ParseJDViaUrlResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var apiCallPath = "/ParseResumeBinary-Basic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
+            return new DeferredBodyAction<ParseResumeBasicViaFileContentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseResumeBinary-Basic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                bodypropCount++;
+                body["FileContent"] = ExpressionConverter.ConvertO(__workflow_bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseResumeBasicViaFileContentResponse>(callPayload);
+                return new ApiConnectionAction<ParseResumeBasicViaFileContentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var apiCallPath = "/ParseResume-Basic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Url"] = ExpressionConverter.ConvertO(bodyurl);
-            bodypropCount++;
-            body["FileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodypropCount > 0)
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            return new DeferredBodyAction<ParseResumeBasicViaUrlResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/ParseResume-Basic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                bodypropCount++;
+                body["FileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseResumeBasicViaUrlResponse>(callPayload);
+                return new ApiConnectionAction<ParseResumeBasicViaUrlResponse>(callPayload);
+            });
         }
     }
 

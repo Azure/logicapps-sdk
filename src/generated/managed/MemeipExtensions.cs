@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,10 +23,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
         public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit(Expression<Func<string>> subreddit)
         {
-            var apiCallPath = String.Format("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(subreddit, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MemeSubredditResponse>(callPayload);
+            var __workflow_subreddit = WorkflowExpression.Compile(subreddit, nameof(subreddit), required: true);
+            return new DeferredBodyAction<MemeSubredditResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subreddit, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MemeSubredditResponse>(callPayload);
+            });
         }
     }
 

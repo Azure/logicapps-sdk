@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,41 +14,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
         public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
-            var apiCallPath = "/certificates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["organisationId"] = ExpressionConverter.ConvertO(bodyorganisationId);
-            bodypropCount++;
-            body["eventId"] = ExpressionConverter.ConvertO(bodyeventId);
-            bodypropCount++;
-            body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-            if (bodygenerate != null)
+            var __workflow_bodyorganisationId = WorkflowExpression.Compile(bodyorganisationId, nameof(bodyorganisationId), required: true);
+            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
+            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
+            var __workflow_bodygenerate = WorkflowExpression.Compile(bodygenerate, nameof(bodygenerate), required: false);
+            var __workflow_bodypublish = WorkflowExpression.Compile(bodypublish, nameof(bodypublish), required: false);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
+            return new DeferredBodyAction<CreateCredentialResponse>(() =>
             {
-                body["generate"] = ExpressionConverter.ConvertO(bodygenerate);
+                var apiCallPath = "/certificates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypublish != null)
-            {
-                body["publish"] = ExpressionConverter.ConvertO(bodypublish);
+                body["organisationId"] = ExpressionConverter.ConvertO(__workflow_bodyorganisationId);
                 bodypropCount++;
-            }
-
-            if (bodyrecipients != null)
-            {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["eventId"] = ExpressionConverter.ConvertO(__workflow_bodyeventId);
                 bodypropCount++;
-            }
+                body["categoryId"] = ExpressionConverter.ConvertO(__workflow_bodycategoryId);
+                if (__workflow_bodygenerate != null)
+                {
+                    body["generate"] = ExpressionConverter.ConvertO(__workflow_bodygenerate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodypublish != null)
+                {
+                    body["publish"] = ExpressionConverter.ConvertO(__workflow_bodypublish);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
+                if (__workflow_bodyrecipients != null)
+                {
+                    body["recipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,21 +23,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
         public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PartnerProfileResponse>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<PartnerProfileResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PartnerProfileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
         public IBodyWorkflowAction<GetSessionsResponse> GetSessions(Expression<Func<string>> start, Expression<Func<string>> end)
         {
-            var apiCallPath = "/v1/sessions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<GetSessionsResponse>(callPayload);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: true);
+            return new DeferredBodyAction<GetSessionsResponse>(() =>
+            {
+                var apiCallPath = "/v1/sessions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["start"] = ExpressionConverter.Convert(__workflow_start);
+                callPayload.Queries["end"] = ExpressionConverter.Convert(__workflow_end);
+                return new ApiConnectionAction<GetSessionsResponse>(callPayload);
+            });
         }
     }
 

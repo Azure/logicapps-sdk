@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,54 +14,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetReportResponse> GetReport(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            var apiCallPath = String.Format("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(sampleID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
-            return new ApiConnectionAction<GetReportResponse>(callPayload);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
+            return new DeferredBodyAction<GetReportResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                return new ApiConnectionAction<GetReportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetSummaryResponse> GetSummary(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            var apiCallPath = String.Format("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(sampleID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
-            return new ApiConnectionAction<GetSummaryResponse>(callPayload);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
+            return new DeferredBodyAction<GetSummaryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                return new ApiConnectionAction<GetSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample(Expression<Func<string>> sandboxToken, Expression<Func<string>> bodyurl = null)
         {
-            var apiCallPath = "/samples/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyurl != null)
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            return new DeferredBodyAction<SubmitUrlSampleResponse>(() =>
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
+                var apiCallPath = "/samples/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyurl != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(__workflow_bodyurl);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SubmitUrlSampleResponse>(callPayload);
+                return new ApiConnectionAction<SubmitUrlSampleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<SubmitFileSampleResponse> SubmitFileSample(Expression<Func<string>> sandboxToken, Expression<Func<object>> file, Expression<Func<string>> password = null, Expression<Func<string>> userTags = null)
         {
-            var apiCallPath = "/samples/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(sandboxToken);
-            return new ApiConnectionAction<SubmitFileSampleResponse>(callPayload);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
+            var __workflow_userTags = WorkflowExpression.Compile(userTags, nameof(userTags), required: false);
+            return new DeferredBodyAction<SubmitFileSampleResponse>(() =>
+            {
+                var apiCallPath = "/samples/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["SandboxToken"] = ExpressionConverter.Convert(__workflow_sandboxToken);
+                return new ApiConnectionAction<SubmitFileSampleResponse>(callPayload);
+            });
         }
     }
 

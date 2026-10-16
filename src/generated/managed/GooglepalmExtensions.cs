@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,217 +14,269 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> ListModels(Expression<Func<string>> aPIVersion, Expression<Func<int>> pageSize = null, Expression<Func<string>> pageToken = null)
         {
-            var apiCallPath = String.Format("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (pageToken != null)
-                callPayload.Queries["pageToken"] = ExpressionConverter.Convert(pageToken);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_pageToken = WorkflowExpression.Compile(pageToken, nameof(pageToken), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_pageSize != null)
+                    callPayload.Queries["pageSize"] = ExpressionConverter.Convert(__workflow_pageSize);
+                if (__workflow_pageToken != null)
+                    callPayload.Queries["pageToken"] = ExpressionConverter.Convert(__workflow_pageToken);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GetModel(Expression<Func<string>> aPIVersion, Expression<Func<string>> name)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(name, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateText(Expression<Func<string>> aPIVersion, Expression<Func<string>> modelType, Expression<Func<string>> modelName, Expression<Func<string>> bodypromptprompt, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodycandidateCount = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null, Expression<Func<JToken[]>> bodysafetySettings = null, Expression<Func<string[]>> bodystopSequences = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}:generateText", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(modelType, 1), ExpressionConverter.ConvertWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var promptObject = new JObject();
-            var promptObjectpropCount = 0;
-            promptObjectpropCount++;
-            promptObject["text"] = ExpressionConverter.ConvertO(bodypromptprompt);
-            if (promptObjectpropCount > 0)
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_modelType = WorkflowExpression.Compile(modelType, nameof(modelType), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodypromptprompt = WorkflowExpression.Compile(bodypromptprompt, nameof(bodypromptprompt), required: true);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodycandidateCount = WorkflowExpression.Compile(bodycandidateCount, nameof(bodycandidateCount), required: false);
+            var __workflow_bodymaxOutputTokens = WorkflowExpression.Compile(bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodystopSequences = WorkflowExpression.Compile(bodystopSequences, nameof(bodystopSequences), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["prompt"] = promptObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}:generateText", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var promptObject = new JObject();
+                var promptObjectpropCount = 0;
+                promptObjectpropCount++;
+                promptObject["text"] = ExpressionConverter.ConvertO(__workflow_bodypromptprompt);
+                if (promptObjectpropCount > 0)
+                {
+                    body["prompt"] = promptObject;
+                    bodypropCount++;
+                }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodycandidateCount != null)
-            {
-                body["candidateCount"] = ExpressionConverter.ConvertO(bodycandidateCount);
-                bodypropCount++;
-            }
+                if (__workflow_bodycandidateCount != null)
+                {
+                    body["candidateCount"] = ExpressionConverter.ConvertO(__workflow_bodycandidateCount);
+                    bodypropCount++;
+                }
 
-            if (bodymaxOutputTokens != null)
-            {
-                body["maxOutputTokens"] = ExpressionConverter.ConvertO(bodymaxOutputTokens);
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxOutputTokens != null)
+                {
+                    body["maxOutputTokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxOutputTokens);
+                    bodypropCount++;
+                }
 
-            if (bodytopP != null)
-            {
-                body["topP"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
+                if (__workflow_bodytopP != null)
+                {
+                    body["topP"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
+                    bodypropCount++;
+                }
 
-            if (bodytopK != null)
-            {
-                body["topK"] = ExpressionConverter.ConvertO(bodytopK);
-                bodypropCount++;
-            }
+                if (__workflow_bodytopK != null)
+                {
+                    body["topK"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
+                    bodypropCount++;
+                }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = ExpressionConverter.ConvertO(bodysafetySettings);
-                bodypropCount++;
-            }
+                if (__workflow_bodysafetySettings != null)
+                {
+                    body["safetySettings"] = ExpressionConverter.ConvertO(__workflow_bodysafetySettings);
+                    bodypropCount++;
+                }
 
-            if (bodystopSequences != null)
-            {
-                body["stopSequences"] = ExpressionConverter.ConvertO(bodystopSequences);
-                bodypropCount++;
-            }
+                if (__workflow_bodystopSequences != null)
+                {
+                    body["stopSequences"] = ExpressionConverter.ConvertO(__workflow_bodystopSequences);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateMessage(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:generateMessage", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var promptObject = new JObject();
-            var promptObjectpropCount = 0;
-            if (bodypromptmessages != null)
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodypromptmessages = WorkflowExpression.Compile(bodypromptmessages, nameof(bodypromptmessages), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                promptObject["messages"] = ExpressionConverter.ConvertO(bodypromptmessages);
-                promptObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateMessage", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var promptObject = new JObject();
+                var promptObjectpropCount = 0;
+                if (__workflow_bodypromptmessages != null)
+                {
+                    promptObject["messages"] = ExpressionConverter.ConvertO(__workflow_bodypromptmessages);
+                    promptObjectpropCount++;
+                }
 
-            if (promptObjectpropCount > 0)
-            {
-                body["prompt"] = promptObject;
-                bodypropCount++;
-            }
+                if (promptObjectpropCount > 0)
+                {
+                    body["prompt"] = promptObject;
+                    bodypropCount++;
+                }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodytopP != null)
-            {
-                body["topP"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
+                if (__workflow_bodytopP != null)
+                {
+                    body["topP"] = ExpressionConverter.ConvertO(__workflow_bodytopP);
+                    bodypropCount++;
+                }
 
-            if (bodytopK != null)
-            {
-                body["topK"] = ExpressionConverter.ConvertO(bodytopK);
-                bodypropCount++;
-            }
+                if (__workflow_bodytopK != null)
+                {
+                    body["topK"] = ExpressionConverter.ConvertO(__workflow_bodytopK);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountTextTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodyprompttext = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:countTextTokens", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var promptObject = new JObject();
-            var promptObjectpropCount = 0;
-            if (bodyprompttext != null)
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodyprompttext = WorkflowExpression.Compile(bodyprompttext, nameof(bodyprompttext), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                promptObject["text"] = ExpressionConverter.ConvertO(bodyprompttext);
-                promptObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTextTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var promptObject = new JObject();
+                var promptObjectpropCount = 0;
+                if (__workflow_bodyprompttext != null)
+                {
+                    promptObject["text"] = ExpressionConverter.ConvertO(__workflow_bodyprompttext);
+                    promptObjectpropCount++;
+                }
 
-            if (promptObjectpropCount > 0)
-            {
-                body["prompt"] = promptObject;
-                bodypropCount++;
-            }
+                if (promptObjectpropCount > 0)
+                {
+                    body["prompt"] = promptObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountMessageTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:countMessageTokens", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var promptObject = new JObject();
-            var promptObjectpropCount = 0;
-            if (bodypromptmessages != null)
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodypromptmessages = WorkflowExpression.Compile(bodypromptmessages, nameof(bodypromptmessages), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                promptObject["messages"] = ExpressionConverter.ConvertO(bodypromptmessages);
-                promptObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countMessageTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var promptObject = new JObject();
+                var promptObjectpropCount = 0;
+                if (__workflow_bodypromptmessages != null)
+                {
+                    promptObject["messages"] = ExpressionConverter.ConvertO(__workflow_bodypromptmessages);
+                    promptObjectpropCount++;
+                }
 
-            if (promptObjectpropCount > 0)
-            {
-                body["prompt"] = promptObject;
-                bodypropCount++;
-            }
+                if (promptObjectpropCount > 0)
+                {
+                    body["prompt"] = promptObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<EmbedTextResponse> EmbedText(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = String.Format("/{0}/models/{1}:embedText", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<EmbedTextResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedText", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EmbedTextResponse>(callPayload);
+                return new ApiConnectionAction<EmbedTextResponse>(callPayload);
+            });
         }
     }
 

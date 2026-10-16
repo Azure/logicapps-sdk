@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,19 +14,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = String.Format("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTreasurySecuritiesOperationsByStatusResponse>(callPayload);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            return new DeferredBodyAction<GetTreasurySecuritiesOperationsByStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_include, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTreasurySecuritiesOperationsByStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
-            var apiCallPath = String.Format("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSecuritiesLendingOperationsResponse>(callPayload);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            return new DeferredBodyAction<GetSecuritiesLendingOperationsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_include, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSecuritiesLendingOperationsResponse>(callPayload);
+            });
         }
     }
 
@@ -121,6 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         public string PercentAllottedleastFavoriteAccptPrice { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum operationInput
     {
         [EnumMember(Value = "all")]
@@ -131,6 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         Extensions
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum statusInput
     {
         [EnumMember(Value = "announcements")]
@@ -141,6 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         Operations
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum includeInput
     {
         [EnumMember(Value = "summary")]
@@ -149,6 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         Details
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,83 +23,96 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> messageto = null, Expression<Func<string>> messagefrom = null, Expression<Func<string>> messagebody = null, Expression<Func<string>> messagecampaign = null, Expression<Func<string>> messagereference = null, Expression<Func<string>> messagedate = null)
         {
-            var apiCallPath = "/v2/integrations/power-automate/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var message = new JObject();
-            var messagepropCount = 0;
-            if (messageto != null)
+            var __workflow_messageto = WorkflowExpression.Compile(messageto, nameof(messageto), required: false);
+            var __workflow_messagefrom = WorkflowExpression.Compile(messagefrom, nameof(messagefrom), required: false);
+            var __workflow_messagebody = WorkflowExpression.Compile(messagebody, nameof(messagebody), required: false);
+            var __workflow_messagecampaign = WorkflowExpression.Compile(messagecampaign, nameof(messagecampaign), required: false);
+            var __workflow_messagereference = WorkflowExpression.Compile(messagereference, nameof(messagereference), required: false);
+            var __workflow_messagedate = WorkflowExpression.Compile(messagedate, nameof(messagedate), required: false);
+            return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                message["to"] = ExpressionConverter.ConvertO(messageto);
-                messagepropCount++;
-            }
+                var apiCallPath = "/v2/integrations/power-automate/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var message = new JObject();
+                var messagepropCount = 0;
+                if (__workflow_messageto != null)
+                {
+                    message["to"] = ExpressionConverter.ConvertO(__workflow_messageto);
+                    messagepropCount++;
+                }
 
-            if (messagefrom != null)
-            {
-                message["from"] = ExpressionConverter.ConvertO(messagefrom);
-                messagepropCount++;
-            }
+                if (__workflow_messagefrom != null)
+                {
+                    message["from"] = ExpressionConverter.ConvertO(__workflow_messagefrom);
+                    messagepropCount++;
+                }
 
-            if (messagebody != null)
-            {
-                message["body"] = ExpressionConverter.ConvertO(messagebody);
-                messagepropCount++;
-            }
+                if (__workflow_messagebody != null)
+                {
+                    message["body"] = ExpressionConverter.ConvertO(__workflow_messagebody);
+                    messagepropCount++;
+                }
 
-            if (messagecampaign != null)
-            {
-                message["campaign"] = ExpressionConverter.ConvertO(messagecampaign);
-                messagepropCount++;
-            }
+                if (__workflow_messagecampaign != null)
+                {
+                    message["campaign"] = ExpressionConverter.ConvertO(__workflow_messagecampaign);
+                    messagepropCount++;
+                }
 
-            if (messagereference != null)
-            {
-                message["reference"] = ExpressionConverter.ConvertO(messagereference);
-                messagepropCount++;
-            }
+                if (__workflow_messagereference != null)
+                {
+                    message["reference"] = ExpressionConverter.ConvertO(__workflow_messagereference);
+                    messagepropCount++;
+                }
 
-            if (messagedate != null)
-            {
-                message["date"] = ExpressionConverter.ConvertO(messagedate);
-                messagepropCount++;
-            }
+                if (__workflow_messagedate != null)
+                {
+                    message["date"] = ExpressionConverter.ConvertO(__workflow_messagedate);
+                    messagepropCount++;
+                }
 
-            if (messagepropCount > 0)
-            {
-                callPayload.Body = message;
-            }
+                if (messagepropCount > 0)
+                {
+                    callPayload.Body = message;
+                }
 
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+                return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            });
         }
     }
 
     public class EdgilityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/integrations/power-automate/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var config = new JObject();
-            var configpropCount = 0;
-            config["event"] = "message_received";
-            configpropCount++;
-            if (configdedicatedNumber != null)
+            var __workflow_configdedicatedNumber = WorkflowExpression.Compile(configdedicatedNumber, nameof(configdedicatedNumber), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                config["dedicated_number"] = ExpressionConverter.ConvertO(configdedicatedNumber);
+                var apiCallPath = "/v2/integrations/power-automate/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var config = new JObject();
+                var configpropCount = 0;
+                config["event"] = "message_received";
                 configpropCount++;
-            }
+                if (__workflow_configdedicatedNumber != null)
+                {
+                    config["dedicated_number"] = ExpressionConverter.ConvertO(__workflow_configdedicatedNumber);
+                    configpropCount++;
+                }
 
-            config["destination_url"] = "@listCallbackUrl()";
-            configpropCount++;
-            if (configpropCount > 0)
-            {
-                callPayload.Body = config;
-            }
+                config["destination_url"] = "#{listCallbackUrl()}";
+                configpropCount++;
+                if (configpropCount > 0)
+                {
+                    callPayload.Body = config;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

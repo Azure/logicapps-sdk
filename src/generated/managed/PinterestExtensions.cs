@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,51 +14,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponse> ListPinsFromBoard(Expression<Func<string>> board)
         {
-            var apiCallPath = String.Format("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PinResponse>(callPayload);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
+            return new DeferredBodyAction<PinResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PinResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponseData> CreateBoard(Expression<Func<string>> name, Expression<Func<string>> description = null)
         {
-            var apiCallPath = "/boards";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            return new ApiConnectionAction<BoardResponseData>(callPayload);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            return new DeferredBodyAction<BoardResponseData>(() =>
+            {
+                var apiCallPath = "/boards";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_description != null)
+                    callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                return new ApiConnectionAction<BoardResponseData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> CreatePin(Expression<Func<string>> boardId, Expression<Func<string>> description, Expression<Func<string>> imageUrl, Expression<Func<string>> sourceUrl = null)
         {
-            var apiCallPath = "/pins";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            callPayload.Queries["image_url"] = ExpressionConverter.Convert(imageUrl);
-            if (sourceUrl != null)
-                callPayload.Queries["source_url"] = ExpressionConverter.Convert(sourceUrl);
-            return new ApiConnectionAction<PinResponseData>(callPayload);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: true);
+            var __workflow_imageUrl = WorkflowExpression.Compile(imageUrl, nameof(imageUrl), required: true);
+            var __workflow_sourceUrl = WorkflowExpression.Compile(sourceUrl, nameof(sourceUrl), required: false);
+            return new DeferredBodyAction<PinResponseData>(() =>
+            {
+                var apiCallPath = "/pins";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
+                callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                callPayload.Queries["image_url"] = ExpressionConverter.Convert(__workflow_imageUrl);
+                if (__workflow_sourceUrl != null)
+                    callPayload.Queries["source_url"] = ExpressionConverter.Convert(__workflow_sourceUrl);
+                return new ApiConnectionAction<PinResponseData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> EditPin(Expression<Func<string>> boardId, Expression<Func<string>> pin, Expression<Func<string>> description, Expression<Func<string>> link = null, Expression<Func<string>> secondBoard = null)
         {
-            var apiCallPath = String.Format("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(pin, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = ExpressionConverter.Convert(boardId);
-            callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            if (link != null)
-                callPayload.Queries["link"] = ExpressionConverter.Convert(link);
-            if (secondBoard != null)
-                callPayload.Queries["secondBoard"] = ExpressionConverter.Convert(secondBoard);
-            return new ApiConnectionAction<PinResponseData>(callPayload);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_pin = WorkflowExpression.Compile(pin, nameof(pin), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: true);
+            var __workflow_link = WorkflowExpression.Compile(link, nameof(link), required: false);
+            var __workflow_secondBoard = WorkflowExpression.Compile(secondBoard, nameof(secondBoard), required: false);
+            return new DeferredBodyAction<PinResponseData>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pin, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = ExpressionConverter.Convert(__workflow_boardId);
+                callPayload.Queries["description"] = ExpressionConverter.Convert(__workflow_description);
+                if (__workflow_link != null)
+                    callPayload.Queries["link"] = ExpressionConverter.Convert(__workflow_link);
+                if (__workflow_secondBoard != null)
+                    callPayload.Queries["secondBoard"] = ExpressionConverter.Convert(__workflow_secondBoard);
+                return new ApiConnectionAction<PinResponseData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
@@ -118,28 +142,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
     public class PinterestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
+            return new DeferredBodyTrigger<PinResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
+            return new DeferredBodyTrigger<PinResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<UserResponse> OnSomeoneFollowsMe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UserResponse> OnSomeoneFollowsMe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger4/users/me/followers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UserResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<UserResponse>(callPayload, recurrence: recurrence);
         }
     }
 

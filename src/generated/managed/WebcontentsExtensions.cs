@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,45 +14,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> path)
         {
-            var apiCallPath = "/GetFileContent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/GetFileContent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(__workflow_path);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
         public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
         {
-            var apiCallPath = "/codeless/InvokeHttp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["method"] = ExpressionConverter.ConvertO(requestmethod);
-            requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            var __workflow_requestmethod = WorkflowExpression.Compile(requestmethod, nameof(requestmethod), required: true);
+            var __workflow_requesturlOfTheRequest = WorkflowExpression.Compile(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
+            var __workflow_requestbodyOfTheRequest = WorkflowExpression.Compile(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                request["headers"] = headersObject;
+                var apiCallPath = "/codeless/InvokeHttp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestbodyOfTheRequest != null)
-            {
-                request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                request["method"] = ExpressionConverter.ConvertO(__workflow_requestmethod);
                 requestpropCount++;
-            }
+                request["url"] = ExpressionConverter.ConvertO(__workflow_requesturlOfTheRequest);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    request["headers"] = headersObject;
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (__workflow_requestbodyOfTheRequest != null)
+                {
+                    request["body"] = ExpressionConverter.ConvertO(__workflow_requestbodyOfTheRequest);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
@@ -60,6 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requestmethodInput
     {
         GET,

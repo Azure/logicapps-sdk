@@ -22,12 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Gets or sets the headers for the request.
         /// </summary>
-        public Dictionary<string, string> Headers { get; set; }
+        public object Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the query parameters for the request.
         /// </summary>
-        public Dictionary<string, string> Queries { get; set; }
+        public object Queries { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             string uri,
             string method,
             object requestBody = null,
-            Dictionary<string, string> headers = null,
-            Dictionary<string, string> queries = null)
+            object headers = null,
+            object queries = null)
         {
             this.Uri = uri;
             this.Method = method;
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="queries">The query parameters.</param>
         /// <param name="requestBody">The request body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
-        internal HttpAction(string uri, string method, object requestBody = null, Dictionary<string, string> queries = null, Dictionary<string, string> headers = null)
-            : base(uri, method, requestBody, queries, headers)
+        internal HttpAction(string uri, string method, object requestBody = null, object queries = null, object headers = null)
+            : base(uri, method, requestBody, headers, queries)
         {
         }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,79 +14,112 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery> GetBrewery(Expression<Func<string>> obdbId)
         {
-            var apiCallPath = String.Format("/v1/breweries/{0}", ExpressionConverter.ConvertWithUrlEncoding(obdbId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RefBrewery>(callPayload);
+            var __workflow_obdbId = WorkflowExpression.Compile(obdbId, nameof(obdbId), required: true);
+            return new DeferredBodyAction<RefBrewery>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/breweries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_obdbId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RefBrewery>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = "/v1/breweries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (byCity != null)
-                callPayload.Queries["by_city"] = ExpressionConverter.Convert(byCity);
-            if (byCountry != null)
-                callPayload.Queries["by_country"] = ExpressionConverter.Convert(byCountry);
-            if (byDist != null)
-                callPayload.Queries["by_dist"] = ExpressionConverter.Convert(byDist);
-            if (byName != null)
-                callPayload.Queries["by_name"] = ExpressionConverter.Convert(byName);
-            if (byState != null)
-                callPayload.Queries["by_state"] = ExpressionConverter.Convert(byState);
-            if (byPostal != null)
-                callPayload.Queries["by_postal"] = ExpressionConverter.Convert(byPostal);
-            if (byType != null)
-                callPayload.Queries["by_type"] = ExpressionConverter.Convert(byType);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            return new ApiConnectionAction<RefBrewery[]>(callPayload);
+            var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
+            var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
+            var __workflow_byDist = WorkflowExpression.Compile(byDist, nameof(byDist), required: false);
+            var __workflow_byName = WorkflowExpression.Compile(byName, nameof(byName), required: false);
+            var __workflow_byState = WorkflowExpression.Compile(byState, nameof(byState), required: false);
+            var __workflow_byPostal = WorkflowExpression.Compile(byPostal, nameof(byPostal), required: false);
+            var __workflow_byType = WorkflowExpression.Compile(byType, nameof(byType), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            return new DeferredBodyAction<RefBrewery[]>(() =>
+            {
+                var apiCallPath = "/v1/breweries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_byCity != null)
+                    callPayload.Queries["by_city"] = ExpressionConverter.Convert(__workflow_byCity);
+                if (__workflow_byCountry != null)
+                    callPayload.Queries["by_country"] = ExpressionConverter.Convert(__workflow_byCountry);
+                if (__workflow_byDist != null)
+                    callPayload.Queries["by_dist"] = ExpressionConverter.Convert(__workflow_byDist);
+                if (__workflow_byName != null)
+                    callPayload.Queries["by_name"] = ExpressionConverter.Convert(__workflow_byName);
+                if (__workflow_byState != null)
+                    callPayload.Queries["by_state"] = ExpressionConverter.Convert(__workflow_byState);
+                if (__workflow_byPostal != null)
+                    callPayload.Queries["by_postal"] = ExpressionConverter.Convert(__workflow_byPostal);
+                if (__workflow_byType != null)
+                    callPayload.Queries["by_type"] = ExpressionConverter.Convert(__workflow_byType);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                return new ApiConnectionAction<RefBrewery[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> GetRandom(Expression<Func<int>> size = null)
         {
-            var apiCallPath = "/v1/breweries/random";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<RefBrewery[]>(callPayload);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            return new DeferredBodyAction<RefBrewery[]>(() =>
+            {
+                var apiCallPath = "/v1/breweries/random";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(__workflow_size);
+                return new ApiConnectionAction<RefBrewery[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> SearchBreweries(Expression<Func<string>> query)
         {
-            var apiCallPath = "/v1/breweries/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<RefBrewery[]>(callPayload);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            return new DeferredBodyAction<RefBrewery[]>(() =>
+            {
+                var apiCallPath = "/v1/breweries/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                return new ApiConnectionAction<RefBrewery[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<CountBreweriesResponse> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null)
         {
-            var apiCallPath = "/v1/breweries/meta";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (byCity != null)
-                callPayload.Queries["by_city"] = ExpressionConverter.Convert(byCity);
-            if (byCountry != null)
-                callPayload.Queries["by_country"] = ExpressionConverter.Convert(byCountry);
-            if (byName != null)
-                callPayload.Queries["by_name"] = ExpressionConverter.Convert(byName);
-            if (byState != null)
-                callPayload.Queries["by_state"] = ExpressionConverter.Convert(byState);
-            if (byPostal != null)
-                callPayload.Queries["by_postal"] = ExpressionConverter.Convert(byPostal);
-            if (byType != null)
-                callPayload.Queries["by_type"] = ExpressionConverter.Convert(byType);
-            return new ApiConnectionAction<CountBreweriesResponse>(callPayload);
+            var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
+            var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
+            var __workflow_byName = WorkflowExpression.Compile(byName, nameof(byName), required: false);
+            var __workflow_byState = WorkflowExpression.Compile(byState, nameof(byState), required: false);
+            var __workflow_byPostal = WorkflowExpression.Compile(byPostal, nameof(byPostal), required: false);
+            var __workflow_byType = WorkflowExpression.Compile(byType, nameof(byType), required: false);
+            return new DeferredBodyAction<CountBreweriesResponse>(() =>
+            {
+                var apiCallPath = "/v1/breweries/meta";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_byCity != null)
+                    callPayload.Queries["by_city"] = ExpressionConverter.Convert(__workflow_byCity);
+                if (__workflow_byCountry != null)
+                    callPayload.Queries["by_country"] = ExpressionConverter.Convert(__workflow_byCountry);
+                if (__workflow_byName != null)
+                    callPayload.Queries["by_name"] = ExpressionConverter.Convert(__workflow_byName);
+                if (__workflow_byState != null)
+                    callPayload.Queries["by_state"] = ExpressionConverter.Convert(__workflow_byState);
+                if (__workflow_byPostal != null)
+                    callPayload.Queries["by_postal"] = ExpressionConverter.Convert(__workflow_byPostal);
+                if (__workflow_byType != null)
+                    callPayload.Queries["by_type"] = ExpressionConverter.Convert(__workflow_byType);
+                return new ApiConnectionAction<CountBreweriesResponse>(callPayload);
+            });
         }
     }
 
@@ -145,6 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         public string Street { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum byTypeInput
     {
         [EnumMember(Value = "micro")]

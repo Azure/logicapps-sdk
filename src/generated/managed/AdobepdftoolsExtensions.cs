@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,418 +14,696 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ESealResponse> ESeal(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<providerNameInput>> providerName, Expression<Func<string>> xCredentialId, Expression<Func<string>> xAuthPin, Expression<Func<string>> xAuthToken, Expression<Func<signatureFormatInput>> signatureFormat, Expression<Func<string>> fieldName, Expression<Func<int>> pageNumber = null, Expression<Func<int>> topCoordinate = null, Expression<Func<int>> leftCoordinate = null, Expression<Func<int>> rightCoordinate = null, Expression<Func<int>> bottomCoordinate = null, Expression<Func<bool>> displayName = null, Expression<Func<bool>> displayDate = null, Expression<Func<bool>> displayLabels = null, Expression<Func<bool>> displayDistinguishedName = null, Expression<Func<object>> sealImageFile = null, Expression<Func<sealImageFormatInput>> sealImageFormat = null, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/eSeal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-credential-id"] = ExpressionConverter.Convert(xCredentialId);
-            callPayload.Headers["x-auth-pin"] = ExpressionConverter.Convert(xAuthPin);
-            callPayload.Headers["x-auth-token"] = ExpressionConverter.Convert(xAuthToken);
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ESealResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_providerName = WorkflowExpression.Compile(providerName, nameof(providerName), required: true);
+            var __workflow_xCredentialId = WorkflowExpression.Compile(xCredentialId, nameof(xCredentialId), required: true);
+            var __workflow_xAuthPin = WorkflowExpression.Compile(xAuthPin, nameof(xAuthPin), required: true);
+            var __workflow_xAuthToken = WorkflowExpression.Compile(xAuthToken, nameof(xAuthToken), required: true);
+            var __workflow_signatureFormat = WorkflowExpression.Compile(signatureFormat, nameof(signatureFormat), required: true);
+            var __workflow_fieldName = WorkflowExpression.Compile(fieldName, nameof(fieldName), required: true);
+            var __workflow_pageNumber = WorkflowExpression.Compile(pageNumber, nameof(pageNumber), required: false);
+            var __workflow_topCoordinate = WorkflowExpression.Compile(topCoordinate, nameof(topCoordinate), required: false);
+            var __workflow_leftCoordinate = WorkflowExpression.Compile(leftCoordinate, nameof(leftCoordinate), required: false);
+            var __workflow_rightCoordinate = WorkflowExpression.Compile(rightCoordinate, nameof(rightCoordinate), required: false);
+            var __workflow_bottomCoordinate = WorkflowExpression.Compile(bottomCoordinate, nameof(bottomCoordinate), required: false);
+            var __workflow_displayName = WorkflowExpression.Compile(displayName, nameof(displayName), required: false);
+            var __workflow_displayDate = WorkflowExpression.Compile(displayDate, nameof(displayDate), required: false);
+            var __workflow_displayLabels = WorkflowExpression.Compile(displayLabels, nameof(displayLabels), required: false);
+            var __workflow_displayDistinguishedName = WorkflowExpression.Compile(displayDistinguishedName, nameof(displayDistinguishedName), required: false);
+            var __workflow_sealImageFile = WorkflowExpression.Compile(sealImageFile, nameof(sealImageFile), required: false);
+            var __workflow_sealImageFormat = WorkflowExpression.Compile(sealImageFormat, nameof(sealImageFormat), required: false);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ESealResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/eSeal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-credential-id"] = ExpressionConverter.Convert(__workflow_xCredentialId);
+                callPayload.Headers["x-auth-pin"] = ExpressionConverter.Convert(__workflow_xAuthPin);
+                callPayload.Headers["x-auth-token"] = ExpressionConverter.Convert(__workflow_xAuthToken);
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ESealResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFFromExcel(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFFromExcel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFFromExcel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFFromPPT(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFFromPPT";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFFromPPT";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFFromWord(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFFromWord";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFFromWord";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFFromImage(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFFromImage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFFromImage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFGeneric(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFGeneric";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFGeneric";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFFromDynamicHtml(Expression<Func<string>> inputFileName, Expression<Func<pageSizeInput>> pageSize, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> includeHeaderFooter = null, Expression<Func<string>> dataToMerge = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFFromDynamicHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_includeHeaderFooter = WorkflowExpression.Compile(includeHeaderFooter, nameof(includeHeaderFooter), required: false);
+            var __workflow_dataToMerge = WorkflowExpression.Compile(dataToMerge, nameof(dataToMerge), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFFromDynamicHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CreatePDFResponse> CreatePDFFromStaticHtml(Expression<Func<string>> inputFileName, Expression<Func<pageSizeInput>> pageSize, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> includeHeaderFooter = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/createPDFFromStaticHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_includeHeaderFooter = WorkflowExpression.Compile(includeHeaderFooter, nameof(includeHeaderFooter), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CreatePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/createPDFFromStaticHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CreatePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ExportDocumentResponse> ExportPDFToExcel(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/exportPDFToExcel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ExportDocumentResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/exportPDFToExcel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ExportDocumentResponse> ExportPDFToPPT(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/exportPDFToPPT";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ExportDocumentResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/exportPDFToPPT";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ExportDocumentResponse> ExportPDFToWord(Expression<Func<string>> inputFileName, Expression<Func<targetFormatInput>> targetFormat, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/exportPDFToWord";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_targetFormat = WorkflowExpression.Compile(targetFormat, nameof(targetFormat), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ExportDocumentResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/exportPDFToWord";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ExportDocumentResponse> ExportPDFToImage(Expression<Func<string>> inputFileName, Expression<Func<targetFormatInput>> targetFormat, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/exportPDFToImage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_targetFormat = WorkflowExpression.Compile(targetFormat, nameof(targetFormat), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ExportDocumentResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/exportPDFToImage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseExportedImages> ExportPDFToImageList(Expression<Func<string>> inputFileName, Expression<Func<targetFormatInput>> targetFormat, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/exportPDFToImageList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseExportedImages>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_targetFormat = WorkflowExpression.Compile(targetFormat, nameof(targetFormat), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseExportedImages>(() =>
+            {
+                var apiCallPath = "/operation/v1/exportPDFToImageList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseExportedImages>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ExportDocumentResponse> ExportPDFGeneric(Expression<Func<string>> inputFileName, Expression<Func<targetFormatInput>> targetFormat, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/exportPDFGeneric";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_targetFormat = WorkflowExpression.Compile(targetFormat, nameof(targetFormat), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ExportDocumentResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/exportPDFGeneric";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ExportDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CompressPDFResponse> CompressPDF(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<compressionLevelInput>> compressionLevel = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/compressPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<CompressPDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_compressionLevel = WorkflowExpression.Compile(compressionLevel, nameof(compressionLevel), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CompressPDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/compressPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<CompressPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<LinearizePDFResponse> LinearizePDF(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/linearizePDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<LinearizePDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<LinearizePDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/linearizePDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<LinearizePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<CombinePDFResponse> CombinePDF(Expression<Func<string>> filesArraymergedPDFFileName, Expression<Func<string[]>> filesArrayfiles, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/combinePDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            var filesArray = new JObject();
-            var filesArraypropCount = 0;
-            filesArraypropCount++;
-            filesArray["outputFileName"] = ExpressionConverter.ConvertO(filesArraymergedPDFFileName);
-            filesArraypropCount++;
-            filesArray["files"] = ExpressionConverter.ConvertO(filesArrayfiles);
-            if (filesArraypropCount > 0)
+            var __workflow_filesArraymergedPDFFileName = WorkflowExpression.Compile(filesArraymergedPDFFileName, nameof(filesArraymergedPDFFileName), required: true);
+            var __workflow_filesArrayfiles = WorkflowExpression.Compile(filesArrayfiles, nameof(filesArrayfiles), required: true);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<CombinePDFResponse>(() =>
             {
-                callPayload.Body = filesArray;
-            }
+                var apiCallPath = "/operation/v1/combinePDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                var filesArray = new JObject();
+                var filesArraypropCount = 0;
+                filesArraypropCount++;
+                filesArray["outputFileName"] = ExpressionConverter.ConvertO(__workflow_filesArraymergedPDFFileName);
+                filesArraypropCount++;
+                filesArray["files"] = ExpressionConverter.ConvertO(__workflow_filesArrayfiles);
+                if (filesArraypropCount > 0)
+                {
+                    callPayload.Body = filesArray;
+                }
 
-            return new ApiConnectionAction<CombinePDFResponse>(callPayload);
+                return new ApiConnectionAction<CombinePDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<OCRPDFResponse> OcrPDF(Expression<Func<string>> inputFileName, Expression<Func<ocrLocaleInput>> ocrLocale, Expression<Func<ocrTypeInput>> ocrType, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/ocr";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<OCRPDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_ocrLocale = WorkflowExpression.Compile(ocrLocale, nameof(ocrLocale), required: true);
+            var __workflow_ocrType = WorkflowExpression.Compile(ocrType, nameof(ocrType), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<OCRPDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/ocr";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<OCRPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ProtectPDFResponse> ProtectUserPDF(Expression<Func<string>> inputFileName, Expression<Func<string>> userPassword, Expression<Func<contentEncryptionInput>> contentEncryption, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/protectUserPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_userPassword = WorkflowExpression.Compile(userPassword, nameof(userPassword), required: true);
+            var __workflow_contentEncryption = WorkflowExpression.Compile(contentEncryption, nameof(contentEncryption), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ProtectPDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/protectUserPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ProtectPDFResponse> ProtectOwnerPDF(Expression<Func<string>> inputFileName, Expression<Func<string>> ownerPassword, Expression<Func<contentEncryptionInput>> contentEncryption, Expression<Func<bool>> allowPrintLowQuality, Expression<Func<bool>> allowPrintHighQuality, Expression<Func<bool>> allowEditContent, Expression<Func<bool>> allowEditDocumentAssembly, Expression<Func<bool>> allowEditAnnotations, Expression<Func<bool>> allowEditFillAndSignFormFields, Expression<Func<bool>> allowCopyContent, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/protectOwnerPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_ownerPassword = WorkflowExpression.Compile(ownerPassword, nameof(ownerPassword), required: true);
+            var __workflow_contentEncryption = WorkflowExpression.Compile(contentEncryption, nameof(contentEncryption), required: true);
+            var __workflow_allowPrintLowQuality = WorkflowExpression.Compile(allowPrintLowQuality, nameof(allowPrintLowQuality), required: true);
+            var __workflow_allowPrintHighQuality = WorkflowExpression.Compile(allowPrintHighQuality, nameof(allowPrintHighQuality), required: true);
+            var __workflow_allowEditContent = WorkflowExpression.Compile(allowEditContent, nameof(allowEditContent), required: true);
+            var __workflow_allowEditDocumentAssembly = WorkflowExpression.Compile(allowEditDocumentAssembly, nameof(allowEditDocumentAssembly), required: true);
+            var __workflow_allowEditAnnotations = WorkflowExpression.Compile(allowEditAnnotations, nameof(allowEditAnnotations), required: true);
+            var __workflow_allowEditFillAndSignFormFields = WorkflowExpression.Compile(allowEditFillAndSignFormFields, nameof(allowEditFillAndSignFormFields), required: true);
+            var __workflow_allowCopyContent = WorkflowExpression.Compile(allowCopyContent, nameof(allowCopyContent), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ProtectPDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/protectOwnerPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<ProtectPDFResponse> ProtectGenericPDF(Expression<Func<string>> inputFileName, Expression<Func<string>> userPassword, Expression<Func<string>> ownerPassword, Expression<Func<contentEncryptionInput>> contentEncryption, Expression<Func<bool>> allowPrintLowQuality, Expression<Func<bool>> allowPrintHighQuality, Expression<Func<bool>> allowEditContent, Expression<Func<bool>> allowEditDocumentAssembly, Expression<Func<bool>> allowEditAnnotations, Expression<Func<bool>> allowEditFillAndSignFormFields, Expression<Func<bool>> allowCopyContent, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/protectGenericPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_userPassword = WorkflowExpression.Compile(userPassword, nameof(userPassword), required: true);
+            var __workflow_ownerPassword = WorkflowExpression.Compile(ownerPassword, nameof(ownerPassword), required: true);
+            var __workflow_contentEncryption = WorkflowExpression.Compile(contentEncryption, nameof(contentEncryption), required: true);
+            var __workflow_allowPrintLowQuality = WorkflowExpression.Compile(allowPrintLowQuality, nameof(allowPrintLowQuality), required: true);
+            var __workflow_allowPrintHighQuality = WorkflowExpression.Compile(allowPrintHighQuality, nameof(allowPrintHighQuality), required: true);
+            var __workflow_allowEditContent = WorkflowExpression.Compile(allowEditContent, nameof(allowEditContent), required: true);
+            var __workflow_allowEditDocumentAssembly = WorkflowExpression.Compile(allowEditDocumentAssembly, nameof(allowEditDocumentAssembly), required: true);
+            var __workflow_allowEditAnnotations = WorkflowExpression.Compile(allowEditAnnotations, nameof(allowEditAnnotations), required: true);
+            var __workflow_allowEditFillAndSignFormFields = WorkflowExpression.Compile(allowEditFillAndSignFormFields, nameof(allowEditFillAndSignFormFields), required: true);
+            var __workflow_allowCopyContent = WorkflowExpression.Compile(allowCopyContent, nameof(allowCopyContent), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<ProtectPDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/protectGenericPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<ProtectPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<UnProtectPDFResponse> RemovePassword(Expression<Func<string>> inputFileName, Expression<Func<string>> password, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/removeProtection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<UnProtectPDFResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<UnProtectPDFResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/removeProtection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<UnProtectPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseSplitDocument> SplitPDF(Expression<Func<string>> inputFileName, Expression<Func<splitByTypeInput>> splitByType, Expression<Func<string>> splitConfiguration, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/splitPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseSplitDocument>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_splitByType = WorkflowExpression.Compile(splitByType, nameof(splitByType), required: true);
+            var __workflow_splitConfiguration = WorkflowExpression.Compile(splitConfiguration, nameof(splitConfiguration), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseSplitDocument>(() =>
+            {
+                var apiCallPath = "/operation/v1/splitPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseSplitDocument>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseExtractImages> ExtractImagesFromPDF(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/extractImagesFromPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseExtractImages>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseExtractImages>(() =>
+            {
+                var apiCallPath = "/operation/v1/extractImagesFromPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseExtractImages>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseExtractTables> ExtractTablesFromPDF(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/extractTablesFromPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseExtractTables>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseExtractTables>(() =>
+            {
+                var apiCallPath = "/operation/v1/extractTablesFromPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseExtractTables>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseExtractJSONFile> ExtractJSONFileFromPDF(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<bool>> addCharInfo = null, Expression<Func<bool>> getStylingInfo = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/extractJSONFileFromPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseExtractJSONFile>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_addCharInfo = WorkflowExpression.Compile(addCharInfo, nameof(addCharInfo), required: false);
+            var __workflow_getStylingInfo = WorkflowExpression.Compile(getStylingInfo, nameof(getStylingInfo), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseExtractJSONFile>(() =>
+            {
+                var apiCallPath = "/operation/v1/extractJSONFileFromPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseExtractJSONFile>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseExtractJsonObject> ExtractJSONObjectFromPDF(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<bool>> addCharInfo = null, Expression<Func<bool>> getStylingInfo = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/extractJSONObjectFromPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseExtractJsonObject>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_addCharInfo = WorkflowExpression.Compile(addCharInfo, nameof(addCharInfo), required: false);
+            var __workflow_getStylingInfo = WorkflowExpression.Compile(getStylingInfo, nameof(getStylingInfo), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseExtractJsonObject>(() =>
+            {
+                var apiCallPath = "/operation/v1/extractJSONObjectFromPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseExtractJsonObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseExtractDocument> ExtractJSONAndImagesAndTablesFromPDF(Expression<Func<bool>> addTables, Expression<Func<bool>> addFigures, Expression<Func<pdfStructureOutputFormatInput>> pdfStructureOutputFormat, Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<bool>> addCharInfo = null, Expression<Func<bool>> getStylingInfo = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/extractJSONAndImagesAndTablesFromPDF";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseExtractDocument>(callPayload);
+            var __workflow_addTables = WorkflowExpression.Compile(addTables, nameof(addTables), required: true);
+            var __workflow_addFigures = WorkflowExpression.Compile(addFigures, nameof(addFigures), required: true);
+            var __workflow_pdfStructureOutputFormat = WorkflowExpression.Compile(pdfStructureOutputFormat, nameof(pdfStructureOutputFormat), required: true);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_addCharInfo = WorkflowExpression.Compile(addCharInfo, nameof(addCharInfo), required: false);
+            var __workflow_getStylingInfo = WorkflowExpression.Compile(getStylingInfo, nameof(getStylingInfo), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseExtractDocument>(() =>
+            {
+                var apiCallPath = "/operation/v1/extractJSONAndImagesAndTablesFromPDF";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseExtractDocument>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponsePDFProperties> PDFProperties(Expression<Func<string>> inputFileName, Expression<Func<object>> inputFile0, Expression<Func<bool>> pageLevel, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/pdfProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponsePDFProperties>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_pageLevel = WorkflowExpression.Compile(pageLevel, nameof(pageLevel), required: true);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponsePDFProperties>(() =>
+            {
+                var apiCallPath = "/operation/v1/pdfProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponsePDFProperties>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<string>> inputFileName, Expression<Func<string>> jsonStringForMerge, Expression<Func<targetFormatInput>> targetFormat, Expression<Func<object>> inputFile0, Expression<Func<string>> outputFileName = null, Expression<Func<string>> fragments = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/docGen";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DocGenResponse>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_jsonStringForMerge = WorkflowExpression.Compile(jsonStringForMerge, nameof(jsonStringForMerge), required: true);
+            var __workflow_targetFormat = WorkflowExpression.Compile(targetFormat, nameof(targetFormat), required: true);
+            var __workflow_inputFile0 = WorkflowExpression.Compile(inputFile0, nameof(inputFile0), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_fragments = WorkflowExpression.Compile(fragments, nameof(fragments), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DocGenResponse>(() =>
+            {
+                var apiCallPath = "/operation/v1/docGen";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DocGenResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobepdftools")]
         public IBodyWorkflowAction<DtoResponseAutotagPDF> AutoTag(Expression<Func<string>> inputFileName, Expression<Func<object>> fileData, Expression<Func<bool>> generateReport, Expression<Func<bool>> shiftHeadings, Expression<Func<string>> outputFileName = null, Expression<Func<xRegionValueInput>> xRegionValue = null)
         {
-            var apiCallPath = "/operation/v1/accessibility";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
-            callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
-            if (xRegionValue != null)
-                callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(xRegionValue);
-            return new ApiConnectionAction<DtoResponseAutotagPDF>(callPayload);
+            var __workflow_inputFileName = WorkflowExpression.Compile(inputFileName, nameof(inputFileName), required: true);
+            var __workflow_fileData = WorkflowExpression.Compile(fileData, nameof(fileData), required: true);
+            var __workflow_generateReport = WorkflowExpression.Compile(generateReport, nameof(generateReport), required: true);
+            var __workflow_shiftHeadings = WorkflowExpression.Compile(shiftHeadings, nameof(shiftHeadings), required: true);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_xRegionValue = WorkflowExpression.Compile(xRegionValue, nameof(xRegionValue), required: false);
+            return new DeferredBodyAction<DtoResponseAutotagPDF>(() =>
+            {
+                var apiCallPath = "/operation/v1/accessibility";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("PowerAutomate");
+                callPayload.Headers["x-region-value"] = Convert.ToString("-ue1");
+                if (__workflow_xRegionValue != null)
+                    callPayload.Headers["x-region-value"] = ExpressionConverter.Convert(__workflow_xRegionValue);
+                return new ApiConnectionAction<DtoResponseAutotagPDF>(callPayload);
+            });
         }
     }
 
@@ -445,6 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string OutputFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum providerNameInput
     {
         [EnumMember(Value = "INTESI_GROUP")]
@@ -456,12 +735,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         TRUSTPRO
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum signatureFormatInput
     {
         PADES,
         PKCS7
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum sealImageFormatInput
     {
         [EnumMember(Value = "image/jpeg")]
@@ -472,6 +753,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         PDF
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum xRegionValueInput
     {
         [EnumMember(Value = "-ue1")]
@@ -492,6 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pageSizeInput
     {
         Default,
@@ -526,6 +809,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string OutputFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum targetFormatInput
     {
         PDF,
@@ -550,6 +834,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum compressionLevelInput
     {
         LOW,
@@ -593,6 +878,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ocrLocaleInput
     {
         [EnumMember(Value = "BG_BG")]
@@ -673,6 +959,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         ChineseHongKong
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ocrTypeInput
     {
         [EnumMember(Value = "SEARCHABLE_IMAGE")]
@@ -693,6 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string PDFFileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentEncryptionInput
     {
         [EnumMember(Value = "ALL_CONTENT")]
@@ -731,6 +1019,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public string FileContentType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum splitByTypeInput
     {
         [EnumMember(Value = "PageRangeArray")]
@@ -815,6 +1104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobepdftools
         public TableObject[] Tables { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum pdfStructureOutputFormatInput
     {
         [EnumMember(Value = "JSON FILE")]

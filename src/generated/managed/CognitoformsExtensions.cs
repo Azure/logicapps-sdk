@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,61 +15,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
     public class CognitoformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribenewentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = endpoint;
-            }
+                var apiCallPath = "/integration/oauth/subscribenewentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribeupdateentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = endpoint;
-            }
+                var apiCallPath = "/integration/oauth/subscribeupdateentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribeentrydeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = endpoint;
-            }
+                var apiCallPath = "/integration/oauth/subscribeentrydeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = ExpressionConverter.Convert(__workflow_publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

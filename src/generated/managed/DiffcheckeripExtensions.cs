@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,49 +14,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
         public IBodyWorkflowAction<CheckTextResponse> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
         {
-            var apiCallPath = "/public/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["output_type"] = Convert.ToString("json");
-            callPayload.Queries["diff_level"] = Convert.ToString("word");
-            if (diffLevel != null)
-                callPayload.Queries["diff_level"] = ExpressionConverter.Convert(diffLevel);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["left"] = ExpressionConverter.ConvertO(bodyleft);
-            bodypropCount++;
-            body["right"] = ExpressionConverter.ConvertO(bodyright);
-            if (bodypropCount > 0)
+            var __workflow_bodyleft = WorkflowExpression.Compile(bodyleft, nameof(bodyleft), required: true);
+            var __workflow_bodyright = WorkflowExpression.Compile(bodyright, nameof(bodyright), required: true);
+            var __workflow_diffLevel = WorkflowExpression.Compile(diffLevel, nameof(diffLevel), required: false);
+            return new DeferredBodyAction<CheckTextResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/public/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["output_type"] = Convert.ToString("json");
+                callPayload.Queries["diff_level"] = Convert.ToString("word");
+                if (__workflow_diffLevel != null)
+                    callPayload.Queries["diff_level"] = ExpressionConverter.Convert(__workflow_diffLevel);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["left"] = ExpressionConverter.ConvertO(__workflow_bodyleft);
+                bodypropCount++;
+                body["right"] = ExpressionConverter.ConvertO(__workflow_bodyright);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CheckTextResponse>(callPayload);
+                return new ApiConnectionAction<CheckTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
         public IBodyWorkflowAction<CheckImageResponse> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
         {
-            var apiCallPath = "/public/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["input_type"] = Convert.ToString("json");
-            callPayload.Queries["output_type"] = Convert.ToString("json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["left_image"] = ExpressionConverter.ConvertO(bodyleftImage);
-            bodypropCount++;
-            body["right_image"] = ExpressionConverter.ConvertO(bodyrightImage);
-            if (bodypropCount > 0)
+            var __workflow_bodyleftImage = WorkflowExpression.Compile(bodyleftImage, nameof(bodyleftImage), required: true);
+            var __workflow_bodyrightImage = WorkflowExpression.Compile(bodyrightImage, nameof(bodyrightImage), required: true);
+            return new DeferredBodyAction<CheckImageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/public/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["input_type"] = Convert.ToString("json");
+                callPayload.Queries["output_type"] = Convert.ToString("json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["left_image"] = ExpressionConverter.ConvertO(__workflow_bodyleftImage);
+                bodypropCount++;
+                body["right_image"] = ExpressionConverter.ConvertO(__workflow_bodyrightImage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CheckImageResponse>(callPayload);
+                return new ApiConnectionAction<CheckImageResponse>(callPayload);
+            });
         }
     }
 
@@ -130,6 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         public string Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum diffLevelInput
     {
         [EnumMember(Value = "character")]

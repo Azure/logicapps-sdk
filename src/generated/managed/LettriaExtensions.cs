@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,45 +14,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
         public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend(Expression<Func<string[]>> bodydocuments = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocuments != null)
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            return new DeferredBodyAction<ComprehendPostResponseItem[]>(() =>
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ComprehendPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<ComprehendPostResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
         public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify(Expression<Func<string[]>> bodydocuments = null)
         {
-            var apiCallPath = "/nls/classification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocuments != null)
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
+            return new DeferredBodyAction<ClassifyPostResponseItem[]>(() =>
             {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
+                var apiCallPath = "/nls/classification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(__workflow_bodydocuments);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ClassifyPostResponseItem[]>(callPayload);
+                return new ApiConnectionAction<ClassifyPostResponseItem[]>(callPayload);
+            });
         }
     }
 

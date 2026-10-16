@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,175 +14,205 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishDocxResponse> PublishDocx(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
-            var apiCallPath = "/api/dynamicdoc/docx";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodydocName != null)
+            var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
+            var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
+            var __workflow_requestBodyjsonData = WorkflowExpression.Compile(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
+            var __workflow_requestBodylogLevel = WorkflowExpression.Compile(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
+            var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
+            var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
+            return new DeferredBodyAction<PublishDocxResponse>(() =>
             {
-                requestBody["docName"] = ExpressionConverter.ConvertO(requestBodydocName);
-                requestBodypropCount++;
-            }
+                var apiCallPath = "/api/dynamicdoc/docx";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (__workflow_requestBodydocName != null)
+                {
+                    requestBody["docName"] = ExpressionConverter.ConvertO(__workflow_requestBodydocName);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodydocumentTemplateData != null)
-            {
-                requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(requestBodydocumentTemplateData);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodydocumentTemplateData != null)
+                {
+                    requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(__workflow_requestBodydocumentTemplateData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyjsonData != null)
-            {
-                requestBody["jsonData"] = ExpressionConverter.ConvertO(requestBodyjsonData);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyjsonData != null)
+                {
+                    requestBody["jsonData"] = ExpressionConverter.ConvertO(__workflow_requestBodyjsonData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodylogLevel != null)
-            {
-                requestBody["logLevel"] = ExpressionConverter.ConvertO(requestBodylogLevel);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodylogLevel != null)
+                {
+                    requestBody["logLevel"] = ExpressionConverter.ConvertO(__workflow_requestBodylogLevel);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodylanguage != null)
-            {
-                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodylanguage != null)
+                {
+                    requestBody["language"] = ExpressionConverter.ConvertO(__workflow_requestBodylanguage);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycountry != null)
-            {
-                requestBody["country"] = ExpressionConverter.ConvertO(requestBodycountry);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodycountry != null)
+                {
+                    requestBody["country"] = ExpressionConverter.ConvertO(__workflow_requestBodycountry);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyclientType != null)
-            {
-                requestBody["clientType"] = ExpressionConverter.ConvertO(requestBodyclientType);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyclientType != null)
+                {
+                    requestBody["clientType"] = ExpressionConverter.ConvertO(__workflow_requestBodyclientType);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<PublishDocxResponse>(callPayload);
+                return new ApiConnectionAction<PublishDocxResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishPDFResponse> PublishPDF(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
-            var apiCallPath = "/api/dynamicdoc/pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodydocName != null)
+            var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
+            var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
+            var __workflow_requestBodyjsonData = WorkflowExpression.Compile(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
+            var __workflow_requestBodylogLevel = WorkflowExpression.Compile(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
+            var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
+            var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
+            return new DeferredBodyAction<PublishPDFResponse>(() =>
             {
-                requestBody["docName"] = ExpressionConverter.ConvertO(requestBodydocName);
-                requestBodypropCount++;
-            }
+                var apiCallPath = "/api/dynamicdoc/pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (__workflow_requestBodydocName != null)
+                {
+                    requestBody["docName"] = ExpressionConverter.ConvertO(__workflow_requestBodydocName);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodydocumentTemplateData != null)
-            {
-                requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(requestBodydocumentTemplateData);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodydocumentTemplateData != null)
+                {
+                    requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(__workflow_requestBodydocumentTemplateData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyjsonData != null)
-            {
-                requestBody["jsonData"] = ExpressionConverter.ConvertO(requestBodyjsonData);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyjsonData != null)
+                {
+                    requestBody["jsonData"] = ExpressionConverter.ConvertO(__workflow_requestBodyjsonData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodylogLevel != null)
-            {
-                requestBody["logLevel"] = ExpressionConverter.ConvertO(requestBodylogLevel);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodylogLevel != null)
+                {
+                    requestBody["logLevel"] = ExpressionConverter.ConvertO(__workflow_requestBodylogLevel);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodylanguage != null)
-            {
-                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodylanguage != null)
+                {
+                    requestBody["language"] = ExpressionConverter.ConvertO(__workflow_requestBodylanguage);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycountry != null)
-            {
-                requestBody["country"] = ExpressionConverter.ConvertO(requestBodycountry);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodycountry != null)
+                {
+                    requestBody["country"] = ExpressionConverter.ConvertO(__workflow_requestBodycountry);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyclientType != null)
-            {
-                requestBody["clientType"] = ExpressionConverter.ConvertO(requestBodyclientType);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyclientType != null)
+                {
+                    requestBody["clientType"] = ExpressionConverter.ConvertO(__workflow_requestBodyclientType);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<PublishPDFResponse>(callPayload);
+                return new ApiConnectionAction<PublishPDFResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishHtmlResponse> PublishHtml(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
-            var apiCallPath = "/api/dynamicdoc/html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodydocName != null)
+            var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
+            var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
+            var __workflow_requestBodyjsonData = WorkflowExpression.Compile(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
+            var __workflow_requestBodylogLevel = WorkflowExpression.Compile(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
+            var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
+            var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
+            return new DeferredBodyAction<PublishHtmlResponse>(() =>
             {
-                requestBody["docName"] = ExpressionConverter.ConvertO(requestBodydocName);
-                requestBodypropCount++;
-            }
+                var apiCallPath = "/api/dynamicdoc/html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (__workflow_requestBodydocName != null)
+                {
+                    requestBody["docName"] = ExpressionConverter.ConvertO(__workflow_requestBodydocName);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodydocumentTemplateData != null)
-            {
-                requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(requestBodydocumentTemplateData);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodydocumentTemplateData != null)
+                {
+                    requestBody["documentTemplateData"] = ExpressionConverter.ConvertO(__workflow_requestBodydocumentTemplateData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyjsonData != null)
-            {
-                requestBody["jsonData"] = ExpressionConverter.ConvertO(requestBodyjsonData);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyjsonData != null)
+                {
+                    requestBody["jsonData"] = ExpressionConverter.ConvertO(__workflow_requestBodyjsonData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodylogLevel != null)
-            {
-                requestBody["logLevel"] = ExpressionConverter.ConvertO(requestBodylogLevel);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodylogLevel != null)
+                {
+                    requestBody["logLevel"] = ExpressionConverter.ConvertO(__workflow_requestBodylogLevel);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodylanguage != null)
-            {
-                requestBody["language"] = ExpressionConverter.ConvertO(requestBodylanguage);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodylanguage != null)
+                {
+                    requestBody["language"] = ExpressionConverter.ConvertO(__workflow_requestBodylanguage);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycountry != null)
-            {
-                requestBody["country"] = ExpressionConverter.ConvertO(requestBodycountry);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodycountry != null)
+                {
+                    requestBody["country"] = ExpressionConverter.ConvertO(__workflow_requestBodycountry);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyclientType != null)
-            {
-                requestBody["clientType"] = ExpressionConverter.ConvertO(requestBodyclientType);
-                requestBodypropCount++;
-            }
+                if (__workflow_requestBodyclientType != null)
+                {
+                    requestBody["clientType"] = ExpressionConverter.ConvertO(__workflow_requestBodyclientType);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionAction<PublishHtmlResponse>(callPayload);
+                return new ApiConnectionAction<PublishHtmlResponse>(callPayload);
+            });
         }
     }
 

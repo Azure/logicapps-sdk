@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,14 +14,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dexcomip")]
         public IBodyWorkflowAction<GetEGVsResponse> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            var apiCallPath = "/v2/users/self/egvs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            return new ApiConnectionAction<GetEGVsResponse>(callPayload);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            return new DeferredBodyAction<GetEGVsResponse>(() =>
+            {
+                var apiCallPath = "/v2/users/self/egvs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                if (__workflow_endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                return new ApiConnectionAction<GetEGVsResponse>(callPayload);
+            });
         }
     }
 

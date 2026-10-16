@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,114 +23,156 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<FormMeta[]> Forms(Expression<Func<string>> groupId)
         {
-            var apiCallPath = "/forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            return new ApiConnectionAction<FormMeta[]>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<FormMeta[]>(() =>
+            {
+                var apiCallPath = "/forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                return new ApiConnectionAction<FormMeta[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<FormSchema> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
         {
-            var apiCallPath = "/form";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            return new ApiConnectionAction<FormSchema>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            return new DeferredBodyAction<FormSchema>(() =>
+            {
+                var apiCallPath = "/form";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
+                return new ApiConnectionAction<FormSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<File[]> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<File[]>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<File[]>(() =>
+            {
+                var apiCallPath = "/files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
+                return new ApiConnectionAction<File[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<File> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            var apiCallPath = "/pdf";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<File>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<File>(() =>
+            {
+                var apiCallPath = "/pdf";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
+                return new ApiConnectionAction<File>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<string> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            var apiCallPath = "/pdf-content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/pdf-content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<JToken> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
         {
-            var apiCallPath = "/response";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/response";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(__workflow_responseId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/response-subscription";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            if (formId != null)
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            if (environment != null)
-                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            if (triggers != null)
-                callPayload.Queries["triggers"] = ExpressionConverter.Convert(triggers);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["webHookUrl"] = "@listCallbackUrl()";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: false);
+            var __workflow_triggers = WorkflowExpression.Compile(triggers, nameof(triggers), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/response-subscription";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                if (__workflow_formId != null)
+                    callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
+                if (__workflow_environment != null)
+                    callPayload.Queries["environment"] = ExpressionConverter.Convert(__workflow_environment);
+                if (__workflow_triggers != null)
+                    callPayload.Queries["triggers"] = ExpressionConverter.Convert(__workflow_triggers);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["webHookUrl"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/response-deletion-subscription";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            if (formId != null)
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["webHookUrl"] = "@listCallbackUrl()";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/response-deletion-subscription";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(__workflow_groupId);
+                if (__workflow_formId != null)
+                    callPayload.Queries["formId"] = ExpressionConverter.Convert(__workflow_formId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["webHookUrl"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -356,6 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         public JToken ItemId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum environmentInput
     {
         [EnumMember(Value = "draft")]
@@ -364,6 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         Published
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum triggersInput
     {
         Submitted,

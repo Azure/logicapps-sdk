@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,181 +14,246 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetHeadlinesResponse> GetHeadlines(Expression<Func<string>> createdGt = null, Expression<Func<string>> createdLt = null, Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
-            var apiCallPath = "/signals/v2/events/headlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (createdGt != null)
-                callPayload.Queries["created[gt]"] = ExpressionConverter.Convert(createdGt);
-            if (createdLt != null)
-                callPayload.Queries["created[lt]"] = ExpressionConverter.Convert(createdLt);
-            if (signalIds != null)
-                callPayload.Queries["signalIds"] = ExpressionConverter.Convert(signalIds);
-            if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(userRelevanceScoreGt);
-            if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(userRelevanceScoreLt);
-            callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(userRelevanceScoreGte);
-            if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(userRelevanceScoreLte);
-            if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(updatedGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(updatedLt);
-            if (createdGte != null)
-                callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(createdGte);
-            if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(updatedGte);
-            if (createdLte != null)
-                callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(createdLte);
-            if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(updatedLte);
-            if (portfolios != null)
-                callPayload.Queries["portfolios"] = ExpressionConverter.Convert(portfolios);
-            if (themes != null)
-                callPayload.Queries["themes"] = ExpressionConverter.Convert(themes);
-            if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-            return new ApiConnectionAction<GetHeadlinesResponse>(callPayload);
+            var __workflow_createdGt = WorkflowExpression.Compile(createdGt, nameof(createdGt), required: false);
+            var __workflow_createdLt = WorkflowExpression.Compile(createdLt, nameof(createdLt), required: false);
+            var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_userRelevanceScoreGt = WorkflowExpression.Compile(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            var __workflow_userRelevanceScoreLt = WorkflowExpression.Compile(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_userRelevanceScoreGte = WorkflowExpression.Compile(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            var __workflow_userRelevanceScoreLte = WorkflowExpression.Compile(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
+            var __workflow_updatedLt = WorkflowExpression.Compile(updatedLt, nameof(updatedLt), required: false);
+            var __workflow_createdGte = WorkflowExpression.Compile(createdGte, nameof(createdGte), required: false);
+            var __workflow_updatedGte = WorkflowExpression.Compile(updatedGte, nameof(updatedGte), required: false);
+            var __workflow_createdLte = WorkflowExpression.Compile(createdLte, nameof(createdLte), required: false);
+            var __workflow_updatedLte = WorkflowExpression.Compile(updatedLte, nameof(updatedLte), required: false);
+            var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
+            var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            return new DeferredBodyAction<GetHeadlinesResponse>(() =>
+            {
+                var apiCallPath = "/signals/v2/events/headlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_createdGt != null)
+                    callPayload.Queries["created[gt]"] = ExpressionConverter.Convert(__workflow_createdGt);
+                if (__workflow_createdLt != null)
+                    callPayload.Queries["created[lt]"] = ExpressionConverter.Convert(__workflow_createdLt);
+                if (__workflow_signalIds != null)
+                    callPayload.Queries["signalIds"] = ExpressionConverter.Convert(__workflow_signalIds);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_userRelevanceScoreGt != null)
+                    callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreGt);
+                if (__workflow_userRelevanceScoreLt != null)
+                    callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreLt);
+                callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_userRelevanceScoreGte != null)
+                    callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreGte);
+                if (__workflow_userRelevanceScoreLte != null)
+                    callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreLte);
+                if (__workflow_updatedGt != null)
+                    callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(__workflow_updatedGt);
+                if (__workflow_updatedLt != null)
+                    callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(__workflow_updatedLt);
+                if (__workflow_createdGte != null)
+                    callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(__workflow_createdGte);
+                if (__workflow_updatedGte != null)
+                    callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(__workflow_updatedGte);
+                if (__workflow_createdLte != null)
+                    callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(__workflow_createdLte);
+                if (__workflow_updatedLte != null)
+                    callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(__workflow_updatedLte);
+                if (__workflow_portfolios != null)
+                    callPayload.Queries["portfolios"] = ExpressionConverter.Convert(__workflow_portfolios);
+                if (__workflow_themes != null)
+                    callPayload.Queries["themes"] = ExpressionConverter.Convert(__workflow_themes);
+                if (__workflow_categories != null)
+                    callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
+                return new ApiConnectionAction<GetHeadlinesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
-            var apiCallPath = "/signals/v2/events/details";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (signalIds != null)
-                callPayload.Queries["signalIds"] = ExpressionConverter.Convert(signalIds);
-            if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(userRelevanceScoreGt);
-            callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(userRelevanceScoreLt);
-            if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(userRelevanceScoreLte);
-            if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(userRelevanceScoreGte);
-            if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(updatedGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(updatedLt);
-            if (createdGte != null)
-                callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(createdGte);
-            if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(updatedGte);
-            if (createdLte != null)
-                callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(createdLte);
-            if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(updatedLte);
-            if (portfolios != null)
-                callPayload.Queries["portfolios"] = ExpressionConverter.Convert(portfolios);
-            if (themes != null)
-                callPayload.Queries["themes"] = ExpressionConverter.Convert(themes);
-            if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-            return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_userRelevanceScoreGt = WorkflowExpression.Compile(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_userRelevanceScoreLt = WorkflowExpression.Compile(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            var __workflow_userRelevanceScoreLte = WorkflowExpression.Compile(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            var __workflow_userRelevanceScoreGte = WorkflowExpression.Compile(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
+            var __workflow_updatedLt = WorkflowExpression.Compile(updatedLt, nameof(updatedLt), required: false);
+            var __workflow_createdGte = WorkflowExpression.Compile(createdGte, nameof(createdGte), required: false);
+            var __workflow_updatedGte = WorkflowExpression.Compile(updatedGte, nameof(updatedGte), required: false);
+            var __workflow_createdLte = WorkflowExpression.Compile(createdLte, nameof(createdLte), required: false);
+            var __workflow_updatedLte = WorkflowExpression.Compile(updatedLte, nameof(updatedLte), required: false);
+            var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
+            var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            return new DeferredBodyAction<GetDetailsResponse>(() =>
+            {
+                var apiCallPath = "/signals/v2/events/details";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_signalIds != null)
+                    callPayload.Queries["signalIds"] = ExpressionConverter.Convert(__workflow_signalIds);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_userRelevanceScoreGt != null)
+                    callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreGt);
+                callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_userRelevanceScoreLt != null)
+                    callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreLt);
+                if (__workflow_userRelevanceScoreLte != null)
+                    callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreLte);
+                if (__workflow_userRelevanceScoreGte != null)
+                    callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreGte);
+                if (__workflow_updatedGt != null)
+                    callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(__workflow_updatedGt);
+                if (__workflow_updatedLt != null)
+                    callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(__workflow_updatedLt);
+                if (__workflow_createdGte != null)
+                    callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(__workflow_createdGte);
+                if (__workflow_updatedGte != null)
+                    callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(__workflow_updatedGte);
+                if (__workflow_createdLte != null)
+                    callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(__workflow_createdLte);
+                if (__workflow_updatedLte != null)
+                    callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(__workflow_updatedLte);
+                if (__workflow_portfolios != null)
+                    callPayload.Queries["portfolios"] = ExpressionConverter.Convert(__workflow_portfolios);
+                if (__workflow_themes != null)
+                    callPayload.Queries["themes"] = ExpressionConverter.Convert(__workflow_themes);
+                if (__workflow_categories != null)
+                    callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
+                return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetAdaptiveCardResponse> GetAdaptiveCard(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
-            var apiCallPath = "/signals/v2/events/adaptive-cards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (signalIds != null)
-                callPayload.Queries["signalIds"] = ExpressionConverter.Convert(signalIds);
-            if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(userRelevanceScoreGt);
-            callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(userRelevanceScoreLt);
-            if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(userRelevanceScoreLte);
-            if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(userRelevanceScoreGte);
-            if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(updatedGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(updatedLt);
-            if (createdGte != null)
-                callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(createdGte);
-            if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(updatedGte);
-            if (createdLte != null)
-                callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(createdLte);
-            if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(updatedLte);
-            if (portfolios != null)
-                callPayload.Queries["portfolios"] = ExpressionConverter.Convert(portfolios);
-            if (themes != null)
-                callPayload.Queries["themes"] = ExpressionConverter.Convert(themes);
-            if (categories != null)
-                callPayload.Queries["categories"] = ExpressionConverter.Convert(categories);
-            return new ApiConnectionAction<GetAdaptiveCardResponse>(callPayload);
+            var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_userRelevanceScoreGt = WorkflowExpression.Compile(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_userRelevanceScoreLt = WorkflowExpression.Compile(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            var __workflow_userRelevanceScoreLte = WorkflowExpression.Compile(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            var __workflow_userRelevanceScoreGte = WorkflowExpression.Compile(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
+            var __workflow_updatedLt = WorkflowExpression.Compile(updatedLt, nameof(updatedLt), required: false);
+            var __workflow_createdGte = WorkflowExpression.Compile(createdGte, nameof(createdGte), required: false);
+            var __workflow_updatedGte = WorkflowExpression.Compile(updatedGte, nameof(updatedGte), required: false);
+            var __workflow_createdLte = WorkflowExpression.Compile(createdLte, nameof(createdLte), required: false);
+            var __workflow_updatedLte = WorkflowExpression.Compile(updatedLte, nameof(updatedLte), required: false);
+            var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
+            var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            return new DeferredBodyAction<GetAdaptiveCardResponse>(() =>
+            {
+                var apiCallPath = "/signals/v2/events/adaptive-cards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_signalIds != null)
+                    callPayload.Queries["signalIds"] = ExpressionConverter.Convert(__workflow_signalIds);
+                if (__workflow_ids != null)
+                    callPayload.Queries["ids"] = ExpressionConverter.Convert(__workflow_ids);
+                if (__workflow_userRelevanceScoreGt != null)
+                    callPayload.Queries["userRelevanceScore[gt]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreGt);
+                callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                if (__workflow_userRelevanceScoreLt != null)
+                    callPayload.Queries["userRelevanceScore[lt]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreLt);
+                if (__workflow_userRelevanceScoreLte != null)
+                    callPayload.Queries["userRelevanceScore[lte]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreLte);
+                if (__workflow_userRelevanceScoreGte != null)
+                    callPayload.Queries["userRelevanceScore[gte]"] = ExpressionConverter.Convert(__workflow_userRelevanceScoreGte);
+                if (__workflow_updatedGt != null)
+                    callPayload.Queries["updated[gt]"] = ExpressionConverter.Convert(__workflow_updatedGt);
+                if (__workflow_updatedLt != null)
+                    callPayload.Queries["updated[lt]"] = ExpressionConverter.Convert(__workflow_updatedLt);
+                if (__workflow_createdGte != null)
+                    callPayload.Queries["created[gte]"] = ExpressionConverter.Convert(__workflow_createdGte);
+                if (__workflow_updatedGte != null)
+                    callPayload.Queries["updated[gte]"] = ExpressionConverter.Convert(__workflow_updatedGte);
+                if (__workflow_createdLte != null)
+                    callPayload.Queries["created[lte]"] = ExpressionConverter.Convert(__workflow_createdLte);
+                if (__workflow_updatedLte != null)
+                    callPayload.Queries["updated[lte]"] = ExpressionConverter.Convert(__workflow_updatedLte);
+                if (__workflow_portfolios != null)
+                    callPayload.Queries["portfolios"] = ExpressionConverter.Convert(__workflow_portfolios);
+                if (__workflow_themes != null)
+                    callPayload.Queries["themes"] = ExpressionConverter.Convert(__workflow_themes);
+                if (__workflow_categories != null)
+                    callPayload.Queries["categories"] = ExpressionConverter.Convert(__workflow_categories);
+                return new ApiConnectionAction<GetAdaptiveCardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<NEREntitiesResponse> NEREntities(Expression<Func<string>> bodytext, Expression<Func<bool>> bodyfilterEntities = null, Expression<Func<bool>> bodyenableIdLookup = null)
         {
-            var apiCallPath = "/cognitive/ner/v2/entities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodyfilterEntities != null)
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyfilterEntities = WorkflowExpression.Compile(bodyfilterEntities, nameof(bodyfilterEntities), required: false);
+            var __workflow_bodyenableIdLookup = WorkflowExpression.Compile(bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
+            return new DeferredBodyAction<NEREntitiesResponse>(() =>
             {
-                if (bodyfilterEntities != null)
+                var apiCallPath = "/cognitive/ner/v2/entities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (__workflow_bodyfilterEntities != null)
                 {
-                    body["filterEntities"] = ExpressionConverter.ConvertO(bodyfilterEntities);
+                    if (__workflow_bodyfilterEntities != null)
+                    {
+                        body["filterEntities"] = ExpressionConverter.ConvertO(__workflow_bodyfilterEntities);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["filterEntities"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["filterEntities"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyenableIdLookup != null)
-            {
-                if (bodyenableIdLookup != null)
+                if (__workflow_bodyenableIdLookup != null)
                 {
-                    body["enableIdLookup"] = ExpressionConverter.ConvertO(bodyenableIdLookup);
+                    if (__workflow_bodyenableIdLookup != null)
+                    {
+                        body["enableIdLookup"] = ExpressionConverter.ConvertO(__workflow_bodyenableIdLookup);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableIdLookup"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["enableIdLookup"] = true;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
+                return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
@@ -212,38 +277,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<CreateBookFromTemplateResponse> CreateBookFromTemplate(Expression<Func<string>> bodyticker = null, Expression<Func<string>> bodytemplateId = null)
         {
-            var apiCallPath = "/book-builder-api/v1/create-book-from-template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyticker != null)
+            var __workflow_bodyticker = WorkflowExpression.Compile(bodyticker, nameof(bodyticker), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            return new DeferredBodyAction<CreateBookFromTemplateResponse>(() =>
             {
-                body["ticker"] = ExpressionConverter.ConvertO(bodyticker);
-                bodypropCount++;
-            }
+                var apiCallPath = "/book-builder-api/v1/create-book-from-template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyticker != null)
+                {
+                    body["ticker"] = ExpressionConverter.ConvertO(__workflow_bodyticker);
+                    bodypropCount++;
+                }
 
-            if (bodytemplateId != null)
-            {
-                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-                bodypropCount++;
-            }
+                if (__workflow_bodytemplateId != null)
+                {
+                    body["template_id"] = ExpressionConverter.ConvertO(__workflow_bodytemplateId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateBookFromTemplateResponse>(callPayload);
+                return new ApiConnectionAction<CreateBookFromTemplateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<JToken> GetPDF(Expression<Func<string>> bookId)
         {
-            var apiCallPath = String.Format("/book-builder-api/v1/download-api-book/{0}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

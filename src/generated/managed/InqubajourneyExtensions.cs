@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,86 +14,111 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<AcquireAccessTokenResponse> AcquireAccessToken(Expression<Func<string>> tenantName, Expression<Func<string>> hostURL, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
-            var apiCallPath = String.Format("/{0}/connect/token", ExpressionConverter.ConvertWithUrlEncoding(tenantName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-            callPayload.Headers["HostURL"] = ExpressionConverter.Convert(hostURL);
-            return new ApiConnectionAction<AcquireAccessTokenResponse>(callPayload);
+            var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
+            var __workflow_hostURL = WorkflowExpression.Compile(hostURL, nameof(hostURL), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
+            return new DeferredBodyAction<AcquireAccessTokenResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/connect/token", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
+                callPayload.Headers["HostURL"] = ExpressionConverter.Convert(__workflow_hostURL);
+                return new ApiConnectionAction<AcquireAccessTokenResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<string> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodyeventDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
         {
-            var apiCallPath = "/cems/api/Events";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["TenantName"] = ExpressionConverter.Convert(tenantName);
-            callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(authorizationToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyeventDefinitionCode != null)
+            var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
+            var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
+            var __workflow_bodyeventDefinitionCode = WorkflowExpression.Compile(bodyeventDefinitionCode, nameof(bodyeventDefinitionCode), required: false);
+            var __workflow_bodyisTest = WorkflowExpression.Compile(bodyisTest, nameof(bodyisTest), required: false);
+            var __workflow_bodyattributes = WorkflowExpression.Compile(bodyattributes, nameof(bodyattributes), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["eventDefinitionCode"] = ExpressionConverter.ConvertO(bodyeventDefinitionCode);
-                bodypropCount++;
-            }
+                var apiCallPath = "/cems/api/Events";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["TenantName"] = ExpressionConverter.Convert(__workflow_tenantName);
+                callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(__workflow_authorizationToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyeventDefinitionCode != null)
+                {
+                    body["eventDefinitionCode"] = ExpressionConverter.ConvertO(__workflow_bodyeventDefinitionCode);
+                    bodypropCount++;
+                }
 
-            if (bodyisTest != null)
-            {
-                body["isTest"] = ExpressionConverter.ConvertO(bodyisTest);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisTest != null)
+                {
+                    body["isTest"] = ExpressionConverter.ConvertO(__workflow_bodyisTest);
+                    bodypropCount++;
+                }
 
-            if (bodyattributes != null)
-            {
-                body["attributes"] = ExpressionConverter.ConvertO(bodyattributes);
-                bodypropCount++;
-            }
+                if (__workflow_bodyattributes != null)
+                {
+                    body["attributes"] = ExpressionConverter.ConvertO(__workflow_bodyattributes);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<string> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodytransactionDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
         {
-            var apiCallPath = "/cems/api/Transactions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["TenantName"] = ExpressionConverter.Convert(tenantName);
-            callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(authorizationToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytransactionDefinitionCode != null)
+            var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
+            var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
+            var __workflow_bodytransactionDefinitionCode = WorkflowExpression.Compile(bodytransactionDefinitionCode, nameof(bodytransactionDefinitionCode), required: false);
+            var __workflow_bodyisTest = WorkflowExpression.Compile(bodyisTest, nameof(bodyisTest), required: false);
+            var __workflow_bodyattributes = WorkflowExpression.Compile(bodyattributes, nameof(bodyattributes), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["transactionDefinitionCode"] = ExpressionConverter.ConvertO(bodytransactionDefinitionCode);
-                bodypropCount++;
-            }
+                var apiCallPath = "/cems/api/Transactions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["TenantName"] = ExpressionConverter.Convert(__workflow_tenantName);
+                callPayload.Headers["AuthorizationToken"] = ExpressionConverter.Convert(__workflow_authorizationToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytransactionDefinitionCode != null)
+                {
+                    body["transactionDefinitionCode"] = ExpressionConverter.ConvertO(__workflow_bodytransactionDefinitionCode);
+                    bodypropCount++;
+                }
 
-            if (bodyisTest != null)
-            {
-                body["isTest"] = ExpressionConverter.ConvertO(bodyisTest);
-                bodypropCount++;
-            }
+                if (__workflow_bodyisTest != null)
+                {
+                    body["isTest"] = ExpressionConverter.ConvertO(__workflow_bodyisTest);
+                    bodypropCount++;
+                }
 
-            if (bodyattributes != null)
-            {
-                body["attributes"] = ExpressionConverter.ConvertO(bodyattributes);
-                bodypropCount++;
-            }
+                if (__workflow_bodyattributes != null)
+                {
+                    body["attributes"] = ExpressionConverter.ConvertO(__workflow_bodyattributes);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

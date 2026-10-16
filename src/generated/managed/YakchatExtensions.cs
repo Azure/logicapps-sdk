@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,83 +14,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
         {
-            var apiCallPath = "/Automation/SendMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
-            bodypropCount++;
-            body["MessageTo"] = ExpressionConverter.ConvertO(bodymessageTo);
-            if (bodypropCount > 0)
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodymessageText = WorkflowExpression.Compile(bodymessageText, nameof(bodymessageText), required: true);
+            var __workflow_bodymessageTo = WorkflowExpression.Compile(bodymessageTo, nameof(bodymessageTo), required: true);
+            return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Automation/SendMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
+                bodypropCount++;
+                body["MessageText"] = ExpressionConverter.ConvertO(__workflow_bodymessageText);
+                bodypropCount++;
+                body["MessageTo"] = ExpressionConverter.ConvertO(__workflow_bodymessageTo);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+                return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            });
         }
     }
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Automation/InboundMessageNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Automation/InboundMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
+                body["TargetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Automation/OutboundMessageNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/Automation/OutboundMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
+                body["TargetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = ExpressionConverter.ConvertO(__workflow_bodyinboxEmail);
+                body["TargetUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,210 +14,248 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberComplexV3Response> SendViberComplex(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodyrateType, Expression<Func<bodycontentcomponentsbodyInputItem[]>> bodycontentcomponentsbody = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/viber/components";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            body["channel"] = "viber";
-            bodypropCount++;
-            bodypropCount++;
-            body["rateType"] = ExpressionConverter.ConvertO(bodyrateType);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "components";
-            contentObjectpropCount++;
-            var componentsObject = new JObject();
-            var componentsObjectpropCount = 0;
-            if (bodycontentcomponentsbody != null)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodyrateType = WorkflowExpression.Compile(bodyrateType, nameof(bodyrateType), required: true);
+            var __workflow_bodycontentcomponentsbody = WorkflowExpression.Compile(bodycontentcomponentsbody, nameof(bodycontentcomponentsbody), required: false);
+            return new DeferredBodyAction<SendViberComplexV3Response>(() =>
             {
-                componentsObject["body"] = ExpressionConverter.ConvertO(bodycontentcomponentsbody);
-                componentsObjectpropCount++;
-            }
-
-            if (componentsObjectpropCount > 0)
-            {
-                contentObject["components"] = componentsObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
+                var apiCallPath = "/conversations/v3/power-automate/messages/viber/components";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                body["channel"] = "viber";
+                bodypropCount++;
+                bodypropCount++;
+                body["rateType"] = ExpressionConverter.ConvertO(__workflow_bodyrateType);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "components";
+                contentObjectpropCount++;
+                var componentsObject = new JObject();
+                var componentsObjectpropCount = 0;
+                if (__workflow_bodycontentcomponentsbody != null)
+                {
+                    componentsObject["body"] = ExpressionConverter.ConvertO(__workflow_bodycontentcomponentsbody);
+                    componentsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (componentsObjectpropCount > 0)
+                {
+                    contentObject["components"] = componentsObject;
+                    contentObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SendViberComplexV3Response>(callPayload);
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendViberComplexV3Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberFileV3Response> SendViberFile(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodymessagePurpose, Expression<Func<string>> bodycontentfileurl, Expression<Func<string>> bodycontentfilefilename, Expression<Func<string>> bodycontentfilefiletype)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/viber/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            body["channel"] = "viber";
-            bodypropCount++;
-            bodypropCount++;
-            body["messagePurpose"] = ExpressionConverter.ConvertO(bodymessagePurpose);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "file";
-            contentObjectpropCount++;
-            var fileObject = new JObject();
-            var fileObjectpropCount = 0;
-            fileObjectpropCount++;
-            fileObject["url"] = ExpressionConverter.ConvertO(bodycontentfileurl);
-            fileObjectpropCount++;
-            fileObject["filename"] = ExpressionConverter.ConvertO(bodycontentfilefilename);
-            fileObjectpropCount++;
-            fileObject["filetype"] = ExpressionConverter.ConvertO(bodycontentfilefiletype);
-            if (fileObjectpropCount > 0)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodymessagePurpose = WorkflowExpression.Compile(bodymessagePurpose, nameof(bodymessagePurpose), required: true);
+            var __workflow_bodycontentfileurl = WorkflowExpression.Compile(bodycontentfileurl, nameof(bodycontentfileurl), required: true);
+            var __workflow_bodycontentfilefilename = WorkflowExpression.Compile(bodycontentfilefilename, nameof(bodycontentfilefilename), required: true);
+            var __workflow_bodycontentfilefiletype = WorkflowExpression.Compile(bodycontentfilefiletype, nameof(bodycontentfilefiletype), required: true);
+            return new DeferredBodyAction<SendViberFileV3Response>(() =>
             {
-                contentObject["file"] = fileObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
+                var apiCallPath = "/conversations/v3/power-automate/messages/viber/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                body["channel"] = "viber";
+                bodypropCount++;
+                bodypropCount++;
+                body["messagePurpose"] = ExpressionConverter.ConvertO(__workflow_bodymessagePurpose);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "file";
+                contentObjectpropCount++;
+                var fileObject = new JObject();
+                var fileObjectpropCount = 0;
+                fileObjectpropCount++;
+                fileObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentfileurl);
+                fileObjectpropCount++;
+                fileObject["filename"] = ExpressionConverter.ConvertO(__workflow_bodycontentfilefilename);
+                fileObjectpropCount++;
+                fileObject["filetype"] = ExpressionConverter.ConvertO(__workflow_bodycontentfilefiletype);
+                if (fileObjectpropCount > 0)
+                {
+                    contentObject["file"] = fileObject;
+                    contentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendViberFileV3Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendViberFileV3Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberImageV3Response> SendViberImage(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodyrateType, Expression<Func<string>> bodycontentimageurl)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/viber/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            body["channel"] = "viber";
-            bodypropCount++;
-            bodypropCount++;
-            body["rateType"] = ExpressionConverter.ConvertO(bodyrateType);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "image";
-            contentObjectpropCount++;
-            var imageObject = new JObject();
-            var imageObjectpropCount = 0;
-            imageObjectpropCount++;
-            imageObject["url"] = ExpressionConverter.ConvertO(bodycontentimageurl);
-            if (imageObjectpropCount > 0)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodyrateType = WorkflowExpression.Compile(bodyrateType, nameof(bodyrateType), required: true);
+            var __workflow_bodycontentimageurl = WorkflowExpression.Compile(bodycontentimageurl, nameof(bodycontentimageurl), required: true);
+            return new DeferredBodyAction<SendViberImageV3Response>(() =>
             {
-                contentObject["image"] = imageObject;
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
+                var apiCallPath = "/conversations/v3/power-automate/messages/viber/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                body["channel"] = "viber";
+                bodypropCount++;
+                bodypropCount++;
+                body["rateType"] = ExpressionConverter.ConvertO(__workflow_bodyrateType);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "image";
+                contentObjectpropCount++;
+                var imageObject = new JObject();
+                var imageObjectpropCount = 0;
+                imageObjectpropCount++;
+                imageObject["url"] = ExpressionConverter.ConvertO(__workflow_bodycontentimageurl);
+                if (imageObjectpropCount > 0)
+                {
+                    contentObject["image"] = imageObject;
+                    contentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendViberImageV3Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendViberImageV3Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<SendViberTextV3Response> SendViberText(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodyrateType, Expression<Func<string>> bodycontenttext = null)
         {
-            var apiCallPath = "/conversations/v3/power-automate/messages/viber/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            body["channel"] = "viber";
-            bodypropCount++;
-            bodypropCount++;
-            body["rateType"] = ExpressionConverter.ConvertO(bodyrateType);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObject["contentType"] = "text";
-            contentObjectpropCount++;
-            if (bodycontenttext != null)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodyrateType = WorkflowExpression.Compile(bodyrateType, nameof(bodyrateType), required: true);
+            var __workflow_bodycontenttext = WorkflowExpression.Compile(bodycontenttext, nameof(bodycontenttext), required: false);
+            return new DeferredBodyAction<SendViberTextV3Response>(() =>
             {
-                contentObject["text"] = ExpressionConverter.ConvertO(bodycontenttext);
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
+                var apiCallPath = "/conversations/v3/power-automate/messages/viber/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                body["channel"] = "viber";
+                bodypropCount++;
+                bodypropCount++;
+                body["rateType"] = ExpressionConverter.ConvertO(__workflow_bodyrateType);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObject["contentType"] = "text";
+                contentObjectpropCount++;
+                if (__workflow_bodycontenttext != null)
+                {
+                    contentObject["text"] = ExpressionConverter.ConvertO(__workflow_bodycontenttext);
+                    contentObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendViberTextV3Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendViberTextV3Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecviber")]
         public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
         {
-            var apiCallPath = String.Format("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            return new DeferredBodyAction<StatusCheckV3Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<StatusCheckV3Response>(callPayload);
+            });
         }
     }
 
     public class TyntecviberTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Incoming(Expression<Func<string>> viberServiceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Incoming(Expression<Func<string>> viberServiceId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/conversations/v3/power-automate/webhooks/channels/viber/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(viberServiceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["inboundMessageUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_viberServiceId = WorkflowExpression.Compile(viberServiceId, nameof(viberServiceId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/viber/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_viberServiceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["inboundMessageUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

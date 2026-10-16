@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,278 +14,344 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<AddCommentResponseV2> AddComment(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatacomment != null)
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_bodydatacomment = WorkflowExpression.Compile(bodydatacomment, nameof(bodydatacomment), required: false);
+            return new DeferredBodyAction<AddCommentResponseV2>(() =>
             {
-                dataObject["text"] = ExpressionConverter.ConvertO(bodydatacomment);
-                dataObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (__workflow_bodydatacomment != null)
+                {
+                    dataObject["text"] = ExpressionConverter.ConvertO(__workflow_bodydatacomment);
+                    dataObjectpropCount++;
+                }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddCommentResponseV2>(callPayload);
+                return new ApiConnectionAction<AddCommentResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CompleteTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskResponseV2>(callPayload);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<TaskResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
         {
-            var apiCallPath = "/v2/projects";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            var project = new JObject();
-            var projectpropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (projectdataprojectName != null)
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
+            var __workflow_projectdataprojectName = WorkflowExpression.Compile(projectdataprojectName, nameof(projectdataprojectName), required: false);
+            var __workflow_projectdatadueDate = WorkflowExpression.Compile(projectdatadueDate, nameof(projectdatadueDate), required: false);
+            var __workflow_projectdatapublic = WorkflowExpression.Compile(projectdatapublic, nameof(projectdatapublic), required: false);
+            var __workflow_projectdataprojectColor = WorkflowExpression.Compile(projectdataprojectColor, nameof(projectdataprojectColor), required: false);
+            var __workflow_projectdataprojectNotes = WorkflowExpression.Compile(projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
+            var __workflow_projectdataowner = WorkflowExpression.Compile(projectdataowner, nameof(projectdataowner), required: false);
+            var __workflow_projectdataarchive = WorkflowExpression.Compile(projectdataarchive, nameof(projectdataarchive), required: false);
+            return new DeferredBodyAction<ProjectResponseV2>(() =>
             {
-                dataObject["name"] = ExpressionConverter.ConvertO(projectdataprojectName);
-                dataObjectpropCount++;
-            }
-
-            if (projectdatadueDate != null)
-            {
-                dataObject["due_date"] = ExpressionConverter.ConvertO(projectdatadueDate);
-                dataObjectpropCount++;
-            }
-
-            if (projectdatapublic != null)
-            {
-                if (projectdatapublic != null)
+                var apiCallPath = "/v2/projects";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                if (__workflow_team != null)
+                    callPayload.Queries["team"] = ExpressionConverter.Convert(__workflow_team);
+                var project = new JObject();
+                var projectpropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (__workflow_projectdataprojectName != null)
                 {
-                    dataObject["public"] = ExpressionConverter.ConvertO(projectdatapublic);
+                    dataObject["name"] = ExpressionConverter.ConvertO(__workflow_projectdataprojectName);
                     dataObjectpropCount++;
                 }
 
-                dataObjectpropCount++;
-            }
-            else
-            {
-                dataObject["public"] = false;
-                dataObjectpropCount++;
-            }
-
-            if (projectdataprojectColor != null)
-            {
-                dataObject["color"] = ExpressionConverter.ConvertO(projectdataprojectColor);
-                dataObjectpropCount++;
-            }
-
-            if (projectdataprojectNotes != null)
-            {
-                dataObject["notes"] = ExpressionConverter.ConvertO(projectdataprojectNotes);
-                dataObjectpropCount++;
-            }
-
-            if (projectdataowner != null)
-            {
-                dataObject["owner"] = ExpressionConverter.ConvertO(projectdataowner);
-                dataObjectpropCount++;
-            }
-
-            if (projectdataarchive != null)
-            {
-                if (projectdataarchive != null)
+                if (__workflow_projectdatadueDate != null)
                 {
-                    dataObject["archived"] = ExpressionConverter.ConvertO(projectdataarchive);
+                    dataObject["due_date"] = ExpressionConverter.ConvertO(__workflow_projectdatadueDate);
                     dataObjectpropCount++;
                 }
 
-                dataObjectpropCount++;
-            }
-            else
-            {
-                dataObject["archived"] = false;
-                dataObjectpropCount++;
-            }
+                if (__workflow_projectdatapublic != null)
+                {
+                    if (__workflow_projectdatapublic != null)
+                    {
+                        dataObject["public"] = ExpressionConverter.ConvertO(__workflow_projectdatapublic);
+                        dataObjectpropCount++;
+                    }
 
-            if (dataObjectpropCount > 0)
-            {
-                project["data"] = dataObject;
-                projectpropCount++;
-            }
+                    dataObjectpropCount++;
+                }
+                else
+                {
+                    dataObject["public"] = false;
+                    dataObjectpropCount++;
+                }
 
-            if (projectpropCount > 0)
-            {
-                callPayload.Body = project;
-            }
+                if (__workflow_projectdataprojectColor != null)
+                {
+                    dataObject["color"] = ExpressionConverter.ConvertO(__workflow_projectdataprojectColor);
+                    dataObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+                if (__workflow_projectdataprojectNotes != null)
+                {
+                    dataObject["notes"] = ExpressionConverter.ConvertO(__workflow_projectdataprojectNotes);
+                    dataObjectpropCount++;
+                }
+
+                if (__workflow_projectdataowner != null)
+                {
+                    dataObject["owner"] = ExpressionConverter.ConvertO(__workflow_projectdataowner);
+                    dataObjectpropCount++;
+                }
+
+                if (__workflow_projectdataarchive != null)
+                {
+                    if (__workflow_projectdataarchive != null)
+                    {
+                        dataObject["archived"] = ExpressionConverter.ConvertO(__workflow_projectdataarchive);
+                        dataObjectpropCount++;
+                    }
+
+                    dataObjectpropCount++;
+                }
+                else
+                {
+                    dataObject["archived"] = false;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    project["data"] = dataObject;
+                    projectpropCount++;
+                }
+
+                if (projectpropCount > 0)
+                {
+                    callPayload.Body = project;
+                }
+
+                return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
         {
-            var apiCallPath = "/v2/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["projects"] = ExpressionConverter.Convert(projects);
-            var task = new JObject();
-            var taskpropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (taskdatataskName != null)
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_projects = WorkflowExpression.Compile(projects, nameof(projects), required: true);
+            var __workflow_taskdatataskName = WorkflowExpression.Compile(taskdatataskName, nameof(taskdatataskName), required: false);
+            var __workflow_taskdataassignee = WorkflowExpression.Compile(taskdataassignee, nameof(taskdataassignee), required: false);
+            var __workflow_taskdatadescription = WorkflowExpression.Compile(taskdatadescription, nameof(taskdatadescription), required: false);
+            var __workflow_taskdataassigneeStatus = WorkflowExpression.Compile(taskdataassigneeStatus, nameof(taskdataassigneeStatus), required: false);
+            var __workflow_taskdatacompleted = WorkflowExpression.Compile(taskdatacompleted, nameof(taskdatacompleted), required: false);
+            var __workflow_taskdatadueDate = WorkflowExpression.Compile(taskdatadueDate, nameof(taskdatadueDate), required: false);
+            return new DeferredBodyAction<TaskResponseV2>(() =>
             {
-                dataObject["name"] = ExpressionConverter.ConvertO(taskdatataskName);
-                dataObjectpropCount++;
-            }
-
-            if (taskdataassignee != null)
-            {
-                dataObject["assignee"] = ExpressionConverter.ConvertO(taskdataassignee);
-                dataObjectpropCount++;
-            }
-
-            if (taskdatadescription != null)
-            {
-                dataObject["notes"] = ExpressionConverter.ConvertO(taskdatadescription);
-                dataObjectpropCount++;
-            }
-
-            if (taskdataassigneeStatus != null)
-            {
-                dataObject["assignee_status"] = ExpressionConverter.ConvertO(taskdataassigneeStatus);
-                dataObjectpropCount++;
-            }
-
-            if (taskdatacompleted != null)
-            {
-                if (taskdatacompleted != null)
+                var apiCallPath = "/v2/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                callPayload.Queries["projects"] = ExpressionConverter.Convert(__workflow_projects);
+                var task = new JObject();
+                var taskpropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (__workflow_taskdatataskName != null)
                 {
-                    dataObject["completed"] = ExpressionConverter.ConvertO(taskdatacompleted);
+                    dataObject["name"] = ExpressionConverter.ConvertO(__workflow_taskdatataskName);
                     dataObjectpropCount++;
                 }
 
-                dataObjectpropCount++;
-            }
-            else
-            {
-                dataObject["completed"] = false;
-                dataObjectpropCount++;
-            }
+                if (__workflow_taskdataassignee != null)
+                {
+                    dataObject["assignee"] = ExpressionConverter.ConvertO(__workflow_taskdataassignee);
+                    dataObjectpropCount++;
+                }
 
-            if (taskdatadueDate != null)
-            {
-                dataObject["due_on"] = ExpressionConverter.ConvertO(taskdatadueDate);
-                dataObjectpropCount++;
-            }
+                if (__workflow_taskdatadescription != null)
+                {
+                    dataObject["notes"] = ExpressionConverter.ConvertO(__workflow_taskdatadescription);
+                    dataObjectpropCount++;
+                }
 
-            if (dataObjectpropCount > 0)
-            {
-                task["data"] = dataObject;
-                taskpropCount++;
-            }
+                if (__workflow_taskdataassigneeStatus != null)
+                {
+                    dataObject["assignee_status"] = ExpressionConverter.ConvertO(__workflow_taskdataassigneeStatus);
+                    dataObjectpropCount++;
+                }
 
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
+                if (__workflow_taskdatacompleted != null)
+                {
+                    if (__workflow_taskdatacompleted != null)
+                    {
+                        dataObject["completed"] = ExpressionConverter.ConvertO(__workflow_taskdatacompleted);
+                        dataObjectpropCount++;
+                    }
 
-            return new ApiConnectionAction<TaskResponseV2>(callPayload);
+                    dataObjectpropCount++;
+                }
+                else
+                {
+                    dataObject["completed"] = false;
+                    dataObjectpropCount++;
+                }
+
+                if (__workflow_taskdatadueDate != null)
+                {
+                    dataObject["due_on"] = ExpressionConverter.ConvertO(__workflow_taskdatadueDate);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    task["data"] = dataObject;
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+
+                return new ApiConnectionAction<TaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> GetProject(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<ProjectResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> GetTask(Expression<Func<string>> taskId)
         {
-            var apiCallPath = String.Format("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskResponseV2>(callPayload);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<TaskResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TaskResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<UserResponseV2> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponseV2>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<UserResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListUsersResponseV2> ListUsers(Expression<Func<string>> workspaceId)
         {
-            var apiCallPath = String.Format("/v2/workspaces/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListUsersResponseV2>(callPayload);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            return new DeferredBodyAction<ListUsersResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workspaces/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListUsersResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeams(Expression<Func<string>> workspace)
         {
-            var apiCallPath = String.Format("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(workspace, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            return new DeferredBodyAction<ListTeamsResponseV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspace, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListTeamsResponseV2>(callPayload);
+            });
         }
     }
 
     public class AsanaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated(Expression<Func<string>> workspace, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated(Expression<Func<string>> workspace, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/new_project_trigger/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, triggerName, recurrence);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            return new DeferredBodyTrigger<ListProjectsResponseV2>(() =>
+            {
+                var apiCallPath = "/v2/new_project_trigger/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/complete_task_trigger/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            {
+                var apiCallPath = "/v2/complete_task_trigger/tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/new_task_trigger/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
+            {
+                var apiCallPath = "/v2/new_task_trigger/tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspace"] = ExpressionConverter.Convert(__workflow_workspace);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(__workflow_project);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -472,6 +538,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum projectdataprojectColorInput
     {
         [EnumMember(Value = "dark-pink")]
@@ -512,6 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         LightWarmGray
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum taskdataassigneeStatusInput
     {
         Inbox,

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,21 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Getmyinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "getmyinvoices")]
         public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
         {
-            var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["api_key"] = ExpressionConverter.ConvertO(bodyapiKey);
-            if (bodypropCount > 0)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            return new DeferredBodyAction<GetInvoiceFromGetMyInvoicesResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["api_key"] = ExpressionConverter.ConvertO(__workflow_bodyapiKey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(callPayload);
+                return new ApiConnectionAction<GetInvoiceFromGetMyInvoicesResponse>(callPayload);
+            });
         }
     }
 

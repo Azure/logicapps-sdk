@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,15 +14,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
         public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-            callPayload.Queries["lang"] = Convert.ToString("en");
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(__workflow_view);
+                callPayload.Queries["lang"] = Convert.ToString("en");
+                if (__workflow_lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(__workflow_lang);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -30,6 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum viewInput
     {
         [EnumMember(Value = "1")]
@@ -50,6 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         SwitchTerminalSequencesOffNoColors
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum langInput
     {
         [EnumMember(Value = "en")]

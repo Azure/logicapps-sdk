@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,420 +14,533 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<CreateConversationResponse> CreateConversation(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodynewTopic);
-            var postObject = new JObject();
-            var postObjectpropCount = 0;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObjectpropCount++;
-            bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_bodynewTopic = WorkflowExpression.Compile(bodynewTopic, nameof(bodynewTopic), required: true);
+            var __workflow_bodypostbodycontent = WorkflowExpression.Compile(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = WorkflowExpression.Compile(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = WorkflowExpression.Compile(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            return new DeferredBodyAction<CreateConversationResponse>(() =>
             {
-                postObject["body"] = bodyObject;
-                postObjectpropCount++;
-            }
-
-            if (bodypostpostCategories != null)
-            {
-                postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
-                postObjectpropCount++;
-            }
-
-            if (bodypostnewParticipants != null)
-            {
-                postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
-                postObjectpropCount++;
-            }
-
-            if (bodypostfileAttachments != null)
-            {
-                postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
-                postObjectpropCount++;
-            }
-
-            if (postObjectpropCount > 0)
-            {
-                body["post"] = postObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodynewTopic);
+                var postObject = new JObject();
+                var postObjectpropCount = 0;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObjectpropCount++;
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
+                bodyObject["contentType"] = "html";
+                bodyObjectpropCount++;
+                if (bodyObjectpropCount > 0)
+                {
+                    postObject["body"] = bodyObject;
+                    postObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodypostpostCategories != null)
+                {
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
+                    postObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<CreateConversationResponse>(callPayload);
+                if (__workflow_bodypostnewParticipants != null)
+                {
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
+                    postObjectpropCount++;
+                }
+
+                if (__workflow_bodypostfileAttachments != null)
+                {
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
+                    postObjectpropCount++;
+                }
+
+                if (postObjectpropCount > 0)
+                {
+                    body["post"] = postObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<Conversation> GetGroupConversation(Expression<Func<string>> groupId, Expression<Func<string>> conversationId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/conversations/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Conversation>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
+            return new DeferredBodyAction<Conversation>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Conversation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ListConversationThreadsResponse> ListConversationThreads(Expression<Func<string>> groupId, Expression<Func<string>> conversationId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListConversationThreadsResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
+            return new DeferredBodyAction<ListConversationThreadsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListConversationThreadsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<NewConversationThreadResponse> CreateConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> conversationId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodynewTopic);
-            var postObject = new JObject();
-            var postObjectpropCount = 0;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObjectpropCount++;
-            bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
+            var __workflow_bodynewTopic = WorkflowExpression.Compile(bodynewTopic, nameof(bodynewTopic), required: true);
+            var __workflow_bodypostbodycontent = WorkflowExpression.Compile(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = WorkflowExpression.Compile(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = WorkflowExpression.Compile(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            return new DeferredBodyAction<NewConversationThreadResponse>(() =>
             {
-                postObject["body"] = bodyObject;
-                postObjectpropCount++;
-            }
-
-            if (bodypostpostCategories != null)
-            {
-                postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
-                postObjectpropCount++;
-            }
-
-            if (bodypostnewParticipants != null)
-            {
-                postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
-                postObjectpropCount++;
-            }
-
-            if (bodypostfileAttachments != null)
-            {
-                postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
-                postObjectpropCount++;
-            }
-
-            if (postObjectpropCount > 0)
-            {
-                body["post"] = postObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/conversations/{1}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodynewTopic);
+                var postObject = new JObject();
+                var postObjectpropCount = 0;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObjectpropCount++;
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
+                bodyObject["contentType"] = "html";
+                bodyObjectpropCount++;
+                if (bodyObjectpropCount > 0)
+                {
+                    postObject["body"] = bodyObject;
+                    postObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodypostpostCategories != null)
+                {
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
+                    postObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<NewConversationThreadResponse>(callPayload);
+                if (__workflow_bodypostnewParticipants != null)
+                {
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
+                    postObjectpropCount++;
+                }
+
+                if (__workflow_bodypostfileAttachments != null)
+                {
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
+                    postObjectpropCount++;
+                }
+
+                if (postObjectpropCount > 0)
+                {
+                    body["post"] = postObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<NewConversationThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ListGroupThreadsResponse> ListGroupThreads(Expression<Func<string>> groupId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListGroupThreadsResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<ListGroupThreadsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListGroupThreadsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<NewConversationThreadResponse> CreateGroupThread(Expression<Func<string>> groupId, Expression<Func<string>> bodynewTopic, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodynewTopic);
-            var postObject = new JObject();
-            var postObjectpropCount = 0;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObjectpropCount++;
-            bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_bodynewTopic = WorkflowExpression.Compile(bodynewTopic, nameof(bodynewTopic), required: true);
+            var __workflow_bodypostbodycontent = WorkflowExpression.Compile(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = WorkflowExpression.Compile(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = WorkflowExpression.Compile(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            return new DeferredBodyAction<NewConversationThreadResponse>(() =>
             {
-                postObject["body"] = bodyObject;
-                postObjectpropCount++;
-            }
-
-            if (bodypostpostCategories != null)
-            {
-                postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
-                postObjectpropCount++;
-            }
-
-            if (bodypostnewParticipants != null)
-            {
-                postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
-                postObjectpropCount++;
-            }
-
-            if (bodypostfileAttachments != null)
-            {
-                postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
-                postObjectpropCount++;
-            }
-
-            if (postObjectpropCount > 0)
-            {
-                body["post"] = postObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["topic"] = ExpressionConverter.ConvertO(__workflow_bodynewTopic);
+                var postObject = new JObject();
+                var postObjectpropCount = 0;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObjectpropCount++;
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
+                bodyObject["contentType"] = "html";
+                bodyObjectpropCount++;
+                if (bodyObjectpropCount > 0)
+                {
+                    postObject["body"] = bodyObject;
+                    postObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodypostpostCategories != null)
+                {
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
+                    postObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<NewConversationThreadResponse>(callPayload);
+                if (__workflow_bodypostnewParticipants != null)
+                {
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
+                    postObjectpropCount++;
+                }
+
+                if (__workflow_bodypostfileAttachments != null)
+                {
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
+                    postObjectpropCount++;
+                }
+
+                if (postObjectpropCount > 0)
+                {
+                    body["post"] = postObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<NewConversationThreadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ConversationThread> GetConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ConversationThread>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            return new DeferredBodyAction<ConversationThread>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ConversationThread>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction DeleteConversationThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<ListThreadPostsResponse> ListThreadPosts(Expression<Func<string>> groupId, Expression<Func<string>> threadId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/posts", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListThreadPostsResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            return new DeferredBodyAction<ListThreadPostsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListThreadPostsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<Post> GetThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/posts/{2}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$expand"] = Convert.ToString("attachments");
-            return new ApiConnectionAction<Post>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
+            return new DeferredBodyAction<Post>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$expand"] = Convert.ToString("attachments");
+                return new ApiConnectionAction<Post>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<GetAttachmentsResponse> GetAttachments(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAttachmentsResponse>(callPayload);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
+            return new DeferredBodyAction<GetAttachmentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAttachmentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction ReplyToAThread(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/reply", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var postObject = new JObject();
-            var postObjectpropCount = 0;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObjectpropCount++;
-            bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_bodypostbodycontent = WorkflowExpression.Compile(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = WorkflowExpression.Compile(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = WorkflowExpression.Compile(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                postObject["body"] = bodyObject;
-                postObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var postObject = new JObject();
+                var postObjectpropCount = 0;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObjectpropCount++;
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
+                bodyObject["contentType"] = "html";
+                bodyObjectpropCount++;
+                if (bodyObjectpropCount > 0)
+                {
+                    postObject["body"] = bodyObject;
+                    postObjectpropCount++;
+                }
 
-            if (bodypostpostCategories != null)
-            {
-                postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
-                postObjectpropCount++;
-            }
+                if (__workflow_bodypostpostCategories != null)
+                {
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
+                    postObjectpropCount++;
+                }
 
-            if (bodypostnewParticipants != null)
-            {
-                postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
-                postObjectpropCount++;
-            }
+                if (__workflow_bodypostnewParticipants != null)
+                {
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
+                    postObjectpropCount++;
+                }
 
-            if (bodypostfileAttachments != null)
-            {
-                postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
-                postObjectpropCount++;
-            }
+                if (__workflow_bodypostfileAttachments != null)
+                {
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
+                    postObjectpropCount++;
+                }
 
-            if (postObjectpropCount > 0)
-            {
-                body["post"] = postObject;
-                bodypropCount++;
-            }
+                if (postObjectpropCount > 0)
+                {
+                    body["post"] = postObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction Reply(Expression<Func<string>> groupId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<string>> bodypostbodycontent, Expression<Func<string[]>> bodypostpostCategories = null, Expression<Func<GetUsersGraphAction[]>> bodypostnewParticipants = null, Expression<Func<ClientSendAttachment[]>> bodypostfileAttachments = null)
         {
-            var apiCallPath = String.Format("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var postObject = new JObject();
-            var postObjectpropCount = 0;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObjectpropCount++;
-            bodyObject["content"] = ExpressionConverter.ConvertO(bodypostbodycontent);
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
+            var __workflow_bodypostbodycontent = WorkflowExpression.Compile(bodypostbodycontent, nameof(bodypostbodycontent), required: true);
+            var __workflow_bodypostpostCategories = WorkflowExpression.Compile(bodypostpostCategories, nameof(bodypostpostCategories), required: false);
+            var __workflow_bodypostnewParticipants = WorkflowExpression.Compile(bodypostnewParticipants, nameof(bodypostnewParticipants), required: false);
+            var __workflow_bodypostfileAttachments = WorkflowExpression.Compile(bodypostfileAttachments, nameof(bodypostfileAttachments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                postObject["body"] = bodyObject;
-                postObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/threads/{1}/posts/{2}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var postObject = new JObject();
+                var postObjectpropCount = 0;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObjectpropCount++;
+                bodyObject["content"] = ExpressionConverter.ConvertO(__workflow_bodypostbodycontent);
+                bodyObject["contentType"] = "html";
+                bodyObjectpropCount++;
+                if (bodyObjectpropCount > 0)
+                {
+                    postObject["body"] = bodyObject;
+                    postObjectpropCount++;
+                }
 
-            if (bodypostpostCategories != null)
-            {
-                postObject["categories"] = ExpressionConverter.ConvertO(bodypostpostCategories);
-                postObjectpropCount++;
-            }
+                if (__workflow_bodypostpostCategories != null)
+                {
+                    postObject["categories"] = ExpressionConverter.ConvertO(__workflow_bodypostpostCategories);
+                    postObjectpropCount++;
+                }
 
-            if (bodypostnewParticipants != null)
-            {
-                postObject["newParticipants"] = ExpressionConverter.ConvertO(bodypostnewParticipants);
-                postObjectpropCount++;
-            }
+                if (__workflow_bodypostnewParticipants != null)
+                {
+                    postObject["newParticipants"] = ExpressionConverter.ConvertO(__workflow_bodypostnewParticipants);
+                    postObjectpropCount++;
+                }
 
-            if (bodypostfileAttachments != null)
-            {
-                postObject["attachments"] = ExpressionConverter.ConvertO(bodypostfileAttachments);
-                postObjectpropCount++;
-            }
+                if (__workflow_bodypostfileAttachments != null)
+                {
+                    postObject["attachments"] = ExpressionConverter.ConvertO(__workflow_bodypostfileAttachments);
+                    postObjectpropCount++;
+                }
 
-            if (postObjectpropCount > 0)
-            {
-                body["post"] = postObject;
-                bodypropCount++;
-            }
+                if (postObjectpropCount > 0)
+                {
+                    body["post"] = postObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var apiCallPath = "/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
-            callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-            if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-            if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-            if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-            if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-            if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(__workflow_uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(__workflow_method);
+                callPayload.Headers["ContentType"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(__workflow_contentType);
+                if (__workflow_customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(__workflow_customHeader1);
+                if (__workflow_customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(__workflow_customHeader2);
+                if (__workflow_customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(__workflow_customHeader3);
+                if (__workflow_customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(__workflow_customHeader4);
+                if (__workflow_customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(__workflow_customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groupsmail")]
         public IWorkflowAction Forward(Expression<Func<string>> groupMail, Expression<Func<string>> conversationId, Expression<Func<string>> threadId, Expression<Func<string>> postId, Expression<Func<GetUsersGraphAction[]>> bodyrecipients, Expression<Func<string>> bodycomment = null)
         {
-            var apiCallPath = String.Format("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Prefer"] = Convert.ToString("exchange.behavior=\"ForwardPostWithMessage\"");
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
+            var __workflow_groupMail = WorkflowExpression.Compile(groupMail, nameof(groupMail), required: true);
+            var __workflow_conversationId = WorkflowExpression.Compile(conversationId, nameof(conversationId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/conversations/{1}/threads/{2}/posts/{3}/forward", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupMail, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_conversationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Prefer"] = Convert.ToString("exchange.behavior=\"ForwardPostWithMessage\"");
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycomment != null)
+                {
+                    body["Comment"] = ExpressionConverter.ConvertO(__workflow_bodycomment);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["ToRecipients"] = ExpressionConverter.ConvertO(__workflow_bodyrecipients);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["ToRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class Office365groupsmailTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$select"] = Convert.ToString("id,lastDeliveredDateTime");
-            callPayload.Queries["$expand"] = Convert.ToString("threads($select=id;$expand=posts($select=id,createdDateTime))");
-            callPayload.Queries["$orderby"] = Convert.ToString("lastDeliveredDateTime desc");
-            return new ApiConnectionTrigger<OnNewEmailInGroupResponse>(callPayload, triggerName, recurrence);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnNewEmailInGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/conversations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$select"] = Convert.ToString("id,lastDeliveredDateTime");
+                callPayload.Queries["$expand"] = Convert.ToString("threads($select=id;$expand=posts($select=id,createdDateTime))");
+                callPayload.Queries["$orderby"] = Convert.ToString("lastDeliveredDateTime desc");
+                return new ApiConnectionTrigger<OnNewEmailInGroupResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -672,6 +785,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
         public Attachment[] Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum methodInput
     {
         GET,

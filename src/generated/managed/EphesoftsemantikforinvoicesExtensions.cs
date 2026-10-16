@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,104 +14,126 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<string> DeleteSemantikWebhook(Expression<Func<string>> configurationId)
         {
-            var apiCallPath = String.Format("/v1/settings/integrations/configurations/{0}", ExpressionConverter.ConvertWithUrlEncoding(configurationId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_configurationId = WorkflowExpression.Compile(configurationId, nameof(configurationId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/settings/integrations/configurations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<CreateDocumentUploadResponse> CreateDocumentUpload(Expression<Func<string>> bodyfileName, Expression<Func<bodytypeInput>> bodytype)
         {
-            var apiCallPath = "/v1/documents/uploads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodypropCount > 0)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            return new DeferredBodyAction<CreateDocumentUploadResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/documents/uploads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateDocumentUploadResponse>(callPayload);
+                return new ApiConnectionAction<CreateDocumentUploadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UpdateDocumentUploadResponse> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<bodystatusInput>> bodystatus)
         {
-            var apiCallPath = String.Format("/v1/documents/uploads/{0}", ExpressionConverter.ConvertWithUrlEncoding(uploadId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
-            if (bodypropCount > 0)
+            var __workflow_uploadId = WorkflowExpression.Compile(uploadId, nameof(uploadId), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            return new DeferredBodyAction<UpdateDocumentUploadResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/documents/uploads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uploadId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["status"] = ExpressionConverter.ConvertO(__workflow_bodystatus);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateDocumentUploadResponse>(callPayload);
+                return new ApiConnectionAction<UpdateDocumentUploadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UploadCreatedResponse> CreateVendorUpload(Expression<Func<string>> bodyfileName)
         {
-            var apiCallPath = "/v1/vendors/uploads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodypropCount > 0)
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            return new DeferredBodyAction<UploadCreatedResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/vendors/uploads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fileName"] = ExpressionConverter.ConvertO(__workflow_bodyfileName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UploadCreatedResponse>(callPayload);
+                return new ApiConnectionAction<UploadCreatedResponse>(callPayload);
+            });
         }
     }
 
     public class EphesoftsemantikforinvoicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted(Expression<Func<string>> bodyintegrationName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted(Expression<Func<string>> bodyintegrationName, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/settings/integrations/configurations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["integrationName"] = ExpressionConverter.ConvertO(bodyintegrationName);
-            body["integrationType"] = "webhook";
-            bodypropCount++;
-            body["enabled"] = true;
-            bodypropCount++;
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            settingsObject["payload"] = "{\n     \"AmountDue\": \"$AmountDue\",\n     \"DocumentId\": \"$DocumentId\",\n     \"DueDate\": \"$DueDate\",\n     \"Entity\": \"$Entity\",\n     \"FileName\": \"$FileName\",\n     \"IngestionId\": \"$IngestionId\",\n     \"InvoiceDate\": \"$InvoiceDate\",\n     \"InvoiceNumber\": \"$InvoiceNumber\",\n     \"Memo\": \"$Memo\",\n     \"OrderDate\": \"$OrderDate\",\n     \"PdfUrl\": \"$PdfUrl\",\n     \"PONumber\": \"$PONumber\",\n     \"PostingDate\": \"$PostingDate\",\n     \"ReviewedBy\": \"$ReviewedBy\",\n     \"ServiceEndDate\": \"$ServiceEndDate\",\n     \"ServiceStartDate\": \"$ServiceStartDate\",\n     \"ShipDate\": \"$ShipDate\",\n     \"ShipFreight\": \"$ShipFreight\",\n     \"SubTotal\": \"$SubTotal\",\n     \"TableUrl\": \"$TableUrl\",\n     \"TaxAmount\": \"$TaxAmount\",\n     \"TaxRate\": \"$TaxRate\",\n     \"TenantId\": \"$TenantId\",\n     \"Terms\": \"$Terms\",\n     \"TotalAmount\": \"$TotalAmount\",\n     \"Vendor\": {\n          \"VendorAddress\": {\n               \"VendorCountry\": \"$Vendor:Country\",\n               \"VendorLocality\": \"$Vendor:Locality\",\n               \"VendorPOBox\": \"$Vendor:POBox\",\n               \"VendorPostalCode\": \"$Vendor:PostalCode\",\n               \"VendorRegion\": \"$Vendor:Region\",\n               \"VendorStreetAddress\": \"$Vendor:StreetAddress\"\n          },\n          \"VendorApprover\": \"$Vendor:Approver\",\n          \"VendorCustom1\": \"$Vendor:Custom1\",\n          \"VendorCustom2\": \"$Vendor:Custom2\",\n          \"VendorCustom3\": \"$Vendor:Custom3\",\n          \"VendorCustom4\": \"$Vendor:Custom4\",\n          \"VendorCustom5\": \"$Vendor:Custom5\",\n          \"VendorCustomerId\": \"$Vendor:CustomerId\",\n          \"VendorDepartment\": \"$Vendor:Department\",\n          \"VendorGLCode\": \"$Vendor:GLCode\",\n          \"VendorIBAN\": \"$Vendor:IBAN\",\n          \"VendorId\": \"$Vendor:VendorId\",\n          \"VendorMatched\": \"$Vendor:Matched\",\n          \"VendorMemo\": \"$Vendor:Memo\",\n          \"VendorName\": \"$Vendor:Name\",\n          \"VendorStatus\": \"$Vendor:Status\",\n          \"VendorSWIFT\": \"$Vendor:SWIFT\",\n          \"VendorTaxId\": \"$Vendor:TaxId\",\n          \"VendorTelephone\": \"$Vendor:Telephone\"\n     }\n}";
-            settingsObjectpropCount++;
-            settingsObject["targetUrl"] = "@listCallbackUrl()";
-            settingsObjectpropCount++;
-            settingsObject["encoding"] = "application/json";
-            settingsObjectpropCount++;
-            if (settingsObjectpropCount > 0)
+            var __workflow_bodyintegrationName = WorkflowExpression.Compile(bodyintegrationName, nameof(bodyintegrationName), required: true);
+            return new DeferredBodyTrigger<UploadCreatedResponse>(() =>
             {
-                body["settings"] = settingsObject;
+                var apiCallPath = "/v1/settings/integrations/configurations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["integrationName"] = ExpressionConverter.ConvertO(__workflow_bodyintegrationName);
+                body["integrationType"] = "webhook";
+                bodypropCount++;
+                body["enabled"] = true;
+                bodypropCount++;
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                settingsObject["payload"] = "{\n     \"AmountDue\": \"$AmountDue\",\n     \"DocumentId\": \"$DocumentId\",\n     \"DueDate\": \"$DueDate\",\n     \"Entity\": \"$Entity\",\n     \"FileName\": \"$FileName\",\n     \"IngestionId\": \"$IngestionId\",\n     \"InvoiceDate\": \"$InvoiceDate\",\n     \"InvoiceNumber\": \"$InvoiceNumber\",\n     \"Memo\": \"$Memo\",\n     \"OrderDate\": \"$OrderDate\",\n     \"PdfUrl\": \"$PdfUrl\",\n     \"PONumber\": \"$PONumber\",\n     \"PostingDate\": \"$PostingDate\",\n     \"ReviewedBy\": \"$ReviewedBy\",\n     \"ServiceEndDate\": \"$ServiceEndDate\",\n     \"ServiceStartDate\": \"$ServiceStartDate\",\n     \"ShipDate\": \"$ShipDate\",\n     \"ShipFreight\": \"$ShipFreight\",\n     \"SubTotal\": \"$SubTotal\",\n     \"TableUrl\": \"$TableUrl\",\n     \"TaxAmount\": \"$TaxAmount\",\n     \"TaxRate\": \"$TaxRate\",\n     \"TenantId\": \"$TenantId\",\n     \"Terms\": \"$Terms\",\n     \"TotalAmount\": \"$TotalAmount\",\n     \"Vendor\": {\n          \"VendorAddress\": {\n               \"VendorCountry\": \"$Vendor:Country\",\n               \"VendorLocality\": \"$Vendor:Locality\",\n               \"VendorPOBox\": \"$Vendor:POBox\",\n               \"VendorPostalCode\": \"$Vendor:PostalCode\",\n               \"VendorRegion\": \"$Vendor:Region\",\n               \"VendorStreetAddress\": \"$Vendor:StreetAddress\"\n          },\n          \"VendorApprover\": \"$Vendor:Approver\",\n          \"VendorCustom1\": \"$Vendor:Custom1\",\n          \"VendorCustom2\": \"$Vendor:Custom2\",\n          \"VendorCustom3\": \"$Vendor:Custom3\",\n          \"VendorCustom4\": \"$Vendor:Custom4\",\n          \"VendorCustom5\": \"$Vendor:Custom5\",\n          \"VendorCustomerId\": \"$Vendor:CustomerId\",\n          \"VendorDepartment\": \"$Vendor:Department\",\n          \"VendorGLCode\": \"$Vendor:GLCode\",\n          \"VendorIBAN\": \"$Vendor:IBAN\",\n          \"VendorId\": \"$Vendor:VendorId\",\n          \"VendorMatched\": \"$Vendor:Matched\",\n          \"VendorMemo\": \"$Vendor:Memo\",\n          \"VendorName\": \"$Vendor:Name\",\n          \"VendorStatus\": \"$Vendor:Status\",\n          \"VendorSWIFT\": \"$Vendor:SWIFT\",\n          \"VendorTaxId\": \"$Vendor:TaxId\",\n          \"VendorTelephone\": \"$Vendor:Telephone\"\n     }\n}";
+                settingsObjectpropCount++;
+                settingsObject["targetUrl"] = "#{listCallbackUrl()}";
+                settingsObjectpropCount++;
+                settingsObject["encoding"] = "application/json";
+                settingsObjectpropCount++;
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -139,6 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string UploadURL { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "invoice")]
@@ -166,6 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         public string Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodystatusInput
     {
         [EnumMember(Value = "completed")]

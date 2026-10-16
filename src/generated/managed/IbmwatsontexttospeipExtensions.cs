@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,22 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<SynthesizeResponse> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
         {
-            var apiCallPath = "/v1/synthesize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-            if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
+            return new DeferredBodyAction<SynthesizeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/synthesize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
+                if (__workflow_voice != null)
+                    callPayload.Queries["voice"] = ExpressionConverter.Convert(__workflow_voice);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SynthesizeResponse>(callPayload);
+                return new ApiConnectionAction<SynthesizeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
@@ -44,24 +49,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<PronunciationResponse> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
         {
-            var apiCallPath = "/v1/pronunciation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
-            if (voice != null)
-                callPayload.Queries["voice"] = ExpressionConverter.Convert(voice);
-            if (text != null)
-                callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            return new ApiConnectionAction<PronunciationResponse>(callPayload);
+            var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            return new DeferredBodyAction<PronunciationResponse>(() =>
+            {
+                var apiCallPath = "/v1/pronunciation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["voice"] = Convert.ToString("en-US_MichaelV3Voice");
+                if (__workflow_voice != null)
+                    callPayload.Queries["voice"] = ExpressionConverter.Convert(__workflow_voice);
+                if (__workflow_text != null)
+                    callPayload.Queries["text"] = ExpressionConverter.Convert(__workflow_text);
+                return new ApiConnectionAction<PronunciationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
         {
-            var apiCallPath = String.Format("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetVoiceResponse>(callPayload);
+            var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: true);
+            return new DeferredBodyAction<GetVoiceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_voice, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetVoiceResponse>(callPayload);
+            });
         }
     }
 
@@ -75,6 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         public string Base64 { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum voiceInput
     {
         [EnumMember(Value = "ar-MS_OmarVoice")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,944 +14,1064 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edenai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TextToSpeechResponse> TextToSpeech(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyoption = null, Expression<Func<double>> bodyrate = null, Expression<Func<double>> bodypitch = null, Expression<Func<double>> bodyvolume = null, Expression<Func<string>> bodyaudioFormat = null, Expression<Func<double>> bodysamplingRate = null)
         {
-            var apiCallPath = "/v2/audio/text_to_speech";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyoption = WorkflowExpression.Compile(bodyoption, nameof(bodyoption), required: false);
+            var __workflow_bodyrate = WorkflowExpression.Compile(bodyrate, nameof(bodyrate), required: false);
+            var __workflow_bodypitch = WorkflowExpression.Compile(bodypitch, nameof(bodypitch), required: false);
+            var __workflow_bodyvolume = WorkflowExpression.Compile(bodyvolume, nameof(bodyvolume), required: false);
+            var __workflow_bodyaudioFormat = WorkflowExpression.Compile(bodyaudioFormat, nameof(bodyaudioFormat), required: false);
+            var __workflow_bodysamplingRate = WorkflowExpression.Compile(bodysamplingRate, nameof(bodysamplingRate), required: false);
+            return new DeferredBodyAction<TextToSpeechResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/audio/text_to_speech";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "google, microsoft, lovoai, ibm, amazon";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "google, microsoft, lovoai, ibm, amazon";
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                if (bodytext != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    if (__workflow_bodytext != null)
+                    {
+                        body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["text"] = "Hello, my name is Jane.";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["text"] = "Hello, my name is Jane.";
-                bodypropCount++;
-            }
-
-            if (bodyoption != null)
-            {
-                if (bodyoption != null)
+                if (__workflow_bodyoption != null)
                 {
-                    body["option"] = ExpressionConverter.ConvertO(bodyoption);
+                    if (__workflow_bodyoption != null)
+                    {
+                        body["option"] = ExpressionConverter.ConvertO(__workflow_bodyoption);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["option"] = "FEMALE";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["option"] = "FEMALE";
-                bodypropCount++;
-            }
-
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
-
-            if (bodyrate != null)
-            {
-                if (bodyrate != null)
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (settingsObjectpropCount > 0)
                 {
-                    body["rate"] = ExpressionConverter.ConvertO(bodyrate);
+                    body["settings"] = settingsObject;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["rate"] = 0;
-                bodypropCount++;
-            }
-
-            if (bodypitch != null)
-            {
-                if (bodypitch != null)
+                if (__workflow_bodyrate != null)
                 {
-                    body["pitch"] = ExpressionConverter.ConvertO(bodypitch);
+                    if (__workflow_bodyrate != null)
+                    {
+                        body["rate"] = ExpressionConverter.ConvertO(__workflow_bodyrate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["rate"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["pitch"] = 0;
-                bodypropCount++;
-            }
-
-            if (bodyvolume != null)
-            {
-                if (bodyvolume != null)
+                if (__workflow_bodypitch != null)
                 {
-                    body["volume"] = ExpressionConverter.ConvertO(bodyvolume);
+                    if (__workflow_bodypitch != null)
+                    {
+                        body["pitch"] = ExpressionConverter.ConvertO(__workflow_bodypitch);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["pitch"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["volume"] = 0;
-                bodypropCount++;
-            }
-
-            if (bodyaudioFormat != null)
-            {
-                if (bodyaudioFormat != null)
+                if (__workflow_bodyvolume != null)
                 {
-                    body["audio_format"] = ExpressionConverter.ConvertO(bodyaudioFormat);
+                    if (__workflow_bodyvolume != null)
+                    {
+                        body["volume"] = ExpressionConverter.ConvertO(__workflow_bodyvolume);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["volume"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["audio_format"] = "mp3";
-                bodypropCount++;
-            }
-
-            if (bodysamplingRate != null)
-            {
-                if (bodysamplingRate != null)
+                if (__workflow_bodyaudioFormat != null)
                 {
-                    body["sampling_rate"] = ExpressionConverter.ConvertO(bodysamplingRate);
+                    if (__workflow_bodyaudioFormat != null)
+                    {
+                        body["audio_format"] = ExpressionConverter.ConvertO(__workflow_bodyaudioFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["audio_format"] = "mp3";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["sampling_rate"] = 0;
-                bodypropCount++;
-            }
+                if (__workflow_bodysamplingRate != null)
+                {
+                    if (__workflow_bodysamplingRate != null)
+                    {
+                        body["sampling_rate"] = ExpressionConverter.ConvertO(__workflow_bodysamplingRate);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sampling_rate"] = 0;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<TextToSpeechResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TextToSpeechResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ExplicitContentDetectionResponse> ExplicitContentDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/image/explicit_content";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExplicitContentDetectionResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<ExplicitContentDetectionResponse>(() =>
+            {
+                var apiCallPath = "/v2/image/explicit_content";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExplicitContentDetectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TextGenerationResponse> TextGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
         {
-            var apiCallPath = "/v2/text/generation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            return new DeferredBodyAction<TextGenerationResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/generation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "openai, cohere";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "openai, cohere";
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodytemperature != null)
-            {
-                if (bodytemperature != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["temperature"] = 0.3;
-                bodypropCount++;
-            }
-
-            if (bodymaxTokens != null)
-            {
-                if (bodymaxTokens != null)
+                if (__workflow_bodytemperature != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    if (__workflow_bodytemperature != null)
+                    {
+                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["temperature"] = 0.3;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["max_tokens"] = 250;
-                bodypropCount++;
-            }
+                if (__workflow_bodymaxTokens != null)
+                {
+                    if (__workflow_bodymaxTokens != null)
+                    {
+                        body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
+                        bodypropCount++;
+                    }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["max_tokens"] = 250;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<TextGenerationResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TextGenerationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ChatResponse> Chat(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodychatGlobalAction = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodymaxTokens = null)
         {
-            var apiCallPath = "/v2/text/chat";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodychatGlobalAction = WorkflowExpression.Compile(bodychatGlobalAction, nameof(bodychatGlobalAction), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            return new DeferredBodyAction<ChatResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/chat";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "openai";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "openai";
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodychatGlobalAction != null)
-            {
-                body["chat_global_action"] = ExpressionConverter.ConvertO(bodychatGlobalAction);
-                bodypropCount++;
-            }
-
-            if (bodytemperature != null)
-            {
-                if (bodytemperature != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["temperature"] = 0.3;
-                bodypropCount++;
-            }
-
-            if (bodymaxTokens != null)
-            {
-                if (bodymaxTokens != null)
+                if (__workflow_bodychatGlobalAction != null)
                 {
-                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    body["chat_global_action"] = ExpressionConverter.ConvertO(__workflow_bodychatGlobalAction);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["max_tokens"] = 250;
-                bodypropCount++;
-            }
+                if (__workflow_bodytemperature != null)
+                {
+                    if (__workflow_bodytemperature != null)
+                    {
+                        body["temperature"] = ExpressionConverter.ConvertO(__workflow_bodytemperature);
+                        bodypropCount++;
+                    }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["temperature"] = 0.3;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodymaxTokens != null)
+                {
+                    if (__workflow_bodymaxTokens != null)
+                    {
+                        body["max_tokens"] = ExpressionConverter.ConvertO(__workflow_bodymaxTokens);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction<ChatResponse>(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["max_tokens"] = 250;
+                    bodypropCount++;
+                }
+
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ChatResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TopicExtractionResponse> TopicExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/v2/text/topic_extraction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<TopicExtractionResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/topic_extraction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "google, openai, ibm";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "google, openai, ibm";
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TopicExtractionResponse>(callPayload);
+                return new ApiConnectionAction<TopicExtractionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<KeywordExtractionResponse> KeywordExtraction(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/v2/text/keyword_extraction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<KeywordExtractionResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/keyword_extraction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "amazon, openai, microsoft, ibm, oneai, emvista";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "amazon, openai, microsoft, ibm, oneai, emvista";
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KeywordExtractionResponse>(callPayload);
+                return new ApiConnectionAction<KeywordExtractionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<NamedEntityRecognitionResponse> NamedEntityRecognition(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/v2/text/named_entity_recognition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<NamedEntityRecognitionResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/named_entity_recognition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "amazon, google, openai, lettria, neuralspace, microsoft, ibm, oneai";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "amazon, google, openai, lettria, neuralspace, microsoft, ibm, oneai";
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<NamedEntityRecognitionResponse>(callPayload);
+                return new ApiConnectionAction<NamedEntityRecognitionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<AnonymizationResponse> Anonymization(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/image/anonymization";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AnonymizationResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<AnonymizationResponse>(() =>
+            {
+                var apiCallPath = "/v2/image/anonymization";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AnonymizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<FaceDetectionResponse> FaceDetection(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/image/face_detection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FaceDetectionResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<FaceDetectionResponse>(() =>
+            {
+                var apiCallPath = "/v2/image/face_detection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FaceDetectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ImageGenerationResponse> ImageGeneration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyresolution = null, Expression<Func<double>> bodynumImages = null)
         {
-            var apiCallPath = "/v2/image/generation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyresolution = WorkflowExpression.Compile(bodyresolution, nameof(bodyresolution), required: false);
+            var __workflow_bodynumImages = WorkflowExpression.Compile(bodynumImages, nameof(bodynumImages), required: false);
+            return new DeferredBodyAction<ImageGenerationResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/image/generation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "stabilityai, openai, deepai";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "stabilityai, openai, deepai";
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodyresolution != null)
-            {
-                if (bodyresolution != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["resolution"] = ExpressionConverter.ConvertO(bodyresolution);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["resolution"] = "512x512";
-                bodypropCount++;
-            }
-
-            if (bodynumImages != null)
-            {
-                if (bodynumImages != null)
+                if (__workflow_bodyresolution != null)
                 {
-                    body["num_images"] = ExpressionConverter.ConvertO(bodynumImages);
+                    if (__workflow_bodyresolution != null)
+                    {
+                        body["resolution"] = ExpressionConverter.ConvertO(__workflow_bodyresolution);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["resolution"] = "512x512";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["num_images"] = 1;
-                bodypropCount++;
-            }
+                if (__workflow_bodynumImages != null)
+                {
+                    if (__workflow_bodynumImages != null)
+                    {
+                        body["num_images"] = ExpressionConverter.ConvertO(__workflow_bodynumImages);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["num_images"] = 1;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ImageGenerationResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ImageGenerationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TranslationResponse> Translation(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodysourceLanguage = null, Expression<Func<string>> bodytargetLanguage = null)
         {
-            var apiCallPath = "/v2/translation/automatic_translation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodysourceLanguage = WorkflowExpression.Compile(bodysourceLanguage, nameof(bodysourceLanguage), required: false);
+            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
+            return new DeferredBodyAction<TranslationResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/translation/automatic_translation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "google, amazon, neuralspace, modernmt, phedone, deepl, openai, microsoft, ibm";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "google, amazon, neuralspace, modernmt, phedone, deepl, openai, microsoft, ibm";
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodysourceLanguage != null)
-            {
-                if (bodysourceLanguage != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["source_language"] = ExpressionConverter.ConvertO(bodysourceLanguage);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["source_language"] = "en";
-                bodypropCount++;
-            }
-
-            if (bodytargetLanguage != null)
-            {
-                if (bodytargetLanguage != null)
+                if (__workflow_bodysourceLanguage != null)
                 {
-                    body["target_language"] = ExpressionConverter.ConvertO(bodytargetLanguage);
+                    if (__workflow_bodysourceLanguage != null)
+                    {
+                        body["source_language"] = ExpressionConverter.ConvertO(__workflow_bodysourceLanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["source_language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["target_language"] = "fr";
-                bodypropCount++;
-            }
+                if (__workflow_bodytargetLanguage != null)
+                {
+                    if (__workflow_bodytargetLanguage != null)
+                    {
+                        body["target_language"] = ExpressionConverter.ConvertO(__workflow_bodytargetLanguage);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["target_language"] = "fr";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<TranslationResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TranslationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<TextModerationResponse> TextModeration(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/v2/text/moderation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<TextModerationResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/moderation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "microsoft, openai";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "microsoft, openai";
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TextModerationResponse>(callPayload);
+                return new ApiConnectionAction<TextModerationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> bodyproviders = null, Expression<Func<double>> bodyoutputSentences = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodylanguage = null)
         {
-            var apiCallPath = "/v2/text/summarize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodyoutputSentences = WorkflowExpression.Compile(bodyoutputSentences, nameof(bodyoutputSentences), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            return new DeferredBodyAction<SummarizationResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/summarize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "cohere, openai, microsoft, emvista, oneai, connexun";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "cohere, openai, microsoft, emvista, oneai, connexun";
-                bodypropCount++;
-            }
-
-            if (bodyoutputSentences != null)
-            {
-                if (bodyoutputSentences != null)
+                if (__workflow_bodyoutputSentences != null)
                 {
-                    body["output_sentences"] = ExpressionConverter.ConvertO(bodyoutputSentences);
+                    if (__workflow_bodyoutputSentences != null)
+                    {
+                        body["output_sentences"] = ExpressionConverter.ConvertO(__workflow_bodyoutputSentences);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["output_sentences"] = 3;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["output_sentences"] = 3;
-                bodypropCount++;
-            }
-
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodytext != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (__workflow_bodylanguage != null)
+                {
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SummarizationResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetection(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/v2/translation/language_detection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<LanguageDetectionResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/translation/language_detection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "google, oneai, neuralspace, modernmt, amazon, ibm, openai, microsoft";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "google, oneai, neuralspace, modernmt, amazon, ibm, openai, microsoft";
-                bodypropCount++;
-            }
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LanguageDetectionResponse>(callPayload);
+                return new ApiConnectionAction<LanguageDetectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> bodyproviders = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytext = null)
         {
-            var apiCallPath = "/v2/text/sentiment_analysis";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyproviders != null)
+            var __workflow_bodyproviders = WorkflowExpression.Compile(bodyproviders, nameof(bodyproviders), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
             {
-                if (bodyproviders != null)
+                var apiCallPath = "/v2/text/sentiment_analysis";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyproviders != null)
                 {
-                    body["providers"] = ExpressionConverter.ConvertO(bodyproviders);
+                    if (__workflow_bodyproviders != null)
+                    {
+                        body["providers"] = ExpressionConverter.ConvertO(__workflow_bodyproviders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["providers"] = "connexun, amazon, google, microsoft, oneai, emvista, openai, ibm, lettria";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["providers"] = "connexun, amazon, google, microsoft, oneai, emvista, openai, ibm, lettria";
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                if (bodylanguage != null)
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+                return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<InvoiceParserResponse> InvoiceParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/ocr/invoice_parser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<InvoiceParserResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<InvoiceParserResponse>(() =>
+            {
+                var apiCallPath = "/v2/ocr/invoice_parser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<InvoiceParserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ResumeParserResponse> ResumeParser(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/ocr/resume_parser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResumeParserResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<ResumeParserResponse>(() =>
+            {
+                var apiCallPath = "/v2/ocr/resume_parser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ResumeParserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<IdentityParserResponse> IdentityParser(Expression<Func<string>> providers, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/ocr/identity_parser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IdentityParserResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<IdentityParserResponse>(() =>
+            {
+                var apiCallPath = "/v2/ocr/identity_parser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IdentityParserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edenai")]
         public IBodyWorkflowAction<ReceiptParserResponse> ReceiptParser(Expression<Func<string>> providers, Expression<Func<string>> language, Expression<Func<object>> file)
         {
-            var apiCallPath = "/v2/ocr/receipt_parser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReceiptParserResponse>(callPayload);
+            var __workflow_providers = WorkflowExpression.Compile(providers, nameof(providers), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            return new DeferredBodyAction<ReceiptParserResponse>(() =>
+            {
+                var apiCallPath = "/v2/ocr/receipt_parser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReceiptParserResponse>(callPayload);
+            });
         }
     }
 

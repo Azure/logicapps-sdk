@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,27 +32,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/notifications/external";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userFormId"] = ExpressionConverter.ConvertO(bodyuserFormId);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["includeSubFormData"] = ExpressionConverter.ConvertO(bodyincludeSubFormData);
-            body["description"] = "Power Automate";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            var __workflow_bodyuserFormId = WorkflowExpression.Compile(bodyuserFormId, nameof(bodyuserFormId), required: true);
+            var __workflow_bodyincludeSubFormData = WorkflowExpression.Compile(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/notifications/external";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userFormId"] = ExpressionConverter.ConvertO(__workflow_bodyuserFormId);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["includeSubFormData"] = ExpressionConverter.ConvertO(__workflow_bodyincludeSubFormData);
+                body["description"] = "Power Automate";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

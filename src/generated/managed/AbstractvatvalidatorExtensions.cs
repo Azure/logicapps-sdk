@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,36 +14,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> vatNumber)
         {
-            var apiCallPath = "/v1/validate/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            var __workflow_vatNumber = WorkflowExpression.Compile(vatNumber, nameof(vatNumber), required: true);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/v1/validate/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vat_number"] = ExpressionConverter.Convert(__workflow_vatNumber);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<CalculateResponse> Calculate(Expression<Func<string>> amount, Expression<Func<string>> countryCode, Expression<Func<bool>> isVatIncl = null, Expression<Func<string>> vatCategory = null)
         {
-            var apiCallPath = "/v1/calculate/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            if (isVatIncl != null)
-                callPayload.Queries["is_vat_incl"] = ExpressionConverter.Convert(isVatIncl);
-            if (vatCategory != null)
-                callPayload.Queries["vat_category"] = ExpressionConverter.Convert(vatCategory);
-            return new ApiConnectionAction<CalculateResponse>(callPayload);
+            var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
+            var __workflow_isVatIncl = WorkflowExpression.Compile(isVatIncl, nameof(isVatIncl), required: false);
+            var __workflow_vatCategory = WorkflowExpression.Compile(vatCategory, nameof(vatCategory), required: false);
+            return new DeferredBodyAction<CalculateResponse>(() =>
+            {
+                var apiCallPath = "/v1/calculate/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["amount"] = ExpressionConverter.Convert(__workflow_amount);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                if (__workflow_isVatIncl != null)
+                    callPayload.Queries["is_vat_incl"] = ExpressionConverter.Convert(__workflow_isVatIncl);
+                if (__workflow_vatCategory != null)
+                    callPayload.Queries["vat_category"] = ExpressionConverter.Convert(__workflow_vatCategory);
+                return new ApiConnectionAction<CalculateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<ListCategoriesResponseItem[]> ListCategories(Expression<Func<string>> countryCode)
         {
-            var apiCallPath = "/v1/categories/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<ListCategoriesResponseItem[]>(callPayload);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
+            return new DeferredBodyAction<ListCategoriesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/categories/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                return new ApiConnectionAction<ListCategoriesResponseItem[]>(callPayload);
+            });
         }
     }
 

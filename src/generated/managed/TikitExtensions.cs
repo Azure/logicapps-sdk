@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,804 +14,950 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketItems> GetAllTickets(Expression<Func<string>> expand = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            var apiCallPath = "/Ticket";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            callPayload.Queries["$top"] = Convert.ToString(10);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<ServiceDeskCoreModelsTicketItems>(callPayload);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsTicketItems>(() =>
+            {
+                var apiCallPath = "/Ticket";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(__workflow_orderby);
+                callPayload.Queries["$top"] = Convert.ToString(10);
+                if (__workflow_top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(__workflow_top);
+                if (__workflow_skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(__workflow_skip);
+                if (__workflow_count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(__workflow_count);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                return new ApiConnectionAction<ServiceDeskCoreModelsTicketItems>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> CreateTicket(Expression<Func<string>> bodyticketrequest, Expression<Func<string>> bodyticketrequesterrequesterEmail, Expression<Func<int>> bodyticketstatus, Expression<Func<int>> bodyticketpriority, Expression<Func<int>> bodyticketticketType, Expression<Func<string>> bodyticketassigneeassigneeEmail, Expression<Func<int>> bodyticketcategory = null, Expression<Func<int>> bodyticketgroup = null, Expression<Func<string>> bodyticketdueDate = null, Expression<Func<string>> bodyticketresolutionDate = null)
         {
-            var apiCallPath = "/AddTicket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var ticketObject = new JObject();
-            var ticketObjectpropCount = 0;
-            ticketObjectpropCount++;
-            ticketObject["Title"] = ExpressionConverter.ConvertO(bodyticketrequest);
-            var requesterObject = new JObject();
-            var requesterObjectpropCount = 0;
-            requesterObjectpropCount++;
-            requesterObject["EMailAddress"] = ExpressionConverter.ConvertO(bodyticketrequesterrequesterEmail);
-            if (requesterObjectpropCount > 0)
+            var __workflow_bodyticketrequest = WorkflowExpression.Compile(bodyticketrequest, nameof(bodyticketrequest), required: true);
+            var __workflow_bodyticketrequesterrequesterEmail = WorkflowExpression.Compile(bodyticketrequesterrequesterEmail, nameof(bodyticketrequesterrequesterEmail), required: true);
+            var __workflow_bodyticketstatus = WorkflowExpression.Compile(bodyticketstatus, nameof(bodyticketstatus), required: true);
+            var __workflow_bodyticketpriority = WorkflowExpression.Compile(bodyticketpriority, nameof(bodyticketpriority), required: true);
+            var __workflow_bodyticketticketType = WorkflowExpression.Compile(bodyticketticketType, nameof(bodyticketticketType), required: true);
+            var __workflow_bodyticketassigneeassigneeEmail = WorkflowExpression.Compile(bodyticketassigneeassigneeEmail, nameof(bodyticketassigneeassigneeEmail), required: true);
+            var __workflow_bodyticketcategory = WorkflowExpression.Compile(bodyticketcategory, nameof(bodyticketcategory), required: false);
+            var __workflow_bodyticketgroup = WorkflowExpression.Compile(bodyticketgroup, nameof(bodyticketgroup), required: false);
+            var __workflow_bodyticketdueDate = WorkflowExpression.Compile(bodyticketdueDate, nameof(bodyticketdueDate), required: false);
+            var __workflow_bodyticketresolutionDate = WorkflowExpression.Compile(bodyticketresolutionDate, nameof(bodyticketresolutionDate), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsTicket>(() =>
             {
-                ticketObject["Requester"] = requesterObject;
+                var apiCallPath = "/AddTicket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var ticketObject = new JObject();
+                var ticketObjectpropCount = 0;
                 ticketObjectpropCount++;
-            }
+                ticketObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodyticketrequest);
+                var requesterObject = new JObject();
+                var requesterObjectpropCount = 0;
+                requesterObjectpropCount++;
+                requesterObject["EMailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyticketrequesterrequesterEmail);
+                if (requesterObjectpropCount > 0)
+                {
+                    ticketObject["Requester"] = requesterObject;
+                    ticketObjectpropCount++;
+                }
 
-            ticketObjectpropCount++;
-            ticketObject["StatusId"] = ExpressionConverter.ConvertO(bodyticketstatus);
-            if (bodyticketcategory != null)
-            {
-                ticketObject["CategoryId"] = ExpressionConverter.ConvertO(bodyticketcategory);
                 ticketObjectpropCount++;
-            }
+                ticketObject["StatusId"] = ExpressionConverter.ConvertO(__workflow_bodyticketstatus);
+                if (__workflow_bodyticketcategory != null)
+                {
+                    ticketObject["CategoryId"] = ExpressionConverter.ConvertO(__workflow_bodyticketcategory);
+                    ticketObjectpropCount++;
+                }
 
-            ticketObjectpropCount++;
-            ticketObject["PriorityId"] = ExpressionConverter.ConvertO(bodyticketpriority);
-            ticketObjectpropCount++;
-            ticketObject["TicketTypeId"] = ExpressionConverter.ConvertO(bodyticketticketType);
-            if (bodyticketgroup != null)
-            {
-                ticketObject["SupportGroupId"] = ExpressionConverter.ConvertO(bodyticketgroup);
                 ticketObjectpropCount++;
-            }
-
-            if (bodyticketdueDate != null)
-            {
-                ticketObject["DueDate"] = ExpressionConverter.ConvertO(bodyticketdueDate);
+                ticketObject["PriorityId"] = ExpressionConverter.ConvertO(__workflow_bodyticketpriority);
                 ticketObjectpropCount++;
-            }
+                ticketObject["TicketTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyticketticketType);
+                if (__workflow_bodyticketgroup != null)
+                {
+                    ticketObject["SupportGroupId"] = ExpressionConverter.ConvertO(__workflow_bodyticketgroup);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketresolutionDate != null)
-            {
-                ticketObject["ResolutionDate"] = ExpressionConverter.ConvertO(bodyticketresolutionDate);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketdueDate != null)
+                {
+                    ticketObject["DueDate"] = ExpressionConverter.ConvertO(__workflow_bodyticketdueDate);
+                    ticketObjectpropCount++;
+                }
 
-            var assigneeObject = new JObject();
-            var assigneeObjectpropCount = 0;
-            assigneeObjectpropCount++;
-            assigneeObject["Email"] = ExpressionConverter.ConvertO(bodyticketassigneeassigneeEmail);
-            if (assigneeObjectpropCount > 0)
-            {
-                ticketObject["Assignee"] = assigneeObject;
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketresolutionDate != null)
+                {
+                    ticketObject["ResolutionDate"] = ExpressionConverter.ConvertO(__workflow_bodyticketresolutionDate);
+                    ticketObjectpropCount++;
+                }
 
-            if (ticketObjectpropCount > 0)
-            {
-                body["Ticket"] = ticketObject;
-                bodypropCount++;
-            }
+                var assigneeObject = new JObject();
+                var assigneeObjectpropCount = 0;
+                assigneeObjectpropCount++;
+                assigneeObject["Email"] = ExpressionConverter.ConvertO(__workflow_bodyticketassigneeassigneeEmail);
+                if (assigneeObjectpropCount > 0)
+                {
+                    ticketObject["Assignee"] = assigneeObject;
+                    ticketObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (ticketObjectpropCount > 0)
+                {
+                    body["Ticket"] = ticketObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> UpdateTicket(Expression<Func<int>> bodyticketenterTikitId, Expression<Func<string>> bodyticketassigneeassigneeEmail, Expression<Func<string>> bodyticketchangeRequestInformation = null, Expression<Func<string>> bodyticketrequesterrequesterEmail = null, Expression<Func<int>> bodyticketstatus = null, Expression<Func<int>> bodyticketcategory = null, Expression<Func<int>> bodyticketpriority = null, Expression<Func<int>> bodyticketticketType = null, Expression<Func<int>> bodyticketgroup = null, Expression<Func<string>> bodyticketdueDate = null, Expression<Func<string>> bodyticketresolutionDate = null)
         {
-            var apiCallPath = "/UpdateTicket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var ticketObject = new JObject();
-            var ticketObjectpropCount = 0;
-            ticketObjectpropCount++;
-            ticketObject["Id"] = ExpressionConverter.ConvertO(bodyticketenterTikitId);
-            if (bodyticketchangeRequestInformation != null)
+            var __workflow_bodyticketenterTikitId = WorkflowExpression.Compile(bodyticketenterTikitId, nameof(bodyticketenterTikitId), required: true);
+            var __workflow_bodyticketassigneeassigneeEmail = WorkflowExpression.Compile(bodyticketassigneeassigneeEmail, nameof(bodyticketassigneeassigneeEmail), required: true);
+            var __workflow_bodyticketchangeRequestInformation = WorkflowExpression.Compile(bodyticketchangeRequestInformation, nameof(bodyticketchangeRequestInformation), required: false);
+            var __workflow_bodyticketrequesterrequesterEmail = WorkflowExpression.Compile(bodyticketrequesterrequesterEmail, nameof(bodyticketrequesterrequesterEmail), required: false);
+            var __workflow_bodyticketstatus = WorkflowExpression.Compile(bodyticketstatus, nameof(bodyticketstatus), required: false);
+            var __workflow_bodyticketcategory = WorkflowExpression.Compile(bodyticketcategory, nameof(bodyticketcategory), required: false);
+            var __workflow_bodyticketpriority = WorkflowExpression.Compile(bodyticketpriority, nameof(bodyticketpriority), required: false);
+            var __workflow_bodyticketticketType = WorkflowExpression.Compile(bodyticketticketType, nameof(bodyticketticketType), required: false);
+            var __workflow_bodyticketgroup = WorkflowExpression.Compile(bodyticketgroup, nameof(bodyticketgroup), required: false);
+            var __workflow_bodyticketdueDate = WorkflowExpression.Compile(bodyticketdueDate, nameof(bodyticketdueDate), required: false);
+            var __workflow_bodyticketresolutionDate = WorkflowExpression.Compile(bodyticketresolutionDate, nameof(bodyticketresolutionDate), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsTicket>(() =>
             {
-                ticketObject["Title"] = ExpressionConverter.ConvertO(bodyticketchangeRequestInformation);
+                var apiCallPath = "/UpdateTicket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var ticketObject = new JObject();
+                var ticketObjectpropCount = 0;
                 ticketObjectpropCount++;
-            }
+                ticketObject["Id"] = ExpressionConverter.ConvertO(__workflow_bodyticketenterTikitId);
+                if (__workflow_bodyticketchangeRequestInformation != null)
+                {
+                    ticketObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodyticketchangeRequestInformation);
+                    ticketObjectpropCount++;
+                }
 
-            var requesterObject = new JObject();
-            var requesterObjectpropCount = 0;
-            if (bodyticketrequesterrequesterEmail != null)
-            {
-                requesterObject["EMailAddress"] = ExpressionConverter.ConvertO(bodyticketrequesterrequesterEmail);
-                requesterObjectpropCount++;
-            }
+                var requesterObject = new JObject();
+                var requesterObjectpropCount = 0;
+                if (__workflow_bodyticketrequesterrequesterEmail != null)
+                {
+                    requesterObject["EMailAddress"] = ExpressionConverter.ConvertO(__workflow_bodyticketrequesterrequesterEmail);
+                    requesterObjectpropCount++;
+                }
 
-            if (requesterObjectpropCount > 0)
-            {
-                ticketObject["Requester"] = requesterObject;
-                ticketObjectpropCount++;
-            }
+                if (requesterObjectpropCount > 0)
+                {
+                    ticketObject["Requester"] = requesterObject;
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketstatus != null)
-            {
-                ticketObject["StatusId"] = ExpressionConverter.ConvertO(bodyticketstatus);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketstatus != null)
+                {
+                    ticketObject["StatusId"] = ExpressionConverter.ConvertO(__workflow_bodyticketstatus);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketcategory != null)
-            {
-                ticketObject["CategoryId"] = ExpressionConverter.ConvertO(bodyticketcategory);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketcategory != null)
+                {
+                    ticketObject["CategoryId"] = ExpressionConverter.ConvertO(__workflow_bodyticketcategory);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketpriority != null)
-            {
-                ticketObject["PriorityId"] = ExpressionConverter.ConvertO(bodyticketpriority);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketpriority != null)
+                {
+                    ticketObject["PriorityId"] = ExpressionConverter.ConvertO(__workflow_bodyticketpriority);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketticketType != null)
-            {
-                ticketObject["TicketTypeId"] = ExpressionConverter.ConvertO(bodyticketticketType);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketticketType != null)
+                {
+                    ticketObject["TicketTypeId"] = ExpressionConverter.ConvertO(__workflow_bodyticketticketType);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketgroup != null)
-            {
-                ticketObject["SupportGroupId"] = ExpressionConverter.ConvertO(bodyticketgroup);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketgroup != null)
+                {
+                    ticketObject["SupportGroupId"] = ExpressionConverter.ConvertO(__workflow_bodyticketgroup);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketdueDate != null)
-            {
-                ticketObject["DueDate"] = ExpressionConverter.ConvertO(bodyticketdueDate);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketdueDate != null)
+                {
+                    ticketObject["DueDate"] = ExpressionConverter.ConvertO(__workflow_bodyticketdueDate);
+                    ticketObjectpropCount++;
+                }
 
-            if (bodyticketresolutionDate != null)
-            {
-                ticketObject["ResolutionDate"] = ExpressionConverter.ConvertO(bodyticketresolutionDate);
-                ticketObjectpropCount++;
-            }
+                if (__workflow_bodyticketresolutionDate != null)
+                {
+                    ticketObject["ResolutionDate"] = ExpressionConverter.ConvertO(__workflow_bodyticketresolutionDate);
+                    ticketObjectpropCount++;
+                }
 
-            var assigneeObject = new JObject();
-            var assigneeObjectpropCount = 0;
-            assigneeObjectpropCount++;
-            assigneeObject["Email"] = ExpressionConverter.ConvertO(bodyticketassigneeassigneeEmail);
-            if (assigneeObjectpropCount > 0)
-            {
-                ticketObject["Assignee"] = assigneeObject;
-                ticketObjectpropCount++;
-            }
+                var assigneeObject = new JObject();
+                var assigneeObjectpropCount = 0;
+                assigneeObjectpropCount++;
+                assigneeObject["Email"] = ExpressionConverter.ConvertO(__workflow_bodyticketassigneeassigneeEmail);
+                if (assigneeObjectpropCount > 0)
+                {
+                    ticketObject["Assignee"] = assigneeObject;
+                    ticketObjectpropCount++;
+                }
 
-            if (ticketObjectpropCount > 0)
-            {
-                body["Ticket"] = ticketObject;
-                bodypropCount++;
-            }
+                if (ticketObjectpropCount > 0)
+                {
+                    body["Ticket"] = ticketObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
+                return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> GetOneTicket(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var apiCallPath = String.Format("/ticket/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            callPayload.Queries["$expand"] = Convert.ToString("Requester,Assignee");
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsTicket>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ticket/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(__workflow_select);
+                callPayload.Queries["$expand"] = Convert.ToString("Requester,Assignee");
+                if (__workflow_expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(__workflow_expand);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                return new ApiConnectionAction<ServiceDeskCoreModelsTicket>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<AddCommentResponse> AddComment(Expression<Func<string>> id, Expression<Func<string>> bodycommentbody = null, Expression<Func<bool>> bodycommentisPublic = null)
         {
-            var apiCallPath = String.Format("/ticket({0})/AddComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var commentObject = new JObject();
-            var commentObjectpropCount = 0;
-            if (bodycommentbody != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodycommentbody = WorkflowExpression.Compile(bodycommentbody, nameof(bodycommentbody), required: false);
+            var __workflow_bodycommentisPublic = WorkflowExpression.Compile(bodycommentisPublic, nameof(bodycommentisPublic), required: false);
+            return new DeferredBodyAction<AddCommentResponse>(() =>
             {
-                commentObject["Body"] = ExpressionConverter.ConvertO(bodycommentbody);
-                commentObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ticket({0})/AddComment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var commentObject = new JObject();
+                var commentObjectpropCount = 0;
+                if (__workflow_bodycommentbody != null)
+                {
+                    commentObject["Body"] = ExpressionConverter.ConvertO(__workflow_bodycommentbody);
+                    commentObjectpropCount++;
+                }
 
-            if (bodycommentisPublic != null)
-            {
-                commentObject["IsPublic"] = ExpressionConverter.ConvertO(bodycommentisPublic);
-                commentObjectpropCount++;
-            }
+                if (__workflow_bodycommentisPublic != null)
+                {
+                    commentObject["IsPublic"] = ExpressionConverter.ConvertO(__workflow_bodycommentisPublic);
+                    commentObjectpropCount++;
+                }
 
-            if (commentObjectpropCount > 0)
-            {
-                body["Comment"] = commentObject;
-                bodypropCount++;
-            }
+                if (commentObjectpropCount > 0)
+                {
+                    body["Comment"] = commentObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddCommentResponse>(callPayload);
+                return new ApiConnectionAction<AddCommentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetFileAttachedResponse> GetFileAttached(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/ticket/{0}/FileAttachments", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFileAttachedResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetFileAttachedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ticket/{0}/FileAttachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetFileAttachedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetTasksResponse> GetTasks(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> taskName = null, Expression<Func<string>> assignee = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/GetTasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lifecycle != null)
-                callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(lifecycle);
-            if (phase != null)
-                callPayload.Queries["Phase"] = ExpressionConverter.Convert(phase);
-            if (taskName != null)
-                callPayload.Queries["TaskName"] = ExpressionConverter.Convert(taskName);
-            if (assignee != null)
-                callPayload.Queries["Assignee"] = ExpressionConverter.Convert(assignee);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<GetTasksResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_lifecycle = WorkflowExpression.Compile(lifecycle, nameof(lifecycle), required: false);
+            var __workflow_phase = WorkflowExpression.Compile(phase, nameof(phase), required: false);
+            var __workflow_taskName = WorkflowExpression.Compile(taskName, nameof(taskName), required: false);
+            var __workflow_assignee = WorkflowExpression.Compile(assignee, nameof(assignee), required: false);
+            return new DeferredBodyAction<GetTasksResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetTasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lifecycle != null)
+                    callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(__workflow_lifecycle);
+                if (__workflow_phase != null)
+                    callPayload.Queries["Phase"] = ExpressionConverter.Convert(__workflow_phase);
+                if (__workflow_taskName != null)
+                    callPayload.Queries["TaskName"] = ExpressionConverter.Convert(__workflow_taskName);
+                if (__workflow_assignee != null)
+                    callPayload.Queries["Assignee"] = ExpressionConverter.Convert(__workflow_assignee);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                return new ApiConnectionAction<GetTasksResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetPowerAutomateTasksResponse> GetPowerAutomateTasks(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> taskName = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/GetPowerAutomateTasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lifecycle != null)
-                callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(lifecycle);
-            if (phase != null)
-                callPayload.Queries["Phase"] = ExpressionConverter.Convert(phase);
-            if (taskName != null)
-                callPayload.Queries["TaskName"] = ExpressionConverter.Convert(taskName);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<GetPowerAutomateTasksResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_lifecycle = WorkflowExpression.Compile(lifecycle, nameof(lifecycle), required: false);
+            var __workflow_phase = WorkflowExpression.Compile(phase, nameof(phase), required: false);
+            var __workflow_taskName = WorkflowExpression.Compile(taskName, nameof(taskName), required: false);
+            return new DeferredBodyAction<GetPowerAutomateTasksResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetPowerAutomateTasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lifecycle != null)
+                    callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(__workflow_lifecycle);
+                if (__workflow_phase != null)
+                    callPayload.Queries["Phase"] = ExpressionConverter.Convert(__workflow_phase);
+                if (__workflow_taskName != null)
+                    callPayload.Queries["TaskName"] = ExpressionConverter.Convert(__workflow_taskName);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                return new ApiConnectionAction<GetPowerAutomateTasksResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> AddTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle, Expression<Func<string>> bodylifecycle = null, Expression<Func<string>> bodyphase = null, Expression<Func<string>> bodyassignee = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/AddTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylifecycle != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodylifecycle = WorkflowExpression.Compile(bodylifecycle, nameof(bodylifecycle), required: false);
+            var __workflow_bodyphase = WorkflowExpression.Compile(bodyphase, nameof(bodyphase), required: false);
+            var __workflow_bodyassignee = WorkflowExpression.Compile(bodyassignee, nameof(bodyassignee), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsTicketTask>(() =>
             {
-                body["Lifecycle"] = ExpressionConverter.ConvertO(bodylifecycle);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/AddTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodylifecycle != null)
+                {
+                    body["Lifecycle"] = ExpressionConverter.ConvertO(__workflow_bodylifecycle);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodyphase != null)
+                {
+                    body["PhaseId"] = ExpressionConverter.ConvertO(__workflow_bodyphase);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                if (__workflow_bodyassignee != null)
+                {
+                    body["Assignee"] = ExpressionConverter.ConvertO(__workflow_bodyassignee);
+                    bodypropCount++;
+                }
 
-            if (bodyphase != null)
-            {
-                body["PhaseId"] = ExpressionConverter.ConvertO(bodyphase);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodyassignee != null)
-            {
-                body["Assignee"] = ExpressionConverter.ConvertO(bodyassignee);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ServiceDeskCoreModelsTicketTask>(callPayload);
+                return new ApiConnectionAction<ServiceDeskCoreModelsTicketTask>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyassignee = null)
         {
-            var apiCallPath = String.Format("/TicketTask({0})/UpdateTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyassignee = WorkflowExpression.Compile(bodyassignee, nameof(bodyassignee), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsTicketTask>(() =>
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/TicketTask({0})/UpdateTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyassignee != null)
-            {
-                body["Assignee"] = ExpressionConverter.ConvertO(bodyassignee);
-                bodypropCount++;
-            }
+                if (__workflow_bodyassignee != null)
+                {
+                    body["Assignee"] = ExpressionConverter.ConvertO(__workflow_bodyassignee);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ServiceDeskCoreModelsTicketTask>(callPayload);
+                return new ApiConnectionAction<ServiceDeskCoreModelsTicketTask>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsPowerAutomateTask> UpdatePowerAutomateTask(Expression<Func<string>> id, Expression<Func<string>> bodystatusId = null)
         {
-            var apiCallPath = String.Format("/TicketTask({0})/UpdatePowerAutomateTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystatusId != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodystatusId = WorkflowExpression.Compile(bodystatusId, nameof(bodystatusId), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsPowerAutomateTask>(() =>
             {
-                body["StatusId"] = ExpressionConverter.ConvertO(bodystatusId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/TicketTask({0})/UpdatePowerAutomateTask", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodystatusId != null)
+                {
+                    body["StatusId"] = ExpressionConverter.ConvertO(__workflow_bodystatusId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ServiceDeskCoreModelsPowerAutomateTask>(callPayload);
+                return new ApiConnectionAction<ServiceDeskCoreModelsPowerAutomateTask>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<GetApprovalsResponse> GetApprovals(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> approvalName = null, Expression<Func<string>> approvers = null, Expression<Func<string>> additionalDetails = null)
         {
-            var apiCallPath = String.Format("/Ticket({0})/GetApprovals", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lifecycle != null)
-                callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(lifecycle);
-            if (phase != null)
-                callPayload.Queries["Phase"] = ExpressionConverter.Convert(phase);
-            if (approvalName != null)
-                callPayload.Queries["ApprovalName"] = ExpressionConverter.Convert(approvalName);
-            if (approvers != null)
-                callPayload.Queries["Approvers"] = ExpressionConverter.Convert(approvers);
-            if (additionalDetails != null)
-                callPayload.Queries["AdditionalDetails"] = ExpressionConverter.Convert(additionalDetails);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<GetApprovalsResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_lifecycle = WorkflowExpression.Compile(lifecycle, nameof(lifecycle), required: false);
+            var __workflow_phase = WorkflowExpression.Compile(phase, nameof(phase), required: false);
+            var __workflow_approvalName = WorkflowExpression.Compile(approvalName, nameof(approvalName), required: false);
+            var __workflow_approvers = WorkflowExpression.Compile(approvers, nameof(approvers), required: false);
+            var __workflow_additionalDetails = WorkflowExpression.Compile(additionalDetails, nameof(additionalDetails), required: false);
+            return new DeferredBodyAction<GetApprovalsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Ticket({0})/GetApprovals", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_lifecycle != null)
+                    callPayload.Queries["Lifecycle"] = ExpressionConverter.Convert(__workflow_lifecycle);
+                if (__workflow_phase != null)
+                    callPayload.Queries["Phase"] = ExpressionConverter.Convert(__workflow_phase);
+                if (__workflow_approvalName != null)
+                    callPayload.Queries["ApprovalName"] = ExpressionConverter.Convert(__workflow_approvalName);
+                if (__workflow_approvers != null)
+                    callPayload.Queries["Approvers"] = ExpressionConverter.Convert(__workflow_approvers);
+                if (__workflow_additionalDetails != null)
+                    callPayload.Queries["AdditionalDetails"] = ExpressionConverter.Convert(__workflow_additionalDetails);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                return new ApiConnectionAction<GetApprovalsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
         public IBodyWorkflowAction<ServiceDeskCoreModelsApprovals> UpdateApproval(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyadditionalDetails = null, Expression<Func<bodyrequiredByAllInput>> bodyrequiredByAll = null, Expression<Func<string>> bodyapprovers = null)
         {
-            var apiCallPath = String.Format("/Approvals({0})/UpdateApproval", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyadditionalDetails = WorkflowExpression.Compile(bodyadditionalDetails, nameof(bodyadditionalDetails), required: false);
+            var __workflow_bodyrequiredByAll = WorkflowExpression.Compile(bodyrequiredByAll, nameof(bodyrequiredByAll), required: false);
+            var __workflow_bodyapprovers = WorkflowExpression.Compile(bodyapprovers, nameof(bodyapprovers), required: false);
+            return new DeferredBodyAction<ServiceDeskCoreModelsApprovals>(() =>
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Approvals({0})/UpdateApproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-requested-by"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyadditionalDetails != null)
-            {
-                body["AdditionalDetails"] = ExpressionConverter.ConvertO(bodyadditionalDetails);
-                bodypropCount++;
-            }
+                if (__workflow_bodyadditionalDetails != null)
+                {
+                    body["AdditionalDetails"] = ExpressionConverter.ConvertO(__workflow_bodyadditionalDetails);
+                    bodypropCount++;
+                }
 
-            if (bodyrequiredByAll != null)
-            {
-                body["RequiredByAll"] = ExpressionConverter.ConvertO(bodyrequiredByAll);
-                bodypropCount++;
-            }
+                if (__workflow_bodyrequiredByAll != null)
+                {
+                    body["RequiredByAll"] = ExpressionConverter.ConvertO(__workflow_bodyrequiredByAll);
+                    bodypropCount++;
+                }
 
-            if (bodyapprovers != null)
-            {
-                body["Approvers"] = ExpressionConverter.ConvertO(bodyapprovers);
-                bodypropCount++;
-            }
+                if (__workflow_bodyapprovers != null)
+                {
+                    body["Approvers"] = ExpressionConverter.ConvertO(__workflow_bodyapprovers);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ServiceDeskCoreModelsApprovals>(callPayload);
+                return new ApiConnectionAction<ServiceDeskCoreModelsApprovals>(callPayload);
+            });
         }
     }
 
     public class TikitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/AddTicketWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webHookObject = new JObject();
-            var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
-            webHookObjectpropCount++;
-            if (bodywebHookrequesters != null)
+            var __workflow_bodywebHookrequesters = WorkflowExpression.Compile(bodywebHookrequesters, nameof(bodywebHookrequesters), required: false);
+            var __workflow_bodywebHookassignees = WorkflowExpression.Compile(bodywebHookassignees, nameof(bodywebHookassignees), required: false);
+            var __workflow_bodywebHooktitle = WorkflowExpression.Compile(bodywebHooktitle, nameof(bodywebHooktitle), required: false);
+            var __workflow_bodywebHookstatus = WorkflowExpression.Compile(bodywebHookstatus, nameof(bodywebHookstatus), required: false);
+            var __workflow_bodywebHookpriority = WorkflowExpression.Compile(bodywebHookpriority, nameof(bodywebHookpriority), required: false);
+            var __workflow_bodywebHookgroup = WorkflowExpression.Compile(bodywebHookgroup, nameof(bodywebHookgroup), required: false);
+            var __workflow_bodywebHookselectTemplate = WorkflowExpression.Compile(bodywebHookselectTemplate, nameof(bodywebHookselectTemplate), required: false);
+            return new DeferredBodyTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(() =>
             {
-                webHookObject["Requesters"] = ExpressionConverter.ConvertO(bodywebHookrequesters);
+                var apiCallPath = "/AddTicketWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webHookObject = new JObject();
+                var webHookObjectpropCount = 0;
+                webHookObject["URL"] = "#{listCallbackUrl()}";
                 webHookObjectpropCount++;
-            }
-
-            if (bodywebHookassignees != null)
-            {
-                webHookObject["Assignees"] = ExpressionConverter.ConvertO(bodywebHookassignees);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHooktitle != null)
-            {
-                webHookObject["Title"] = ExpressionConverter.ConvertO(bodywebHooktitle);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookstatus != null)
-            {
-                if (bodywebHookstatus != null)
+                if (__workflow_bodywebHookrequesters != null)
                 {
-                    webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                    webHookObject["Requesters"] = ExpressionConverter.ConvertO(__workflow_bodywebHookrequesters);
                     webHookObjectpropCount++;
                 }
 
-                webHookObjectpropCount++;
-            }
-            else
-            {
-                webHookObject["Status"] = "Any";
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookpriority != null)
-            {
-                if (bodywebHookpriority != null)
+                if (__workflow_bodywebHookassignees != null)
                 {
-                    webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                    webHookObject["Assignees"] = ExpressionConverter.ConvertO(__workflow_bodywebHookassignees);
                     webHookObjectpropCount++;
                 }
 
-                webHookObjectpropCount++;
-            }
-            else
-            {
-                webHookObject["Priority"] = "Any";
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookgroup != null)
-            {
-                webHookObject["GroupId"] = ExpressionConverter.ConvertO(bodywebHookgroup);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookselectTemplate != null)
-            {
-                webHookObject["TemplateId"] = ExpressionConverter.ConvertO(bodywebHookselectTemplate);
-                webHookObjectpropCount++;
-            }
-
-            if (webHookObjectpropCount > 0)
-            {
-                body["WebHook"] = webHookObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/UpdateTicketWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webHookObject = new JObject();
-            var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
-            webHookObjectpropCount++;
-            if (bodywebHookrequesters != null)
-            {
-                webHookObject["Requesters"] = ExpressionConverter.ConvertO(bodywebHookrequesters);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookassignees != null)
-            {
-                webHookObject["Assignees"] = ExpressionConverter.ConvertO(bodywebHookassignees);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHooktitle != null)
-            {
-                webHookObject["Title"] = ExpressionConverter.ConvertO(bodywebHooktitle);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookstatus != null)
-            {
-                if (bodywebHookstatus != null)
+                if (__workflow_bodywebHooktitle != null)
                 {
-                    webHookObject["Status"] = ExpressionConverter.ConvertO(bodywebHookstatus);
+                    webHookObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodywebHooktitle);
                     webHookObjectpropCount++;
                 }
 
-                webHookObjectpropCount++;
-            }
-            else
-            {
-                webHookObject["Status"] = "Any";
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookpriority != null)
-            {
-                if (bodywebHookpriority != null)
+                if (__workflow_bodywebHookstatus != null)
                 {
-                    webHookObject["Priority"] = ExpressionConverter.ConvertO(bodywebHookpriority);
+                    if (__workflow_bodywebHookstatus != null)
+                    {
+                        webHookObject["Status"] = ExpressionConverter.ConvertO(__workflow_bodywebHookstatus);
+                        webHookObjectpropCount++;
+                    }
+
+                    webHookObjectpropCount++;
+                }
+                else
+                {
+                    webHookObject["Status"] = "Any";
                     webHookObjectpropCount++;
                 }
 
-                webHookObjectpropCount++;
-            }
-            else
-            {
-                webHookObject["Priority"] = "Any";
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookgroup != null)
-            {
-                webHookObject["GroupId"] = ExpressionConverter.ConvertO(bodywebHookgroup);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookselectTemplate != null)
-            {
-                webHookObject["TemplateId"] = ExpressionConverter.ConvertO(bodywebHookselectTemplate);
-                webHookObjectpropCount++;
-            }
-
-            if (webHookObjectpropCount > 0)
-            {
-                body["WebHook"] = webHookObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook(Expression<Func<string>> bodywebHookcommenter = null, Expression<Func<string>> bodywebHookcommentStringContain = null, Expression<Func<bodywebHookisPublicCommentInput>> bodywebHookisPublicComment = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/AddCommentTicketWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webHookObject = new JObject();
-            var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
-            webHookObjectpropCount++;
-            if (bodywebHookcommenter != null)
-            {
-                webHookObject["Commenter"] = ExpressionConverter.ConvertO(bodywebHookcommenter);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookcommentStringContain != null)
-            {
-                webHookObject["CommentStringContain"] = ExpressionConverter.ConvertO(bodywebHookcommentStringContain);
-                webHookObjectpropCount++;
-            }
-
-            if (bodywebHookisPublicComment != null)
-            {
-                if (bodywebHookisPublicComment != null)
+                if (__workflow_bodywebHookpriority != null)
                 {
-                    webHookObject["IsPublicComment"] = ExpressionConverter.ConvertO(bodywebHookisPublicComment);
+                    if (__workflow_bodywebHookpriority != null)
+                    {
+                        webHookObject["Priority"] = ExpressionConverter.ConvertO(__workflow_bodywebHookpriority);
+                        webHookObjectpropCount++;
+                    }
+
+                    webHookObjectpropCount++;
+                }
+                else
+                {
+                    webHookObject["Priority"] = "Any";
                     webHookObjectpropCount++;
                 }
 
-                webHookObjectpropCount++;
-            }
-            else
-            {
-                webHookObject["IsPublicComment"] = "Any";
-                webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHookgroup != null)
+                {
+                    webHookObject["GroupId"] = ExpressionConverter.ConvertO(__workflow_bodywebHookgroup);
+                    webHookObjectpropCount++;
+                }
 
-            if (webHookObjectpropCount > 0)
-            {
-                body["WebHook"] = webHookObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodywebHookselectTemplate != null)
+                {
+                    webHookObject["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodywebHookselectTemplate);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (webHookObjectpropCount > 0)
+                {
+                    body["WebHook"] = webHookObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<string>> bodywebHooklifecyclePowerAutomateName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/ActivatePowerAutomateTaskWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webHookObject = new JObject();
-            var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
-            webHookObjectpropCount++;
-            if (bodywebHooklifecycleId != null)
+            var __workflow_bodywebHookrequesters = WorkflowExpression.Compile(bodywebHookrequesters, nameof(bodywebHookrequesters), required: false);
+            var __workflow_bodywebHookassignees = WorkflowExpression.Compile(bodywebHookassignees, nameof(bodywebHookassignees), required: false);
+            var __workflow_bodywebHooktitle = WorkflowExpression.Compile(bodywebHooktitle, nameof(bodywebHooktitle), required: false);
+            var __workflow_bodywebHookstatus = WorkflowExpression.Compile(bodywebHookstatus, nameof(bodywebHookstatus), required: false);
+            var __workflow_bodywebHookpriority = WorkflowExpression.Compile(bodywebHookpriority, nameof(bodywebHookpriority), required: false);
+            var __workflow_bodywebHookgroup = WorkflowExpression.Compile(bodywebHookgroup, nameof(bodywebHookgroup), required: false);
+            var __workflow_bodywebHookselectTemplate = WorkflowExpression.Compile(bodywebHookselectTemplate, nameof(bodywebHookselectTemplate), required: false);
+            return new DeferredBodyTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(() =>
             {
-                webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleId);
+                var apiCallPath = "/UpdateTicketWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webHookObject = new JObject();
+                var webHookObjectpropCount = 0;
+                webHookObject["URL"] = "#{listCallbackUrl()}";
                 webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHookrequesters != null)
+                {
+                    webHookObject["Requesters"] = ExpressionConverter.ConvertO(__workflow_bodywebHookrequesters);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodywebHooklifecyclePhaseId != null)
-            {
-                webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePhaseId);
-                webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHookassignees != null)
+                {
+                    webHookObject["Assignees"] = ExpressionConverter.ConvertO(__workflow_bodywebHookassignees);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodywebHooklifecyclePowerAutomateName != null)
-            {
-                webHookObject["LifecyclePowerAutomateName"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePowerAutomateName);
-                webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHooktitle != null)
+                {
+                    webHookObject["Title"] = ExpressionConverter.ConvertO(__workflow_bodywebHooktitle);
+                    webHookObjectpropCount++;
+                }
 
-            if (webHookObjectpropCount > 0)
-            {
-                body["WebHook"] = webHookObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodywebHookstatus != null)
+                {
+                    if (__workflow_bodywebHookstatus != null)
+                    {
+                        webHookObject["Status"] = ExpressionConverter.ConvertO(__workflow_bodywebHookstatus);
+                        webHookObjectpropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    webHookObjectpropCount++;
+                }
+                else
+                {
+                    webHookObject["Status"] = "Any";
+                    webHookObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger<ServiceDeskCoreModelsTicketTask>(callPayload, triggerName, recurrence);
+                if (__workflow_bodywebHookpriority != null)
+                {
+                    if (__workflow_bodywebHookpriority != null)
+                    {
+                        webHookObject["Priority"] = ExpressionConverter.ConvertO(__workflow_bodywebHookpriority);
+                        webHookObjectpropCount++;
+                    }
+
+                    webHookObjectpropCount++;
+                }
+                else
+                {
+                    webHookObject["Priority"] = "Any";
+                    webHookObjectpropCount++;
+                }
+
+                if (__workflow_bodywebHookgroup != null)
+                {
+                    webHookObject["GroupId"] = ExpressionConverter.ConvertO(__workflow_bodywebHookgroup);
+                    webHookObjectpropCount++;
+                }
+
+                if (__workflow_bodywebHookselectTemplate != null)
+                {
+                    webHookObject["TemplateId"] = ExpressionConverter.ConvertO(__workflow_bodywebHookselectTemplate);
+                    webHookObjectpropCount++;
+                }
+
+                if (webHookObjectpropCount > 0)
+                {
+                    body["WebHook"] = webHookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook(Expression<Func<string>> bodywebHookcommenter = null, Expression<Func<string>> bodywebHookcommentStringContain = null, Expression<Func<bodywebHookisPublicCommentInput>> bodywebHookisPublicComment = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/ChangeLifecyclePhaseWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webHookObject = new JObject();
-            var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
-            webHookObjectpropCount++;
-            if (bodywebHooklifecycleId != null)
+            var __workflow_bodywebHookcommenter = WorkflowExpression.Compile(bodywebHookcommenter, nameof(bodywebHookcommenter), required: false);
+            var __workflow_bodywebHookcommentStringContain = WorkflowExpression.Compile(bodywebHookcommentStringContain, nameof(bodywebHookcommentStringContain), required: false);
+            var __workflow_bodywebHookisPublicComment = WorkflowExpression.Compile(bodywebHookisPublicComment, nameof(bodywebHookisPublicComment), required: false);
+            return new DeferredBodyTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(() =>
             {
-                webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleId);
+                var apiCallPath = "/AddCommentTicketWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webHookObject = new JObject();
+                var webHookObjectpropCount = 0;
+                webHookObject["URL"] = "#{listCallbackUrl()}";
                 webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHookcommenter != null)
+                {
+                    webHookObject["Commenter"] = ExpressionConverter.ConvertO(__workflow_bodywebHookcommenter);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodywebHooklifecyclePhaseId != null)
-            {
-                webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePhaseId);
-                webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHookcommentStringContain != null)
+                {
+                    webHookObject["CommentStringContain"] = ExpressionConverter.ConvertO(__workflow_bodywebHookcommentStringContain);
+                    webHookObjectpropCount++;
+                }
 
-            if (webHookObjectpropCount > 0)
-            {
-                body["WebHook"] = webHookObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodywebHookisPublicComment != null)
+                {
+                    if (__workflow_bodywebHookisPublicComment != null)
+                    {
+                        webHookObject["IsPublicComment"] = ExpressionConverter.ConvertO(__workflow_bodywebHookisPublicComment);
+                        webHookObjectpropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    webHookObjectpropCount++;
+                }
+                else
+                {
+                    webHookObject["IsPublicComment"] = "Any";
+                    webHookObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
+                if (webHookObjectpropCount > 0)
+                {
+                    body["WebHook"] = webHookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<int>> bodywebHooklifecycleTransitionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<string>> bodywebHooklifecyclePowerAutomateName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/EngageLifecycleTransitionWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webHookObject = new JObject();
-            var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
-            webHookObjectpropCount++;
-            if (bodywebHooklifecycleId != null)
+            var __workflow_bodywebHooklifecycleId = WorkflowExpression.Compile(bodywebHooklifecycleId, nameof(bodywebHooklifecycleId), required: false);
+            var __workflow_bodywebHooklifecyclePhaseId = WorkflowExpression.Compile(bodywebHooklifecyclePhaseId, nameof(bodywebHooklifecyclePhaseId), required: false);
+            var __workflow_bodywebHooklifecyclePowerAutomateName = WorkflowExpression.Compile(bodywebHooklifecyclePowerAutomateName, nameof(bodywebHooklifecyclePowerAutomateName), required: false);
+            return new DeferredBodyTrigger<ServiceDeskCoreModelsTicketTask>(() =>
             {
-                webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleId);
+                var apiCallPath = "/ActivatePowerAutomateTaskWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webHookObject = new JObject();
+                var webHookObjectpropCount = 0;
+                webHookObject["URL"] = "#{listCallbackUrl()}";
                 webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHooklifecycleId != null)
+                {
+                    webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecycleId);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodywebHooklifecyclePhaseId != null)
+                if (__workflow_bodywebHooklifecyclePhaseId != null)
+                {
+                    webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecyclePhaseId);
+                    webHookObjectpropCount++;
+                }
+
+                if (__workflow_bodywebHooklifecyclePowerAutomateName != null)
+                {
+                    webHookObject["LifecyclePowerAutomateName"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecyclePowerAutomateName);
+                    webHookObjectpropCount++;
+                }
+
+                if (webHookObjectpropCount > 0)
+                {
+                    body["WebHook"] = webHookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ServiceDeskCoreModelsTicketTask>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodywebHooklifecycleId = WorkflowExpression.Compile(bodywebHooklifecycleId, nameof(bodywebHooklifecycleId), required: false);
+            var __workflow_bodywebHooklifecyclePhaseId = WorkflowExpression.Compile(bodywebHooklifecyclePhaseId, nameof(bodywebHooklifecyclePhaseId), required: false);
+            return new DeferredBodyTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(() =>
             {
-                webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(bodywebHooklifecyclePhaseId);
+                var apiCallPath = "/ChangeLifecyclePhaseWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webHookObject = new JObject();
+                var webHookObjectpropCount = 0;
+                webHookObject["URL"] = "#{listCallbackUrl()}";
                 webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHooklifecycleId != null)
+                {
+                    webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecycleId);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodywebHooklifecycleTransitionId != null)
+                if (__workflow_bodywebHooklifecyclePhaseId != null)
+                {
+                    webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecyclePhaseId);
+                    webHookObjectpropCount++;
+                }
+
+                if (webHookObjectpropCount > 0)
+                {
+                    body["WebHook"] = webHookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
+        }
+
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<int>> bodywebHooklifecycleTransitionId = null, FlowRecurrence recurrence = null)
+        {
+            var __workflow_bodywebHooklifecycleId = WorkflowExpression.Compile(bodywebHooklifecycleId, nameof(bodywebHooklifecycleId), required: false);
+            var __workflow_bodywebHooklifecyclePhaseId = WorkflowExpression.Compile(bodywebHooklifecyclePhaseId, nameof(bodywebHooklifecyclePhaseId), required: false);
+            var __workflow_bodywebHooklifecycleTransitionId = WorkflowExpression.Compile(bodywebHooklifecycleTransitionId, nameof(bodywebHooklifecycleTransitionId), required: false);
+            return new DeferredBodyTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(() =>
             {
-                webHookObject["LifecycleTransitionId"] = ExpressionConverter.ConvertO(bodywebHooklifecycleTransitionId);
+                var apiCallPath = "/EngageLifecycleTransitionWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webHookObject = new JObject();
+                var webHookObjectpropCount = 0;
+                webHookObject["URL"] = "#{listCallbackUrl()}";
                 webHookObjectpropCount++;
-            }
+                if (__workflow_bodywebHooklifecycleId != null)
+                {
+                    webHookObject["LifecycleId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecycleId);
+                    webHookObjectpropCount++;
+                }
 
-            if (webHookObjectpropCount > 0)
-            {
-                body["WebHook"] = webHookObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodywebHooklifecyclePhaseId != null)
+                {
+                    webHookObject["LifecyclePhaseId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecyclePhaseId);
+                    webHookObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodywebHooklifecycleTransitionId != null)
+                {
+                    webHookObject["LifecycleTransitionId"] = ExpressionConverter.ConvertO(__workflow_bodywebHooklifecycleTransitionId);
+                    webHookObjectpropCount++;
+                }
 
-            return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
+                if (webHookObjectpropCount > 0)
+                {
+                    body["WebHook"] = webHookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -1013,6 +1159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         public string UserName { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrequiredByAllInput
     {
         True,
@@ -1041,6 +1188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         public int PowerAutomateTaskId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodywebHookpriorityInput
     {
         Any,
@@ -1052,6 +1200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         _3Low
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodywebHookisPublicCommentInput
     {
         Any,

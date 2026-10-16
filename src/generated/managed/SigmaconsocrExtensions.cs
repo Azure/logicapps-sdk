@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,113 +14,143 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sigmaconsocr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ProcessjobResponse> Processjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyprocess, Expression<Func<string>> bodyaction, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
-            var apiCallPath = "/api/job/process";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Process"] = ExpressionConverter.ConvertO(bodyprocess);
-            bodypropCount++;
-            body["Action"] = ExpressionConverter.ConvertO(bodyaction);
-            bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
-            if (bodywaitForResult != null)
+            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_bodyprocess = WorkflowExpression.Compile(bodyprocess, nameof(bodyprocess), required: true);
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
+            var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
+            var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
+            return new DeferredBodyAction<ProcessjobResponse>(() =>
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                var apiCallPath = "/api/job/process";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Process"] = ExpressionConverter.ConvertO(__workflow_bodyprocess);
+                bodypropCount++;
+                body["Action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
+                bodypropCount++;
+                body["CustomerCode"] = ExpressionConverter.ConvertO(__workflow_bodycustomerCode);
+                if (__workflow_bodywaitForResult != null)
+                {
+                    body["WaitForResult"] = ExpressionConverter.ConvertO(__workflow_bodywaitForResult);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ProcessjobResponse>(callPayload);
+                return new ApiConnectionAction<ProcessjobResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ConsolidationjobResponse> Consolidationjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyconsoCode, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
-            var apiCallPath = "/api/job/consolidation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ConsoCode"] = ExpressionConverter.ConvertO(bodyconsoCode);
-            bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
-            if (bodywaitForResult != null)
+            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_bodyconsoCode = WorkflowExpression.Compile(bodyconsoCode, nameof(bodyconsoCode), required: true);
+            var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
+            var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
+            return new DeferredBodyAction<ConsolidationjobResponse>(() =>
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                var apiCallPath = "/api/job/consolidation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ConsoCode"] = ExpressionConverter.ConvertO(__workflow_bodyconsoCode);
+                bodypropCount++;
+                body["CustomerCode"] = ExpressionConverter.ConvertO(__workflow_bodycustomerCode);
+                if (__workflow_bodywaitForResult != null)
+                {
+                    body["WaitForResult"] = ExpressionConverter.ConvertO(__workflow_bodywaitForResult);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ConsolidationjobResponse>(callPayload);
+                return new ApiConnectionAction<ConsolidationjobResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ScheduledjobResponse> Scheduledjob(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyjobScheduleName, Expression<Func<string>> bodycustomerCode, Expression<Func<bool>> bodywaitForResult = null)
         {
-            var apiCallPath = "/api/job/scheduledjob";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["JobScheduleName"] = ExpressionConverter.ConvertO(bodyjobScheduleName);
-            bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
-            if (bodywaitForResult != null)
+            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_bodyjobScheduleName = WorkflowExpression.Compile(bodyjobScheduleName, nameof(bodyjobScheduleName), required: true);
+            var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
+            var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
+            return new DeferredBodyAction<ScheduledjobResponse>(() =>
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                var apiCallPath = "/api/job/scheduledjob";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["JobScheduleName"] = ExpressionConverter.ConvertO(__workflow_bodyjobScheduleName);
+                bodypropCount++;
+                body["CustomerCode"] = ExpressionConverter.ConvertO(__workflow_bodycustomerCode);
+                if (__workflow_bodywaitForResult != null)
+                {
+                    body["WaitForResult"] = ExpressionConverter.ConvertO(__workflow_bodywaitForResult);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduledjobResponse>(callPayload);
+                return new ApiConnectionAction<ScheduledjobResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sigmaconsocr")]
         public IBodyWorkflowAction<ImportFileResponse> ImportFile(Expression<Func<string>> applicationURL, Expression<Func<string>> bodyimportStructureCode, Expression<Func<string>> bodycustomerCode, Expression<Func<string>> bodybase64File, Expression<Func<bool>> bodywaitForResult = null)
         {
-            var apiCallPath = "/api/hub/import";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(applicationURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ImportStructureCode"] = ExpressionConverter.ConvertO(bodyimportStructureCode);
-            bodypropCount++;
-            body["CustomerCode"] = ExpressionConverter.ConvertO(bodycustomerCode);
-            bodypropCount++;
-            body["Base64File"] = ExpressionConverter.ConvertO(bodybase64File);
-            if (bodywaitForResult != null)
+            var __workflow_applicationURL = WorkflowExpression.Compile(applicationURL, nameof(applicationURL), required: true);
+            var __workflow_bodyimportStructureCode = WorkflowExpression.Compile(bodyimportStructureCode, nameof(bodyimportStructureCode), required: true);
+            var __workflow_bodycustomerCode = WorkflowExpression.Compile(bodycustomerCode, nameof(bodycustomerCode), required: true);
+            var __workflow_bodybase64File = WorkflowExpression.Compile(bodybase64File, nameof(bodybase64File), required: true);
+            var __workflow_bodywaitForResult = WorkflowExpression.Compile(bodywaitForResult, nameof(bodywaitForResult), required: false);
+            return new DeferredBodyAction<ImportFileResponse>(() =>
             {
-                body["WaitForResult"] = ExpressionConverter.ConvertO(bodywaitForResult);
+                var apiCallPath = "/api/hub/import";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ApplicationURL"] = ExpressionConverter.Convert(__workflow_applicationURL);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ImportStructureCode"] = ExpressionConverter.ConvertO(__workflow_bodyimportStructureCode);
+                bodypropCount++;
+                body["CustomerCode"] = ExpressionConverter.ConvertO(__workflow_bodycustomerCode);
+                bodypropCount++;
+                body["Base64File"] = ExpressionConverter.ConvertO(__workflow_bodybase64File);
+                if (__workflow_bodywaitForResult != null)
+                {
+                    body["WaitForResult"] = ExpressionConverter.ConvertO(__workflow_bodywaitForResult);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ImportFileResponse>(callPayload);
+                return new ApiConnectionAction<ImportFileResponse>(callPayload);
+            });
         }
     }
 

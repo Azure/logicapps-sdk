@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Workflows.Sdk" Version="$(WorkflowSdkVersion)"
+                      Condition="'$(WorkflowSdkVersion)' != ''" />
+  </ItemGroup>
+  <Target Name="RequireWorkflowSdkVersion" BeforeTargets="Restore;Build"
+          Condition="'$(WorkflowSdkVersion)' == ''">
+    <Error Text="WorkflowSdkVersion must be supplied by eng\Test-PackageConsumer.ps1." />
+  </Target>
+</Project>

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,221 +23,267 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<GetProcessedEmailsResponse> GetProcessedEmails(Expression<Func<string>> mailagentKey, Expression<Func<string>> subject = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null, Expression<Func<string>> requestId = null, Expression<Func<bool>> isHb = null, Expression<Func<bool>> isSb = null)
         {
-            var apiCallPath = "/v1.0/email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailagent_key"] = ExpressionConverter.Convert(mailagentKey);
-            if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (dateFrom != null)
-                callPayload.Queries["date_from"] = ExpressionConverter.Convert(dateFrom);
-            if (dateTo != null)
-                callPayload.Queries["date_to"] = ExpressionConverter.Convert(dateTo);
-            if (requestId != null)
-                callPayload.Queries["request_id"] = ExpressionConverter.Convert(requestId);
-            callPayload.Queries["is_hb"] = Convert.ToString(false);
-            if (isHb != null)
-                callPayload.Queries["is_hb"] = ExpressionConverter.Convert(isHb);
-            callPayload.Queries["is_sb"] = Convert.ToString(false);
-            if (isSb != null)
-                callPayload.Queries["is_sb"] = ExpressionConverter.Convert(isSb);
-            return new ApiConnectionAction<GetProcessedEmailsResponse>(callPayload);
+            var __workflow_mailagentKey = WorkflowExpression.Compile(mailagentKey, nameof(mailagentKey), required: true);
+            var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: false);
+            var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: false);
+            var __workflow_isHb = WorkflowExpression.Compile(isHb, nameof(isHb), required: false);
+            var __workflow_isSb = WorkflowExpression.Compile(isSb, nameof(isSb), required: false);
+            return new DeferredBodyAction<GetProcessedEmailsResponse>(() =>
+            {
+                var apiCallPath = "/v1.0/email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["mailagent_key"] = ExpressionConverter.Convert(__workflow_mailagentKey);
+                if (__workflow_subject != null)
+                    callPayload.Queries["subject"] = ExpressionConverter.Convert(__workflow_subject);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                if (__workflow_dateFrom != null)
+                    callPayload.Queries["date_from"] = ExpressionConverter.Convert(__workflow_dateFrom);
+                if (__workflow_dateTo != null)
+                    callPayload.Queries["date_to"] = ExpressionConverter.Convert(__workflow_dateTo);
+                if (__workflow_requestId != null)
+                    callPayload.Queries["request_id"] = ExpressionConverter.Convert(__workflow_requestId);
+                callPayload.Queries["is_hb"] = Convert.ToString(false);
+                if (__workflow_isHb != null)
+                    callPayload.Queries["is_hb"] = ExpressionConverter.Convert(__workflow_isHb);
+                callPayload.Queries["is_sb"] = Convert.ToString(false);
+                if (__workflow_isSb != null)
+                    callPayload.Queries["is_sb"] = ExpressionConverter.Convert(__workflow_isSb);
+                return new ApiConnectionAction<GetProcessedEmailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<SuccessMessage> SendMail(Expression<Func<string>> bodymailAgent, Expression<Func<string>> bodyfromname, Expression<Func<EmailAddressItems[]>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyfromaddressprefix = null, Expression<Func<string>> bodyfromaddressdomain = null, Expression<Func<EmailAddressItems[]>> bodycC = null, Expression<Func<EmailAddressItems[]>> bodybCC = null, Expression<Func<bodymailTypeInput>> bodymailType = null, Expression<Func<string>> bodybody = null, Expression<Func<ReplyToAddresss[]>> bodyreplyTo = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
-            var apiCallPath = "/v1.0/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["mailagent_key"] = ExpressionConverter.ConvertO(bodymailAgent);
-            var fromObject = new JObject();
-            var fromObjectpropCount = 0;
-            var fromDetailObject = new JObject();
-            var fromDetailObjectpropCount = 0;
-            if (bodyfromaddressprefix != null)
+            var __workflow_bodymailAgent = WorkflowExpression.Compile(bodymailAgent, nameof(bodymailAgent), required: true);
+            var __workflow_bodyfromname = WorkflowExpression.Compile(bodyfromname, nameof(bodyfromname), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodyfromaddressprefix = WorkflowExpression.Compile(bodyfromaddressprefix, nameof(bodyfromaddressprefix), required: false);
+            var __workflow_bodyfromaddressdomain = WorkflowExpression.Compile(bodyfromaddressdomain, nameof(bodyfromaddressdomain), required: false);
+            var __workflow_bodycC = WorkflowExpression.Compile(bodycC, nameof(bodycC), required: false);
+            var __workflow_bodybCC = WorkflowExpression.Compile(bodybCC, nameof(bodybCC), required: false);
+            var __workflow_bodymailType = WorkflowExpression.Compile(bodymailType, nameof(bodymailType), required: false);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
+            return new DeferredBodyAction<SuccessMessage>(() =>
             {
-                fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(bodyfromaddressprefix);
-                fromDetailObjectpropCount++;
-            }
-
-            if (bodyfromaddressdomain != null)
-            {
-                fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(bodyfromaddressdomain);
-                fromDetailObjectpropCount++;
-            }
-
-            if (fromDetailObjectpropCount > 0)
-            {
-                fromObject["from-detail"] = fromDetailObject;
-                fromObjectpropCount++;
-            }
-
-            fromObjectpropCount++;
-            fromObject["name"] = ExpressionConverter.ConvertO(bodyfromname);
-            if (fromObjectpropCount > 0)
-            {
-                body["from"] = fromObject;
+                var apiCallPath = "/v1.0/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            if (bodycC != null)
-            {
-                body["cc"] = ExpressionConverter.ConvertO(bodycC);
-                bodypropCount++;
-            }
-
-            if (bodybCC != null)
-            {
-                body["bcc"] = ExpressionConverter.ConvertO(bodybCC);
-                bodypropCount++;
-            }
-
-            if (bodymailType != null)
-            {
-                if (bodymailType != null)
+                body["mailagent_key"] = ExpressionConverter.ConvertO(__workflow_bodymailAgent);
+                var fromObject = new JObject();
+                var fromObjectpropCount = 0;
+                var fromDetailObject = new JObject();
+                var fromDetailObjectpropCount = 0;
+                if (__workflow_bodyfromaddressprefix != null)
                 {
-                    body["mailtype"] = ExpressionConverter.ConvertO(bodymailType);
+                    fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressprefix);
+                    fromDetailObjectpropCount++;
+                }
+
+                if (__workflow_bodyfromaddressdomain != null)
+                {
+                    fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressdomain);
+                    fromDetailObjectpropCount++;
+                }
+
+                if (fromDetailObjectpropCount > 0)
+                {
+                    fromObject["from-detail"] = fromDetailObject;
+                    fromObjectpropCount++;
+                }
+
+                fromObjectpropCount++;
+                fromObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfromname);
+                if (fromObjectpropCount > 0)
+                {
+                    body["from"] = fromObject;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["mailtype"] = "html";
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                if (__workflow_bodycC != null)
+                {
+                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycC);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodybCC != null)
+                {
+                    body["bcc"] = ExpressionConverter.ConvertO(__workflow_bodybCC);
+                    bodypropCount++;
+                }
+
+                if (__workflow_bodymailType != null)
+                {
+                    if (__workflow_bodymailType != null)
+                    {
+                        body["mailtype"] = ExpressionConverter.ConvertO(__workflow_bodymailType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["mailtype"] = "html";
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                if (__workflow_bodybody != null)
+                {
+                    body["htmlbody"] = ExpressionConverter.ConvertO(__workflow_bodybody);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            if (bodybody != null)
-            {
-                body["htmlbody"] = ExpressionConverter.ConvertO(bodybody);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreplyTo != null)
+                {
+                    body["reply_to"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
+                    bodypropCount++;
+                }
 
-            if (bodyreplyTo != null)
-            {
-                body["reply_to"] = ExpressionConverter.ConvertO(bodyreplyTo);
-                bodypropCount++;
-            }
+                if (__workflow_bodyattachments != null)
+                {
+                    body["attachments"] = ExpressionConverter.ConvertO(__workflow_bodyattachments);
+                    bodypropCount++;
+                }
 
-            if (bodyattachments != null)
-            {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SuccessMessage>(callPayload);
+                return new ApiConnectionAction<SuccessMessage>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<SuccessMessage> SendTemplateMail(Expression<Func<string>> bodymailAgent, Expression<Func<string>> bodymailTemplate, Expression<Func<string>> bodyfromname, Expression<Func<string>> bodyfromaddressprefix = null, Expression<Func<string>> bodyfromaddressdomain = null, Expression<Func<EmailAddressItems[]>> bodyto = null, Expression<Func<EmailAddressItems[]>> bodycC = null, Expression<Func<EmailAddressItems[]>> bodybCC = null, Expression<Func<bodymergeInfoInputItem[]>> bodymergeInfo = null, Expression<Func<ReplyToAddresss[]>> bodyreplyTo = null)
         {
-            var apiCallPath = "/v1.0/email/template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["mailagent_key"] = ExpressionConverter.ConvertO(bodymailAgent);
-            bodypropCount++;
-            body["mail_template_key"] = ExpressionConverter.ConvertO(bodymailTemplate);
-            var fromObject = new JObject();
-            var fromObjectpropCount = 0;
-            var fromDetailObject = new JObject();
-            var fromDetailObjectpropCount = 0;
-            if (bodyfromaddressprefix != null)
+            var __workflow_bodymailAgent = WorkflowExpression.Compile(bodymailAgent, nameof(bodymailAgent), required: true);
+            var __workflow_bodymailTemplate = WorkflowExpression.Compile(bodymailTemplate, nameof(bodymailTemplate), required: true);
+            var __workflow_bodyfromname = WorkflowExpression.Compile(bodyfromname, nameof(bodyfromname), required: true);
+            var __workflow_bodyfromaddressprefix = WorkflowExpression.Compile(bodyfromaddressprefix, nameof(bodyfromaddressprefix), required: false);
+            var __workflow_bodyfromaddressdomain = WorkflowExpression.Compile(bodyfromaddressdomain, nameof(bodyfromaddressdomain), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycC = WorkflowExpression.Compile(bodycC, nameof(bodycC), required: false);
+            var __workflow_bodybCC = WorkflowExpression.Compile(bodybCC, nameof(bodybCC), required: false);
+            var __workflow_bodymergeInfo = WorkflowExpression.Compile(bodymergeInfo, nameof(bodymergeInfo), required: false);
+            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            return new DeferredBodyAction<SuccessMessage>(() =>
             {
-                fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(bodyfromaddressprefix);
-                fromDetailObjectpropCount++;
-            }
+                var apiCallPath = "/v1.0/email/template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["mailagent_key"] = ExpressionConverter.ConvertO(__workflow_bodymailAgent);
+                bodypropCount++;
+                body["mail_template_key"] = ExpressionConverter.ConvertO(__workflow_bodymailTemplate);
+                var fromObject = new JObject();
+                var fromObjectpropCount = 0;
+                var fromDetailObject = new JObject();
+                var fromDetailObjectpropCount = 0;
+                if (__workflow_bodyfromaddressprefix != null)
+                {
+                    fromDetailObject["from-prefix"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressprefix);
+                    fromDetailObjectpropCount++;
+                }
 
-            if (bodyfromaddressdomain != null)
-            {
-                fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(bodyfromaddressdomain);
-                fromDetailObjectpropCount++;
-            }
+                if (__workflow_bodyfromaddressdomain != null)
+                {
+                    fromDetailObject["from-domain"] = ExpressionConverter.ConvertO(__workflow_bodyfromaddressdomain);
+                    fromDetailObjectpropCount++;
+                }
 
-            if (fromDetailObjectpropCount > 0)
-            {
-                fromObject["from-detail"] = fromDetailObject;
+                if (fromDetailObjectpropCount > 0)
+                {
+                    fromObject["from-detail"] = fromDetailObject;
+                    fromObjectpropCount++;
+                }
+
                 fromObjectpropCount++;
-            }
+                fromObject["name"] = ExpressionConverter.ConvertO(__workflow_bodyfromname);
+                if (fromObjectpropCount > 0)
+                {
+                    body["from"] = fromObject;
+                    bodypropCount++;
+                }
 
-            fromObjectpropCount++;
-            fromObject["name"] = ExpressionConverter.ConvertO(bodyfromname);
-            if (fromObjectpropCount > 0)
-            {
-                body["from"] = fromObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                    bodypropCount++;
+                }
 
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
+                if (__workflow_bodycC != null)
+                {
+                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycC);
+                    bodypropCount++;
+                }
 
-            if (bodycC != null)
-            {
-                body["cc"] = ExpressionConverter.ConvertO(bodycC);
-                bodypropCount++;
-            }
+                if (__workflow_bodybCC != null)
+                {
+                    body["bcc"] = ExpressionConverter.ConvertO(__workflow_bodybCC);
+                    bodypropCount++;
+                }
 
-            if (bodybCC != null)
-            {
-                body["bcc"] = ExpressionConverter.ConvertO(bodybCC);
-                bodypropCount++;
-            }
+                if (__workflow_bodymergeInfo != null)
+                {
+                    body["merge_key_detail"] = ExpressionConverter.ConvertO(__workflow_bodymergeInfo);
+                    bodypropCount++;
+                }
 
-            if (bodymergeInfo != null)
-            {
-                body["merge_key_detail"] = ExpressionConverter.ConvertO(bodymergeInfo);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreplyTo != null)
+                {
+                    body["reply_to"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
+                    bodypropCount++;
+                }
 
-            if (bodyreplyTo != null)
-            {
-                body["reply_to"] = ExpressionConverter.ConvertO(bodyreplyTo);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SuccessMessage>(callPayload);
+                return new ApiConnectionAction<SuccessMessage>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
         public IBodyWorkflowAction<ProcessedMailStatsResponse> ProcessedMailStats(Expression<Func<string>> mailagent, Expression<Func<string>> fromTime = null, Expression<Func<string>> toTime = null)
         {
-            var apiCallPath = "/v1.0/stats/email";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailagent"] = ExpressionConverter.Convert(mailagent);
-            if (fromTime != null)
-                callPayload.Queries["from_time"] = ExpressionConverter.Convert(fromTime);
-            if (toTime != null)
-                callPayload.Queries["to_time"] = ExpressionConverter.Convert(toTime);
-            return new ApiConnectionAction<ProcessedMailStatsResponse>(callPayload);
+            var __workflow_mailagent = WorkflowExpression.Compile(mailagent, nameof(mailagent), required: true);
+            var __workflow_fromTime = WorkflowExpression.Compile(fromTime, nameof(fromTime), required: false);
+            var __workflow_toTime = WorkflowExpression.Compile(toTime, nameof(toTime), required: false);
+            return new DeferredBodyAction<ProcessedMailStatsResponse>(() =>
+            {
+                var apiCallPath = "/v1.0/stats/email";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["mailagent"] = ExpressionConverter.Convert(__workflow_mailagent);
+                if (__workflow_fromTime != null)
+                    callPayload.Queries["from_time"] = ExpressionConverter.Convert(__workflow_fromTime);
+                if (__workflow_toTime != null)
+                    callPayload.Queries["to_time"] = ExpressionConverter.Convert(__workflow_toTime);
+                return new ApiConnectionAction<ProcessedMailStatsResponse>(callPayload);
+            });
         }
     }
 
@@ -395,6 +441,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         public string Name { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodymailTypeInput
     {
         [EnumMember(Value = "html")]

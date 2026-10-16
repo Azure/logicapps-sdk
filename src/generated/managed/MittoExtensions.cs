@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,149 +14,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         public IBodyWorkflowAction<SmsResponse> SmsRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string>> requestreceiver, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
-            var apiCallPath = "/sms.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestisFlashSMS != null)
+            var __workflow_requestsender = WorkflowExpression.Compile(requestsender, nameof(requestsender), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
+            var __workflow_requestreceiver = WorkflowExpression.Compile(requestreceiver, nameof(requestreceiver), required: true);
+            var __workflow_requestisFlashSMS = WorkflowExpression.Compile(requestisFlashSMS, nameof(requestisFlashSMS), required: false);
+            var __workflow_requestprotocolIdentifier = WorkflowExpression.Compile(requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
+            var __workflow_requestcustomerReference = WorkflowExpression.Compile(requestcustomerReference, nameof(requestcustomerReference), required: false);
+            var __workflow_requestisTestSMS = WorkflowExpression.Compile(requestisTestSMS, nameof(requestisTestSMS), required: false);
+            var __workflow_requesttextType = WorkflowExpression.Compile(requesttextType, nameof(requesttextType), required: false);
+            var __workflow_requestuserDataHeader = WorkflowExpression.Compile(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
+            var __workflow_requestvalidityInMinutes = WorkflowExpression.Compile(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
+            return new DeferredBodyAction<SmsResponse>(() =>
             {
-                request["flash"] = ExpressionConverter.ConvertO(requestisFlashSMS);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestsender);
-            if (requestprotocolIdentifier != null)
-            {
-                request["pid"] = ExpressionConverter.ConvertO(requestprotocolIdentifier);
-                requestpropCount++;
-            }
-
-            if (requestcustomerReference != null)
-            {
-                request["reference"] = ExpressionConverter.ConvertO(requestcustomerReference);
-                requestpropCount++;
-            }
-
-            if (requestisTestSMS != null)
-            {
-                request["test"] = ExpressionConverter.ConvertO(requestisTestSMS);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
-            requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestreceiver);
-            if (requesttextType != null)
-            {
-                if (requesttextType != null)
+                var apiCallPath = "/sms.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (__workflow_requestisFlashSMS != null)
                 {
-                    request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                    request["flash"] = ExpressionConverter.ConvertO(__workflow_requestisFlashSMS);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-            }
-            else
-            {
-                request["type"] = "GSM";
+                request["from"] = ExpressionConverter.ConvertO(__workflow_requestsender);
+                if (__workflow_requestprotocolIdentifier != null)
+                {
+                    request["pid"] = ExpressionConverter.ConvertO(__workflow_requestprotocolIdentifier);
+                    requestpropCount++;
+                }
+
+                if (__workflow_requestcustomerReference != null)
+                {
+                    request["reference"] = ExpressionConverter.ConvertO(__workflow_requestcustomerReference);
+                    requestpropCount++;
+                }
+
+                if (__workflow_requestisTestSMS != null)
+                {
+                    request["test"] = ExpressionConverter.ConvertO(__workflow_requestisTestSMS);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
-
-            if (requestuserDataHeader != null)
-            {
-                request["udh"] = ExpressionConverter.ConvertO(requestuserDataHeader);
+                request["text"] = ExpressionConverter.ConvertO(__workflow_requesttext);
                 requestpropCount++;
-            }
+                request["to"] = ExpressionConverter.ConvertO(__workflow_requestreceiver);
+                if (__workflow_requesttextType != null)
+                {
+                    if (__workflow_requesttextType != null)
+                    {
+                        request["type"] = ExpressionConverter.ConvertO(__workflow_requesttextType);
+                        requestpropCount++;
+                    }
 
-            if (requestvalidityInMinutes != null)
-            {
-                request["validity"] = ExpressionConverter.ConvertO(requestvalidityInMinutes);
-                requestpropCount++;
-            }
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["type"] = "GSM";
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (__workflow_requestuserDataHeader != null)
+                {
+                    request["udh"] = ExpressionConverter.ConvertO(__workflow_requestuserDataHeader);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<SmsResponse>(callPayload);
+                if (__workflow_requestvalidityInMinutes != null)
+                {
+                    request["validity"] = ExpressionConverter.ConvertO(__workflow_requestvalidityInMinutes);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SmsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         public IBodyWorkflowAction<SmsBulkResponse> SmsBulkRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string[]>> requestreceivers, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
-            var apiCallPath = "/smsbulk.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestisFlashSMS != null)
+            var __workflow_requestsender = WorkflowExpression.Compile(requestsender, nameof(requestsender), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
+            var __workflow_requestreceivers = WorkflowExpression.Compile(requestreceivers, nameof(requestreceivers), required: true);
+            var __workflow_requestisFlashSMS = WorkflowExpression.Compile(requestisFlashSMS, nameof(requestisFlashSMS), required: false);
+            var __workflow_requestprotocolIdentifier = WorkflowExpression.Compile(requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
+            var __workflow_requestcustomerReference = WorkflowExpression.Compile(requestcustomerReference, nameof(requestcustomerReference), required: false);
+            var __workflow_requestisTestSMS = WorkflowExpression.Compile(requestisTestSMS, nameof(requestisTestSMS), required: false);
+            var __workflow_requesttextType = WorkflowExpression.Compile(requesttextType, nameof(requesttextType), required: false);
+            var __workflow_requestuserDataHeader = WorkflowExpression.Compile(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
+            var __workflow_requestvalidityInMinutes = WorkflowExpression.Compile(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
+            return new DeferredBodyAction<SmsBulkResponse>(() =>
             {
-                request["flash"] = ExpressionConverter.ConvertO(requestisFlashSMS);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["from"] = ExpressionConverter.ConvertO(requestsender);
-            if (requestprotocolIdentifier != null)
-            {
-                request["pid"] = ExpressionConverter.ConvertO(requestprotocolIdentifier);
-                requestpropCount++;
-            }
-
-            if (requestcustomerReference != null)
-            {
-                request["reference"] = ExpressionConverter.ConvertO(requestcustomerReference);
-                requestpropCount++;
-            }
-
-            if (requestisTestSMS != null)
-            {
-                request["test"] = ExpressionConverter.ConvertO(requestisTestSMS);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
-            requestpropCount++;
-            request["to"] = ExpressionConverter.ConvertO(requestreceivers);
-            if (requesttextType != null)
-            {
-                if (requesttextType != null)
+                var apiCallPath = "/smsbulk.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (__workflow_requestisFlashSMS != null)
                 {
-                    request["type"] = ExpressionConverter.ConvertO(requesttextType);
+                    request["flash"] = ExpressionConverter.ConvertO(__workflow_requestisFlashSMS);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-            }
-            else
-            {
-                request["type"] = "GSM";
+                request["from"] = ExpressionConverter.ConvertO(__workflow_requestsender);
+                if (__workflow_requestprotocolIdentifier != null)
+                {
+                    request["pid"] = ExpressionConverter.ConvertO(__workflow_requestprotocolIdentifier);
+                    requestpropCount++;
+                }
+
+                if (__workflow_requestcustomerReference != null)
+                {
+                    request["reference"] = ExpressionConverter.ConvertO(__workflow_requestcustomerReference);
+                    requestpropCount++;
+                }
+
+                if (__workflow_requestisTestSMS != null)
+                {
+                    request["test"] = ExpressionConverter.ConvertO(__workflow_requestisTestSMS);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
-
-            if (requestuserDataHeader != null)
-            {
-                request["udh"] = ExpressionConverter.ConvertO(requestuserDataHeader);
+                request["text"] = ExpressionConverter.ConvertO(__workflow_requesttext);
                 requestpropCount++;
-            }
+                request["to"] = ExpressionConverter.ConvertO(__workflow_requestreceivers);
+                if (__workflow_requesttextType != null)
+                {
+                    if (__workflow_requesttextType != null)
+                    {
+                        request["type"] = ExpressionConverter.ConvertO(__workflow_requesttextType);
+                        requestpropCount++;
+                    }
 
-            if (requestvalidityInMinutes != null)
-            {
-                request["validity"] = ExpressionConverter.ConvertO(requestvalidityInMinutes);
-                requestpropCount++;
-            }
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["type"] = "GSM";
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (__workflow_requestuserDataHeader != null)
+                {
+                    request["udh"] = ExpressionConverter.ConvertO(__workflow_requestuserDataHeader);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<SmsBulkResponse>(callPayload);
+                if (__workflow_requestvalidityInMinutes != null)
+                {
+                    request["validity"] = ExpressionConverter.ConvertO(__workflow_requestvalidityInMinutes);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SmsBulkResponse>(callPayload);
+            });
         }
     }
 
@@ -188,6 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         public string Receiver { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum requesttextTypeInput
     {
         GSM,

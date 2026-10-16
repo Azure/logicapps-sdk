@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,27 +15,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            if (requestBodyOfWebhookCompanyId != null)
+            var __workflow_requestBodyOfWebhookCompanyId = WorkflowExpression.Compile(requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                requestBodyOfWebhook["companyId"] = ExpressionConverter.ConvertO(requestBodyOfWebhookCompanyId);
+                var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                if (__workflow_requestBodyOfWebhookCompanyId != null)
+                {
+                    requestBodyOfWebhook["companyId"] = ExpressionConverter.ConvertO(__workflow_requestBodyOfWebhookCompanyId);
+                    requestBodyOfWebhookpropCount++;
+                }
+
+                requestBodyOfWebhook["callbackURL"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
-            }
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
 
-            requestBodyOfWebhook["callbackURL"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,150 +23,187 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<CourseSummaryResponse> ListCourses(Expression<Func<string>> publishedFrom = null, Expression<Func<string>> publishedTo = null, Expression<Func<double>> priceFrom = null, Expression<Func<double>> priceTo = null, Expression<Func<bool>> isNew = null, Expression<Func<string>> moreToken = null)
         {
-            var apiCallPath = "/ListCourses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (publishedFrom != null)
-                callPayload.Queries["PublishedFrom"] = ExpressionConverter.Convert(publishedFrom);
-            if (publishedTo != null)
-                callPayload.Queries["PublishedTo"] = ExpressionConverter.Convert(publishedTo);
-            if (priceFrom != null)
-                callPayload.Queries["PriceFrom"] = ExpressionConverter.Convert(priceFrom);
-            if (priceTo != null)
-                callPayload.Queries["PriceTo"] = ExpressionConverter.Convert(priceTo);
-            if (isNew != null)
-                callPayload.Queries["IsNew"] = ExpressionConverter.Convert(isNew);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
+            var __workflow_publishedFrom = WorkflowExpression.Compile(publishedFrom, nameof(publishedFrom), required: false);
+            var __workflow_publishedTo = WorkflowExpression.Compile(publishedTo, nameof(publishedTo), required: false);
+            var __workflow_priceFrom = WorkflowExpression.Compile(priceFrom, nameof(priceFrom), required: false);
+            var __workflow_priceTo = WorkflowExpression.Compile(priceTo, nameof(priceTo), required: false);
+            var __workflow_isNew = WorkflowExpression.Compile(isNew, nameof(isNew), required: false);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<CourseSummaryResponse>(() =>
+            {
+                var apiCallPath = "/ListCourses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_publishedFrom != null)
+                    callPayload.Queries["PublishedFrom"] = ExpressionConverter.Convert(__workflow_publishedFrom);
+                if (__workflow_publishedTo != null)
+                    callPayload.Queries["PublishedTo"] = ExpressionConverter.Convert(__workflow_publishedTo);
+                if (__workflow_priceFrom != null)
+                    callPayload.Queries["PriceFrom"] = ExpressionConverter.Convert(__workflow_priceFrom);
+                if (__workflow_priceTo != null)
+                    callPayload.Queries["PriceTo"] = ExpressionConverter.Convert(__workflow_priceTo);
+                if (__workflow_isNew != null)
+                    callPayload.Queries["IsNew"] = ExpressionConverter.Convert(__workflow_isNew);
+                if (__workflow_moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
+                return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<InstructorSummaryResponse> ListInstructors(Expression<Func<string>> moreToken = null)
         {
-            var apiCallPath = "/ListInstructors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<InstructorSummaryResponse>(() =>
+            {
+                var apiCallPath = "/ListInstructors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
+                return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<MyCoursesResponse> ListMyCourses(Expression<Func<string>> moreToken = null)
         {
-            var apiCallPath = "/ListMyCourses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<MyCoursesResponse>(callPayload);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<MyCoursesResponse>(() =>
+            {
+                var apiCallPath = "/ListMyCourses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
+                return new ApiConnectionAction<MyCoursesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<IdeaSummaryResponse> ListIdeas(Expression<Func<string>> moreToken = null)
         {
-            var apiCallPath = "/ListIdeas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<IdeaSummaryResponse>(() =>
+            {
+                var apiCallPath = "/ListIdeas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(__workflow_moreToken);
+                return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<CourseDetail> GetCourse(Expression<Func<string>> id)
         {
-            var apiCallPath = "/GetCourse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<CourseDetail>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<CourseDetail>(() =>
+            {
+                var apiCallPath = "/GetCourse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                return new ApiConnectionAction<CourseDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IWorkflowAction AddIdeaVote(Expression<Func<string>> ideaID)
         {
-            var apiCallPath = "/AddIdeaVote";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(ideaID);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_ideaID = WorkflowExpression.Compile(ideaID, nameof(ideaID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/AddIdeaVote";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(__workflow_ideaID);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<InstructorDetail> GetInstructor(Expression<Func<string>> id = null)
         {
-            var apiCallPath = "/GetInstructor";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<InstructorDetail>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            return new DeferredBodyAction<InstructorDetail>(() =>
+            {
+                var apiCallPath = "/GetInstructor";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(__workflow_id);
+                return new ApiConnectionAction<InstructorDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query)
         {
-            var apiCallPath = "/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(__workflow_query);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
     }
 
     public class _365trainingTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewCourseUserNotification(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewCourseUserNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewCourseUserNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targeturl"] = "@listCallbackUrl()";
+            body["targeturl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NewIdeaNotification(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewIdeaNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewIdeaNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targeturl"] = "@listCallbackUrl()";
+            body["targeturl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NewCoursePublishedNotification(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewCoursePublishedNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewCoursePublishedNotification";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targeturl"] = "@listCallbackUrl()";
+            body["targeturl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

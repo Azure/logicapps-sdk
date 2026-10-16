@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,2281 +14,2784 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileReputationSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/malware_presence/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["extended"] = Convert.ToString(true);
-            if (extended != null)
-                callPayload.Queries["extended"] = ExpressionConverter.Convert(extended);
-            callPayload.Queries["show_hashes"] = Convert.ToString(true);
-            if (showHashes != null)
-                callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(showHashes);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_extended = WorkflowExpression.Compile(extended, nameof(extended), required: false);
+            var __workflow_showHashes = WorkflowExpression.Compile(showHashes, nameof(showHashes), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["extended"] = Convert.ToString(true);
+                if (__workflow_extended != null)
+                    callPayload.Queries["extended"] = ExpressionConverter.Convert(__workflow_extended);
+                callPayload.Queries["show_hashes"] = Convert.ToString(true);
+                if (__workflow_showHashes != null)
+                    callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(__workflow_showHashes);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileReputationBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> extended = null, Expression<Func<bool>> showHashes = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/malware_presence/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extended != null)
-                callPayload.Queries["extended"] = ExpressionConverter.Convert(extended);
-            if (showHashes != null)
-                callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(showHashes);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_extended = WorkflowExpression.Compile(extended, nameof(extended), required: false);
+            var __workflow_showHashes = WorkflowExpression.Compile(showHashes, nameof(showHashes), required: false);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_extended != null)
+                    callPayload.Queries["extended"] = ExpressionConverter.Convert(__workflow_extended);
+                if (__workflow_showHashes != null)
+                    callPayload.Queries["show_hashes"] = ExpressionConverter.Convert(__workflow_showHashes);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetHistoricalAvRecordsSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/xref/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["history"] = Convert.ToString(false);
-            if (history != null)
-                callPayload.Queries["history"] = ExpressionConverter.Convert(history);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_history = WorkflowExpression.Compile(history, nameof(history), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["history"] = Convert.ToString(false);
+                if (__workflow_history != null)
+                    callPayload.Queries["history"] = ExpressionConverter.Convert(__workflow_history);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetHistoricalAvRecordsBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bool>> history = null, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/xref/v2/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (history != null)
-                callPayload.Queries["history"] = ExpressionConverter.Convert(history);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_history = WorkflowExpression.Compile(history, nameof(history), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/xref/v2/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_history != null)
+                    callPayload.Queries["history"] = ExpressionConverter.Convert(__workflow_history);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/rldata/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/rldata/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisNonMaliciousSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
-            var apiCallPath = String.Format("/api/databrowser/rldata/goodware/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetFileAnalysisNonMaliciousBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/rldata/goodware/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/rldata/goodware/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisSpecific(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> analysisId, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(analysisId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_analysisId = WorkflowExpression.Compile(analysisId, nameof(analysisId), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_analysisId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisArchiveMerged(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisArchiveLatest(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/archive/query/{0}/{1}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DownloadSample(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
-            var apiCallPath = String.Format("/api/spex/download/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetSampleDownloadStatus(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/spex/download/v2/status/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/octet-stream");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/download/v2/status/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/octet-stream");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction UploadSample(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType)
         {
-            var apiCallPath = String.Format("/api/spex/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction UploadSampleMetadata(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType, Expression<Func<string>> subscribe = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = String.Format("/api/spex/upload/{0}/meta", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (subscribe != null)
-                callPayload.Queries["subscribe"] = ExpressionConverter.Convert(subscribe);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_subscribe = WorkflowExpression.Compile(subscribe, nameof(subscribe), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/spex/upload/{0}/meta", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_subscribe != null)
+                    callPayload.Queries["subscribe"] = ExpressionConverter.Convert(__workflow_subscribe);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DeleteSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue, Expression<Func<string>> deleteOn = null)
         {
-            var apiCallPath = String.Format("/api/delete/sample/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (deleteOn != null)
-                callPayload.Queries["delete_on"] = ExpressionConverter.Convert(deleteOn);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_deleteOn = WorkflowExpression.Compile(deleteOn, nameof(deleteOn), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_deleteOn != null)
+                    callPayload.Queries["delete_on"] = ExpressionConverter.Convert(__workflow_deleteOn);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DeleteSamplesBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string>> bodyrlquerydeleteOn = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/delete/sample/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlquerydeleteOn = WorkflowExpression.Compile(bodyrlquerydeleteOn, nameof(bodyrlquerydeleteOn), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/delete/sample/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerydeleteOn != null)
-            {
-                queryObject["delete_on"] = ExpressionConverter.ConvertO(bodyrlquerydeleteOn);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerydeleteOn != null)
+                {
+                    queryObject["delete_on"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydeleteOn);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ReanalyzeSampleSingle(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> hashValue)
         {
-            var apiCallPath = String.Format("/api/rescan/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ReanalyzeSampleBulk(Expression<Func<postFormatInput>> postFormat, Expression<Func<formatInput>> format = null, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/rescan/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rescan/v1/bulk_query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SubscribeToReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction UnsubscribeFromReputationChanges(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryhashTypeInput>> bodyrlqueryhashType = null, Expression<Func<string[]>> bodyrlqueryhashes = null)
         {
-            var apiCallPath = String.Format("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryhashType != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryhashType = WorkflowExpression.Compile(bodyrlqueryhashType, nameof(bodyrlqueryhashType), required: false);
+            var __workflow_bodyrlqueryhashes = WorkflowExpression.Compile(bodyrlqueryhashes, nameof(bodyrlqueryhashes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["hash_type"] = ExpressionConverter.ConvertO(bodyrlqueryhashType);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/subscription/data_change/v1/bulk_query/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryhashType != null)
+                {
+                    queryObject["hash_type"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashType);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryhashes != null)
-            {
-                queryObject["hashes"] = ExpressionConverter.ConvertO(bodyrlqueryhashes);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryhashes != null)
+                {
+                    queryObject["hashes"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryhashes);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SetStartTimeForReputationChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue)
         {
-            var apiCallPath = String.Format("/api/feed/data_change/v3/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetReputationDataChanges(Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/api/feed/data_change/v3/pull";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (events != null)
-                callPayload.Queries["events"] = ExpressionConverter.Convert(events);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/feed/data_change/v3/pull";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_events != null)
+                    callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetContinuousReputationDataChanges(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null, Expression<Func<string>> events = null)
         {
-            var apiCallPath = String.Format("/api/feed/data_change/v3/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (events != null)
-                callPayload.Queries["events"] = ExpressionConverter.Convert(events);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/data_change/v3/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_events != null)
+                    callPayload.Queries["events"] = ExpressionConverter.Convert(__workflow_events);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SubmitSampleForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlurl = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<bodyrlresponseFormatInput>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/analyze/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            if (bodyrlsha1 != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlsha1 = WorkflowExpression.Compile(bodyrlsha1, nameof(bodyrlsha1), required: false);
+            var __workflow_bodyrlurl = WorkflowExpression.Compile(bodyrlurl, nameof(bodyrlurl), required: false);
+            var __workflow_bodyrlplatform = WorkflowExpression.Compile(bodyrlplatform, nameof(bodyrlplatform), required: false);
+            var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
+            var __workflow_bodyrloptionalParameters = WorkflowExpression.Compile(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                rlObject["sha1"] = ExpressionConverter.ConvertO(bodyrlsha1);
-                rlObjectpropCount++;
-            }
-
-            if (bodyrlurl != null)
-            {
-                rlObject["url"] = ExpressionConverter.ConvertO(bodyrlurl);
-                rlObjectpropCount++;
-            }
-
-            if (bodyrlplatform != null)
-            {
-                rlObject["platform"] = ExpressionConverter.ConvertO(bodyrlplatform);
-                rlObjectpropCount++;
-            }
-
-            if (bodyrlresponseFormat != null)
-            {
-                if (bodyrlresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                if (__workflow_bodyrlsha1 != null)
                 {
-                    rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                    rlObject["sha1"] = ExpressionConverter.ConvertO(__workflow_bodyrlsha1);
                     rlObjectpropCount++;
                 }
 
-                rlObjectpropCount++;
-            }
-            else
-            {
-                rlObject["response_format"] = "json";
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlurl != null)
+                {
+                    rlObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlurl);
+                    rlObjectpropCount++;
+                }
 
-            if (bodyrloptionalParameters != null)
-            {
-                rlObject["optional_parameters"] = ExpressionConverter.ConvertO(bodyrloptionalParameters);
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlplatform != null)
+                {
+                    rlObject["platform"] = ExpressionConverter.ConvertO(__workflow_bodyrlplatform);
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodyrlresponseFormat != null)
+                {
+                    if (__workflow_bodyrlresponseFormat != null)
+                    {
+                        rlObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlresponseFormat);
+                        rlObjectpropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    rlObjectpropCount++;
+                }
+                else
+                {
+                    rlObject["response_format"] = "json";
+                    rlObjectpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (__workflow_bodyrloptionalParameters != null)
+                {
+                    rlObject["optional_parameters"] = ExpressionConverter.ConvertO(__workflow_bodyrloptionalParameters);
+                    rlObjectpropCount++;
+                }
+
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction SubmitArchiveForDynamicAnalysis(Expression<Func<postFormatInput>> postFormat, Expression<Func<string>> bodyrlsha1 = null, Expression<Func<string>> bodyrlplatform = null, Expression<Func<string>> bodyrlresponseFormat = null, Expression<Func<string>> bodyrloptionalParameters = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/analyze/v1/archive/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            if (bodyrlsha1 != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlsha1 = WorkflowExpression.Compile(bodyrlsha1, nameof(bodyrlsha1), required: false);
+            var __workflow_bodyrlplatform = WorkflowExpression.Compile(bodyrlplatform, nameof(bodyrlplatform), required: false);
+            var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
+            var __workflow_bodyrloptionalParameters = WorkflowExpression.Compile(bodyrloptionalParameters, nameof(bodyrloptionalParameters), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                rlObject["sha1"] = ExpressionConverter.ConvertO(bodyrlsha1);
-                rlObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/analyze/v1/archive/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                if (__workflow_bodyrlsha1 != null)
+                {
+                    rlObject["sha1"] = ExpressionConverter.ConvertO(__workflow_bodyrlsha1);
+                    rlObjectpropCount++;
+                }
 
-            if (bodyrlplatform != null)
-            {
-                rlObject["platform"] = ExpressionConverter.ConvertO(bodyrlplatform);
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlplatform != null)
+                {
+                    rlObject["platform"] = ExpressionConverter.ConvertO(__workflow_bodyrlplatform);
+                    rlObjectpropCount++;
+                }
 
-            if (bodyrlresponseFormat != null)
-            {
-                rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlresponseFormat != null)
+                {
+                    rlObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlresponseFormat);
+                    rlObjectpropCount++;
+                }
 
-            if (bodyrloptionalParameters != null)
-            {
-                rlObject["optional_parameters"] = ExpressionConverter.ConvertO(bodyrloptionalParameters);
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrloptionalParameters != null)
+                {
+                    rlObject["optional_parameters"] = ExpressionConverter.ConvertO(__workflow_bodyrloptionalParameters);
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction URIToHashSearchSha1FirstPage(Expression<Func<string>> uriSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
         {
-            var apiCallPath = String.Format("/api/uri_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(uriSha1, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (classification != null)
-                callPayload.Queries["classification"] = ExpressionConverter.Convert(classification);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uriSha1, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_classification != null)
+                    callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction URIToHashSearchSha1Paging(Expression<Func<string>> uriSha1, Expression<Func<string>> nextPageSha1, Expression<Func<formatInput>> format = null, Expression<Func<string>> classification = null)
         {
-            var apiCallPath = String.Format("/api/uri_index/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(uriSha1, 1), ExpressionConverter.ConvertWithUrlEncoding(nextPageSha1, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (classification != null)
-                callPayload.Queries["classification"] = ExpressionConverter.Convert(classification);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_uriSha1 = WorkflowExpression.Compile(uriSha1, nameof(uriSha1), required: true);
+            var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/uri_index/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uriSha1, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_classification != null)
+                    callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction URIToHashSearchTextPaging(Expression<Func<string>> contentType, Expression<Func<formatInput>> format = null, Expression<Func<string>> bodyrlqueryuri = null, Expression<Func<string>> bodyrlquerynextPageSha1 = null)
         {
-            var apiCallPath = "/api/uri_index/v1/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryuri != null)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_bodyrlqueryuri = WorkflowExpression.Compile(bodyrlqueryuri, nameof(bodyrlqueryuri), required: false);
+            var __workflow_bodyrlquerynextPageSha1 = WorkflowExpression.Compile(bodyrlquerynextPageSha1, nameof(bodyrlquerynextPageSha1), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["uri"] = ExpressionConverter.ConvertO(bodyrlqueryuri);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = "/api/uri_index/v1/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryuri != null)
+                {
+                    queryObject["uri"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryuri);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerynextPageSha1 != null)
-            {
-                queryObject["next_page_sha1"] = ExpressionConverter.ConvertO(bodyrlquerynextPageSha1);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerynextPageSha1 != null)
+                {
+                    queryObject["next_page_sha1"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerynextPageSha1);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetURLReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            var apiCallPath = String.Format("/api/networking/url/v1/report/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryurl != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryurl = WorkflowExpression.Compile(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["url"] = ExpressionConverter.ConvertO(bodyrlqueryurl);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/report/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryurl != null)
+                {
+                    queryObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryurl);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryresponseFormat != null)
-            {
-                queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListFilesFromURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<string>> bodyrlqueryanalysisId = null, Expression<Func<bool>> bodyrlquerylastAnalysis = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/url/v1/downloaded_files/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryurl != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryurl = WorkflowExpression.Compile(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
+            var __workflow_bodyrlqueryanalysisId = WorkflowExpression.Compile(bodyrlqueryanalysisId, nameof(bodyrlqueryanalysisId), required: false);
+            var __workflow_bodyrlquerylastAnalysis = WorkflowExpression.Compile(bodyrlquerylastAnalysis, nameof(bodyrlquerylastAnalysis), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlqueryextended = WorkflowExpression.Compile(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
+            var __workflow_bodyrlqueryclassification = WorkflowExpression.Compile(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["url"] = ExpressionConverter.ConvertO(bodyrlqueryurl);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryanalysisId != null)
-            {
-                queryObject["analysis_id"] = ExpressionConverter.ConvertO(bodyrlqueryanalysisId);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlquerylastAnalysis != null)
-            {
-                queryObject["last_analysis"] = ExpressionConverter.ConvertO(bodyrlquerylastAnalysis);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/downloaded_files/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryurl != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryurl);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryanalysisId != null)
+                {
+                    queryObject["analysis_id"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryanalysisId);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylastAnalysis != null)
+                {
+                    queryObject["last_analysis"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylastAnalysis);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryextended != null)
-            {
-                queryObject["extended"] = ExpressionConverter.ConvertO(bodyrlqueryextended);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlqueryclassification != null)
-            {
-                queryObject["classification"] = ExpressionConverter.ConvertO(bodyrlqueryclassification);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryextended != null)
+                {
+                    queryObject["extended"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryextended);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodyrlqueryclassification != null)
+                {
+                    queryObject["classification"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryclassification);
+                    queryObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
+
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetLatestURLAnalysesFirst(Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/api/networking/url/v1/notifications/query/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/networking/url/v1/notifications/query/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetLatestURLAnalysesPaging(Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/api/networking/url/v1/notifications/query/latest/page/{0}", ExpressionConverter.ConvertWithUrlEncoding(page, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/latest/page/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetTimestampedURLAnalysesFirst(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/api/networking/url/v1/notifications/query/from/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(startTime, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startTime, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetTimestampedURLAnalysesPaging(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> startTime, Expression<Func<string>> page, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = String.Format("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(startTime, 1), ExpressionConverter.ConvertWithUrlEncoding(page, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/notifications/query/from/{0}/{1}/page/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startTime, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_page, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction AnalyzeURL(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryurl = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            var apiCallPath = String.Format("/api/networking/url/v1/analyze/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryurl != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryurl = WorkflowExpression.Compile(bodyrlqueryurl, nameof(bodyrlqueryurl), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["url"] = ExpressionConverter.ConvertO(bodyrlqueryurl);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/url/v1/analyze/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryurl != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["url"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryurl);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDomainReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            var apiCallPath = String.Format("/api/networking/domain/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlquerydomain != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListFilesFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/domain/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlquerydomain != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlqueryextended = WorkflowExpression.Compile(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
+            var __workflow_bodyrlqueryclassification = WorkflowExpression.Compile(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryextended != null)
-            {
-                queryObject["extended"] = ExpressionConverter.ConvertO(bodyrlqueryextended);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryclassification != null)
-            {
-                queryObject["classification"] = ExpressionConverter.ConvertO(bodyrlqueryclassification);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryextended != null)
+                {
+                    queryObject["extended"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryextended);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryclassification != null)
+                {
+                    queryObject["classification"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryclassification);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetURLFromDomain(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/domain/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlquerydomain != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDomainResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/domain/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlquerydomain != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDomainRelatedDomains(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlquerydomain = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/domain/related_domains/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlquerydomain != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlquerydomain = WorkflowExpression.Compile(bodyrlquerydomain, nameof(bodyrlquerydomain), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["domain"] = ExpressionConverter.ConvertO(bodyrlquerydomain);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/domain/related_domains/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlquerydomain != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["domain"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerydomain);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetIPAddressReport(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            var apiCallPath = String.Format("/api/networking/ip/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryip != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/report/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListFilesFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<bool>> bodyrlqueryextended = null, Expression<Func<string>> bodyrlqueryclassification = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/ip/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryip != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlqueryextended = WorkflowExpression.Compile(bodyrlqueryextended, nameof(bodyrlqueryextended), required: false);
+            var __workflow_bodyrlqueryclassification = WorkflowExpression.Compile(bodyrlqueryclassification, nameof(bodyrlqueryclassification), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/downloaded_files/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryextended != null)
-            {
-                queryObject["extended"] = ExpressionConverter.ConvertO(bodyrlqueryextended);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryclassification != null)
-            {
-                queryObject["classification"] = ExpressionConverter.ConvertO(bodyrlqueryclassification);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryextended != null)
+                {
+                    queryObject["extended"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryextended);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryclassification != null)
+                {
+                    queryObject["classification"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryclassification);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetURLFromIPAddress(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/ip/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryip != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/urls/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetIPAddressResolutions(Expression<Func<formatInput>> format, Expression<Func<string>> bodyrlqueryip = null, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null, Expression<Func<int>> bodyrlquerylimit = null, Expression<Func<string>> bodyrlquerypage = null)
         {
-            var apiCallPath = String.Format("/api/networking/ip/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryip != null)
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_bodyrlqueryip = WorkflowExpression.Compile(bodyrlqueryip, nameof(bodyrlqueryip), required: false);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            var __workflow_bodyrlquerylimit = WorkflowExpression.Compile(bodyrlquerylimit, nameof(bodyrlquerylimit), required: false);
+            var __workflow_bodyrlquerypage = WorkflowExpression.Compile(bodyrlquerypage, nameof(bodyrlquerypage), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["ip"] = ExpressionConverter.ConvertO(bodyrlqueryip);
-                queryObjectpropCount++;
-            }
-
-            if (bodyrlqueryresponseFormat != null)
-            {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/ip/resolutions/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryip != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    queryObject["ip"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryip);
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryresponseFormat != null)
+                {
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
 
-            if (bodyrlquerylimit != null)
-            {
-                queryObject["limit"] = ExpressionConverter.ConvertO(bodyrlquerylimit);
-                queryObjectpropCount++;
-            }
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlquerypage != null)
-            {
-                queryObject["page"] = ExpressionConverter.ConvertO(bodyrlquerypage);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerylimit != null)
+                {
+                    queryObject["limit"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerylimit);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlquerypage != null)
+                {
+                    queryObject["page"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerypage);
+                    queryObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DailyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/daily";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/daily";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DailyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> date = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/company/daily";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/company/daily";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_date != null)
+                    callPayload.Queries["date"] = ExpressionConverter.Convert(__workflow_date);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction MonthlyAPIUsageUser(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/monthly";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/monthly";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction MonthlyAPIUsageCompany(Expression<Func<formatInput>> format = null, Expression<Func<string>> month = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/company/monthly";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/company/monthly";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(__workflow_month);
+                if (__workflow_from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(__workflow_from);
+                if (__workflow_to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(__workflow_to);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DateRangeAPIUsageUser(Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/date_range";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/date_range";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DateRangeAPIUsageCompany(Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/company/date_range";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/company/date_range";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetActiveYARARulesets(Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/usage/yara";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/usage/yara";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetAPIQuotaLimitsUser(Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/limits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/limits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetAPIQuotaLimitsCompany(Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = "/api/customer_usage/v1/limits/company";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/customer_usage/v1/limits/company";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction NetworkReputationApi(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlquerynetworkLocationsInputItem[]>> bodyrlquerynetworkLocations, Expression<Func<bodyrlqueryresponseFormatInput>> bodyrlqueryresponseFormat = null)
         {
-            var apiCallPath = String.Format("/api/networking/reputation/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            queryObjectpropCount++;
-            queryObject["network_locations"] = ExpressionConverter.ConvertO(bodyrlquerynetworkLocations);
-            if (bodyrlqueryresponseFormat != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlquerynetworkLocations = WorkflowExpression.Compile(bodyrlquerynetworkLocations, nameof(bodyrlquerynetworkLocations), required: true);
+            var __workflow_bodyrlqueryresponseFormat = WorkflowExpression.Compile(bodyrlqueryresponseFormat, nameof(bodyrlqueryresponseFormat), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                if (bodyrlqueryresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/reputation/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                queryObjectpropCount++;
+                queryObject["network_locations"] = ExpressionConverter.ConvertO(__workflow_bodyrlquerynetworkLocations);
+                if (__workflow_bodyrlqueryresponseFormat != null)
                 {
-                    queryObject["response_format"] = ExpressionConverter.ConvertO(bodyrlqueryresponseFormat);
+                    if (__workflow_bodyrlqueryresponseFormat != null)
+                    {
+                        queryObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryresponseFormat);
+                        queryObjectpropCount++;
+                    }
+
+                    queryObjectpropCount++;
+                }
+                else
+                {
+                    queryObject["response_format"] = "json";
                     queryObjectpropCount++;
                 }
 
-                queryObjectpropCount++;
-            }
-            else
-            {
-                queryObject["response_format"] = "json";
-                queryObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ListUserOverride(Expression<Func<string>> format = null, Expression<Func<string>> nextNetworkLocation = null)
         {
-            var apiCallPath = "/api/networking/user_override/v1/query/list_overrides";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (nextNetworkLocation != null)
-                callPayload.Queries["next_network_location"] = ExpressionConverter.Convert(nextNetworkLocation);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_nextNetworkLocation = WorkflowExpression.Compile(nextNetworkLocation, nameof(nextNetworkLocation), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/networking/user_override/v1/query/list_overrides";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_nextNetworkLocation != null)
+                    callPayload.Queries["next_network_location"] = ExpressionConverter.Convert(__workflow_nextNetworkLocation);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction NetworkReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryuserOverrideoverrideNetworkLocationsInputItem[]>> bodyrlqueryuserOverrideoverrideNetworkLocations = null, Expression<Func<string>> bodyrlresponseFormat = null)
         {
-            var apiCallPath = String.Format("/api/networking/user_override/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            var userOverrideObject = new JObject();
-            var userOverrideObjectpropCount = 0;
-            if (bodyrlqueryuserOverrideoverrideNetworkLocations != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryuserOverrideoverrideNetworkLocations = WorkflowExpression.Compile(bodyrlqueryuserOverrideoverrideNetworkLocations, nameof(bodyrlqueryuserOverrideoverrideNetworkLocations), required: false);
+            var __workflow_bodyrlresponseFormat = WorkflowExpression.Compile(bodyrlresponseFormat, nameof(bodyrlresponseFormat), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                userOverrideObject["override_network_locations"] = ExpressionConverter.ConvertO(bodyrlqueryuserOverrideoverrideNetworkLocations);
-                userOverrideObjectpropCount++;
-            }
-
-            if (userOverrideObjectpropCount > 0)
-            {
-                queryObject["user_override"] = userOverrideObject;
-                queryObjectpropCount++;
-            }
-
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
-
-            if (bodyrlresponseFormat != null)
-            {
-                if (bodyrlresponseFormat != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/networking/user_override/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                var userOverrideObject = new JObject();
+                var userOverrideObjectpropCount = 0;
+                if (__workflow_bodyrlqueryuserOverrideoverrideNetworkLocations != null)
                 {
-                    rlObject["response_format"] = ExpressionConverter.ConvertO(bodyrlresponseFormat);
+                    userOverrideObject["override_network_locations"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryuserOverrideoverrideNetworkLocations);
+                    userOverrideObjectpropCount++;
+                }
+
+                if (userOverrideObjectpropCount > 0)
+                {
+                    queryObject["user_override"] = userOverrideObject;
+                    queryObjectpropCount++;
+                }
+
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
                     rlObjectpropCount++;
                 }
 
-                rlObjectpropCount++;
-            }
-            else
-            {
-                rlObject["response_format"] = "json";
-                rlObjectpropCount++;
-            }
+                if (__workflow_bodyrlresponseFormat != null)
+                {
+                    if (__workflow_bodyrlresponseFormat != null)
+                    {
+                        rlObject["response_format"] = ExpressionConverter.ConvertO(__workflow_bodyrlresponseFormat);
+                        rlObjectpropCount++;
+                    }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                    rlObjectpropCount++;
+                }
+                else
+                {
+                    rlObject["response_format"] = "json";
+                    rlObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1), ExpressionConverter.ConvertWithUrlEncoding(specificReport, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
+            var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_specificReport, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetSpecificDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> specificReport, Expression<Func<formatInput>> format = null, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(base64Value, 1), ExpressionConverter.ConvertWithUrlEncoding(specificReport, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_base64Value = WorkflowExpression.Compile(base64Value, nameof(base64Value), required: true);
+            var __workflow_specificReport = WorkflowExpression.Compile(specificReport, nameof(specificReport), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_base64Value, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_specificReport, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisReportForUrlSha1(Expression<Func<string>> sha1Value, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(sha1Value, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_sha1Value = WorkflowExpression.Compile(sha1Value, nameof(sha1Value), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/sha1/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sha1Value, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetDynamicAnalysisReportForUrlBase64(Expression<Func<string>> base64Value, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = String.Format("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(base64Value, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_base64Value = WorkflowExpression.Compile(base64Value, nameof(base64Value), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/dynamic/analysis/report/v1/query/url/base64/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_base64Value, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRulesetInformation(Expression<Func<string>> rulesetName)
         {
-            var apiCallPath = String.Format("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction DeleteYaraRuleset(Expression<Func<string>> rulesetName)
         {
-            var apiCallPath = String.Format("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRulesetText(Expression<Func<string>> rulesetName)
         {
-            var apiCallPath = String.Format("/api/yara/admin/v1/ruleset/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/text", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/feed/yara/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction CreateYaraRuleset(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> bodytext, Expression<Func<bool>> bodysampleAvailable, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = "/api/yara/admin/v1/ruleset";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ruleset_name"] = ExpressionConverter.ConvertO(bodyrulesetName);
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            bodypropCount++;
-            body["sample_available"] = ExpressionConverter.ConvertO(bodysampleAvailable);
-            if (bodypropCount > 0)
+            var __workflow_bodyrulesetName = WorkflowExpression.Compile(bodyrulesetName, nameof(bodyrulesetName), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodysampleAvailable = WorkflowExpression.Compile(bodysampleAvailable, nameof(bodysampleAvailable), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/yara/admin/v1/ruleset";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ruleset_name"] = ExpressionConverter.ConvertO(__workflow_bodyrulesetName);
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                bodypropCount++;
+                body["sample_available"] = ExpressionConverter.ConvertO(__workflow_bodysampleAvailable);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRetroHuntingStatus(Expression<Func<string>> rulesetName)
         {
-            var apiCallPath = String.Format("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", ExpressionConverter.ConvertWithUrlEncoding(rulesetName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_rulesetName = WorkflowExpression.Compile(rulesetName, nameof(rulesetName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/yara/admin/v1/ruleset/{0}/status-retro-hunt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rulesetName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GetYaraRetroMatchesFeed(Expression<Func<timeFormatInput>> timeFormat, Expression<Func<string>> timeValue, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/feed/yara/retro/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(timeValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_timeFormat = WorkflowExpression.Compile(timeFormat, nameof(timeFormat), required: true);
+            var __workflow_timeValue = WorkflowExpression.Compile(timeValue, nameof(timeValue), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/feed/yara/retro/v1/query/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeFormat, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_timeValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction StartYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = "/api/yara/admin/v1/ruleset/start-retro-hunt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ruleset_name"] = ExpressionConverter.ConvertO(bodyrulesetName);
-            if (bodypropCount > 0)
+            var __workflow_bodyrulesetName = WorkflowExpression.Compile(bodyrulesetName, nameof(bodyrulesetName), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/yara/admin/v1/ruleset/start-retro-hunt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ruleset_name"] = ExpressionConverter.ConvertO(__workflow_bodyrulesetName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction CancelYaraRetroHunt(Expression<Func<string>> bodyrulesetName, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = "/api/yara/admin/v1/ruleset/cancel-retro-hunt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ruleset_name"] = ExpressionConverter.ConvertO(bodyrulesetName);
-            if (bodypropCount > 0)
+            var __workflow_bodyrulesetName = WorkflowExpression.Compile(bodyrulesetName, nameof(bodyrulesetName), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/yara/admin/v1/ruleset/cancel-retro-hunt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ruleset_name"] = ExpressionConverter.ConvertO(__workflow_bodyrulesetName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction AdvancedSearch(Expression<Func<bodyqueryInputItem[]>> bodyquery, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodyrecordsPerPage = null, Expression<Func<int>> bodypage = null, Expression<Func<string>> bodysort = null, Expression<Func<string>> contentType = null)
         {
-            var apiCallPath = "/api/search/v1/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodyformat != null)
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyrecordsPerPage = WorkflowExpression.Compile(bodyrecordsPerPage, nameof(bodyrecordsPerPage), required: false);
+            var __workflow_bodypage = WorkflowExpression.Compile(bodypage, nameof(bodypage), required: false);
+            var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                var apiCallPath = "/api/search/v1/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyrecordsPerPage != null)
-            {
-                if (bodyrecordsPerPage != null)
+                body["query"] = ExpressionConverter.ConvertO(__workflow_bodyquery);
+                if (__workflow_bodyformat != null)
                 {
-                    body["records_per_page"] = ExpressionConverter.ConvertO(bodyrecordsPerPage);
+                    body["format"] = ExpressionConverter.ConvertO(__workflow_bodyformat);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["records_per_page"] = 1000;
-                bodypropCount++;
-            }
-
-            if (bodypage != null)
-            {
-                if (bodypage != null)
+                if (__workflow_bodyrecordsPerPage != null)
                 {
-                    body["page"] = ExpressionConverter.ConvertO(bodypage);
+                    if (__workflow_bodyrecordsPerPage != null)
+                    {
+                        body["records_per_page"] = ExpressionConverter.ConvertO(__workflow_bodyrecordsPerPage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["records_per_page"] = 1000;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["page"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodysort != null)
-            {
-                if (bodysort != null)
+                if (__workflow_bodypage != null)
                 {
-                    body["sort"] = ExpressionConverter.ConvertO(bodysort);
+                    if (__workflow_bodypage != null)
+                    {
+                        body["page"] = ExpressionConverter.ConvertO(__workflow_bodypage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["page"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["sort"] = "firstseen desc";
-                bodypropCount++;
-            }
+                if (__workflow_bodysort != null)
+                {
+                    if (__workflow_bodysort != null)
+                    {
+                        body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sort"] = "firstseen desc";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction GroupByRha1SingleQuery(Expression<Func<string>> rha1Type, Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> limit = null, Expression<Func<bool>> extended = null, Expression<Func<classificationInput>> classification = null)
         {
-            var apiCallPath = String.Format("/api/group_by_rha1/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(rha1Type, 1), ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(nextPageSha1, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Queries["limit"] = Convert.ToString(1000);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["extended"] = Convert.ToString(false);
-            if (extended != null)
-                callPayload.Queries["extended"] = ExpressionConverter.Convert(extended);
-            if (classification != null)
-                callPayload.Queries["classification"] = ExpressionConverter.Convert(classification);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_rha1Type = WorkflowExpression.Compile(rha1Type, nameof(rha1Type), required: true);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_extended = WorkflowExpression.Compile(extended, nameof(extended), required: false);
+            var __workflow_classification = WorkflowExpression.Compile(classification, nameof(classification), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/group_by_rha1/v1/query/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_rha1Type, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                callPayload.Queries["limit"] = Convert.ToString(1000);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                callPayload.Queries["extended"] = Convert.ToString(false);
+                if (__workflow_extended != null)
+                    callPayload.Queries["extended"] = ExpressionConverter.Convert(__workflow_extended);
+                if (__workflow_classification != null)
+                    callPayload.Queries["classification"] = ExpressionConverter.Convert(__workflow_classification);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ImportHashSimilarity(Expression<Func<string>> hashValue, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/imphash_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction ImportHashSimilarityPaginated(Expression<Func<string>> hashValue, Expression<Func<string>> nextPageSha1, Expression<Func<string>> contentType = null, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/imphash_index/v1/query/{0}/start_sha1/{1}", ExpressionConverter.ConvertWithUrlEncoding(hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(nextPageSha1, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashValue = WorkflowExpression.Compile(hashValue, nameof(hashValue), required: true);
+            var __workflow_nextPageSha1 = WorkflowExpression.Compile(nextPageSha1, nameof(nextPageSha1), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/imphash_index/v1/query/{0}/start_sha1/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashValue, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_nextPageSha1, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                if (__workflow_contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction FileReputationUserOverride(Expression<Func<postFormatInput>> postFormat, Expression<Func<bodyrlqueryoverrideSamplesInputItem[]>> bodyrlqueryoverrideSamples = null, Expression<Func<bodyrlqueryremoveOverrideInputItem[]>> bodyrlqueryremoveOverride = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/malware_presence/user_override/{0}", ExpressionConverter.ConvertWithUrlEncoding(postFormat, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var rlObject = new JObject();
-            var rlObjectpropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (bodyrlqueryoverrideSamples != null)
+            var __workflow_postFormat = WorkflowExpression.Compile(postFormat, nameof(postFormat), required: true);
+            var __workflow_bodyrlqueryoverrideSamples = WorkflowExpression.Compile(bodyrlqueryoverrideSamples, nameof(bodyrlqueryoverrideSamples), required: false);
+            var __workflow_bodyrlqueryremoveOverride = WorkflowExpression.Compile(bodyrlqueryremoveOverride, nameof(bodyrlqueryremoveOverride), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryObject["override_samples"] = ExpressionConverter.ConvertO(bodyrlqueryoverrideSamples);
-                queryObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_postFormat, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var rlObject = new JObject();
+                var rlObjectpropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (__workflow_bodyrlqueryoverrideSamples != null)
+                {
+                    queryObject["override_samples"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryoverrideSamples);
+                    queryObjectpropCount++;
+                }
 
-            if (bodyrlqueryremoveOverride != null)
-            {
-                queryObject["remove_override"] = ExpressionConverter.ConvertO(bodyrlqueryremoveOverride);
-                queryObjectpropCount++;
-            }
+                if (__workflow_bodyrlqueryremoveOverride != null)
+                {
+                    queryObject["remove_override"] = ExpressionConverter.ConvertO(__workflow_bodyrlqueryremoveOverride);
+                    queryObjectpropCount++;
+                }
 
-            if (queryObjectpropCount > 0)
-            {
-                rlObject["query"] = queryObject;
-                rlObjectpropCount++;
-            }
+                if (queryObjectpropCount > 0)
+                {
+                    rlObject["query"] = queryObject;
+                    rlObjectpropCount++;
+                }
 
-            if (rlObjectpropCount > 0)
-            {
-                body["rl"] = rlObject;
-                bodypropCount++;
-            }
+                if (rlObjectpropCount > 0)
+                {
+                    body["rl"] = rlObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reversinglabstitaniu")]
         public IWorkflowAction FileReputationListUserOverrides(Expression<Func<hashTypeInput>> hashType, Expression<Func<string>> startHash = null, Expression<Func<formatInput>> format = null)
         {
-            var apiCallPath = String.Format("/api/databrowser/malware_presence/user_override/list_hashes/{0}", ExpressionConverter.ConvertWithUrlEncoding(hashType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startHash != null)
-                callPayload.Queries["start_hash"] = ExpressionConverter.Convert(startHash);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_hashType = WorkflowExpression.Compile(hashType, nameof(hashType), required: true);
+            var __workflow_startHash = WorkflowExpression.Compile(startHash, nameof(startHash), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/databrowser/malware_presence/user_override/list_hashes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hashType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_startHash != null)
+                    callPayload.Queries["start_hash"] = ExpressionConverter.Convert(__workflow_startHash);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (__workflow_format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(__workflow_format);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -2296,6 +2799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
     {
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum hashTypeInput
     {
         [EnumMember(Value = "md5")]
@@ -2306,6 +2810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Sha256
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum formatInput
     {
         [EnumMember(Value = "json")]
@@ -2314,6 +2819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum postFormatInput
     {
         [EnumMember(Value = "json")]
@@ -2322,6 +2828,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrlqueryhashTypeInput
     {
         [EnumMember(Value = "md5")]
@@ -2332,6 +2839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Sha256
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum timeFormatInput
     {
         [EnumMember(Value = "timestamp")]
@@ -2340,6 +2848,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Utc
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrlresponseFormatInput
     {
         [EnumMember(Value = "xml")]
@@ -2348,6 +2857,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Json
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrlqueryresponseFormatInput
     {
         [EnumMember(Value = "json")]
@@ -2365,6 +2875,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public bodyrlquerynetworkLocationsInputItemTypeType Type { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrlquerynetworkLocationsInputItemTypeType
     {
         [EnumMember(Value = "url")]
@@ -2390,6 +2901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string[] Categories { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyrlqueryuserOverrideoverrideNetworkLocationsInputItemTypeType
     {
         [EnumMember(Value = "url")]
@@ -2408,6 +2920,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyqueryInputItemCriteriaType
     {
         [EnumMember(Value = "eq")]
@@ -2430,6 +2943,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Nin
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyformatInput
     {
         [EnumMember(Value = "json")]
@@ -2438,6 +2952,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reversinglabstitaniu
         Xml
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum classificationInput
     {
         [EnumMember(Value = "known")]

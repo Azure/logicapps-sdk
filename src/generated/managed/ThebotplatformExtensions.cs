@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,129 +14,144 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage(Expression<Func<bodydataattributesmessagesInputItem[]>> bodydataattributesmessages = null, Expression<Func<string>> bodydataattributesrecipient = null)
         {
-            var apiCallPath = "/v1.0/activity/external";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            if (bodydataattributesmessages != null)
+            var __workflow_bodydataattributesmessages = WorkflowExpression.Compile(bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
+            var __workflow_bodydataattributesrecipient = WorkflowExpression.Compile(bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
+            return new DeferredBodyAction<SimpleTextMessageResponse>(() =>
             {
-                attributesObject["messages"] = ExpressionConverter.ConvertO(bodydataattributesmessages);
-                attributesObjectpropCount++;
-            }
+                var apiCallPath = "/v1.0/activity/external";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                if (__workflow_bodydataattributesmessages != null)
+                {
+                    attributesObject["messages"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesmessages);
+                    attributesObjectpropCount++;
+                }
 
-            if (bodydataattributesrecipient != null)
-            {
-                attributesObject["recipient"] = ExpressionConverter.ConvertO(bodydataattributesrecipient);
-                attributesObjectpropCount++;
-            }
+                if (__workflow_bodydataattributesrecipient != null)
+                {
+                    attributesObject["recipient"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesrecipient);
+                    attributesObjectpropCount++;
+                }
 
-            if (attributesObjectpropCount > 0)
-            {
-                dataObject["attributes"] = attributesObject;
+                if (attributesObjectpropCount > 0)
+                {
+                    dataObject["attributes"] = attributesObject;
+                    dataObjectpropCount++;
+                }
+
+                dataObject["type"] = "external-activity";
                 dataObjectpropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            dataObject["type"] = "external-activity";
-            dataObjectpropCount++;
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SimpleTextMessageResponse>(callPayload);
+                return new ApiConnectionAction<SimpleTextMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute(Expression<Func<string>> bodydataattributesname = null, Expression<Func<bodydataattributesisPiiInput>> bodydataattributesisPii = null)
         {
-            var apiCallPath = "/v1.0/userattributes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            dataObject["type"] = "userattribute";
-            dataObjectpropCount++;
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            if (bodydataattributesname != null)
+            var __workflow_bodydataattributesname = WorkflowExpression.Compile(bodydataattributesname, nameof(bodydataattributesname), required: false);
+            var __workflow_bodydataattributesisPii = WorkflowExpression.Compile(bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
+            return new DeferredBodyAction<CreateUserAttributeResponse>(() =>
             {
-                attributesObject["name"] = ExpressionConverter.ConvertO(bodydataattributesname);
-                attributesObjectpropCount++;
-            }
-
-            if (bodydataattributesisPii != null)
-            {
-                attributesObject["is_pii"] = ExpressionConverter.ConvertO(bodydataattributesisPii);
-                attributesObjectpropCount++;
-            }
-
-            if (attributesObjectpropCount > 0)
-            {
-                dataObject["attributes"] = attributesObject;
+                var apiCallPath = "/v1.0/userattributes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                dataObject["type"] = "userattribute";
                 dataObjectpropCount++;
-            }
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                if (__workflow_bodydataattributesname != null)
+                {
+                    attributesObject["name"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesname);
+                    attributesObjectpropCount++;
+                }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+                if (__workflow_bodydataattributesisPii != null)
+                {
+                    attributesObject["is_pii"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesisPii);
+                    attributesObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (attributesObjectpropCount > 0)
+                {
+                    dataObject["attributes"] = attributesObject;
+                    dataObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<CreateUserAttributeResponse>(callPayload);
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateUserAttributeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IWorkflowAction SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
         {
-            var apiCallPath = String.Format("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(emailaddress, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            dataObject["type"] = "user";
-            dataObjectpropCount++;
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            attributesObjectpropCount++;
-            attributesObject["state"] = ExpressionConverter.ConvertO(bodydataattributesstate);
-            if (attributesObjectpropCount > 0)
+            var __workflow_emailaddress = WorkflowExpression.Compile(emailaddress, nameof(emailaddress), required: true);
+            var __workflow_bodydataattributesstate = WorkflowExpression.Compile(bodydataattributesstate, nameof(bodydataattributesstate), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                dataObject["attributes"] = attributesObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailaddress, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                dataObject["type"] = "user";
                 dataObjectpropCount++;
-            }
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                attributesObjectpropCount++;
+                attributesObject["state"] = ExpressionConverter.ConvertO(__workflow_bodydataattributesstate);
+                if (attributesObjectpropCount > 0)
+                {
+                    dataObject["attributes"] = attributesObject;
+                    dataObjectpropCount++;
+                }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -162,6 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         public JToken Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodydataattributesisPiiInput
     {
         Yes,

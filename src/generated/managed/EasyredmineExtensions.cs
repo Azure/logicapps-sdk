@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,249 +14,290 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         public IBodyWorkflowAction<GetIssueResponse> CreateIssue(Expression<Func<string>> issueissueprojectID = null, Expression<Func<string>> issueissuepriorityID = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null, Expression<Func<string>> issueissuestartDate = null, Expression<Func<string>> issueissuedueDate = null, Expression<Func<double>> issueissueestimatedHours = null)
         {
-            var apiCallPath = "/issues.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var issue = new JObject();
-            var issuepropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (issueissueprojectID != null)
+            var __workflow_issueissueprojectID = WorkflowExpression.Compile(issueissueprojectID, nameof(issueissueprojectID), required: false);
+            var __workflow_issueissuepriorityID = WorkflowExpression.Compile(issueissuepriorityID, nameof(issueissuepriorityID), required: false);
+            var __workflow_issueissuesubject = WorkflowExpression.Compile(issueissuesubject, nameof(issueissuesubject), required: false);
+            var __workflow_issueissuedescription = WorkflowExpression.Compile(issueissuedescription, nameof(issueissuedescription), required: false);
+            var __workflow_issueissuestartDate = WorkflowExpression.Compile(issueissuestartDate, nameof(issueissuestartDate), required: false);
+            var __workflow_issueissuedueDate = WorkflowExpression.Compile(issueissuedueDate, nameof(issueissuedueDate), required: false);
+            var __workflow_issueissueestimatedHours = WorkflowExpression.Compile(issueissueestimatedHours, nameof(issueissueestimatedHours), required: false);
+            return new DeferredBodyAction<GetIssueResponse>(() =>
             {
-                issueObject["project_id"] = ExpressionConverter.ConvertO(issueissueprojectID);
-                issueObjectpropCount++;
-            }
+                var apiCallPath = "/issues.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var issue = new JObject();
+                var issuepropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (__workflow_issueissueprojectID != null)
+                {
+                    issueObject["project_id"] = ExpressionConverter.ConvertO(__workflow_issueissueprojectID);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuepriorityID != null)
-            {
-                issueObject["priority_id"] = ExpressionConverter.ConvertO(issueissuepriorityID);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuepriorityID != null)
+                {
+                    issueObject["priority_id"] = ExpressionConverter.ConvertO(__workflow_issueissuepriorityID);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuesubject != null)
-            {
-                issueObject["subject"] = ExpressionConverter.ConvertO(issueissuesubject);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuesubject != null)
+                {
+                    issueObject["subject"] = ExpressionConverter.ConvertO(__workflow_issueissuesubject);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuedescription != null)
-            {
-                issueObject["description"] = ExpressionConverter.ConvertO(issueissuedescription);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuedescription != null)
+                {
+                    issueObject["description"] = ExpressionConverter.ConvertO(__workflow_issueissuedescription);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuestartDate != null)
-            {
-                issueObject["start_date"] = ExpressionConverter.ConvertO(issueissuestartDate);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuestartDate != null)
+                {
+                    issueObject["start_date"] = ExpressionConverter.ConvertO(__workflow_issueissuestartDate);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuedueDate != null)
-            {
-                issueObject["due_date"] = ExpressionConverter.ConvertO(issueissuedueDate);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuedueDate != null)
+                {
+                    issueObject["due_date"] = ExpressionConverter.ConvertO(__workflow_issueissuedueDate);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissueestimatedHours != null)
-            {
-                issueObject["estimated_hours"] = ExpressionConverter.ConvertO(issueissueestimatedHours);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissueestimatedHours != null)
+                {
+                    issueObject["estimated_hours"] = ExpressionConverter.ConvertO(__workflow_issueissueestimatedHours);
+                    issueObjectpropCount++;
+                }
 
-            if (issueObjectpropCount > 0)
-            {
-                issue["issue"] = issueObject;
-                issuepropCount++;
-            }
+                if (issueObjectpropCount > 0)
+                {
+                    issue["issue"] = issueObject;
+                    issuepropCount++;
+                }
 
-            if (issuepropCount > 0)
-            {
-                callPayload.Body = issue;
-            }
+                if (issuepropCount > 0)
+                {
+                    callPayload.Body = issue;
+                }
 
-            return new ApiConnectionAction<GetIssueResponse>(callPayload);
+                return new ApiConnectionAction<GetIssueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         public IBodyWorkflowAction<GetIssueResponse> GetIssue(Expression<Func<string>> issueId)
         {
-            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIssueResponse>(callPayload);
+            var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
+            return new DeferredBodyAction<GetIssueResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_issueId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIssueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         public IBodyWorkflowAction<string> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<string>> issueissueprojectID = null, Expression<Func<string>> issueissuepriorityID = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null, Expression<Func<issueissuestatusInput>> issueissuestatus = null, Expression<Func<string>> issueissueassignToID = null, Expression<Func<string>> issueissuestartDate = null, Expression<Func<string>> issueissuedueDate = null, Expression<Func<double>> issueissueestimatedHours = null)
         {
-            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var issue = new JObject();
-            var issuepropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (issueissueprojectID != null)
+            var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
+            var __workflow_issueissueprojectID = WorkflowExpression.Compile(issueissueprojectID, nameof(issueissueprojectID), required: false);
+            var __workflow_issueissuepriorityID = WorkflowExpression.Compile(issueissuepriorityID, nameof(issueissuepriorityID), required: false);
+            var __workflow_issueissuesubject = WorkflowExpression.Compile(issueissuesubject, nameof(issueissuesubject), required: false);
+            var __workflow_issueissuedescription = WorkflowExpression.Compile(issueissuedescription, nameof(issueissuedescription), required: false);
+            var __workflow_issueissuestatus = WorkflowExpression.Compile(issueissuestatus, nameof(issueissuestatus), required: false);
+            var __workflow_issueissueassignToID = WorkflowExpression.Compile(issueissueassignToID, nameof(issueissueassignToID), required: false);
+            var __workflow_issueissuestartDate = WorkflowExpression.Compile(issueissuestartDate, nameof(issueissuestartDate), required: false);
+            var __workflow_issueissuedueDate = WorkflowExpression.Compile(issueissuedueDate, nameof(issueissuedueDate), required: false);
+            var __workflow_issueissueestimatedHours = WorkflowExpression.Compile(issueissueestimatedHours, nameof(issueissueestimatedHours), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                issueObject["project_id"] = ExpressionConverter.ConvertO(issueissueprojectID);
-                issueObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_issueId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var issue = new JObject();
+                var issuepropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (__workflow_issueissueprojectID != null)
+                {
+                    issueObject["project_id"] = ExpressionConverter.ConvertO(__workflow_issueissueprojectID);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuepriorityID != null)
-            {
-                issueObject["priority_id"] = ExpressionConverter.ConvertO(issueissuepriorityID);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuepriorityID != null)
+                {
+                    issueObject["priority_id"] = ExpressionConverter.ConvertO(__workflow_issueissuepriorityID);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuesubject != null)
-            {
-                issueObject["subject"] = ExpressionConverter.ConvertO(issueissuesubject);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuesubject != null)
+                {
+                    issueObject["subject"] = ExpressionConverter.ConvertO(__workflow_issueissuesubject);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuedescription != null)
-            {
-                issueObject["description"] = ExpressionConverter.ConvertO(issueissuedescription);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuedescription != null)
+                {
+                    issueObject["description"] = ExpressionConverter.ConvertO(__workflow_issueissuedescription);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuestatus != null)
-            {
-                issueObject["status_id"] = ExpressionConverter.ConvertO(issueissuestatus);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuestatus != null)
+                {
+                    issueObject["status_id"] = ExpressionConverter.ConvertO(__workflow_issueissuestatus);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissueassignToID != null)
-            {
-                issueObject["assigned_to_id"] = ExpressionConverter.ConvertO(issueissueassignToID);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissueassignToID != null)
+                {
+                    issueObject["assigned_to_id"] = ExpressionConverter.ConvertO(__workflow_issueissueassignToID);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuestartDate != null)
-            {
-                issueObject["start_date"] = ExpressionConverter.ConvertO(issueissuestartDate);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuestartDate != null)
+                {
+                    issueObject["start_date"] = ExpressionConverter.ConvertO(__workflow_issueissuestartDate);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuedueDate != null)
-            {
-                issueObject["due_date"] = ExpressionConverter.ConvertO(issueissuedueDate);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissuedueDate != null)
+                {
+                    issueObject["due_date"] = ExpressionConverter.ConvertO(__workflow_issueissuedueDate);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissueestimatedHours != null)
-            {
-                issueObject["estimated_hours"] = ExpressionConverter.ConvertO(issueissueestimatedHours);
-                issueObjectpropCount++;
-            }
+                if (__workflow_issueissueestimatedHours != null)
+                {
+                    issueObject["estimated_hours"] = ExpressionConverter.ConvertO(__workflow_issueissueestimatedHours);
+                    issueObjectpropCount++;
+                }
 
-            if (issueObjectpropCount > 0)
-            {
-                issue["issue"] = issueObject;
-                issuepropCount++;
-            }
+                if (issueObjectpropCount > 0)
+                {
+                    issue["issue"] = issueObject;
+                    issuepropCount++;
+                }
 
-            if (issuepropCount > 0)
-            {
-                callPayload.Body = issue;
-            }
+                if (issuepropCount > 0)
+                {
+                    callPayload.Body = issue;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         public IBodyWorkflowAction<CreateProjectResponse> CreateProject(Expression<Func<string>> projectprojectname = null, Expression<Func<string>> projectprojectidentifier = null, Expression<Func<string>> projectprojectdescription = null, Expression<Func<string>> projectprojecthomepage = null, Expression<Func<string>> projectprojectparentProjectID = null, Expression<Func<bool>> projectprojectpublic = null, Expression<Func<bool>> projectprojectinheritMembers = null)
         {
-            var apiCallPath = "/projects.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var project = new JObject();
-            var projectpropCount = 0;
-            var projectObject = new JObject();
-            var projectObjectpropCount = 0;
-            if (projectprojectname != null)
+            var __workflow_projectprojectname = WorkflowExpression.Compile(projectprojectname, nameof(projectprojectname), required: false);
+            var __workflow_projectprojectidentifier = WorkflowExpression.Compile(projectprojectidentifier, nameof(projectprojectidentifier), required: false);
+            var __workflow_projectprojectdescription = WorkflowExpression.Compile(projectprojectdescription, nameof(projectprojectdescription), required: false);
+            var __workflow_projectprojecthomepage = WorkflowExpression.Compile(projectprojecthomepage, nameof(projectprojecthomepage), required: false);
+            var __workflow_projectprojectparentProjectID = WorkflowExpression.Compile(projectprojectparentProjectID, nameof(projectprojectparentProjectID), required: false);
+            var __workflow_projectprojectpublic = WorkflowExpression.Compile(projectprojectpublic, nameof(projectprojectpublic), required: false);
+            var __workflow_projectprojectinheritMembers = WorkflowExpression.Compile(projectprojectinheritMembers, nameof(projectprojectinheritMembers), required: false);
+            return new DeferredBodyAction<CreateProjectResponse>(() =>
             {
-                projectObject["name"] = ExpressionConverter.ConvertO(projectprojectname);
-                projectObjectpropCount++;
-            }
-
-            if (projectprojectidentifier != null)
-            {
-                projectObject["identifier"] = ExpressionConverter.ConvertO(projectprojectidentifier);
-                projectObjectpropCount++;
-            }
-
-            if (projectprojectdescription != null)
-            {
-                projectObject["description"] = ExpressionConverter.ConvertO(projectprojectdescription);
-                projectObjectpropCount++;
-            }
-
-            if (projectprojecthomepage != null)
-            {
-                projectObject["homepage"] = ExpressionConverter.ConvertO(projectprojecthomepage);
-                projectObjectpropCount++;
-            }
-
-            if (projectprojectparentProjectID != null)
-            {
-                projectObject["parent_id"] = ExpressionConverter.ConvertO(projectprojectparentProjectID);
-                projectObjectpropCount++;
-            }
-
-            if (projectprojectpublic != null)
-            {
-                if (projectprojectpublic != null)
+                var apiCallPath = "/projects.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var project = new JObject();
+                var projectpropCount = 0;
+                var projectObject = new JObject();
+                var projectObjectpropCount = 0;
+                if (__workflow_projectprojectname != null)
                 {
-                    projectObject["is_public"] = ExpressionConverter.ConvertO(projectprojectpublic);
+                    projectObject["name"] = ExpressionConverter.ConvertO(__workflow_projectprojectname);
                     projectObjectpropCount++;
                 }
 
-                projectObjectpropCount++;
-            }
-            else
-            {
-                projectObject["is_public"] = false;
-                projectObjectpropCount++;
-            }
-
-            if (projectprojectinheritMembers != null)
-            {
-                if (projectprojectinheritMembers != null)
+                if (__workflow_projectprojectidentifier != null)
                 {
-                    projectObject["inherit_members"] = ExpressionConverter.ConvertO(projectprojectinheritMembers);
+                    projectObject["identifier"] = ExpressionConverter.ConvertO(__workflow_projectprojectidentifier);
                     projectObjectpropCount++;
                 }
 
-                projectObjectpropCount++;
-            }
-            else
-            {
-                projectObject["inherit_members"] = false;
-                projectObjectpropCount++;
-            }
+                if (__workflow_projectprojectdescription != null)
+                {
+                    projectObject["description"] = ExpressionConverter.ConvertO(__workflow_projectprojectdescription);
+                    projectObjectpropCount++;
+                }
 
-            if (projectObjectpropCount > 0)
-            {
-                project["project"] = projectObject;
-                projectpropCount++;
-            }
+                if (__workflow_projectprojecthomepage != null)
+                {
+                    projectObject["homepage"] = ExpressionConverter.ConvertO(__workflow_projectprojecthomepage);
+                    projectObjectpropCount++;
+                }
 
-            if (projectpropCount > 0)
-            {
-                callPayload.Body = project;
-            }
+                if (__workflow_projectprojectparentProjectID != null)
+                {
+                    projectObject["parent_id"] = ExpressionConverter.ConvertO(__workflow_projectprojectparentProjectID);
+                    projectObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+                if (__workflow_projectprojectpublic != null)
+                {
+                    if (__workflow_projectprojectpublic != null)
+                    {
+                        projectObject["is_public"] = ExpressionConverter.ConvertO(__workflow_projectprojectpublic);
+                        projectObjectpropCount++;
+                    }
+
+                    projectObjectpropCount++;
+                }
+                else
+                {
+                    projectObject["is_public"] = false;
+                    projectObjectpropCount++;
+                }
+
+                if (__workflow_projectprojectinheritMembers != null)
+                {
+                    if (__workflow_projectprojectinheritMembers != null)
+                    {
+                        projectObject["inherit_members"] = ExpressionConverter.ConvertO(__workflow_projectprojectinheritMembers);
+                        projectObjectpropCount++;
+                    }
+
+                    projectObjectpropCount++;
+                }
+                else
+                {
+                    projectObject["inherit_members"] = false;
+                    projectObjectpropCount++;
+                }
+
+                if (projectObjectpropCount > 0)
+                {
+                    project["project"] = projectObject;
+                    projectpropCount++;
+                }
+
+                if (projectpropCount > 0)
+                {
+                    callPayload.Body = project;
+                }
+
+                return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         public IBodyWorkflowAction<ProjectResponse> GetProject(Expression<Func<string>> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectResponse>(callPayload);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<ProjectResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
@@ -271,39 +312,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyredmine")]
         public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
         {
-            var apiCallPath = String.Format("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<UserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UserResponse>(callPayload);
+            });
         }
     }
 
     public class EasyredmineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponse> OnNewProject(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponse> OnNewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/new_project_trigger/projects.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/new_issue_trigger/issues.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyTrigger<ListIssuesResponse>(() =>
+            {
+                var apiCallPath = "/new_issue_trigger/issues.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
+                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/resolved_issue_trigger/issues.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            return new DeferredBodyTrigger<ListIssuesResponse>(() =>
+            {
+                var apiCallPath = "/resolved_issue_trigger/issues.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(__workflow_projectId);
+                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -397,6 +450,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyredmine
         public string Author { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum issueissuestatusInput
     {
         New,

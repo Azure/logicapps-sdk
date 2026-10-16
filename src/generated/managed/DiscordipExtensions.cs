@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -41,38 +41,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
         {
-            var apiCallPath = String.Format("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(webhookToken, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["content-type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
+            var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
+            var __workflow_webhookToken = WorkflowExpression.Compile(webhookToken, nameof(webhookToken), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodyavatarURL = WorkflowExpression.Compile(bodyavatarURL, nameof(bodyavatarURL), required: false);
+            return new DeferredBodyAction<Webhook>(() =>
             {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookToken, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                if (__workflow_contentType != null)
+                    callPayload.Headers["content-type"] = ExpressionConverter.Convert(__workflow_contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(__workflow_bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodyusername != null)
-            {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
+                if (__workflow_bodyusername != null)
+                {
+                    body["username"] = ExpressionConverter.ConvertO(__workflow_bodyusername);
+                    bodypropCount++;
+                }
 
-            if (bodyavatarURL != null)
-            {
-                body["avatar-url"] = ExpressionConverter.ConvertO(bodyavatarURL);
-                bodypropCount++;
-            }
+                if (__workflow_bodyavatarURL != null)
+                {
+                    body["avatar-url"] = ExpressionConverter.ConvertO(__workflow_bodyavatarURL);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Webhook>(callPayload);
+                return new ApiConnectionAction<Webhook>(callPayload);
+            });
         }
     }
 
@@ -203,6 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         public JToken SourceChannel { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum contentTypeInput
     {
         [EnumMember(Value = "application/json")]

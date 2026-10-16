@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,42 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> EncodeJson(Expression<Func<string>> documentSpec = null)
         {
-            var apiCallPath = "/EncodeJson";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (documentSpec != null)
-                callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(documentSpec);
-            var requestContent = new JObject();
-            var requestContentpropCount = 0;
-            if (requestContentpropCount > 0)
+            var __workflow_documentSpec = WorkflowExpression.Compile(documentSpec, nameof(documentSpec), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = requestContent;
-            }
+                var apiCallPath = "/EncodeJson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_documentSpec != null)
+                    callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(__workflow_documentSpec);
+                var requestContent = new JObject();
+                var requestContentpropCount = 0;
+                if (requestContentpropCount > 0)
+                {
+                    callPayload.Body = requestContent;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> EncodeXml(Expression<Func<string>> documentSpec = null, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/EncodeXml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (documentSpec != null)
-                callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(documentSpec);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_documentSpec = WorkflowExpression.Compile(documentSpec, nameof(documentSpec), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/EncodeXml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_documentSpec != null)
+                    callPayload.Queries["documentSpec"] = ExpressionConverter.Convert(__workflow_documentSpec);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> Send(Expression<Func<string>> receiveLocationAddress, Expression<Func<string>> body = null)
         {
-            var apiCallPath = "/Send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["receiveLocationAddress"] = ExpressionConverter.Convert(receiveLocationAddress);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_receiveLocationAddress = WorkflowExpression.Compile(receiveLocationAddress, nameof(receiveLocationAddress), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/Send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["receiveLocationAddress"] = ExpressionConverter.Convert(__workflow_receiveLocationAddress);
+                callPayload.Body = ExpressionConverter.ConvertO(__workflow_body);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

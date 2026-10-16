@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,39 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<deviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<safeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["engine"] = Convert.ToString("google");
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["device"] = Convert.ToString("desktop");
-            if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-            if (uule != null)
-                callPayload.Queries["uule"] = ExpressionConverter.Convert(uule);
-            if (googleDomain != null)
-                callPayload.Queries["google_domain"] = ExpressionConverter.Convert(googleDomain);
-            if (gl != null)
-                callPayload.Queries["gl"] = ExpressionConverter.Convert(gl);
-            if (hl != null)
-                callPayload.Queries["hl"] = ExpressionConverter.Convert(hl);
-            if (lr != null)
-                callPayload.Queries["lr"] = ExpressionConverter.Convert(lr);
-            if (cr != null)
-                callPayload.Queries["cr"] = ExpressionConverter.Convert(cr);
-            if (nfpr != null)
-                callPayload.Queries["nfpr"] = ExpressionConverter.Convert(nfpr);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (safe != null)
-                callPayload.Queries["safe"] = ExpressionConverter.Convert(safe);
-            if (num != null)
-                callPayload.Queries["num"] = ExpressionConverter.Convert(num);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
+            var __workflow_uule = WorkflowExpression.Compile(uule, nameof(uule), required: false);
+            var __workflow_googleDomain = WorkflowExpression.Compile(googleDomain, nameof(googleDomain), required: false);
+            var __workflow_gl = WorkflowExpression.Compile(gl, nameof(gl), required: false);
+            var __workflow_hl = WorkflowExpression.Compile(hl, nameof(hl), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_cr = WorkflowExpression.Compile(cr, nameof(cr), required: false);
+            var __workflow_nfpr = WorkflowExpression.Compile(nfpr, nameof(nfpr), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_safe = WorkflowExpression.Compile(safe, nameof(safe), required: false);
+            var __workflow_num = WorkflowExpression.Compile(num, nameof(num), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            return new DeferredBodyAction<SearchGetResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["engine"] = Convert.ToString("google");
+                callPayload.Queries["q"] = ExpressionConverter.Convert(__workflow_q);
+                callPayload.Queries["device"] = Convert.ToString("desktop");
+                if (__workflow_device != null)
+                    callPayload.Queries["device"] = ExpressionConverter.Convert(__workflow_device);
+                if (__workflow_location != null)
+                    callPayload.Queries["location"] = ExpressionConverter.Convert(__workflow_location);
+                if (__workflow_uule != null)
+                    callPayload.Queries["uule"] = ExpressionConverter.Convert(__workflow_uule);
+                if (__workflow_googleDomain != null)
+                    callPayload.Queries["google_domain"] = ExpressionConverter.Convert(__workflow_googleDomain);
+                if (__workflow_gl != null)
+                    callPayload.Queries["gl"] = ExpressionConverter.Convert(__workflow_gl);
+                if (__workflow_hl != null)
+                    callPayload.Queries["hl"] = ExpressionConverter.Convert(__workflow_hl);
+                if (__workflow_lr != null)
+                    callPayload.Queries["lr"] = ExpressionConverter.Convert(__workflow_lr);
+                if (__workflow_cr != null)
+                    callPayload.Queries["cr"] = ExpressionConverter.Convert(__workflow_cr);
+                if (__workflow_nfpr != null)
+                    callPayload.Queries["nfpr"] = ExpressionConverter.Convert(__workflow_nfpr);
+                if (__workflow_filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(__workflow_filter);
+                if (__workflow_safe != null)
+                    callPayload.Queries["safe"] = ExpressionConverter.Convert(__workflow_safe);
+                if (__workflow_num != null)
+                    callPayload.Queries["num"] = ExpressionConverter.Convert(__workflow_num);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            });
         }
     }
 
@@ -1458,6 +1475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         public bool Video { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum deviceInput
     {
         [EnumMember(Value = "desktop")]
@@ -1468,6 +1486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         Tablet
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum nfprInput
     {
         [EnumMember(Value = "0")]
@@ -1476,6 +1495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum filterInput
     {
         [EnumMember(Value = "0")]
@@ -1484,6 +1504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum safeInput
     {
         [EnumMember(Value = "off")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,19 +14,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
         public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
         {
-            var apiCallPath = String.Format("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["logId"] = Convert.ToString(0);
-            if (logId != null)
-                callPayload.Queries["logId"] = ExpressionConverter.Convert(logId);
-            callPayload.Queries["range"] = Convert.ToString(0);
-            if (range != null)
-                callPayload.Queries["range"] = ExpressionConverter.Convert(range);
-            callPayload.Queries["dataLanguage"] = Convert.ToString("en");
-            if (dataLanguage != null)
-                callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(dataLanguage);
-            return new ApiConnectionAction<AuditLog[]>(callPayload);
+            var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
+            var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
+            var __workflow_logId = WorkflowExpression.Compile(logId, nameof(logId), required: false);
+            var __workflow_range = WorkflowExpression.Compile(range, nameof(range), required: false);
+            var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: false);
+            return new DeferredBodyAction<AuditLog[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["logId"] = Convert.ToString(0);
+                if (__workflow_logId != null)
+                    callPayload.Queries["logId"] = ExpressionConverter.Convert(__workflow_logId);
+                callPayload.Queries["range"] = Convert.ToString(0);
+                if (__workflow_range != null)
+                    callPayload.Queries["range"] = ExpressionConverter.Convert(__workflow_range);
+                callPayload.Queries["dataLanguage"] = Convert.ToString("en");
+                if (__workflow_dataLanguage != null)
+                    callPayload.Queries["dataLanguage"] = ExpressionConverter.Convert(__workflow_dataLanguage);
+                return new ApiConnectionAction<AuditLog[]>(callPayload);
+            });
         }
     }
 
@@ -73,6 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         public bool AllFromLog { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AuditLogLanguageType
     {
         Czech,
@@ -171,6 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         public string OrderNumber { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataLanguageInput
     {
         [EnumMember(Value = "en")]

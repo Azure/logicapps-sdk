@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,97 +14,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilitiesResponse> GetFacilities(Expression<Func<string>> facilityIds = null, Expression<Func<string>> zip = null, Expression<Func<string>> state = null, Expression<Func<double>> lat = null, Expression<Func<double>> @long = null, Expression<Func<double>> radius = null, Expression<Func<string>> bbox = null, Expression<Func<double>> visn = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> services = null, Expression<Func<bool>> mobile = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = "/facilities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (facilityIds != null)
-                callPayload.Queries["facilityIds"] = ExpressionConverter.Convert(facilityIds);
-            if (zip != null)
-                callPayload.Queries["zip"] = ExpressionConverter.Convert(zip);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (@long != null)
-                callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
-            if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
-            if (bbox != null)
-                callPayload.Queries["bbox[]"] = ExpressionConverter.Convert(bbox);
-            if (visn != null)
-                callPayload.Queries["visn"] = ExpressionConverter.Convert(visn);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (services != null)
-                callPayload.Queries["services[]"] = ExpressionConverter.Convert(services);
-            if (mobile != null)
-                callPayload.Queries["mobile"] = ExpressionConverter.Convert(mobile);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            return new ApiConnectionAction<FacilitiesResponse>(callPayload);
+            var __workflow_facilityIds = WorkflowExpression.Compile(facilityIds, nameof(facilityIds), required: false);
+            var __workflow_zip = WorkflowExpression.Compile(zip, nameof(zip), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
+            var __workflow_visn = WorkflowExpression.Compile(visn, nameof(visn), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_services = WorkflowExpression.Compile(services, nameof(services), required: false);
+            var __workflow_mobile = WorkflowExpression.Compile(mobile, nameof(mobile), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            return new DeferredBodyAction<FacilitiesResponse>(() =>
+            {
+                var apiCallPath = "/facilities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_facilityIds != null)
+                    callPayload.Queries["facilityIds"] = ExpressionConverter.Convert(__workflow_facilityIds);
+                if (__workflow_zip != null)
+                    callPayload.Queries["zip"] = ExpressionConverter.Convert(__workflow_zip);
+                if (__workflow_state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(__workflow_state);
+                if (__workflow_lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                if (__workflow_long != null)
+                    callPayload.Queries["long"] = ExpressionConverter.Convert(__workflow_long);
+                if (__workflow_radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(__workflow_radius);
+                if (__workflow_bbox != null)
+                    callPayload.Queries["bbox[]"] = ExpressionConverter.Convert(__workflow_bbox);
+                if (__workflow_visn != null)
+                    callPayload.Queries["visn"] = ExpressionConverter.Convert(__workflow_visn);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                if (__workflow_services != null)
+                    callPayload.Queries["services[]"] = ExpressionConverter.Convert(__workflow_services);
+                if (__workflow_mobile != null)
+                    callPayload.Queries["mobile"] = ExpressionConverter.Convert(__workflow_mobile);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                return new ApiConnectionAction<FacilitiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilityReadResponse> GetFacilityById(Expression<Func<string>> facilityId)
         {
-            var apiCallPath = String.Format("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FacilityReadResponse>(callPayload);
+            var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
+            return new DeferredBodyAction<FacilityReadResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FacilityReadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<DetailedServicesResponse> GetFacilityServicesById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceIds = null, Expression<Func<string>> serviceType = null)
         {
-            var apiCallPath = String.Format("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (serviceIds != null)
-                callPayload.Queries["serviceIds"] = ExpressionConverter.Convert(serviceIds);
-            if (serviceType != null)
-                callPayload.Queries["serviceType"] = ExpressionConverter.Convert(serviceType);
-            return new ApiConnectionAction<DetailedServicesResponse>(callPayload);
+            var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
+            var __workflow_serviceIds = WorkflowExpression.Compile(serviceIds, nameof(serviceIds), required: false);
+            var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: false);
+            return new DeferredBodyAction<DetailedServicesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_serviceIds != null)
+                    callPayload.Queries["serviceIds"] = ExpressionConverter.Convert(__workflow_serviceIds);
+                if (__workflow_serviceType != null)
+                    callPayload.Queries["serviceType"] = ExpressionConverter.Convert(__workflow_serviceType);
+                return new ApiConnectionAction<DetailedServicesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<DetailedServiceResponse> GetFacilityServiceById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceId)
         {
-            var apiCallPath = String.Format("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(serviceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DetailedServiceResponse>(callPayload);
+            var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            return new DeferredBodyAction<DetailedServiceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DetailedServiceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilitiesIdsResponse> GetFacilityIds(Expression<Func<typeInput>> type = null)
         {
-            var apiCallPath = "/ids";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<FacilitiesIdsResponse>(callPayload);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            return new DeferredBodyAction<FacilitiesIdsResponse>(() =>
+            {
+                var apiCallPath = "/ids";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                return new ApiConnectionAction<FacilitiesIdsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<NearbyResponse> GetNearbyFacilities(Expression<Func<double>> lat, Expression<Func<double>> @long, Expression<Func<int>> driveTime = null, Expression<Func<string>> services = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var apiCallPath = "/nearby";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
-            if (driveTime != null)
-                callPayload.Queries["drive_time"] = ExpressionConverter.Convert(driveTime);
-            if (services != null)
-                callPayload.Queries["services[]"] = ExpressionConverter.Convert(services);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            return new ApiConnectionAction<NearbyResponse>(callPayload);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
+            var __workflow_driveTime = WorkflowExpression.Compile(driveTime, nameof(driveTime), required: false);
+            var __workflow_services = WorkflowExpression.Compile(services, nameof(services), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            return new DeferredBodyAction<NearbyResponse>(() =>
+            {
+                var apiCallPath = "/nearby";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["lat"] = ExpressionConverter.Convert(__workflow_lat);
+                callPayload.Queries["long"] = ExpressionConverter.Convert(__workflow_long);
+                if (__workflow_driveTime != null)
+                    callPayload.Queries["drive_time"] = ExpressionConverter.Convert(__workflow_driveTime);
+                if (__workflow_services != null)
+                    callPayload.Queries["services[]"] = ExpressionConverter.Convert(__workflow_services);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(__workflow_perPage);
+                return new ApiConnectionAction<NearbyResponse>(callPayload);
+            });
         }
     }
 
@@ -220,6 +264,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ZIPCode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FacilityAttributesFacilityTypeType
     {
         [EnumMember(Value = "va_benefits_facility")]
@@ -268,6 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public SupplementalStatus[] SupplementalStatus { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OperatingStatusStatusCodeType
     {
         NORMAL,
@@ -399,6 +445,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public string ServiceID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum FacilityFacilityTypeType
     {
         [EnumMember(Value = "va_facilities")]
@@ -459,6 +506,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public int TotalPages { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum typeInput
     {
         [EnumMember(Value = "health")]
@@ -546,6 +594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public ServiceInfoServiceTypeType ServiceType { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ServiceInfoServiceTypeType
     {
         [EnumMember(Value = "benefits")]
@@ -706,6 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         public int MinimumTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NearbyFacilityTypeType
     {
         [EnumMember(Value = "nearby_facility")]

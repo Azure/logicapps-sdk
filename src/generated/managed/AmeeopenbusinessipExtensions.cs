@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,57 +14,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompaniesResponse> GetCompanies(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> companyName = null, Expression<Func<int>> gupAmeeCompanyId = null, Expression<Func<bool>> isGup = null, Expression<Func<string>> city = null, Expression<Func<int>> postcode = null, Expression<Func<string>> provinceName = null, Expression<Func<string>> ukSic2007 = null, Expression<Func<int>> minEmployees = null, Expression<Func<int>> maxEmployees = null, Expression<Func<int>> minAnnualSalesLocal = null, Expression<Func<int>> maxAnnualSalesLocal = null, Expression<Func<int>> minScore = null, Expression<Func<int>> maxScore = null, Expression<Func<string>> fromLatLon = null, Expression<Func<int>> distance = null, Expression<Func<string>> stats = null)
         {
-            var apiCallPath = "/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (companyName != null)
-                callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
-            if (gupAmeeCompanyId != null)
-                callPayload.Queries["gup_amee_company_id"] = ExpressionConverter.Convert(gupAmeeCompanyId);
-            if (isGup != null)
-                callPayload.Queries["is_gup"] = ExpressionConverter.Convert(isGup);
-            if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            if (postcode != null)
-                callPayload.Queries["postcode"] = ExpressionConverter.Convert(postcode);
-            if (provinceName != null)
-                callPayload.Queries["province_name"] = ExpressionConverter.Convert(provinceName);
-            if (ukSic2007 != null)
-                callPayload.Queries["uk_sic_2007"] = ExpressionConverter.Convert(ukSic2007);
-            if (minEmployees != null)
-                callPayload.Queries["min_employees"] = ExpressionConverter.Convert(minEmployees);
-            if (maxEmployees != null)
-                callPayload.Queries["max_employees"] = ExpressionConverter.Convert(maxEmployees);
-            if (minAnnualSalesLocal != null)
-                callPayload.Queries["min_annual_sales_local"] = ExpressionConverter.Convert(minAnnualSalesLocal);
-            if (maxAnnualSalesLocal != null)
-                callPayload.Queries["max_annual_sales_local"] = ExpressionConverter.Convert(maxAnnualSalesLocal);
-            if (minScore != null)
-                callPayload.Queries["min_score"] = ExpressionConverter.Convert(minScore);
-            if (maxScore != null)
-                callPayload.Queries["max_score"] = ExpressionConverter.Convert(maxScore);
-            if (fromLatLon != null)
-                callPayload.Queries["from_lat_lon"] = ExpressionConverter.Convert(fromLatLon);
-            if (distance != null)
-                callPayload.Queries["distance"] = ExpressionConverter.Convert(distance);
-            if (stats != null)
-                callPayload.Queries["stats"] = ExpressionConverter.Convert(stats);
-            return new ApiConnectionAction<GetCompaniesResponse>(callPayload);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_companyName = WorkflowExpression.Compile(companyName, nameof(companyName), required: false);
+            var __workflow_gupAmeeCompanyId = WorkflowExpression.Compile(gupAmeeCompanyId, nameof(gupAmeeCompanyId), required: false);
+            var __workflow_isGup = WorkflowExpression.Compile(isGup, nameof(isGup), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_postcode = WorkflowExpression.Compile(postcode, nameof(postcode), required: false);
+            var __workflow_provinceName = WorkflowExpression.Compile(provinceName, nameof(provinceName), required: false);
+            var __workflow_ukSic2007 = WorkflowExpression.Compile(ukSic2007, nameof(ukSic2007), required: false);
+            var __workflow_minEmployees = WorkflowExpression.Compile(minEmployees, nameof(minEmployees), required: false);
+            var __workflow_maxEmployees = WorkflowExpression.Compile(maxEmployees, nameof(maxEmployees), required: false);
+            var __workflow_minAnnualSalesLocal = WorkflowExpression.Compile(minAnnualSalesLocal, nameof(minAnnualSalesLocal), required: false);
+            var __workflow_maxAnnualSalesLocal = WorkflowExpression.Compile(maxAnnualSalesLocal, nameof(maxAnnualSalesLocal), required: false);
+            var __workflow_minScore = WorkflowExpression.Compile(minScore, nameof(minScore), required: false);
+            var __workflow_maxScore = WorkflowExpression.Compile(maxScore, nameof(maxScore), required: false);
+            var __workflow_fromLatLon = WorkflowExpression.Compile(fromLatLon, nameof(fromLatLon), required: false);
+            var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: false);
+            var __workflow_stats = WorkflowExpression.Compile(stats, nameof(stats), required: false);
+            return new DeferredBodyAction<GetCompaniesResponse>(() =>
+            {
+                var apiCallPath = "/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_companyName != null)
+                    callPayload.Queries["company_name"] = ExpressionConverter.Convert(__workflow_companyName);
+                if (__workflow_gupAmeeCompanyId != null)
+                    callPayload.Queries["gup_amee_company_id"] = ExpressionConverter.Convert(__workflow_gupAmeeCompanyId);
+                if (__workflow_isGup != null)
+                    callPayload.Queries["is_gup"] = ExpressionConverter.Convert(__workflow_isGup);
+                if (__workflow_city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(__workflow_city);
+                if (__workflow_postcode != null)
+                    callPayload.Queries["postcode"] = ExpressionConverter.Convert(__workflow_postcode);
+                if (__workflow_provinceName != null)
+                    callPayload.Queries["province_name"] = ExpressionConverter.Convert(__workflow_provinceName);
+                if (__workflow_ukSic2007 != null)
+                    callPayload.Queries["uk_sic_2007"] = ExpressionConverter.Convert(__workflow_ukSic2007);
+                if (__workflow_minEmployees != null)
+                    callPayload.Queries["min_employees"] = ExpressionConverter.Convert(__workflow_minEmployees);
+                if (__workflow_maxEmployees != null)
+                    callPayload.Queries["max_employees"] = ExpressionConverter.Convert(__workflow_maxEmployees);
+                if (__workflow_minAnnualSalesLocal != null)
+                    callPayload.Queries["min_annual_sales_local"] = ExpressionConverter.Convert(__workflow_minAnnualSalesLocal);
+                if (__workflow_maxAnnualSalesLocal != null)
+                    callPayload.Queries["max_annual_sales_local"] = ExpressionConverter.Convert(__workflow_maxAnnualSalesLocal);
+                if (__workflow_minScore != null)
+                    callPayload.Queries["min_score"] = ExpressionConverter.Convert(__workflow_minScore);
+                if (__workflow_maxScore != null)
+                    callPayload.Queries["max_score"] = ExpressionConverter.Convert(__workflow_maxScore);
+                if (__workflow_fromLatLon != null)
+                    callPayload.Queries["from_lat_lon"] = ExpressionConverter.Convert(__workflow_fromLatLon);
+                if (__workflow_distance != null)
+                    callPayload.Queries["distance"] = ExpressionConverter.Convert(__workflow_distance);
+                if (__workflow_stats != null)
+                    callPayload.Queries["stats"] = ExpressionConverter.Convert(__workflow_stats);
+                return new ApiConnectionAction<GetCompaniesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> id, Expression<Func<string>> type = null)
         {
-            var apiCallPath = String.Format("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<GetCompanyResponse>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            return new DeferredBodyAction<GetCompanyResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                return new ApiConnectionAction<GetCompanyResponse>(callPayload);
+            });
         }
     }
 

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,68 +14,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
         public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectID = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
         {
-            var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(includeDocumentData);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprojectID != null)
+            var __workflow_includeDocumentData = WorkflowExpression.Compile(includeDocumentData, nameof(includeDocumentData), required: true);
+            var __workflow_bodytransactionData = WorkflowExpression.Compile(bodytransactionData, nameof(bodytransactionData), required: true);
+            var __workflow_bodybatchConfigResId = WorkflowExpression.Compile(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: false);
+            var __workflow_bodytransactionRange = WorkflowExpression.Compile(bodytransactionRange, nameof(bodytransactionRange), required: false);
+            var __workflow_bodytransactionDataType = WorkflowExpression.Compile(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            return new DeferredBodyAction<GenerateDocumentResponse>(() =>
             {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectID);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["transactionData"] = ExpressionConverter.ConvertO(bodytransactionData);
-            bodypropCount++;
-            body["batchConfigResId"] = ExpressionConverter.ConvertO(bodybatchConfigResId);
-            if (bodytransactionRange != null)
-            {
-                if (bodytransactionRange != null)
+                var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(__workflow_includeDocumentData);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyprojectID != null)
                 {
-                    body["transactionRange"] = ExpressionConverter.ConvertO(bodytransactionRange);
+                    body["projectId"] = ExpressionConverter.ConvertO(__workflow_bodyprojectID);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["transactionRange"] = 1;
+                body["transactionData"] = ExpressionConverter.ConvertO(__workflow_bodytransactionData);
                 bodypropCount++;
-            }
-
-            if (bodytransactionDataType != null)
-            {
-                if (bodytransactionDataType != null)
+                body["batchConfigResId"] = ExpressionConverter.ConvertO(__workflow_bodybatchConfigResId);
+                if (__workflow_bodytransactionRange != null)
                 {
-                    body["transactionDataType"] = ExpressionConverter.ConvertO(bodytransactionDataType);
+                    if (__workflow_bodytransactionRange != null)
+                    {
+                        body["transactionRange"] = ExpressionConverter.ConvertO(__workflow_bodytransactionRange);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["transactionRange"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["transactionDataType"] = "application/xml";
-                bodypropCount++;
-            }
+                if (__workflow_bodytransactionDataType != null)
+                {
+                    if (__workflow_bodytransactionDataType != null)
+                    {
+                        body["transactionDataType"] = ExpressionConverter.ConvertO(__workflow_bodytransactionDataType);
+                        bodypropCount++;
+                    }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["transactionDataType"] = "application/xml";
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (__workflow_bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(__workflow_bodyproperties);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+            });
         }
     }
 
@@ -248,6 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         public int ChannelID { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytransactionDataTypeInput
     {
         [EnumMember(Value = "application/xml")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,587 +14,725 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CalculateAverageResponse> CalculateAverage(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
-            var apiCallPath = "/array/calculate-average";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            return new DeferredBodyAction<CalculateAverageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/calculate-average";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CalculateAverageResponse>(callPayload);
+                return new ApiConnectionAction<CalculateAverageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ChunkAnArrayResponse> ChunkAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodysize)
         {
-            var apiCallPath = "/array/chunk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["size"] = ExpressionConverter.ConvertO(bodysize);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: true);
+            return new DeferredBodyAction<ChunkAnArrayResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/chunk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["size"] = ExpressionConverter.ConvertO(__workflow_bodysize);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ChunkAnArrayResponse>(callPayload);
+                return new ApiConnectionAction<ChunkAnArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CombineArrayResponse> CombineArray(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string[]>> bodykeys, Expression<Func<string[]>> bodyvalues)
         {
-            var apiCallPath = "/array/combine";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["keys"] = ExpressionConverter.ConvertO(bodykeys);
-            bodypropCount++;
-            body["values"] = ExpressionConverter.ConvertO(bodyvalues);
-            if (bodypropCount > 0)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodykeys = WorkflowExpression.Compile(bodykeys, nameof(bodykeys), required: true);
+            var __workflow_bodyvalues = WorkflowExpression.Compile(bodyvalues, nameof(bodyvalues), required: true);
+            return new DeferredBodyAction<CombineArrayResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/combine";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["keys"] = ExpressionConverter.ConvertO(__workflow_bodykeys);
+                bodypropCount++;
+                body["values"] = ExpressionConverter.ConvertO(__workflow_bodyvalues);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CombineArrayResponse>(callPayload);
+                return new ApiConnectionAction<CombineArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CheckIfArrayContainAValueResponse> CheckIfArrayContainAValue(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodysearch)
         {
-            var apiCallPath = "/array/contains";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            bodypropCount++;
-            body["search"] = ExpressionConverter.ConvertO(bodysearch);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: true);
+            return new DeferredBodyAction<CheckIfArrayContainAValueResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/contains";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                bodypropCount++;
+                body["search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CheckIfArrayContainAValueResponse>(callPayload);
+                return new ApiConnectionAction<CheckIfArrayContainAValueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FindDifferenceBetweenArraysResponse> FindDifferenceBetweenArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string[]>> bodycompare)
         {
-            var apiCallPath = "/array/difference";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["compare"] = ExpressionConverter.ConvertO(bodycompare);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodycompare = WorkflowExpression.Compile(bodycompare, nameof(bodycompare), required: true);
+            return new DeferredBodyAction<FindDifferenceBetweenArraysResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/difference";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["compare"] = ExpressionConverter.ConvertO(__workflow_bodycompare);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FindDifferenceBetweenArraysResponse>(callPayload);
+                return new ApiConnectionAction<FindDifferenceBetweenArraysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FindDuplicatesInArraysResponse> FindDuplicatesInArrays(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
         {
-            var apiCallPath = "/array/duplicate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodykey != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            return new DeferredBodyAction<FindDuplicatesInArraysResponse>(() =>
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                var apiCallPath = "/array/duplicate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FindDuplicatesInArraysResponse>(callPayload);
+                return new ApiConnectionAction<FindDuplicatesInArraysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FilterAnArrayResponse> FilterAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bool>> bodypreserveKeys)
         {
-            var apiCallPath = "/array/filter";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["preserveKeys"] = ExpressionConverter.ConvertO(bodypreserveKeys);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypreserveKeys = WorkflowExpression.Compile(bodypreserveKeys, nameof(bodypreserveKeys), required: true);
+            return new DeferredBodyAction<FilterAnArrayResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/filter";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["preserveKeys"] = ExpressionConverter.ConvertO(__workflow_bodypreserveKeys);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FilterAnArrayResponse>(callPayload);
+                return new ApiConnectionAction<FilterAnArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FirstWhereWithinAnArrayResponse> FirstWhereWithinAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey, Expression<Func<string>> bodyvalue, Expression<Func<bodyOperatorInput>> bodyOperator = null)
         {
-            var apiCallPath = "/array/first-where";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodyOperator != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyOperator = WorkflowExpression.Compile(bodyOperator, nameof(bodyOperator), required: false);
+            return new DeferredBodyAction<FirstWhereWithinAnArrayResponse>(() =>
             {
-                body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
+                var apiCallPath = "/array/first-where";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                if (__workflow_bodyOperator != null)
+                {
+                    body["operator"] = ExpressionConverter.ConvertO(__workflow_bodyOperator);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FirstWhereWithinAnArrayResponse>(callPayload);
+                return new ApiConnectionAction<FirstWhereWithinAnArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FlattenAnArrayResponse> FlattenAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<int>> bodydepth = null)
         {
-            var apiCallPath = "/array/flatten";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodydepth != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodydepth = WorkflowExpression.Compile(bodydepth, nameof(bodydepth), required: false);
+            return new DeferredBodyAction<FlattenAnArrayResponse>(() =>
             {
-                body["depth"] = ExpressionConverter.ConvertO(bodydepth);
+                var apiCallPath = "/array/flatten";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodydepth != null)
+                {
+                    body["depth"] = ExpressionConverter.ConvertO(__workflow_bodydepth);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<FlattenAnArrayResponse>(callPayload);
+                return new ApiConnectionAction<FlattenAnArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<RemoveItemFromArrayResponse> RemoveItemFromArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
-            var apiCallPath = "/array/forget";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            return new DeferredBodyAction<RemoveItemFromArrayResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/forget";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<RemoveItemFromArrayResponse>(callPayload);
+                return new ApiConnectionAction<RemoveItemFromArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<GroupByAnArrayKeyResponse> GroupByAnArrayKey(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey)
         {
-            var apiCallPath = "/array/group-by";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            return new DeferredBodyAction<GroupByAnArrayKeyResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/group-by";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GroupByAnArrayKeyResponse>(callPayload);
+                return new ApiConnectionAction<GroupByAnArrayKeyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<StandardArrayResponse> SortAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<bodysortInput>> bodysort)
         {
-            var apiCallPath = "/array/sort";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["sort"] = ExpressionConverter.ConvertO(bodysort);
-            if (bodypropCount > 0)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: true);
+            return new DeferredBodyAction<StandardArrayResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/array/sort";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                bodypropCount++;
+                body["sort"] = ExpressionConverter.ConvertO(__workflow_bodysort);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StandardArrayResponse>(callPayload);
+                return new ApiConnectionAction<StandardArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<GetUniqueItemsInAnArrayResponse> GetUniqueItemsInAnArray(Expression<Func<string[]>> bodyarray, Expression<Func<string>> bodykey = null)
         {
-            var apiCallPath = "/array/unique";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodykey != null)
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            return new DeferredBodyAction<GetUniqueItemsInAnArrayResponse>(() =>
             {
-                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                var apiCallPath = "/array/unique";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["array"] = ExpressionConverter.ConvertO(__workflow_bodyarray);
+                if (__workflow_bodykey != null)
+                {
+                    body["key"] = ExpressionConverter.ConvertO(__workflow_bodykey);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetUniqueItemsInAnArrayResponse>(callPayload);
+                return new ApiConnectionAction<GetUniqueItemsInAnArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<AddOrSubtractFromTimeOrDatesResponse> AddOrSubtractFromTimeOrDates(Expression<Func<bodyactionInput>> bodyaction, Expression<Func<string>> bodydatetime, Expression<Func<bodyOperatorInput>> bodyOperator, Expression<Func<int>> bodyvalue, Expression<Func<string>> bodyoutputFormat = null)
         {
-            var apiCallPath = "/datetime/add-or-subtract";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["action"] = ExpressionConverter.ConvertO(bodyaction);
-            bodypropCount++;
-            body["datetime"] = ExpressionConverter.ConvertO(bodydatetime);
-            bodypropCount++;
-            body["operator"] = ExpressionConverter.ConvertO(bodyOperator);
-            if (bodyoutputFormat != null)
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
+            var __workflow_bodydatetime = WorkflowExpression.Compile(bodydatetime, nameof(bodydatetime), required: true);
+            var __workflow_bodyOperator = WorkflowExpression.Compile(bodyOperator, nameof(bodyOperator), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            return new DeferredBodyAction<AddOrSubtractFromTimeOrDatesResponse>(() =>
             {
-                body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                var apiCallPath = "/datetime/add-or-subtract";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["action"] = ExpressionConverter.ConvertO(__workflow_bodyaction);
+                bodypropCount++;
+                body["datetime"] = ExpressionConverter.ConvertO(__workflow_bodydatetime);
+                bodypropCount++;
+                body["operator"] = ExpressionConverter.ConvertO(__workflow_bodyOperator);
+                if (__workflow_bodyoutputFormat != null)
+                {
+                    body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(__workflow_bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<AddOrSubtractFromTimeOrDatesResponse>(callPayload);
+                return new ApiConnectionAction<AddOrSubtractFromTimeOrDatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ConvertAStringToADatetimeObjectResponse> ConvertAStringToADatetimeObject(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyinputFormat, Expression<Func<string>> bodyoutputFormat, Expression<Func<string>> bodystring, Expression<Func<string>> bodytimezone = null)
         {
-            var apiCallPath = "/datetime/string-to-datetime";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["inputFormat"] = ExpressionConverter.ConvertO(bodyinputFormat);
-            bodypropCount++;
-            body["outputFormat"] = ExpressionConverter.ConvertO(bodyoutputFormat);
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodytimezone != null)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyinputFormat = WorkflowExpression.Compile(bodyinputFormat, nameof(bodyinputFormat), required: true);
+            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            return new DeferredBodyAction<ConvertAStringToADatetimeObjectResponse>(() =>
             {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                var apiCallPath = "/datetime/string-to-datetime";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["inputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyinputFormat);
+                bodypropCount++;
+                body["outputFormat"] = ExpressionConverter.ConvertO(__workflow_bodyoutputFormat);
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(__workflow_bodystring);
+                if (__workflow_bodytimezone != null)
+                {
+                    body["timezone"] = ExpressionConverter.ConvertO(__workflow_bodytimezone);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ConvertAStringToADatetimeObjectResponse>(callPayload);
+                return new ApiConnectionAction<ConvertAStringToADatetimeObjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<PerformOcrOnAScannedPdfOrImageFileResponse> PerformOcrOnAScannedPdfOrImageFile(Expression<Func<string>> bodyfile, Expression<Func<bodyoemInput>> bodyoem, Expression<Func<bodypsmInput>> bodypsm, Expression<Func<bool>> bodytrim, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodylanguage = null)
         {
-            var apiCallPath = "/ocr/perform-ocr";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
-            if (bodylanguage != null)
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyoem = WorkflowExpression.Compile(bodyoem, nameof(bodyoem), required: true);
+            var __workflow_bodypsm = WorkflowExpression.Compile(bodypsm, nameof(bodypsm), required: true);
+            var __workflow_bodytrim = WorkflowExpression.Compile(bodytrim, nameof(bodytrim), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            return new DeferredBodyAction<PerformOcrOnAScannedPdfOrImageFileResponse>(() =>
             {
-                if (bodylanguage != null)
+                var apiCallPath = "/ocr/perform-ocr";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["file"] = ExpressionConverter.ConvertO(__workflow_bodyfile);
+                if (__workflow_bodylanguage != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    if (__workflow_bodylanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(__workflow_bodylanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "eng";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "eng";
+                body["oem"] = ExpressionConverter.ConvertO(__workflow_bodyoem);
                 bodypropCount++;
-            }
+                body["psm"] = ExpressionConverter.ConvertO(__workflow_bodypsm);
+                bodypropCount++;
+                body["trim"] = ExpressionConverter.ConvertO(__workflow_bodytrim);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(__workflow_bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["oem"] = ExpressionConverter.ConvertO(bodyoem);
-            bodypropCount++;
-            body["psm"] = ExpressionConverter.ConvertO(bodypsm);
-            bodypropCount++;
-            body["trim"] = ExpressionConverter.ConvertO(bodytrim);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PerformOcrOnAScannedPdfOrImageFileResponse>(callPayload);
+                return new ApiConnectionAction<PerformOcrOnAScannedPdfOrImageFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<CombineMultiplePdfFilesResponse> CombineMultiplePdfFiles(Expression<Func<string[]>> bodypdfs)
         {
-            var apiCallPath = "/pdf/combine-pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["pdfs"] = ExpressionConverter.ConvertO(bodypdfs);
-            if (bodypropCount > 0)
+            var __workflow_bodypdfs = WorkflowExpression.Compile(bodypdfs, nameof(bodypdfs), required: true);
+            return new DeferredBodyAction<CombineMultiplePdfFilesResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/pdf/combine-pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["pdfs"] = ExpressionConverter.ConvertO(__workflow_bodypdfs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CombineMultiplePdfFilesResponse>(callPayload);
+                return new ApiConnectionAction<CombineMultiplePdfFilesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<GetPdfMetadataInformationResponse> GetPdfMetadataInformation(Expression<Func<string>> bodypdf)
         {
-            var apiCallPath = "/pdf/pdf-metadata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
-            if (bodypropCount > 0)
+            var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
+            return new DeferredBodyAction<GetPdfMetadataInformationResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/pdf/pdf-metadata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["pdf"] = ExpressionConverter.ConvertO(__workflow_bodypdf);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetPdfMetadataInformationResponse>(callPayload);
+                return new ApiConnectionAction<GetPdfMetadataInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<StandardArrayResponse> ConvertAPdfFileToText(Expression<Func<bodylayoutInput>> bodylayout, Expression<Func<string>> bodypdf, Expression<Func<int>> bodyendPage = null, Expression<Func<int>> bodystartPage = null)
         {
-            var apiCallPath = "/pdf/pdf-to-text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyendPage != null)
+            var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: true);
+            var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
+            var __workflow_bodyendPage = WorkflowExpression.Compile(bodyendPage, nameof(bodyendPage), required: false);
+            var __workflow_bodystartPage = WorkflowExpression.Compile(bodystartPage, nameof(bodystartPage), required: false);
+            return new DeferredBodyAction<StandardArrayResponse>(() =>
             {
-                body["endPage"] = ExpressionConverter.ConvertO(bodyendPage);
+                var apiCallPath = "/pdf/pdf-to-text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyendPage != null)
+                {
+                    body["endPage"] = ExpressionConverter.ConvertO(__workflow_bodyendPage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["layout"] = ExpressionConverter.ConvertO(bodylayout);
-            bodypropCount++;
-            body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
-            if (bodystartPage != null)
-            {
-                body["startPage"] = ExpressionConverter.ConvertO(bodystartPage);
+                body["layout"] = ExpressionConverter.ConvertO(__workflow_bodylayout);
                 bodypropCount++;
-            }
+                body["pdf"] = ExpressionConverter.ConvertO(__workflow_bodypdf);
+                if (__workflow_bodystartPage != null)
+                {
+                    body["startPage"] = ExpressionConverter.ConvertO(__workflow_bodystartPage);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<StandardArrayResponse>(callPayload);
+                return new ApiConnectionAction<StandardArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<SetPasswordOnAPdfFileResponse> SetPasswordOnAPdfFile(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodypassword, Expression<Func<string>> bodypdf)
         {
-            var apiCallPath = "/pdf/set-password";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
-            bodypropCount++;
-            body["pdf"] = ExpressionConverter.ConvertO(bodypdf);
-            if (bodypropCount > 0)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodypdf = WorkflowExpression.Compile(bodypdf, nameof(bodypdf), required: true);
+            return new DeferredBodyAction<SetPasswordOnAPdfFileResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/pdf/set-password";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["password"] = ExpressionConverter.ConvertO(__workflow_bodypassword);
+                bodypropCount++;
+                body["pdf"] = ExpressionConverter.ConvertO(__workflow_bodypdf);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SetPasswordOnAPdfFileResponse>(callPayload);
+                return new ApiConnectionAction<SetPasswordOnAPdfFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ReplaceTextInStringBasedOnARegularExpressionResponse> ReplaceTextInStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplacement, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = "/regex/regex-replace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            bodypropCount++;
-            body["replacement"] = ExpressionConverter.ConvertO(bodyreplacement);
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodyreplacement = WorkflowExpression.Compile(bodyreplacement, nameof(bodyreplacement), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<ReplaceTextInStringBasedOnARegularExpressionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/regex/regex-replace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
+                bodypropCount++;
+                body["replacement"] = ExpressionConverter.ConvertO(__workflow_bodyreplacement);
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ReplaceTextInStringBasedOnARegularExpressionResponse>(callPayload);
+                return new ApiConnectionAction<ReplaceTextInStringBasedOnARegularExpressionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<FindValuesFromAStringBasedOnARegularExpressionResponse> FindValuesFromAStringBasedOnARegularExpression(Expression<Func<string>> bodypattern, Expression<Func<string>> bodytext, Expression<Func<int>> bodygroup = null)
         {
-            var apiCallPath = "/regex/regex-search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroup != null)
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
+            return new DeferredBodyAction<FindValuesFromAStringBasedOnARegularExpressionResponse>(() =>
             {
-                body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                var apiCallPath = "/regex/regex-search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodygroup != null)
+                {
+                    body["group"] = ExpressionConverter.ConvertO(__workflow_bodygroup);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["pattern"] = ExpressionConverter.ConvertO(__workflow_bodypattern);
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FindValuesFromAStringBasedOnARegularExpressionResponse>(callPayload);
+                return new ApiConnectionAction<FindValuesFromAStringBasedOnARegularExpressionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "optiapi")]
         public IBodyWorkflowAction<ReplaceTextInStringResponse> ReplaceTextInString(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyreplace, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytext)
         {
-            var apiCallPath = "/text/text-replace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["replace"] = ExpressionConverter.ConvertO(bodyreplace);
-            bodypropCount++;
-            body["search"] = ExpressionConverter.ConvertO(bodysearch);
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyreplace = WorkflowExpression.Compile(bodyreplace, nameof(bodyreplace), required: true);
+            var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<ReplaceTextInStringResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/text/text-replace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(__workflow_contentType);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(__workflow_accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["replace"] = ExpressionConverter.ConvertO(__workflow_bodyreplace);
+                bodypropCount++;
+                body["search"] = ExpressionConverter.ConvertO(__workflow_bodysearch);
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ReplaceTextInStringResponse>(callPayload);
+                return new ApiConnectionAction<ReplaceTextInStringResponse>(callPayload);
+            });
         }
     }
 
@@ -650,6 +788,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] Array { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyOperatorInput
     {
         Add,
@@ -680,6 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string[] ResultArray { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodysortInput
     {
         Ascending,
@@ -698,6 +838,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Datetime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyactionInput
     {
         Year,
@@ -723,6 +864,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyoemInput
     {
         [EnumMember(Value = "0")]
@@ -731,6 +873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         _1
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodypsmInput
     {
         [EnumMember(Value = "0")]
@@ -763,6 +906,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         _13
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodytypeInput
     {
         [EnumMember(Value = "pdf")]
@@ -839,6 +983,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Optiapi
         public string Title { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodylayoutInput
     {
         [EnumMember(Value = "raw")]

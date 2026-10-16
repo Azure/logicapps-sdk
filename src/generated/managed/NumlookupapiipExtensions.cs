@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,12 +14,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
         public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
         {
-            var apiCallPath = String.Format("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(phoneNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<NumberGetResponse>(callPayload);
+            var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            return new DeferredBodyAction<NumberGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phoneNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(__workflow_countryCode);
+                return new ApiConnectionAction<NumberGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,68 +14,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<EmailPostResponse> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
         {
-            var apiCallPath = "/emails";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            if (bodycc != null)
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodycc = WorkflowExpression.Compile(bodycc, nameof(bodycc), required: false);
+            var __workflow_bodybcc = WorkflowExpression.Compile(bodybcc, nameof(bodybcc), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: false);
+            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
+            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            return new DeferredBodyAction<EmailPostResponse>(() =>
             {
-                body["cc"] = ExpressionConverter.ConvertO(bodycc);
+                var apiCallPath = "/emails";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodybcc != null)
-            {
-                body["bcc"] = ExpressionConverter.ConvertO(bodybcc);
+                body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
                 bodypropCount++;
-            }
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                if (__workflow_bodycc != null)
+                {
+                    body["cc"] = ExpressionConverter.ConvertO(__workflow_bodycc);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (__workflow_bodybcc != null)
+                {
+                    body["bcc"] = ExpressionConverter.ConvertO(__workflow_bodybcc);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["subject"] = ExpressionConverter.ConvertO(__workflow_bodysubject);
+                if (__workflow_bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(__workflow_bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodyhtml != null)
-            {
-                body["html"] = ExpressionConverter.ConvertO(bodyhtml);
-                bodypropCount++;
-            }
+                if (__workflow_bodyhtml != null)
+                {
+                    body["html"] = ExpressionConverter.ConvertO(__workflow_bodyhtml);
+                    bodypropCount++;
+                }
 
-            if (bodyattachments != null)
-            {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
-                bodypropCount++;
-            }
+                if (__workflow_bodyattachments != null)
+                {
+                    body["attachments"] = ExpressionConverter.ConvertO(__workflow_bodyattachments);
+                    bodypropCount++;
+                }
 
-            if (bodyreplyTo != null)
-            {
-                body["reply_to"] = ExpressionConverter.ConvertO(bodyreplyTo);
-                bodypropCount++;
-            }
+                if (__workflow_bodyreplyTo != null)
+                {
+                    body["reply_to"] = ExpressionConverter.ConvertO(__workflow_bodyreplyTo);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<EmailPostResponse>(callPayload);
+                return new ApiConnectionAction<EmailPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet(Expression<Func<string>> emailId)
         {
-            var apiCallPath = String.Format("/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(emailId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RetrieveGetResponse>(callPayload);
+            var __workflow_emailId = WorkflowExpression.Compile(emailId, nameof(emailId), required: true);
+            return new DeferredBodyAction<RetrieveGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RetrieveGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
@@ -90,53 +106,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<DomainPostResponse> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
         {
-            var apiCallPath = "/domains";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodyregion != null)
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
+            return new DeferredBodyAction<DomainPostResponse>(() =>
             {
-                if (bodyregion != null)
+                var apiCallPath = "/domains";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(__workflow_bodyname);
+                if (__workflow_bodyregion != null)
                 {
-                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    if (__workflow_bodyregion != null)
+                    {
+                        body["region"] = ExpressionConverter.ConvertO(__workflow_bodyregion);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["region"] = "us-east-1";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["region"] = "us-east-1";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DomainPostResponse>(callPayload);
+                return new ApiConnectionAction<DomainPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> DomainDelete(Expression<Func<string>> domainId)
         {
-            var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> Verify(Expression<Func<string>> domainId)
         {
-            var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
@@ -279,6 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         public int Priority { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum bodyregionInput
     {
         [EnumMember(Value = "us-east-1")]

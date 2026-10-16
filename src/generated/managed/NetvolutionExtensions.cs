@@ -1,10 +1,10 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,92 +23,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetOrder(Expression<Func<string>> contactId, Expression<Func<string>> since)
         {
-            var apiCallPath = String.Format("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["since"] = ExpressionConverter.Convert(__workflow_since);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetContactIDFromSuppressionList(Expression<Func<string>> contactId, Expression<Func<string>> listName)
         {
-            var apiCallPath = "/cdp/suppression/check";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cdp/suppression/check";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contactId"] = ExpressionConverter.Convert(__workflow_contactId);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(__workflow_listName);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction PutContactIDToSuppresionList(Expression<Func<string>> contactId, Expression<Func<string>> listName, Expression<Func<string>> timeSpan)
         {
-            var apiCallPath = "/cdp/suppression/add";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["timeSpan"] = ExpressionConverter.Convert(timeSpan);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
+            var __workflow_timeSpan = WorkflowExpression.Compile(timeSpan, nameof(timeSpan), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cdp/suppression/add";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contactId"] = ExpressionConverter.Convert(__workflow_contactId);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(__workflow_listName);
+                callPayload.Queries["timeSpan"] = ExpressionConverter.Convert(__workflow_timeSpan);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction SendMail(Expression<Func<string>> cdpContactId = null, Expression<Func<string>> languageId = null, Expression<Func<string>> emailTemplate = null)
         {
-            var apiCallPath = "/cdp/mail/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (cdpContactId != null)
-                callPayload.Queries["cdpContactId"] = ExpressionConverter.Convert(cdpContactId);
-            if (languageId != null)
-                callPayload.Queries["languageId"] = ExpressionConverter.Convert(languageId);
-            if (emailTemplate != null)
-                callPayload.Queries["emailTemplate"] = ExpressionConverter.Convert(emailTemplate);
-            return new ApiConnectionAction(callPayload);
+            var __workflow_cdpContactId = WorkflowExpression.Compile(cdpContactId, nameof(cdpContactId), required: false);
+            var __workflow_languageId = WorkflowExpression.Compile(languageId, nameof(languageId), required: false);
+            var __workflow_emailTemplate = WorkflowExpression.Compile(emailTemplate, nameof(emailTemplate), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cdp/mail/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_cdpContactId != null)
+                    callPayload.Queries["cdpContactId"] = ExpressionConverter.Convert(__workflow_cdpContactId);
+                if (__workflow_languageId != null)
+                    callPayload.Queries["languageId"] = ExpressionConverter.Convert(__workflow_languageId);
+                if (__workflow_emailTemplate != null)
+                    callPayload.Queries["emailTemplate"] = ExpressionConverter.Convert(__workflow_emailTemplate);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<CheckEventResponse> CheckEvent(Expression<Func<eventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
         {
-            var apiCallPath = "/cdp/events/checkevent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (eventName != null)
-                callPayload.Queries["eventName"] = ExpressionConverter.Convert(eventName);
-            if (contactId != null)
-                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            if (since != null)
-                callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            return new ApiConnectionAction<CheckEventResponse>(callPayload);
+            var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: false);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: false);
+            return new DeferredBodyAction<CheckEventResponse>(() =>
+            {
+                var apiCallPath = "/cdp/events/checkevent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_eventName != null)
+                    callPayload.Queries["eventName"] = ExpressionConverter.Convert(__workflow_eventName);
+                if (__workflow_contactId != null)
+                    callPayload.Queries["contactId"] = ExpressionConverter.Convert(__workflow_contactId);
+                if (__workflow_since != null)
+                    callPayload.Queries["since"] = ExpressionConverter.Convert(__workflow_since);
+                return new ApiConnectionAction<CheckEventResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<GetWishListResponse> GetWishList(Expression<Func<string>> since)
         {
-            var apiCallPath = String.Format("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(since, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWishListResponse>(callPayload);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
+            return new DeferredBodyAction<GetWishListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_since, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWishListResponse>(callPayload);
+            });
         }
     }
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, triggerName, recurrence);
+            var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
+            return new DeferredBodyTrigger<OnNewEventResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, triggerName, recurrence);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyTrigger<OnNewUserInSegmentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 
@@ -124,6 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         public int Results { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum eventNameInput
     {
         [EnumMember(Value = "add_to_cart")]

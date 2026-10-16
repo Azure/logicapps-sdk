@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,19 +14,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
         public IBodyWorkflowAction<ParseAddressResponse> ParseAddress(Expression<Func<string>> bodyaddress)
         {
-            var apiCallPath = "/parsed-address";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["address"] = ExpressionConverter.ConvertO(bodyaddress);
-            if (bodypropCount > 0)
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            return new DeferredBodyAction<ParseAddressResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/parsed-address";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["address"] = ExpressionConverter.ConvertO(__workflow_bodyaddress);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+                return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+            });
         }
     }
 

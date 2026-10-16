@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,21 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
         public IWorkflowAction Transform(Expression<Func<string>> bodybase64Content, Expression<Func<string>> bodyconfigId)
         {
-            var apiCallPath = "/api/1.0/translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["base64Content"] = ExpressionConverter.ConvertO(bodybase64Content);
-            bodypropCount++;
-            body["configId"] = ExpressionConverter.ConvertO(bodyconfigId);
-            if (bodypropCount > 0)
+            var __workflow_bodybase64Content = WorkflowExpression.Compile(bodybase64Content, nameof(bodybase64Content), required: true);
+            var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/1.0/translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["base64Content"] = ExpressionConverter.ConvertO(__workflow_bodybase64Content);
+                bodypropCount++;
+                body["configId"] = ExpressionConverter.ConvertO(__workflow_bodyconfigId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

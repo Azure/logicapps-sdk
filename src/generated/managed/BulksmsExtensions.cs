@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,32 +14,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
         public IWorkflowAction SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<int>> bodylongMessageMaxParts, Expression<Func<string>> bodyfrom = null)
         {
-            var apiCallPath = "/v1/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(autoUnicode);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            var __workflow_autoUnicode = WorkflowExpression.Compile(autoUnicode, nameof(autoUnicode), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
+            var __workflow_bodylongMessageMaxParts = WorkflowExpression.Compile(bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/v1/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(__workflow_autoUnicode);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (__workflow_bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(__workflow_bodyfrom);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["to"] = ExpressionConverter.ConvertO(__workflow_bodyto);
+                bodypropCount++;
+                body["body"] = ExpressionConverter.ConvertO(__workflow_bodybody);
+                body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
+                bodypropCount++;
+                bodypropCount++;
+                body["longMessageMaxParts"] = ExpressionConverter.ConvertO(__workflow_bodylongMessageMaxParts);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
-            body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
-            bodypropCount++;
-            bodypropCount++;
-            body["longMessageMaxParts"] = ExpressionConverter.ConvertO(bodylongMessageMaxParts);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

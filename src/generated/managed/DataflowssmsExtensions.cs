@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,31 +14,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<SMSResponse> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
         {
-            var apiCallPath = "/sms/send";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recipient"] = ExpressionConverter.Convert(recipient);
-            callPayload.Queries["sender_id"] = ExpressionConverter.Convert(senderId);
-            callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            callPayload.Queries["type"] = Convert.ToString("plain");
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<SMSResponse>(callPayload);
+            var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: true);
+            var __workflow_senderId = WorkflowExpression.Compile(senderId, nameof(senderId), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            return new DeferredBodyAction<SMSResponse>(() =>
+            {
+                var apiCallPath = "/sms/send";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recipient"] = ExpressionConverter.Convert(__workflow_recipient);
+                callPayload.Queries["sender_id"] = ExpressionConverter.Convert(__workflow_senderId);
+                callPayload.Queries["message"] = ExpressionConverter.Convert(__workflow_message);
+                callPayload.Queries["type"] = Convert.ToString("plain");
+                if (__workflow_type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(__workflow_type);
+                return new ApiConnectionAction<SMSResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<SMSList> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["limit"] = Convert.ToString(20);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<SMSList>(callPayload);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<SMSList>(() =>
+            {
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                callPayload.Queries["limit"] = Convert.ToString(20);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                return new ApiConnectionAction<SMSList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
@@ -76,6 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public string Message { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SMSResponseStatusType
     {
         [EnumMember(Value = "success")]
@@ -93,6 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public SMSListDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SMSListStatusType
     {
         [EnumMember(Value = "success")]
@@ -119,6 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public SMSDetailsDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum SMSDetailsStatusType
     {
         [EnumMember(Value = "success")]
@@ -172,6 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public ProfileDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ProfileStatusType
     {
         [EnumMember(Value = "success")]
@@ -207,6 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         public BalanceDataType Data { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum BalanceStatusType
     {
         [EnumMember(Value = "success")]

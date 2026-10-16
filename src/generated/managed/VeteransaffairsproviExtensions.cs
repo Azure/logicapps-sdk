@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,141 +14,203 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<LocationBundle> GetLocation(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var apiCallPath = "/Location";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
-            if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
-            if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
-            if (addressCity != null)
-                callPayload.Queries["address-city"] = ExpressionConverter.Convert(addressCity);
-            if (addressState != null)
-                callPayload.Queries["address-state"] = ExpressionConverter.Convert(addressState);
-            if (addressPostalcode != null)
-                callPayload.Queries["address-postalcode"] = ExpressionConverter.Convert(addressPostalcode);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            return new ApiConnectionAction<LocationBundle>(callPayload);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_addressCity = WorkflowExpression.Compile(addressCity, nameof(addressCity), required: false);
+            var __workflow_addressState = WorkflowExpression.Compile(addressState, nameof(addressState), required: false);
+            var __workflow_addressPostalcode = WorkflowExpression.Compile(addressPostalcode, nameof(addressPostalcode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
+            return new DeferredBodyAction<LocationBundle>(() =>
+            {
+                var apiCallPath = "/Location";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_Id != null)
+                    callPayload.Queries["_id"] = ExpressionConverter.Convert(__workflow_Id);
+                if (__workflow_identifier != null)
+                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
+                if (__workflow_address != null)
+                    callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
+                if (__workflow_addressCity != null)
+                    callPayload.Queries["address-city"] = ExpressionConverter.Convert(__workflow_addressCity);
+                if (__workflow_addressState != null)
+                    callPayload.Queries["address-state"] = ExpressionConverter.Convert(__workflow_addressState);
+                if (__workflow_addressPostalcode != null)
+                    callPayload.Queries["address-postalcode"] = ExpressionConverter.Convert(__workflow_addressPostalcode);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(__workflow_LastUpdated);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_Count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
+                return new ApiConnectionAction<LocationBundle>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Location> GetLocationById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Location>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Location>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Location>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<OrganizationBundle> ListOrganizations(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var apiCallPath = "/Organization";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
-            if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
-            if (address != null)
-                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
-            if (addressCity != null)
-                callPayload.Queries["address-city"] = ExpressionConverter.Convert(addressCity);
-            if (addressState != null)
-                callPayload.Queries["address-state"] = ExpressionConverter.Convert(addressState);
-            if (addressPostalcode != null)
-                callPayload.Queries["address-postalcode"] = ExpressionConverter.Convert(addressPostalcode);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            return new ApiConnectionAction<OrganizationBundle>(callPayload);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_addressCity = WorkflowExpression.Compile(addressCity, nameof(addressCity), required: false);
+            var __workflow_addressState = WorkflowExpression.Compile(addressState, nameof(addressState), required: false);
+            var __workflow_addressPostalcode = WorkflowExpression.Compile(addressPostalcode, nameof(addressPostalcode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
+            return new DeferredBodyAction<OrganizationBundle>(() =>
+            {
+                var apiCallPath = "/Organization";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_Id != null)
+                    callPayload.Queries["_id"] = ExpressionConverter.Convert(__workflow_Id);
+                if (__workflow_identifier != null)
+                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
+                if (__workflow_address != null)
+                    callPayload.Queries["address"] = ExpressionConverter.Convert(__workflow_address);
+                if (__workflow_addressCity != null)
+                    callPayload.Queries["address-city"] = ExpressionConverter.Convert(__workflow_addressCity);
+                if (__workflow_addressState != null)
+                    callPayload.Queries["address-state"] = ExpressionConverter.Convert(__workflow_addressState);
+                if (__workflow_addressPostalcode != null)
+                    callPayload.Queries["address-postalcode"] = ExpressionConverter.Convert(__workflow_addressPostalcode);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(__workflow_LastUpdated);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_Count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
+                return new ApiConnectionAction<OrganizationBundle>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Organization> GetOrganizationById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Organization/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Organization>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Organization>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Organization/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Organization>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerBundle> ListPractitioners(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> family = null, Expression<Func<string>> given = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var apiCallPath = "/Practitioner";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
-            if (identifier != null)
-                callPayload.Queries["identifier"] = ExpressionConverter.Convert(identifier);
-            if (family != null)
-                callPayload.Queries["family"] = ExpressionConverter.Convert(family);
-            if (given != null)
-                callPayload.Queries["given"] = ExpressionConverter.Convert(given);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            return new ApiConnectionAction<PractitionerBundle>(callPayload);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
+            var __workflow_family = WorkflowExpression.Compile(family, nameof(family), required: false);
+            var __workflow_given = WorkflowExpression.Compile(given, nameof(given), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
+            return new DeferredBodyAction<PractitionerBundle>(() =>
+            {
+                var apiCallPath = "/Practitioner";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_Id != null)
+                    callPayload.Queries["_id"] = ExpressionConverter.Convert(__workflow_Id);
+                if (__workflow_identifier != null)
+                    callPayload.Queries["identifier"] = ExpressionConverter.Convert(__workflow_identifier);
+                if (__workflow_family != null)
+                    callPayload.Queries["family"] = ExpressionConverter.Convert(__workflow_family);
+                if (__workflow_given != null)
+                    callPayload.Queries["given"] = ExpressionConverter.Convert(__workflow_given);
+                if (__workflow_name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(__workflow_name);
+                if (__workflow_LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(__workflow_LastUpdated);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_Count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
+                return new ApiConnectionAction<PractitionerBundle>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Practitioner> GetPractitionerById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Practitioner>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<Practitioner>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Practitioner>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles(Expression<Func<string>> Id = null, Expression<Func<string>> practitionerIdentifier = null, Expression<Func<string>> practitionerName = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var apiCallPath = "/PractitionerRole";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = ExpressionConverter.Convert(Id);
-            if (practitionerIdentifier != null)
-                callPayload.Queries["practitioner.identifier"] = ExpressionConverter.Convert(practitionerIdentifier);
-            if (practitionerName != null)
-                callPayload.Queries["practitioner.name"] = ExpressionConverter.Convert(practitionerName);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = ExpressionConverter.Convert(Count);
-            return new ApiConnectionAction<PractitionerRoleBundle>(callPayload);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_practitionerIdentifier = WorkflowExpression.Compile(practitionerIdentifier, nameof(practitionerIdentifier), required: false);
+            var __workflow_practitionerName = WorkflowExpression.Compile(practitionerName, nameof(practitionerName), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
+            return new DeferredBodyAction<PractitionerRoleBundle>(() =>
+            {
+                var apiCallPath = "/PractitionerRole";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_Id != null)
+                    callPayload.Queries["_id"] = ExpressionConverter.Convert(__workflow_Id);
+                if (__workflow_practitionerIdentifier != null)
+                    callPayload.Queries["practitioner.identifier"] = ExpressionConverter.Convert(__workflow_practitionerIdentifier);
+                if (__workflow_practitionerName != null)
+                    callPayload.Queries["practitioner.name"] = ExpressionConverter.Convert(__workflow_practitionerName);
+                if (__workflow_LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = ExpressionConverter.Convert(__workflow_LastUpdated);
+                if (__workflow_page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(__workflow_page);
+                if (__workflow_Count != null)
+                    callPayload.Queries["_count"] = ExpressionConverter.Convert(__workflow_Count);
+                return new ApiConnectionAction<PractitionerRoleBundle>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById(Expression<Func<string>> id)
         {
-            var apiCallPath = String.Format("/PractitionerRole/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PractitionerRole>(callPayload);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            return new DeferredBodyAction<PractitionerRole>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PractitionerRole/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PractitionerRole>(callPayload);
+            });
         }
     }
 
@@ -378,6 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string Start { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressTypeType
     {
         [EnumMember(Value = "postal")]
@@ -388,6 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         Both
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum AddressUseType
     {
         [EnumMember(Value = "home")]
@@ -426,6 +490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string OpeningTime { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum HoursOfOperationDaysOfWeekTypeItem
     {
         [EnumMember(Value = "mon")]
@@ -510,6 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string Version { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IdentifierUseType
     {
         [EnumMember(Value = "usual")]
@@ -551,6 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string VersionId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationModeType
     {
         [EnumMember(Value = "instance")]
@@ -580,6 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken[] ModifierExtension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationStatusType
     {
         [EnumMember(Value = "active")]
@@ -614,6 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public string Value { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContactPointSystemType
     {
         [EnumMember(Value = "phone")]
@@ -632,6 +701,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         Other
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContactPointUseType
     {
         [EnumMember(Value = "home")]
@@ -661,6 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public NarrativeStatusType Status { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum NarrativeStatusType
     {
         [EnumMember(Value = "generated")]
@@ -703,6 +774,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken Who { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LocationBundleTypeType
     {
         [EnumMember(Value = "document")]
@@ -908,6 +980,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public HumanNameUseType Use { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum HumanNameUseType
     {
         [EnumMember(Value = "usual")]
@@ -926,6 +999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         Maiden
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum OrganizationBundleTypeType
     {
         [EnumMember(Value = "document")]
@@ -1077,6 +1151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public Narrative Text { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerGenderType
     {
         Male,
@@ -1142,6 +1217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public Period Period { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerBundleTypeType
     {
         [EnumMember(Value = "document")]
@@ -1329,6 +1405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken[] ModifierExtension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerAvailableTimeDaysOfWeekTypeItem
     {
         Monday,
@@ -1358,6 +1435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         public JToken[] ModifierExtension { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PractitionerRoleBundleTypeType
     {
         [EnumMember(Value = "document")]

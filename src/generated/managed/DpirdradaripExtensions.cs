@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,122 +14,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarsResponse> GetRadars(Expression<Func<string>> radarCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var apiCallPath = "/radars";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (radarCode != null)
-                callPayload.Queries["radarCode"] = ExpressionConverter.Convert(radarCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetRadarsResponse>(callPayload);
+            var __workflow_radarCode = WorkflowExpression.Compile(radarCode, nameof(radarCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetRadarsResponse>(() =>
+            {
+                var apiCallPath = "/radars";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (__workflow_radarCode != null)
+                    callPayload.Queries["radarCode"] = ExpressionConverter.Convert(__workflow_radarCode);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionAction<GetRadarsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarResponse> GetRadar(Expression<Func<string>> radarCode, Expression<Func<string>> select = null)
         {
-            var apiCallPath = String.Format("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(radarCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetRadarResponse>(callPayload);
+            var __workflow_radarCode = WorkflowExpression.Compile(radarCode, nameof(radarCode), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetRadarResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_radarCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["select"] = Convert.ToString("code,location,state,bounds,online,offline_reason");
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                return new ApiConnectionAction<GetRadarResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetNearbyRadarResponse> GetNearbyRadar(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null)
         {
-            var apiCallPath = "/nearby";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-            if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
-            return new ApiConnectionAction<GetNearbyRadarResponse>(callPayload);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            return new DeferredBodyAction<GetNearbyRadarResponse>(() =>
+            {
+                var apiCallPath = "/nearby";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                callPayload.Queries["dataSet"] = Convert.ToString("ALL");
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
+                return new ApiConnectionAction<GetNearbyRadarResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarRainfallResponse> GetRadarRainfall(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> radarCode = null, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/rainfall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            if (radarCode != null)
-                callPayload.Queries["radarCode"] = ExpressionConverter.Convert(radarCode);
-            callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-            if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
-            callPayload.Queries["select"] = Convert.ToString("dateTime,radar,radarCode,radarDistance,radarLatitude,radarLongitude,rainfall,rainfallCurrentHour,rainfallMonthToDate,rainfallSince9am,rainfallYrarToDate");
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetRadarRainfallResponse>(callPayload);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_radarCode = WorkflowExpression.Compile(radarCode, nameof(radarCode), required: false);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetRadarRainfallResponse>(() =>
+            {
+                var apiCallPath = "/rainfall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                if (__workflow_radarCode != null)
+                    callPayload.Queries["radarCode"] = ExpressionConverter.Convert(__workflow_radarCode);
+                callPayload.Queries["dataSet"] = Convert.ToString("ALL");
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
+                callPayload.Queries["select"] = Convert.ToString("dateTime,radar,radarCode,radarDistance,radarLatitude,radarLongitude,rainfall,rainfallCurrentHour,rainfallMonthToDate,rainfallSince9am,rainfallYrarToDate");
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetRadarRainfallResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarDailySummariesResponse> GetRadarDailySummaries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/summaries/daily";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-            if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
-            callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetRadarDailySummariesResponse>(callPayload);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetRadarDailySummariesResponse>(() =>
+            {
+                var apiCallPath = "/summaries/daily";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(__workflow_startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(__workflow_endDate);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                callPayload.Queries["dataSet"] = Convert.ToString("ALL");
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
+                callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetRadarDailySummariesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> GetRadarMonthlySummaries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var apiCallPath = "/summaries/monthly";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-            callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            callPayload.Queries["dataSet"] = Convert.ToString("ALL");
-            if (dataSet != null)
-                callPayload.Queries["dataSet"] = ExpressionConverter.Convert(dataSet);
-            callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetRadarMonthlySummariesResponse>(callPayload);
+            var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
+            var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<GetRadarMonthlySummariesResponse>(() =>
+            {
+                var apiCallPath = "/summaries/monthly";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startMonth"] = ExpressionConverter.Convert(__workflow_startMonth);
+                callPayload.Queries["endMonth"] = ExpressionConverter.Convert(__workflow_endMonth);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(__workflow_latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(__workflow_longitude);
+                callPayload.Queries["dataSet"] = Convert.ToString("ALL");
+                if (__workflow_dataSet != null)
+                    callPayload.Queries["dataSet"] = ExpressionConverter.Convert(__workflow_dataSet);
+                callPayload.Queries["select"] = Convert.ToString("radar,radarCode,radarLatitude,radarLongitude,radarDistance,period,periodFrom,periodTo,periodYear,periodMonth,periodDay,periodHour,periodMinute,rainfall");
+                if (__workflow_select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(__workflow_select);
+                if (__workflow_offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(__workflow_offset);
+                if (__workflow_limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(__workflow_limit);
+                if (__workflow_sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(__workflow_sort);
+                return new ApiConnectionAction<GetRadarMonthlySummariesResponse>(callPayload);
+            });
         }
     }
 
@@ -239,6 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         public int Distance { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum dataSetInput
     {
         RF3,

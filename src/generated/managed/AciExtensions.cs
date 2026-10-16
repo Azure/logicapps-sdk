@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,241 +14,344 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsList(Expression<Func<string>> subscriptionId)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<ContainerGroupListResult>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            return new DeferredBodyAction<ContainerGroupListResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<ContainerGroupListResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsListByResourceGroup(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<ContainerGroupListResult>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            return new DeferredBodyAction<ContainerGroupListResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<ContainerGroupListResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<ContainerGroup>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            return new DeferredBodyAction<ContainerGroup>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<ContainerGroup>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> resourceid = null, Expression<Func<string>> resourcename = null, Expression<Func<string>> resourcetype = null, Expression<Func<string>> resourcelocation = null, Expression<Func<string[]>> resourcezones = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            var resource = new JObject();
-            var resourcepropCount = 0;
-            if (resourceid != null)
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_resourceid = WorkflowExpression.Compile(resourceid, nameof(resourceid), required: false);
+            var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: false);
+            var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: false);
+            var __workflow_resourcelocation = WorkflowExpression.Compile(resourcelocation, nameof(resourcelocation), required: false);
+            var __workflow_resourcezones = WorkflowExpression.Compile(resourcezones, nameof(resourcezones), required: false);
+            return new DeferredBodyAction<ContainerGroup>(() =>
             {
-                resource["id"] = ExpressionConverter.ConvertO(resourceid);
-                resourcepropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                var resource = new JObject();
+                var resourcepropCount = 0;
+                if (__workflow_resourceid != null)
+                {
+                    resource["id"] = ExpressionConverter.ConvertO(__workflow_resourceid);
+                    resourcepropCount++;
+                }
 
-            if (resourcename != null)
-            {
-                resource["name"] = ExpressionConverter.ConvertO(resourcename);
-                resourcepropCount++;
-            }
+                if (__workflow_resourcename != null)
+                {
+                    resource["name"] = ExpressionConverter.ConvertO(__workflow_resourcename);
+                    resourcepropCount++;
+                }
 
-            if (resourcetype != null)
-            {
-                resource["type"] = ExpressionConverter.ConvertO(resourcetype);
-                resourcepropCount++;
-            }
+                if (__workflow_resourcetype != null)
+                {
+                    resource["type"] = ExpressionConverter.ConvertO(__workflow_resourcetype);
+                    resourcepropCount++;
+                }
 
-            if (resourcelocation != null)
-            {
-                resource["location"] = ExpressionConverter.ConvertO(resourcelocation);
-                resourcepropCount++;
-            }
+                if (__workflow_resourcelocation != null)
+                {
+                    resource["location"] = ExpressionConverter.ConvertO(__workflow_resourcelocation);
+                    resourcepropCount++;
+                }
 
-            var tagsObject = new JObject();
-            var tagsObjectpropCount = 0;
-            if (tagsObjectpropCount > 0)
-            {
-                resource["tags"] = tagsObject;
-                resourcepropCount++;
-            }
+                var tagsObject = new JObject();
+                var tagsObjectpropCount = 0;
+                if (tagsObjectpropCount > 0)
+                {
+                    resource["tags"] = tagsObject;
+                    resourcepropCount++;
+                }
 
-            if (resourcezones != null)
-            {
-                resource["zones"] = ExpressionConverter.ConvertO(resourcezones);
-                resourcepropCount++;
-            }
+                if (__workflow_resourcezones != null)
+                {
+                    resource["zones"] = ExpressionConverter.ConvertO(__workflow_resourcezones);
+                    resourcepropCount++;
+                }
 
-            if (resourcepropCount > 0)
-            {
-                callPayload.Body = resource;
-            }
+                if (resourcepropCount > 0)
+                {
+                    callPayload.Body = resource;
+                }
 
-            return new ApiConnectionAction<ContainerGroup>(callPayload);
+                return new ApiConnectionAction<ContainerGroup>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<ContainerGroup>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            return new DeferredBodyAction<ContainerGroup>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<ContainerGroup>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<UsageListResult> LocationListUsage(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<UsageListResult>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            return new DeferredBodyAction<UsageListResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<UsageListResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<Logs> ContainerLogsList(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<int>> tail = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            if (tail != null)
-                callPayload.Queries["tail"] = ExpressionConverter.Convert(tail);
-            return new ApiConnectionAction<Logs>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_tail = WorkflowExpression.Compile(tail, nameof(tail), required: false);
+            return new DeferredBodyAction<Logs>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                if (__workflow_tail != null)
+                    callPayload.Queries["tail"] = ExpressionConverter.Convert(__workflow_tail);
+                return new ApiConnectionAction<Logs>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerExecResponse> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<string>> containerExecRequestcommand = null, Expression<Func<int>> containerExecRequestterminalSizerows = null, Expression<Func<int>> containerExecRequestterminalSizecols = null)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            var containerExecRequest = new JObject();
-            var containerExecRequestpropCount = 0;
-            if (containerExecRequestcommand != null)
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_containerExecRequestcommand = WorkflowExpression.Compile(containerExecRequestcommand, nameof(containerExecRequestcommand), required: false);
+            var __workflow_containerExecRequestterminalSizerows = WorkflowExpression.Compile(containerExecRequestterminalSizerows, nameof(containerExecRequestterminalSizerows), required: false);
+            var __workflow_containerExecRequestterminalSizecols = WorkflowExpression.Compile(containerExecRequestterminalSizecols, nameof(containerExecRequestterminalSizecols), required: false);
+            return new DeferredBodyAction<ContainerExecResponse>(() =>
             {
-                containerExecRequest["command"] = ExpressionConverter.ConvertO(containerExecRequestcommand);
-                containerExecRequestpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                var containerExecRequest = new JObject();
+                var containerExecRequestpropCount = 0;
+                if (__workflow_containerExecRequestcommand != null)
+                {
+                    containerExecRequest["command"] = ExpressionConverter.ConvertO(__workflow_containerExecRequestcommand);
+                    containerExecRequestpropCount++;
+                }
 
-            var terminalSizeObject = new JObject();
-            var terminalSizeObjectpropCount = 0;
-            if (containerExecRequestterminalSizerows != null)
-            {
-                terminalSizeObject["rows"] = ExpressionConverter.ConvertO(containerExecRequestterminalSizerows);
-                terminalSizeObjectpropCount++;
-            }
+                var terminalSizeObject = new JObject();
+                var terminalSizeObjectpropCount = 0;
+                if (__workflow_containerExecRequestterminalSizerows != null)
+                {
+                    terminalSizeObject["rows"] = ExpressionConverter.ConvertO(__workflow_containerExecRequestterminalSizerows);
+                    terminalSizeObjectpropCount++;
+                }
 
-            if (containerExecRequestterminalSizecols != null)
-            {
-                terminalSizeObject["cols"] = ExpressionConverter.ConvertO(containerExecRequestterminalSizecols);
-                terminalSizeObjectpropCount++;
-            }
+                if (__workflow_containerExecRequestterminalSizecols != null)
+                {
+                    terminalSizeObject["cols"] = ExpressionConverter.ConvertO(__workflow_containerExecRequestterminalSizecols);
+                    terminalSizeObjectpropCount++;
+                }
 
-            if (terminalSizeObjectpropCount > 0)
-            {
-                containerExecRequest["terminalSize"] = terminalSizeObject;
-                containerExecRequestpropCount++;
-            }
+                if (terminalSizeObjectpropCount > 0)
+                {
+                    containerExecRequest["terminalSize"] = terminalSizeObject;
+                    containerExecRequestpropCount++;
+                }
 
-            if (containerExecRequestpropCount > 0)
-            {
-                callPayload.Body = containerExecRequest;
-            }
+                if (containerExecRequestpropCount > 0)
+                {
+                    callPayload.Body = containerExecRequest;
+                }
 
-            return new ApiConnectionAction<ContainerExecResponse>(callPayload);
+                return new ApiConnectionAction<ContainerExecResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerAttachResponse> ContainersAttach(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<ContainerAttachResponse>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            return new DeferredBodyAction<ContainerAttachResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<ContainerAttachResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CachedImagesListResult> LocationListCachedImages(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<CachedImagesListResult>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            return new DeferredBodyAction<CachedImagesListResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<CachedImagesListResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CapabilitiesListResult> LocationListCapabilities(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<CapabilitiesListResult>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            return new DeferredBodyAction<CapabilitiesListResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<CapabilitiesListResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<string[]> ContainerGroupsGetOutboundNetworkDependenciesEndpoints(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(containerGroupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction<string[]>(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            return new DeferredBodyAction<string[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction SubnetServiceAssociationLinkDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualNetworkName, Expression<Func<string>> subnetName)
         {
-            var apiCallPath = String.Format("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(virtualNetworkName, 1), ExpressionConverter.ConvertWithUrlEncoding(subnetName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
-            return new ApiConnectionAction(callPayload);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualNetworkName = WorkflowExpression.Compile(virtualNetworkName, nameof(virtualNetworkName), required: true);
+            var __workflow_subnetName = WorkflowExpression.Compile(subnetName, nameof(subnetName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualNetworkName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subnetName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2023-05-01");
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
@@ -307,6 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public JToken UserAssignedIdentities { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerGroupIdentityTypeType
     {
         SystemAssigned,
@@ -421,6 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public int Port { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerPortProtocolType
     {
         TCP,
@@ -523,6 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public GpuResourceSkuType Sku { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum GpuResourceSkuType
     {
         K80,
@@ -599,6 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public HttpHeader[] HttpHeaders { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerHttpGetSchemeType
     {
         [EnumMember(Value = "http")]
@@ -664,6 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string IdentityUrl { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerGroupPropertiesRestartPolicyType
     {
         Always,
@@ -701,18 +809,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public int Port { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum PortProtocolType
     {
         TCP,
         UDP
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IpAddressTypeType
     {
         Public,
         Private
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum IpAddressAutoGeneratedDomainNameLabelScopeType
     {
         Unsecure,
@@ -722,6 +833,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         Noreuse
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerGroupPropertiesOsTypeType
     {
         Windows,
@@ -806,6 +918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string WorkspaceResourceId { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum LogAnalyticsLogTypeType
     {
         ContainerInsights,
@@ -833,6 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string Options { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerGroupSku
     {
         Standard,
@@ -930,6 +1044,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         public string CcePolicy { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum ContainerGroupPropertiesPriorityType
     {
         Regular,

@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,27 +14,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
         public IBodyWorkflowAction<InlineResponse200> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
         {
-            var apiCallPath = "/lnk/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["link"] = ExpressionConverter.ConvertO(bodylink);
-            if (bodyimage != null)
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: true);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            return new DeferredBodyAction<InlineResponse200>(() =>
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                var apiCallPath = "/lnk/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(__workflow_bodytitle);
+                bodypropCount++;
+                body["link"] = ExpressionConverter.ConvertO(__workflow_bodylink);
+                if (__workflow_bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(__workflow_bodyimage);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<InlineResponse200>(callPayload);
+                return new ApiConnectionAction<InlineResponse200>(callPayload);
+            });
         }
     }
 

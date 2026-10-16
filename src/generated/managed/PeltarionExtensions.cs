@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -14,11 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
         public IBodyWorkflowAction<CallapiResponse> Callapi(Expression<Func<string>> peltarionbody)
         {
-            var apiCallPath = "/api/forwardcall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(peltarionbody);
-            return new ApiConnectionAction<CallapiResponse>(callPayload);
+            var __workflow_peltarionbody = WorkflowExpression.Compile(peltarionbody, nameof(peltarionbody), required: true);
+            return new DeferredBodyAction<CallapiResponse>(() =>
+            {
+                var apiCallPath = "/api/forwardcall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(__workflow_peltarionbody);
+                return new ApiConnectionAction<CallapiResponse>(callPayload);
+            });
         }
     }
 

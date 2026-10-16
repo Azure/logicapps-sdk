@@ -1,10 +1,10 @@
 //------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
-
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
 {
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,19 +23,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory(Expression<Func<categoryNameInput>> categoryName)
         {
-            var apiCallPath = String.Format("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllCategoryResponseItem[]>(callPayload);
+            var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
+            return new DeferredBodyAction<AllCategoryResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllCategoryResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup(Expression<Func<groupNameInput>> groupName)
         {
-            var apiCallPath = String.Format("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllGroupResponseItem[]>(callPayload);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
+            return new DeferredBodyAction<AllGroupResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllGroupResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
@@ -50,19 +58,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory(Expression<Func<categoryNameInput>> categoryName)
         {
-            var apiCallPath = String.Format("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomCategoryResponse>(callPayload);
+            var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
+            return new DeferredBodyAction<RandomCategoryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RandomCategoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<RandomGroupResponse> RandomGroup(Expression<Func<groupNameInput>> groupName)
         {
-            var apiCallPath = String.Format("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomGroupResponse>(callPayload);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
+            return new DeferredBodyAction<RandomGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RandomGroupResponse>(callPayload);
+            });
         }
     }
 
@@ -106,6 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         public string[] Unicode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum categoryNameInput
     {
         [EnumMember(Value = "smileys_and_people")]
@@ -144,6 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         public string[] Unicode { get; set; }
     }
 
+    [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum groupNameInput
     {
         [EnumMember(Value = "body")]
