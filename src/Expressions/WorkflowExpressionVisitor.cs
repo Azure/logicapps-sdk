@@ -18,27 +18,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     internal sealed class WorkflowExpressionVisitor : IExpressionVisitor<SourceProgram>
     {
-        private static readonly IReadOnlyDictionary<string, string> WorkflowFunctionNames =
-            new Dictionary<string, string>(StringComparer.Ordinal)
-            {
-                ["ToJson"] = "json",
-                ["Actions"] = "actions",
-                ["Trigger"] = "trigger",
-                ["ListCallbackUrl"] = "listCallbackUrl",
-                ["AppSetting"] = "appsetting",
-                ["Action"] = "action",
-                ["CurrentRequest"] = "currentRequest",
-                ["Binary"] = "binary",
-                ["Base64ToBinary"] = "base64ToBinary",
-                ["DataUriToBinary"] = "dataUriToBinary",
-                ["MultipartBody"] = "multipartBody",
-                ["FormDataValue"] = "formDataValue",
-                ["FormDataMultiValues"] = "formDataMultiValues",
-                ["TriggerMultipartBody"] = "triggerMultipartBody",
-                ["TriggerFormDataValue"] = "triggerFormDataValue",
-                ["TriggerFormDataMultiValues"] = "triggerFormDataMultiValues",
-            };
-
         internal static bool CanUseWorkflowLiteral(Type type) =>
             type.IsPrimitive && !type.IsEnum || type == typeof(string) || type == typeof(decimal);
 
@@ -776,11 +755,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             returnsToken = false;
             if (call.Method.DeclaringType != typeof(WorkflowFunctions))
                 return false;
-            if (!WorkflowFunctionNames.TryGetValue(call.Method.Name, out var function))
-                throw new NotSupportedException($"Unsupported workflow function: {call.Method.Name}");
+            var metadata = call.Method.GetCustomAttribute<WorkflowFunctionAttribute>() ??
+                (call.Method.IsGenericMethod
+                    ? call.Method.GetGenericMethodDefinition().GetCustomAttribute<WorkflowFunctionAttribute>()
+                    : null) ??
+                throw new NotSupportedException(
+                    $"Workflow function '{call.Method.Name}' has no runtime mapping.");
 
             code = SourceProgram.Concat(
-                SourceProgram.Text(function),
+                SourceProgram.Text(metadata.Name),
                 SourceProgram.CommaSeparated(call.Arguments.Select(this.Visit)).Parenthesized());
             returnsToken = call.Method.ReturnType != typeof(string) &&
                 call.Method.ReturnType != typeof(bool);
