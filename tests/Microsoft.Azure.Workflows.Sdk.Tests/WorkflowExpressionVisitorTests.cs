@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
     using Xunit;
     using static WorkflowExpressionTestSource;
 
-    public class WorkflowExpressionCompilerTests
+    public class WorkflowExpressionVisitorTests
     {
         [Fact]
         public void ArithmeticLinqAndNestedLambdasRemainCSharp()

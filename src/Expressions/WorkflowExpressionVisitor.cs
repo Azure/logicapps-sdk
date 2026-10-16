@@ -14,9 +14,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// Compiles expression-tree authoring lambdas into workflow expression descriptors.
+    /// Reconstructs supported LINQ expression-tree nodes as late-bound C# source programs.
     /// </summary>
-    internal static class WorkflowExpressionCompiler
+    internal sealed class WorkflowExpressionVisitor : IExpressionVisitor<SourceProgram>
     {
         private static readonly IReadOnlyDictionary<string, string> WorkflowFunctionNames =
             new Dictionary<string, string>(StringComparer.Ordinal)
@@ -39,27 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 ["TriggerFormDataMultiValues"] = "triggerFormDataMultiValues",
             };
 
-        internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression)
-        {
-            if (expression == null)
-            {
-                throw new ArgumentNullException(nameof(expression));
-            }
-
-            if (!IsAnonymous(typeof(T)))
-                ValidateRuntimeType(typeof(T));
-
-            if (TryReadValue(expression.Body, out var literal) &&
-                (literal == null || CanUseWorkflowLiteral(typeof(T))))
-            {
-                return WorkflowExpression.Literal((T)literal);
-            }
-
-            var writer = new Writer();
-            return WorkflowExpression.Create<T>(writer.WriteRoot(expression.Body));
-        }
-
-        private static bool CanUseWorkflowLiteral(Type type) =>
+        internal static bool CanUseWorkflowLiteral(Type type) =>
             type.IsPrimitive && !type.IsEnum || type == typeof(string) || type == typeof(decimal);
 
         private static string Quote(string text) => JsonConvert.ToString(text);
@@ -68,11 +48,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             (type.IsGenericType && type.GetGenericTypeDefinition() == definition) ||
             type.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == definition);
 
-        private static bool IsAnonymous(Type type) =>
+        internal static bool IsAnonymous(Type type) =>
             type.IsDefined(typeof(CompilerGeneratedAttribute), false) && type.Name.Contains("AnonymousType");
 
         // Only read stored values, never invoke a captured lambda, arbitrary getter or method.
-        private static bool TryReadValue(Expression expression, out object value)
+        internal static bool TryReadValue(Expression expression, out object value)
         {
             value = null;
             if (expression is ConstantExpression constant)
@@ -111,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return false;
         }
 
-        private static void ValidateRuntimeType(Type type)
+        internal static void ValidateRuntimeType(Type type)
         {
             if (!IsRuntimeTypeAvailable(type))
                 throw new NotSupportedException(
@@ -188,106 +168,149 @@ namespace Microsoft.Azure.Workflows.Sdk
              "true try typeof uint ulong unchecked unsafe ushort using virtual void volatile while").Split(' '),
             StringComparer.Ordinal);
 
-        private sealed class Writer
+        private readonly HashSet<ParameterExpression> parameters = new HashSet<ParameterExpression>();
+
+        private SourceProgram BindRaw(WorkflowExpressionBinding binding) =>
+            SourceProgram.Binding(binding);
+
+        internal SourceProgram Visit(Expression expression)
         {
-            private readonly HashSet<ParameterExpression> parameters = new HashSet<ParameterExpression>();
-
-            internal SourceProgram WriteRoot(Expression expression) => this.Typed(expression);
-
-            private SourceProgram BindRaw(WorkflowExpressionBinding binding) =>
-                SourceProgram.Binding(binding);
-
-            public SourceProgram Write(Expression expression)
+            if (this.TryCustomWorkflowPath(expression, out var customPath))
             {
-                if (this.TryCustomWorkflowPath(expression, out var customPath))
-                {
-                    return customPath;
-                }
-
-                if (this.TryWorkflowTokenSource(expression, out var workflowSource))
-                {
-                    return ReadWorkflowValue(workflowSource, expression.Type);
-                }
-
-                if (TryReadValue(expression, out var value))
-                {
-                    return this.Literal(value, expression.Type);
-                }
-
-                switch (expression)
-                {
-                    case MemberExpression member: return this.Member(member);
-                    case BinaryExpression binary: return this.Binary(binary);
-                    case UnaryExpression unary: return this.Unary(unary);
-                    case MethodCallExpression call: return this.Call(call);
-                    case ConditionalExpression conditional:
-                        return SourceProgram.Concat(
-                            this.Typed(conditional.Test).Parenthesized(),
-                            SourceProgram.Text(" ? "),
-                            this.Typed(conditional.IfTrue).Parenthesized(),
-                            SourceProgram.Text(" : "),
-                            this.Typed(conditional.IfFalse).Parenthesized());
-                    case NewArrayExpression array:
-                        if (array.NodeType == ExpressionType.NewArrayBounds)
-                        {
-                            return SourceProgram.Concat(
-                                SourceProgram.Text("new " + TypeName(array.Type.GetElementType())),
-                                SourceProgram.CommaSeparated(array.Expressions.Select(this.Typed)).Bracketed());
-                        }
-
-                        var elements = array.Expressions.Select(this.Typed).ToArray();
-                        var inferred = elements.Any(element => !element.IsText("null")) &&
-                            array.Type.GetElementType() != typeof(object) &&
-                            array.Expressions.All(e => e.Type == array.Type.GetElementType());
-                        return SourceProgram.Concat(
-                            SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(array.Type)) + " "),
-                            SourceProgram.CommaSeparated(elements).Braced());
-                    case NewExpression creation: return this.New(creation);
-                    case MemberInitExpression initializer:
-                        return SourceProgram.Concat(
-                            initializer.NewExpression.Arguments.Count == 0
-                                ? SourceProgram.Text("new " + TypeName(initializer.Type))
-                                : this.New(initializer.NewExpression),
-                            SourceProgram.Text(" "),
-                            SourceProgram.CommaSeparated(initializer.Bindings.Select(this.Binding)).Braced());
-                    case ListInitExpression list:
-                        return SourceProgram.Concat(
-                            this.New(list.NewExpression),
-                            SourceProgram.Text(" "),
-                            SourceProgram.CommaSeparated(list.Initializers.Select(initializer =>
-                                initializer.Arguments.Count == 1
-                                    ? this.Typed(initializer.Arguments[0])
-                                    : SourceProgram.CommaSeparated(initializer.Arguments.Select(this.Typed)).Braced()))
-                                .Braced());
-                    case ParameterExpression parameter when this.parameters.Contains(parameter):
-                        return SourceProgram.Text(Identifier(parameter.Name));
-                    case LambdaExpression lambda:
-                        foreach (var parameter in lambda.Parameters) this.parameters.Add(parameter);
-                        var body = this.Typed(lambda.Body);
-                        foreach (var parameter in lambda.Parameters) this.parameters.Remove(parameter);
-                        return SourceProgram.Concat(
-                            SourceProgram.Text(
-                                string.Join(", ", lambda.Parameters.Select(p => TypeName(p.Type) + " " + Identifier(p.Name))))
-                                .Parenthesized(),
-                            SourceProgram.Text(" => "),
-                            body);
-                    case IndexExpression index:
-                        return SourceProgram.Concat(
-                            this.Write(index.Object).Parenthesized(),
-                            SourceProgram.CommaSeparated(index.Arguments.Select(this.Typed)).Bracketed());
-                    case DefaultExpression defaultExpression:
-                        return SourceProgram.Text("default(" + TypeName(defaultExpression.Type) + ")");
-                    case TypeBinaryExpression typeTest when typeTest.NodeType == ExpressionType.TypeIs:
-                        return SourceProgram.Concat(
-                            this.Write(typeTest.Expression).Parenthesized(),
-                            SourceProgram.Text(" is " + TypeName(typeTest.TypeOperand)));
-                    default:
-                        throw new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
-                }
+                return customPath;
             }
 
-            private SourceProgram Typed(Expression expression)
-                => this.Write(expression);
+            if (this.TryWorkflowTokenSource(expression, out var workflowSource))
+            {
+                return ReadWorkflowValue(workflowSource, expression.Type);
+            }
+
+            if (TryReadValue(expression, out var value))
+            {
+                return this.Literal(value, expression.Type);
+            }
+
+            return expression.Dispatch(this);
+        }
+
+        private SourceProgram Typed(Expression expression)
+            => this.Visit(expression);
+
+        public SourceProgram Visit(BinaryExpression expression) => this.Binary(expression);
+
+        public SourceProgram Visit(UnaryExpression expression) => this.Unary(expression);
+
+        public SourceProgram Visit(ConstantExpression expression) =>
+            this.Literal(expression.Value, expression.Type);
+
+        public SourceProgram Visit(ParameterExpression expression) =>
+            this.parameters.Contains(expression)
+                ? SourceProgram.Text(Identifier(expression.Name))
+                : throw Unsupported(expression);
+
+        public SourceProgram Visit(MethodCallExpression expression) => this.Call(expression);
+
+        public SourceProgram Visit(ConditionalExpression expression) =>
+            SourceProgram.Concat(
+                this.Typed(expression.Test).Parenthesized(),
+                SourceProgram.Text(" ? "),
+                this.Typed(expression.IfTrue).Parenthesized(),
+                SourceProgram.Text(" : "),
+                this.Typed(expression.IfFalse).Parenthesized());
+
+        public SourceProgram Visit(InvocationExpression expression) => throw Unsupported(expression);
+
+        public SourceProgram Visit(LambdaExpression expression)
+        {
+            foreach (var parameter in expression.Parameters)
+                this.parameters.Add(parameter);
+
+            try
+            {
+                return SourceProgram.Concat(
+                    SourceProgram.Text(
+                        string.Join(", ", expression.Parameters.Select(
+                            parameter => TypeName(parameter.Type) + " " + Identifier(parameter.Name))))
+                        .Parenthesized(),
+                    SourceProgram.Text(" => "),
+                    this.Typed(expression.Body));
+            }
+            finally
+            {
+                foreach (var parameter in expression.Parameters)
+                    this.parameters.Remove(parameter);
+            }
+        }
+
+        public SourceProgram Visit(ListInitExpression expression) =>
+            SourceProgram.Concat(
+                this.New(expression.NewExpression),
+                SourceProgram.Text(" "),
+                SourceProgram.CommaSeparated(expression.Initializers.Select(initializer =>
+                    initializer.Arguments.Count == 1
+                        ? this.Typed(initializer.Arguments[0])
+                        : SourceProgram.CommaSeparated(initializer.Arguments.Select(this.Typed)).Braced()))
+                    .Braced());
+
+        public SourceProgram Visit(MemberExpression expression) => this.Member(expression);
+
+        public SourceProgram Visit(MemberInitExpression expression) =>
+            SourceProgram.Concat(
+                expression.NewExpression.Arguments.Count == 0
+                    ? SourceProgram.Text("new " + TypeName(expression.Type))
+                    : this.New(expression.NewExpression),
+                SourceProgram.Text(" "),
+                SourceProgram.CommaSeparated(expression.Bindings.Select(this.Binding)).Braced());
+
+        public SourceProgram Visit(NewExpression expression) => this.New(expression);
+
+        public SourceProgram Visit(NewArrayExpression expression)
+        {
+            if (expression.NodeType == ExpressionType.NewArrayBounds)
+            {
+                return SourceProgram.Concat(
+                    SourceProgram.Text("new " + TypeName(expression.Type.GetElementType())),
+                    SourceProgram.CommaSeparated(expression.Expressions.Select(this.Typed)).Bracketed());
+            }
+
+            var elements = expression.Expressions.Select(this.Typed).ToArray();
+            var inferred = elements.Any(element => !element.IsText("null")) &&
+                expression.Type.GetElementType() != typeof(object) &&
+                expression.Expressions.All(element => element.Type == expression.Type.GetElementType());
+            return SourceProgram.Concat(
+                SourceProgram.Text((inferred ? "new[]" : "new " + TypeName(expression.Type)) + " "),
+                SourceProgram.CommaSeparated(elements).Braced());
+        }
+
+        public SourceProgram Visit(TypeBinaryExpression expression)
+        {
+            if (expression.NodeType != ExpressionType.TypeIs)
+                throw Unsupported(expression);
+
+            return SourceProgram.Concat(
+                this.Visit(expression.Expression).Parenthesized(),
+                SourceProgram.Text(" is " + TypeName(expression.TypeOperand)));
+        }
+
+        public SourceProgram Visit(DefaultExpression expression) =>
+            SourceProgram.Text("default(" + TypeName(expression.Type) + ")");
+
+        public SourceProgram Visit(IndexExpression expression) =>
+            SourceProgram.Concat(
+                this.Visit(expression.Object).Parenthesized(),
+                SourceProgram.CommaSeparated(expression.Arguments.Select(this.Typed)).Bracketed());
+
+        public SourceProgram Visit(BlockExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(DebugInfoExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(DynamicExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(GotoExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(LabelExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(RuntimeVariablesExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(SwitchExpression expression) => throw Unsupported(expression);
+        public SourceProgram Visit(TryExpression expression) => throw Unsupported(expression);
+
+        private static NotSupportedException Unsupported(Expression expression) =>
+            new NotSupportedException($"C# serialization does not support {expression.NodeType}: {expression}");
 
             private SourceProgram Literal(object value, Type type)
             {
@@ -580,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             private SourceProgram Unary(UnaryExpression unary)
             {
-                if (unary.NodeType == ExpressionType.Quote) return this.Write(unary.Operand);
+                if (unary.NodeType == ExpressionType.Quote) return this.Visit(unary.Operand);
                 var operand = this.Typed(unary.Operand);
                 switch (unary.NodeType)
                 {
@@ -697,7 +720,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 var values = call.Arguments.Skip(formatIndex + 1).ToArray();
                 if (values.Length == 1 && values[0] is NewArrayExpression array) values = array.Expressions.ToArray();
                 values = values.Select(Unbox).ToArray();
-                var codes = values.Select(this.Write).ToArray();
+                var codes = values.Select(this.Visit).ToArray();
                 if (formatIndex != 0 || format.Contains("{{") || format.Contains("}}") ||
                     Regex.Replace(format, @"\{\d+\}", "").IndexOfAny(new[] { '{', '}' }) >= 0)
                     return this.PlainFormat(call);
@@ -725,9 +748,9 @@ namespace Microsoft.Azure.Workflows.Sdk
                         return SourceProgram.Concat(
                             SourceProgram.Text("new object[] "),
                             SourceProgram.CommaSeparated(
-                                array.Expressions.Select(expression => this.Write(Unbox(expression))))
+                                array.Expressions.Select(expression => this.Visit(Unbox(expression))))
                                 .Braced());
-                    return this.Write(Unbox(argument));
+                    return this.Visit(Unbox(argument));
                 });
                 return SourceProgram.Concat(
                     SourceProgram.Text("string.Format"),
@@ -766,7 +789,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 return SourceProgram.Concat(
                     SourceProgram.Text(Identifier(binding.Member.Name) + " = "),
                     this.Typed(assignment.Expression));
-            }
         }
     }
 }

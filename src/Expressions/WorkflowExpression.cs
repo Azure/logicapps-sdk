@@ -18,11 +18,21 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal static WorkflowExpression<T> Literal<T>(T value) =>
             new WorkflowExpression<T>(Serialize(value), null);
 
-        internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression) =>
-            WorkflowExpressionCompiler.Compile(expression);
-
         internal static WorkflowExpression<T> Create<T>(SourceProgram program) =>
             new WorkflowExpression<T>(null, program ?? throw new ArgumentNullException(nameof(program)));
+
+        internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression)
+        {
+            if (expression == null) throw new ArgumentNullException(nameof(expression));
+            if (!WorkflowExpressionVisitor.IsAnonymous(typeof(T)))
+                WorkflowExpressionVisitor.ValidateRuntimeType(typeof(T));
+
+            if (WorkflowExpressionVisitor.TryReadValue(expression.Body, out var literal) &&
+                (literal == null || WorkflowExpressionVisitor.CanUseWorkflowLiteral(typeof(T))))
+                return Literal((T)literal);
+
+            return Create<T>(new WorkflowExpressionVisitor().Visit(expression.Body));
+        }
 
         internal static void Validate(WorkflowExpression value, string name, bool required)
         {

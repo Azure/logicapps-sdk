@@ -4,7 +4,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
-    /// <summary>Formats descriptor boundaries without interpreting authored C#.</summary>
+    /// <summary>Formats workflow descriptor boundaries.</summary>
     internal static class ExpressionConverter
     {
         public static JToken ConvertO<T>(WorkflowExpression<T> value)
