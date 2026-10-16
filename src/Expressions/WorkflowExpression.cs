@@ -9,7 +9,9 @@ namespace Microsoft.Azure.Workflows.Sdk
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
 
-    /// <summary>Authoring-time source and bindings; never an executable placeholder delegate.</summary>
+    /// <summary>
+    /// Source representation of operation inputs lambda expressions. Holds literal values or source programs (source segments + bindings to workflow context).
+    /// </summary>
     internal abstract class WorkflowExpression
     {
         internal abstract JToken LiteralToken { get; }
@@ -32,11 +34,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 return null;
             }
 
-            if (!WorkflowExpressionVisitor.IsAnonymous(typeof(T)))
-                WorkflowExpressionVisitor.ValidateRuntimeType(typeof(T));
+            if (!WorkflowExpressionTypePolicy.IsAnonymous(typeof(T)))
+                WorkflowExpressionTypePolicy.Validate(typeof(T));
 
-            var isLiteral = WorkflowExpressionVisitor.TryReadValue(expression.Body, out var literal) &&
-                (literal == null || WorkflowExpressionVisitor.CanUseWorkflowLiteral(typeof(T)));
+            var isLiteral = CapturedValueReader.TryRead(expression.Body, out var literal) &&
+                (literal == null || CanUseLiteral(typeof(T)));
 
             var descriptor = isLiteral
                 ? Literal((T)literal)
@@ -47,6 +49,11 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             return descriptor;
         }
+
+        private static bool CanUseLiteral(Type type) =>
+            type.IsPrimitive && !type.IsEnum ||
+            type == typeof(string) ||
+            type == typeof(decimal);
 
         internal static JToken Serialize(object value)
         {

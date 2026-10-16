@@ -194,6 +194,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
                 Expression.Block(new[] { variable }, Expression.Assign(variable, Expression.Constant(1)), variable));
 
             Assert.Throws<NotSupportedException>(() => WorkflowActions.BuiltIn.Compose(assignment));
+            Assert.Throws<NotSupportedException>(
+                () => WorkflowActions.BuiltIn.Compose(() => Task.FromResult(1)));
         }
 
         private sealed class Customer
