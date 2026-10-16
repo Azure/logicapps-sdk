@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System.Collections.Generic;
     using System.Linq.Expressions;
     using System.Net;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using Newtonsoft.Json.Linq;
 
     /// <summary>

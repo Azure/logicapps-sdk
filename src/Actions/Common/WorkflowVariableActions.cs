@@ -6,6 +6,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System;
     using System.Collections;
     using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
 
     /// <summary>
     /// Provides factory methods for creating variable actions

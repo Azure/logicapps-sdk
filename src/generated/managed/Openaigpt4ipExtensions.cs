@@ -3,10 +3,11 @@
 //------------------------------------------------------------
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System.Linq.Expressions;
 
     public class Openaigpt4ipActions([ConnectionName] string connectionId)
     {

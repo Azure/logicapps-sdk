@@ -3,10 +3,11 @@
 //------------------------------------------------------------
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System.Linq.Expressions;
 
     public class ProwfmauthenticationActions([ConnectionName] string connectionId)
     {

@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 

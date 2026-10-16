@@ -3,10 +3,11 @@
 //------------------------------------------------------------
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
 {
+    using System.Linq.Expressions;
+    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System.Linq.Expressions;
 
     public class GoformzActions([ConnectionName] string connectionId)
     {

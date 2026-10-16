@@ -2,7 +2,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // -----------------------------------------------------------
 
-namespace Microsoft.Azure.Workflows.Sdk
+namespace Microsoft.Azure.Workflows.Sdk.Expressions
 {
     using System.Linq.Expressions;
     using System.Reflection;
