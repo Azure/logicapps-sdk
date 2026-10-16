@@ -101,6 +101,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             }
         }
 
+        internal static SourceProgram Binary(
+            SourceProgram left,
+            string operatorToken,
+            SourceProgram right,
+            bool isChecked = false)
+        {
+            var source = SourceProgram.Concat(
+                left.Parenthesized(),
+                SourceProgram.Text(" " + operatorToken + " "),
+                right.Parenthesized());
+            return isChecked ? Checked(source) : source;
+        }
+
+        internal static SourceProgram Unary(string operatorToken, SourceProgram operand) =>
+            SourceProgram.Concat(SourceProgram.Text(operatorToken), operand.Parenthesized());
+
+        internal static SourceProgram Cast(Type type, SourceProgram operand, bool isChecked = false)
+        {
+            var source = SourceProgram.Concat(
+                SourceProgram.Text(TypeName(type)).Parenthesized(),
+                operand.Parenthesized());
+            return isChecked ? Checked(source) : source;
+        }
+
+        internal static SourceProgram Checked(SourceProgram expression) =>
+            SourceProgram.Concat(SourceProgram.Text("checked"), expression.Parenthesized());
+
+        internal static SourceProgram Conditional(
+            SourceProgram test,
+            SourceProgram whenTrue,
+            SourceProgram whenFalse) =>
+            SourceProgram.Concat(
+                test.Parenthesized(),
+                SourceProgram.Text(" ? "),
+                whenTrue.Parenthesized(),
+                SourceProgram.Text(" : "),
+                whenFalse.Parenthesized());
+
+        internal static SourceProgram MemberAccess(SourceProgram receiver, string memberName) =>
+            SourceProgram.Concat(
+                receiver.Parenthesized(),
+                SourceProgram.Text("." + Identifier(memberName)));
+
+        internal static SourceProgram StaticMemberAccess(Type declaringType, string memberName) =>
+            SourceProgram.Text(TypeName(declaringType) + "." + Identifier(memberName));
+
+        internal static SourceProgram ElementAccess(
+            SourceProgram receiver,
+            IEnumerable<SourceProgram> arguments) =>
+            SourceProgram.Concat(
+                receiver.Parenthesized(),
+                SourceProgram.CommaSeparated(arguments).Bracketed());
+
+        internal static SourceProgram Invocation(
+            SourceProgram target,
+            IEnumerable<Type> genericArguments,
+            IEnumerable<SourceProgram> arguments)
+        {
+            var types = genericArguments?.ToArray() ?? Array.Empty<Type>();
+            var generic = types.Length == 0
+                ? string.Empty
+                : "<" + string.Join(", ", types.Select(TypeName)) + ">";
+            return SourceProgram.Concat(
+                target,
+                SourceProgram.Text(generic),
+                SourceProgram.CommaSeparated(arguments).Parenthesized());
+        }
+
+        internal static SourceProgram ObjectCreation(
+            Type type,
+            IEnumerable<SourceProgram> arguments) =>
+            SourceProgram.Concat(
+                SourceProgram.Text("new " + TypeName(type)),
+                SourceProgram.CommaSeparated(arguments).Parenthesized());
+
+        internal static SourceProgram ArrayCreation(
+            Type arrayType,
+            IEnumerable<SourceProgram> elements) =>
+            SourceProgram.Concat(
+                SourceProgram.Text("new " + TypeName(arrayType) + " "),
+                SourceProgram.CommaSeparated(elements).Braced());
+
+        internal static SourceProgram InferredArrayCreation(
+            IEnumerable<SourceProgram> elements) =>
+            SourceProgram.Concat(
+                SourceProgram.Text("new[] "),
+                SourceProgram.CommaSeparated(elements).Braced());
+
+        internal static SourceProgram ArrayBoundsCreation(
+            Type elementType,
+            IEnumerable<SourceProgram> bounds) =>
+            SourceProgram.Concat(
+                SourceProgram.Text("new " + TypeName(elementType)),
+                SourceProgram.CommaSeparated(bounds).Bracketed());
+
+        internal static SourceProgram Initializer(
+            SourceProgram target,
+            IEnumerable<SourceProgram> entries) =>
+            SourceProgram.Concat(
+                target,
+                SourceProgram.Text(" "),
+                SourceProgram.CommaSeparated(entries).Braced());
+
+        internal static SourceProgram Assignment(string memberName, SourceProgram value) =>
+            SourceProgram.Concat(
+                SourceProgram.Text(Identifier(memberName) + " = "),
+                value);
+
+        internal static SourceProgram Lambda(
+            IEnumerable<(Type Type, string Name)> parameters,
+            SourceProgram body)
+        {
+            var declarations = parameters.Select(
+                parameter => TypeName(parameter.Type) + " " + Identifier(parameter.Name));
+            return SourceProgram.Concat(
+                SourceProgram.Text(string.Join(", ", declarations)).Parenthesized(),
+                SourceProgram.Text(" => "),
+                body);
+        }
+
+        internal static SourceProgram TypeTest(SourceProgram expression, Type type) =>
+            SourceProgram.Concat(
+                expression.Parenthesized(),
+                SourceProgram.Text(" is " + TypeName(type)));
+
+        internal static SourceProgram TypeAs(SourceProgram expression, Type type) =>
+            SourceProgram.Concat(
+                expression.Parenthesized(),
+                SourceProgram.Text(" as " + TypeName(type)));
+
+        internal static SourceProgram Default(Type type) =>
+            SourceProgram.Text("default(" + TypeName(type) + ")");
+
+        internal static SourceProgram TypedNull(Type type) =>
+            SourceProgram.Text("((" + TypeName(type) + ")null)");
+
         internal static SourceProgram Literal(object value, Type declaredType)
         {
             if (value is Array or IDictionary or JToken)
@@ -191,9 +327,5 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 $"Cannot serialize captured value of type {value.GetType()}. Construct the object inside the lambda instead.");
         }
 
-        private static SourceProgram Cast(Type type, SourceProgram value) =>
-            SourceProgram.Concat(
-                SourceProgram.Text(CSharpSyntaxGenerator.TypeName(type)).Parenthesized(),
-                value.Parenthesized());
     }
 }
